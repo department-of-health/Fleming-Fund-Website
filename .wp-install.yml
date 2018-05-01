@@ -1,0 +1,12 @@
+---
+plugins-to-download:
+  plugins:
+  - name: custom-post-type-ui
+  - name: custom-post-type-permalinks
+ 
+plugins-to-copy:
+  directory: dependencies/plugins
+  plugins:
+  - name: advanced-custom-fields-pro
+    type: zip
+    filename: advanced-custom-fields-pro.zip
