@@ -28,6 +28,16 @@ This is the [Git repository](https://en.wikipedia.org/wiki/Git) for the code tha
   * Add the folder containing `php.exe` to your PATH environment variable  
     Hint: [Rapid Environment Editor](https://www.rapidee.com/en/download) is a really useful tool for doing this
 
+* Create a `php.ini` file where you just installed PHP.  
+  PHP ships with a `php.ini-development` file - copy this to `php.ini`  
+  Make the following changes to your `php.ini` file:
+  * Un-comment `extension_dir = "ext"`
+  * Un-comment `extension=curl`
+  * Un-comment `extension=intl`
+  * Un-comment `extension=mbstring`
+  * Un-comment `extension=mysqli`
+  * Un-comment `extension=openssl`
+
 * Check out this code  
   `git clone git@github.com:Softwire/fleming-fund-website.git`
 
@@ -38,12 +48,16 @@ npm install wp-install -g
 wp-install
 ```
 
-* Run these two shell scripts to server the website:
+* **!!TODO!!** explain how to restore the database
+
+* Run these two shell scripts to build and serve the website:
   * `dev--build-and-watch.sh`  
   This uses Webpack to compile SCSS etc  
   It watches for changed files and re-compiles automatically.
-  * `dev--run-php-server.sh`  
-  This runs a simple PHP server in the right folder.
 
-Note: you can just double-click on these shell scripts in Windows Explorer to open them in Git Bash - they each close automatically when you press Ctrl-C
+  * `dev--run-php-server.sh`  
+  This runs a simple PHP server in the right folder.  
+  **Note:** this file must be run from an existing command prompt  
+  e.g. by running `./dev--run-php-server.sh`  
+  For some reason, if you just double-click on this shell script in Windows Explorer, it doesn't know where your `php.ini` file is :-(
 

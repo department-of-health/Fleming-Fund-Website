@@ -1,2 +1,1 @@
-cd ./dist/wordpress
-php -S localhost:3000
+php -S localhost:3000 -t ./dist/wordpress

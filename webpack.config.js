@@ -26,7 +26,7 @@ module.exports = {
             { watch: true }
         ),
         new ExtractTextPlugin({
-            filename: 'dist/wordpress/wp-content/themes/fleming-theme/bundle.css',
+            filename: 'dist/wordpress/wp-content/themes/fleming-theme/style.css',
             allChunks: true,
         }),
         new CopyWebpackPlugin([
