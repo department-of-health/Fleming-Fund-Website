@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Organisation: {{ title }} | Fleming Fund</title>
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/fleming-theme/style.css">
+    </head>
+
+    <body>
+        Fleming single organisation
+
+        <h1>{{ title }}</h1>
+        
+        
+        <p>Address: {{ fields.address.value }}</p>
+        
+        <p>Number of employees: {{ fields.number_of_employees.value }}</p>
+        
+        
+        <h2>About us</h2>
+        
+        {% for content_block in fields.organisation_flexible_content.value %}
+        
+            {% if content_block.acf_fc_layout == 'text_block' %}
+                {% include '1-atoms/text-block.html' %}
+        
+            {% elseif content_block.acf_fc_layout == 'quote' %}
+                {% include '1-atoms/quote.html' %}
+        
+            {% endif %}
+        
+        {% endfor %}
+        
+    </body>
+</html> 
+

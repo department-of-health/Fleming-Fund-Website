@@ -1,0 +1,16 @@
+.quote {
+    color: steelblue;
+
+    strong {
+        font-variant: small-caps;
+        font-style: italic;
+        font-size: 20px;
+
+    }
+
+    ::before {
+        content: '"';
+        color: lightgray;
+        font-size: 40px;
+    }
+}

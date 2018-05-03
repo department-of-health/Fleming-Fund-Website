@@ -10,6 +10,6 @@ if (isset($_GET["json"])) {
     echo(json_encode(fleming_get_content()));
 }
 else {
-    echo $twig->render($template_name . '.html', fleming_get_content());
+    echo $twig->render('page-types/' . $template_name . '.html', fleming_get_content());
 }
 
