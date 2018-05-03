@@ -3,6 +3,8 @@ plugins-to-download:
   plugins:
   - name: custom-post-type-ui
   - name: custom-post-type-permalinks
+  - name: disable-comments
+  - name: wp-db-backup
  
 plugins-to-copy:
   directory: dependencies/plugins

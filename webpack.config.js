@@ -8,7 +8,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
 module.exports = {
-    entry: [ path.join(__dirname, 'src/fleming-theme/fleming.scss') ],
+    entry: [ path.join(__dirname, 'src/fleming-theme/templates/fleming.scss') ],
     output: {
         filename: 'dist/temp/bundle.js'
     },
@@ -33,6 +33,14 @@ module.exports = {
             {
                 from: path.join(__dirname, "src/fleming-theme"),
                 to: path.join(__dirname, "./dist/wordpress/wp-content/themes/fleming-theme"),
+                ignore: [ '*.scss', '*.css' ] 
+            }
+        ],
+        { copyUnmodified: true }),
+        new CopyWebpackPlugin([
+            {
+                from: path.join(__dirname, "src/wordpress"),
+                to: path.join(__dirname, "./dist/wordpress/"),
                 ignore: [ '*.scss', '*.css' ] 
             }
         ],
