@@ -52,3 +52,13 @@ function remove_wp_nodes()
     $wp_admin_bar->remove_node( 'new-user' );
 }
 add_action( 'admin_bar_menu', 'remove_wp_nodes', 999 );
+
+
+
+// Run some code after image upload to make the filename be a random hash - so that images can be cached forever
+function make_filename_hash($filename) {
+    $info = pathinfo($filename);
+    $ext  = empty($info['extension']) ? '' : '.' . $info['extension'];
+    return bin2hex(openssl_random_pseudo_bytes(16)) . $ext;
+}
+add_filter('sanitize_file_name', 'make_filename_hash', 10);

@@ -1,5 +1,7 @@
 <?php
 
+include __DIR__ . '/php/get-css-filename.php';
+
 /**
  * NOTE:
  * 
@@ -13,6 +15,7 @@
 
 function fleming_get_content() {
     $fleming_content = array(
+        "css_filename" => get_css_filename(),
         "title" => get_the_title(),
         "fields" => get_field_objects()
     );

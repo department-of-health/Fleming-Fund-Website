@@ -1,2 +1,5 @@
 node_modules/
 dist/
+.wordpress-download-cache/
+.credentials/
+.temp/

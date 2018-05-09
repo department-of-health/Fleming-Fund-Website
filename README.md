@@ -33,6 +33,7 @@ This is the [Git repository](https://en.wikipedia.org/wiki/Git) for the code tha
   Make the following changes to your `php.ini` file:
   * Un-comment `extension_dir = "ext"`
   * Un-comment `extension=curl`
+  * Un-comment `extension=gd2`
   * Un-comment `extension=intl`
   * Un-comment `extension=mbstring`
   * Un-comment `extension=mysqli`

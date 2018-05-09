@@ -1,0 +1,13 @@
+/*
+Theme Name: Fleming Theme
+Author: Department for Health and Social Care / Softwire
+Description: Theme for the Fleming Fund website
+Version: 1.0
+Text Domain: fleming-theme
+*/
+
+/*
+    NOTE: This file only exists so that WordPress knows the name of this theme.
+    The actual CSS is in /src/fleming-theme/*.scss
+    The SCSS is compiled into a single CSS file: /dist/wordpress/wp-content/themes/fleming-theme/fleming.css
+*/

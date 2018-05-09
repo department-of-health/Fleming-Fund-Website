@@ -1,0 +1,346 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const AWS = require('aws-sdk');
+const _ = require('lodash');
+const fs = require('fs-extra');
+const readline = require('readline');
+const child_process = require('child_process');
+const mysql = require('mysql');
+
+
+var s3 = null;
+
+
+//////////
+// START
+
+start();
+
+async function start() {
+    sayHello();
+    var options = await askUserForOptions();
+
+    await createTempDirIfNecessary();
+
+    await loadConfigsAndTestConnections(options);
+
+    if (options.get_database) { await getDatabase(); }
+    if (options.get_files) { await getFiles(); }
+
+    if (options.restore_database) { await restoreDatabase(); }
+    if (options.restore_files) { await restoreFiles(); }
+
+    sayGoodbye();
+    process.exit();
+}
+
+function createTempDirIfNecessary() {
+    console.log(''); // make some space in the log
+    console.log('creating temp dir (if necessary)');
+
+    makeDirIfNotExists('./.temp');
+    makeDirIfNotExists('./.temp/database-backup');
+    makeDirIfNotExists('./.temp/file-backup');
+    makeDirIfNotExists('./.temp/uploads');
+}
+
+
+//////////////
+// GREETINGS
+
+function sayHello() {
+    console.log('------------------------------------------------------');
+    console.log('-----  download and restore WP database/uploads  -----');
+    console.log('------------------------------------------------------');
+    console.log(''); // make some space in the log
+}
+
+function sayGoodbye() {
+    console.log(''); // make some space in the log
+    console.log('------------------------------------------------------');
+    console.log('all done!');
+}
+
+
+/////////////////////////
+// ASK USER FOR OPTIONS
+
+async function askUserForOptions() {
+    console.log('Which tasks do you want to perform?');
+    console.log('- gd: get database (to .temp folder)');
+    console.log('- rd: restore database');
+    console.log('- gf: get files e.g. images (to .temp folder)');
+    console.log('- rf: restore files e.g. images');
+    console.log('- all: all of the above');
+    console.log('');
+    console.log('Type the options you want, separated by spaces (e.g. "gd rd")');
+    console.log('');
+
+    var optionsText = await consoleReadLine('Selected options: ');
+
+    return {
+        get_database:     optionsText.includes('gd') || optionsText.includes('all'),
+        restore_database: optionsText.includes('rd') || optionsText.includes('all'),
+        get_files:        optionsText.includes('gf') || optionsText.includes('all'),
+        restore_files:    optionsText.includes('rf') || optionsText.includes('all'),
+    }
+}
+
+
+////////////////
+// LOAD CONFIG
+
+async function loadConfigsAndTestConnections(options) {
+    console.log(''); // make some space in the log
+    console.log('------------------------');
+    console.log('loading configs and testing connections');
+
+    if (options.get_database || options.get_files) {
+        await loadAwsConfigAndTestConnection();
+    }
+
+    if (options.restore_database) {
+        loadMySqlConfigAndTestConnection();
+    }
+}
+
+function loadAwsConfigAndTestConnection() {
+    console.log(''); // make some space in the log
+    console.log('loading AWS config and testing connection');
+
+    return new Promise(resolve => {
+        const configFile = './.credentials/aws-credentials-backup-download.json';
+        console.log('- trying to load config from [' + configFile + ']');
+        AWS.config.loadFromPath('./.credentials/aws-credentials-backup-download.json');
+        console.log('- loaded config');
+
+        s3 = new AWS.S3({
+            apiVersion: '2006-03-01',
+            params: {Bucket: 'fleming-fund-db-backups'} // always use this bucket
+        });
+
+        s3.listObjectsV2({ MaxKeys: 1 }, // pick any file - just to test we can connect
+        function(err, data) {
+            if (data.Contents) {
+                console.log('- AWS connection successful');
+                resolve();
+            }
+        });
+    });
+}
+
+function loadMySqlConfigAndTestConnection() {
+    console.log(''); // make some space in the log
+    console.log('loading MySQL config and testing connection');
+
+}
+
+
+/////////////////
+// GET DATABASE
+
+async function getDatabase() {
+    console.log(''); // make some space in the log
+    console.log('------------------------');
+    console.log('getting the latest database backup');
+
+    console.log('- getting the contents of the S3 bucket');
+    const s3Response = await getS3BucketContents();
+    console.log('- got the contents of the S3 bucket');
+
+    const latestDatabaseFilename = getS3KeyOfLatestMatch(
+        s3Response,
+        function(file) { return file.Key.startsWith('backup_') && file.Key.endsWith('-db.gz'); }
+    )
+    console.log('- found the latest database backup - filename is [' + latestDatabaseFilename + ']');
+
+    const localPath = './.temp/database-backup/' + latestDatabaseFilename;
+    console.log('- copying database from S3 file [' + latestDatabaseFilename + '] to local path [' + localPath + ']');
+    await downloadS3FileToLocalFile(latestDatabaseFilename, localPath);
+
+    console.log('- unzipping file [' + localPath + ']');
+    gunzip(localPath);
+}
+
+//////////////
+// GET FILES
+
+async function getFiles() {
+    console.log(''); // make some space in the log
+    console.log('------------------------');
+    console.log('getting the latest files backup');
+
+    console.log('- getting the contents of the S3 bucket');
+    const s3Response = await getS3BucketContents();
+    console.log('- got the contents of the S3 bucket');
+
+    const latestUploadsFilename = getS3KeyOfLatestMatch(
+        s3Response,
+        function(file) { return file.Key.startsWith('backup_') && file.Key.endsWith('-uploads.zip'); }
+    )
+    console.log('- found the latest files backup - filename is [' + latestUploadsFilename + ']');
+
+    const localPath = './.temp/file-backup/' + latestUploadsFilename;
+    console.log('- copying files from S3 file [' + latestUploadsFilename + '] to local path [' + localPath + ']');
+    await downloadS3FileToLocalFile(latestUploadsFilename, localPath);
+}
+
+
+/////////////////////
+// RESTORE DATABASE
+
+async function restoreDatabase() {
+    console.log(''); // make some space in the log
+    console.log('------------------------');
+    console.log('restoring database');
+    console.log(''); // make some space in the log
+    
+    const databaseBackupSqlFile = findDatabaseBackupFile();
+
+    return new Promise(resolve => {
+        var connection = mysql.createConnection({
+            host     : 'localhost',
+            user     : 'root',
+            password : '',
+            database : '',
+            multipleStatements: true
+        });
+
+        console.log('connecting to MySql');
+        connection.connect();
+        console.log('connected');
+
+        const backupQuery = fs.readFileSync(databaseBackupSqlFile);
+        const wholeRestoreQuery = "CREATE SCHEMA `wordpress` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci; USE `wordpress`; " + backupQuery;
+
+        connection.query(wholeRestoreQuery, function (error, results, fields) {
+            if (error) throw error;
+            console.log('Query executed.');
+            resolve();
+        });
+        
+        connection.end();
+    });
+}
+
+function findDatabaseBackupFile() {
+    const tempPath = './.temp/database-backup';
+
+    console.log('- looking in [' + tempPath + '] for DB backup files');
+    const files = fs.readdirSync(tempPath);
+    const latestBackupZipFile =
+        _(files)
+        .filter(function(file) { return file.endsWith('-db'); })
+        .orderBy([], ['desc'])
+        .head();
+    console.log('- latest DB backup file is [' + latestBackupZipFile + ']');
+
+    const pathToDatabaseBackupFile = tempPath + '/' + latestBackupZipFile;
+    return pathToDatabaseBackupFile;
+}
+
+
+//////////////////
+// RESTORE FILES
+
+function restoreFiles() {
+    console.log(''); // make some space in the log
+    console.log('------------------------');
+    console.log('restoring the latest files backup');
+    console.log(''); // make some space in the log
+    
+    moveOldUploadsFolderIfItExists();
+    unzipLatestFilesBackupToUploadsFolder();
+}
+
+function moveOldUploadsFolderIfItExists() {
+    console.log('archiving the current uploads folder (if it exists)');
+    
+    const uploadsPath = './dist/wordpress/wp-content/uploads';
+    if (fs.existsSync(uploadsPath)) {
+        console.log('- uploads folder does exist');
+
+        const tempPath = './.temp/uploads/' + (new Date()).toISOString().replace(/:/g, '');
+        console.log('- moving uploads folder from [' + uploadsPath + '] to [' + tempPath + ']');
+        fs.renameSync(uploadsPath, tempPath);
+    }
+}
+
+function unzipLatestFilesBackupToUploadsFolder() {
+    console.log('unzipiing the latest files backup');
+
+    const tempPath = './.temp/file-backup';
+
+    console.log('- looking in [' + tempPath + '] for backup files');
+    const files = fs.readdirSync(tempPath);
+    const latestBackupZipFile = _(files).orderBy([], ['desc']).head();
+    console.log('- latest backup files is [' + latestBackupZipFile + ']');
+
+    const pathToZipFile = tempPath + '/' + latestBackupZipFile;
+    const wpContentPath = './dist/wordpress/wp-content';
+    unzip(pathToZipFile, wpContentPath);
+}
+
+
+///////////////////
+// HELPER METHODS
+
+function makeDirIfNotExists(dir) {
+    fs.ensureDirSync(dir);
+}
+
+function getS3BucketContents() {
+    return new Promise(resolve => {
+        s3.listObjectsV2({}, function(err, data) {
+            resolve(data);
+        });
+    });
+}
+
+function getS3KeyOfLatestMatch(s3Response, orderFunction) {
+    const latestBlock =
+    _(s3Response.Contents)
+    .filter(orderFunction)
+    .orderBy(['Key'], ['desc'])
+    .head();
+
+    return latestBlock.Key;
+}
+
+function downloadS3FileToLocalFile(s3Filename, localFilePath) {
+    return new Promise(resolve => {
+        const localFile = fs.createWriteStream(localFilePath);
+
+        s3.getObject({ Key: s3Filename })
+        .createReadStream()
+        .pipe(localFile)
+        .on('finish', resolve);
+    });
+}
+
+function consoleReadLine(question) {
+    return new Promise(resolve => {
+        const rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+        rl.question(question, (answer) => {
+            resolve(answer);
+            rl.close();
+        });
+    });
+}
+
+function unzip(filename, destinationDirectory) {
+    console.log('- unzipping file: [' + filename + '] to directory: [' + destinationDirectory + ']');
+    child_process.execSync('unzip "' + filename + '" -d "' + destinationDirectory + '"');
+}
+
+function gunzip(filename) {
+    console.log('- gunzipping file: [' + filename + '] to same directory');
+    child_process.execSync('gzip -d "' + filename + '"');
+}
+
+

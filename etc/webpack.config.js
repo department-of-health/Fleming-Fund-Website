@@ -26,22 +26,21 @@ module.exports = {
             { watch: true }
         ),
         new ExtractTextPlugin({
-            filename: 'dist/wordpress/wp-content/themes/fleming-theme/style.css',
+            filename: 'dist/wordpress/wp-content/themes/fleming-theme/fleming-[contenthash].css',
             allChunks: true,
         }),
         new CopyWebpackPlugin([
             {
                 from: path.join(__dirname, "src/fleming-theme"),
                 to: path.join(__dirname, "./dist/wordpress/wp-content/themes/fleming-theme"),
-                ignore: [ '*.scss', '*.css' ] 
+                ignore: [ '*.scss' ] 
             }
         ],
         { copyUnmodified: true }),
         new CopyWebpackPlugin([
             {
                 from: path.join(__dirname, "src/wordpress"),
-                to: path.join(__dirname, "./dist/wordpress/"),
-                ignore: [ '*.scss', '*.css' ] 
+                to: path.join(__dirname, "./dist/wordpress/")
             }
         ],
         { copyUnmodified: true })
