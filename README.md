@@ -42,14 +42,9 @@ This is the [Git repository](https://en.wikipedia.org/wiki/Git) for the code tha
 * Check out this code  
   `git clone git@github.com:Softwire/fleming-fund-website.git`
 
-* Run these commands in a shell (e.g. Git bash):
-```
-npm install
-npm install wp-install -g
-wp-install
-```
+* Ask someone on the team for the file: `.credentials\aws-credentials-backup-download.json`
 
-* **!!TODO!!** explain how to restore the database
+* Run `one-click-install.sh`
 
 * Run these two shell scripts to build and serve the website:
   * `dev--build-and-watch.sh`  
@@ -62,3 +57,4 @@ wp-install
   e.g. by running `./dev--run-php-server.sh`  
   For some reason, if you just double-click on this shell script in Windows Explorer, it doesn't know where your `php.ini` file is :-(
 
+* If you need to get a fresh copy of the

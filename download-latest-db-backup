@@ -20,7 +20,8 @@ start();
 
 async function start() {
     sayHello();
-    var options = await askUserForOptions();
+    checkFolder();
+    var options = await getOptionsFromCommandLineOrUser();
 
     await createTempDirIfNecessary();
 
@@ -57,6 +58,20 @@ function sayHello() {
     console.log(''); // make some space in the log
 }
 
+function checkFolder() {
+    if (process.cwd().endsWith('etc')) {
+        console.log('STOP!');
+        console.log('I think you are running this in the wrong folder!');
+        console.log('This script needs to be run from the main folder.');
+        console.log(''); // make some space in the log
+        console.log('Try this...');
+        console.log('  cd ..');
+        console.log('  ./etc/download-latest-db-backup');
+        
+        process.exit();
+    }
+}
+
 function sayGoodbye() {
     console.log(''); // make some space in the log
     console.log('------------------------------------------------------');
@@ -64,8 +79,27 @@ function sayGoodbye() {
 }
 
 
-/////////////////////////
-// ASK USER FOR OPTIONS
+////////////
+// OPTIONS
+
+async function getOptionsFromCommandLineOrUser() {
+    var optionsText;
+
+    if (process.argv && process.argv.length > 2) {
+        optionsText = getOptionsFromCommandLine();
+    }
+    else {
+        optionsText = await askUserForOptions();
+    }
+
+    return parseOptions(optionsText);
+}
+
+function getOptionsFromCommandLine() {
+    console.log('command line options have been provided');
+    var optionsText = _(process.argv).drop(2).join(' ');
+    return optionsText;
+}
 
 async function askUserForOptions() {
     console.log('Which tasks do you want to perform?');
@@ -79,7 +113,10 @@ async function askUserForOptions() {
     console.log('');
 
     var optionsText = await consoleReadLine('Selected options: ');
+    return optionsText;
+}
 
+function parseOptions(optionsText) {
     return {
         get_database:     optionsText.includes('gd') || optionsText.includes('all'),
         restore_database: optionsText.includes('rd') || optionsText.includes('all'),
@@ -157,11 +194,21 @@ async function getDatabase() {
     console.log('- found the latest database backup - filename is [' + latestDatabaseFilename + ']');
 
     const localPath = './.temp/database-backup/' + latestDatabaseFilename;
-    console.log('- copying database from S3 file [' + latestDatabaseFilename + '] to local path [' + localPath + ']');
-    await downloadS3FileToLocalFile(latestDatabaseFilename, localPath);
-
-    console.log('- unzipping file [' + localPath + ']');
-    gunzip(localPath);
+    
+    console.log('- local path will be [' + localPath + '] checking if it already exists (without .gz suffix)');
+    const localPathWithoutGzSuffix = localPath.replace('.gz', '');
+    
+    if (fs.existsSync(localPathWithoutGzSuffix)) {
+        console.log('  - file already exists - nothing to do');
+    }
+    else {
+        console.log('  - file does not exists - need to download');
+        console.log('- copying database from S3 file [' + latestDatabaseFilename + '] to local path [' + localPath + ']');
+        await downloadS3FileToLocalFile(latestDatabaseFilename, localPath);
+    
+        console.log('- unzipping file [' + localPath + ']');
+        gunzip(localPath);
+    }
 }
 
 //////////////
