@@ -260,7 +260,7 @@ async function restoreDatabase() {
         console.log('connected');
 
         const backupQuery = fs.readFileSync(databaseBackupSqlFile);
-        const wholeRestoreQuery = "CREATE SCHEMA `wordpress` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci; USE `wordpress`; " + backupQuery;
+        const wholeRestoreQuery = "CREATE SCHEMA `wordpress` DEFAULT CHARACTER SET utf8mb4; USE `wordpress`; " + backupQuery;
 
         connection.query(wholeRestoreQuery, function (error, results, fields) {
             if (error) throw error;
