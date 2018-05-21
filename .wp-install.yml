@@ -5,6 +5,7 @@ plugins-to-download:
   - name: custom-post-type-permalinks
   - name: disable-comments
   - name: wp-db-backup
+  - name: file-manager-advanced
  
 plugins-to-copy:
   directory: dependencies/plugins
