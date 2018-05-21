@@ -1,3 +1,6 @@
+
+source ./.credentials/set-local-credentials.sh
+
 set -x
 
 cd ./dist/wordpress

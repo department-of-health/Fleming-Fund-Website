@@ -38,11 +38,14 @@ This is the [Git repository](https://en.wikipedia.org/wiki/Git) for the code tha
   * Un-comment `extension=mbstring`
   * Un-comment `extension=mysqli`
   * Un-comment `extension=openssl`
+  * Change the `variables_order` line to be `variables_order = "EGPCS"`
 
 * Check out this code  
   `git clone git@github.com:Softwire/fleming-fund-website.git`
 
-* Ask someone on the team for the file: `.credentials\aws-credentials-backup-download.json`
+* Ask someone on the team for these files:
+  * `.credentials\aws-credentials-backup-download.json`
+  * `.credentials\set-local-credentials.sh`
 
 * Run `one-click-install.sh`
 
