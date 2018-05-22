@@ -62,3 +62,12 @@ function make_filename_hash($filename) {
     return bin2hex(openssl_random_pseudo_bytes(16)) . $ext;
 }
 add_filter('sanitize_file_name', 'make_filename_hash', 10);
+
+
+
+////////////////////////////////////////////////////////////////
+////////             ADVANCED CUSTOM FIELDS             ////////
+////////////////////////////////////////////////////////////////
+
+include __DIR__ . '/acf-fields/load-acf-fields.php';
+
