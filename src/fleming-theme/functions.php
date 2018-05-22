@@ -66,8 +66,8 @@ add_filter('sanitize_file_name', 'make_filename_hash', 10);
 
 
 ////////////////////////////////////////////////////////////////
-////////             ADVANCED CUSTOM FIELDS             ////////
+////////   CUSTOM POST TYPES + ADVANCED CUSTOM FIELDS   ////////
 ////////////////////////////////////////////////////////////////
 
-include __DIR__ . '/acf-fields/load-acf-fields.php';
+include __DIR__ . '/custom-post-types/load-custom-post-types-and-acf-fields.php';
 
