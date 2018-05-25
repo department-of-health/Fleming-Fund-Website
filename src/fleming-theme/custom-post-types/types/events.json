@@ -146,7 +146,7 @@
                 {
                     "param": "post_type",
                     "operator": "==",
-                    "value": "post"
+                    "value": "events"
                 }
             ]
         ],

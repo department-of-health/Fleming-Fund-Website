@@ -28,7 +28,7 @@
                 {
                     "param": "post_type",
                     "operator": "==",
-                    "value": "post"
+                    "value": "grant_types"
                 }
             ]
         ],
