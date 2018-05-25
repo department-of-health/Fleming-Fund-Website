@@ -4,7 +4,8 @@
   "description": "Fleming Fund website",
   "private": true,
   "dependencies": {
-    "css-loader": "^0.28.11"
+    "css-loader": "^0.28.11",
+    "mysql-file-sync": "^1.0.0"
   },
   "devDependencies": {
     "aws-sdk": "^2.235.1",

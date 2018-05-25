@@ -1,0 +1,18 @@
+---
+database:
+  host: localhost
+  username: root
+  password: ""
+  schema: wordpress
+ 
+tables:
+  - table_name: wp_options
+    file_name: src/database/wp-options.sql
+    order_by: option_name
+    ignore_columns:
+      - option_id
+    exclude_rows:
+      - column: option_name
+        value_to_exclude: "^_transient_.*$"
+      - column: option_name
+        value_to_exclude: "^_site_transient_.*$"
