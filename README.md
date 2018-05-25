@@ -38,11 +38,14 @@ This is the [Git repository](https://en.wikipedia.org/wiki/Git) for the code tha
   * Un-comment `extension=mbstring`
   * Un-comment `extension=mysqli`
   * Un-comment `extension=openssl`
+  * Change the `variables_order` line to be `variables_order = "EGPCS"`
 
 * Check out this code  
   `git clone git@github.com:Softwire/fleming-fund-website.git`
 
-* Ask someone on the team for the file: `.credentials\aws-credentials-backup-download.json`
+* Ask someone on the team for these files:
+  * `.credentials\aws-credentials-backup-download.json`
+  * `.credentials\set-local-credentials.sh`
 
 * Run `one-click-install.sh`
 
@@ -58,3 +61,18 @@ This is the [Git repository](https://en.wikipedia.org/wiki/Git) for the code tha
   For some reason, if you just double-click on this shell script in Windows Explorer, it doesn't know where your `php.ini` file is :-(
 
 * If you need to get a fresh copy of the
+
+
+# Custom Post Types and Custom Field Groups
+
+* Custom Post Types (CPTs) and Custom Field Groups (CFGs) should be stored in the code repository, not the database.
+
+* For the time being, we have at most one CFG for each CPT, and they are not shared between CPTs.
+
+* CPTs should be defined by creating a [post type name].php file in the src/fleming-theme/custom-post-types directory. This is mostly boilerplate that can be copied from an existing one.
+
+* CFGs can be easily created in the Wordpress admin interface, but should be exported as .json files (see Custom Fields -> Tools) and stored in src/fleming-theme/custom-post-types as [field group name].php, and the CPT should then be deleted from the database.
+
+* Both CPTs and CFGs should be loaded via load-custom-post-types-and-acf-fields.php in src/fleming-theme. Just add an include and/or load_acf_fields call inside the eponymous function similar to the ones already there.
+
+* Be careful about underscores and hyphens when naming custom components and files.
