@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Project: {{ title }} | Fleming Fund</title>
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/fleming-theme/{{ css_filename }}">
+    </head>
+
+    <body>
+        Fleming single project
+
+        <h1>{{ title }}</h1>
+        
+        
+        <p>Description: {{ fields.description.value }}</p>
+        
+        <p>Budget: {{ fields.budget.value }}</p>
+        
+        
+        <h2>About it</h2>
+        
+        {% for content_block in fields.project_flexible_content.value %}
+        
+            {% if content_block.acf_fc_layout == 'text_block' %}
+                {% include '1-atoms/text-block.html' %}
+        
+            {% elseif content_block.acf_fc_layout == 'quote' %}
+                {% include '1-atoms/quote.html' %}
+        
+            {% endif %}
+        
+        {% endfor %}
+
+        <p>Under the auspices of: <a href={{ fields.org_relationship.value[0].guid }}>{{fields.org_relationship.value[0].post_title}}</a></p>
+
+    </body>
+</html> 

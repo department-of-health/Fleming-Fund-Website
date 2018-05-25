@@ -12,15 +12,6 @@ include __DIR__ . '/php/get-css-filename.php';
  * VIEWs are located in the ./templates folder and have a .html file extension
  */
 
-function controlled_by_org($project, $orgname) {
-    $fields = get_field_objects($project->ID);
-    $controllers = $fields["org_relationship"]["value"];
-    $result = false;
-    foreach($controllers as $val) {
-        if($val->post_title == $orgname) {$result = true;}
-    }
-    return $result;
-}
 
 function fleming_get_content() {
     $fleming_content = array(
@@ -29,14 +20,10 @@ function fleming_get_content() {
         "fields" => get_field_objects()
     );
 
-    $args = array('post_type'=>'projects');
-    $projects = get_posts($args);
+    $fleming_content["fields"]["org_relationship"]["value"][0]->guid = htmlspecialchars_decode($fleming_content["fields"]["org_relationship"]["value"][0]->guid);
 
-    $projects = array_filter($projects, function($project) use($fleming_content) {
-        return controlled_by_org($project, $fleming_content["title"]);
-    });
-
-    echo count($projects);
+    $args = array('post_type'=>'organisations');
+    echo get_field_objects($fleming_content["fields"]["org_relationship"]["value"][0]->ID)["address"]["value"];
 
     return $fleming_content;
 }
