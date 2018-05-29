@@ -1,7 +1,7 @@
 
 set -v
 
-# Move "uploads" folder out the way (otherwise wp-install will delete it)
+# Move "uploads" folder out the way (otherwise wp-install will delete it) 
 mkdir -p ./dist/wordpress/wp-content/uploads
 mkdir -p ./.temp/uploads-wp-install
 mv ./dist/wordpress/wp-content/uploads ./.temp/uploads-wp-install
