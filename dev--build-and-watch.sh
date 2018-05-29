@@ -12,4 +12,4 @@ mv ./dist/wordpress/wp-content/uploads ./.temp/uploads-wp-install
 mv ./.temp/uploads-wp-install/uploads ./dist/wordpress/wp-content
 
 
-npx webpack --config ./webpack.prod.js
+npx webpack --config ./webpack.dev.js
