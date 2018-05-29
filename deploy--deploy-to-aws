@@ -1,0 +1,127 @@
+#!/usr/bin/env node
+
+const aws = require('aws-sdk');
+const fs = require('fs');
+const _ = require('lodash');
+
+const siteName = 'fleming-fund';
+const allowedEnvironments = ['dev'];
+
+const ebAppName = 'fleming-fund-eb-app';
+const ebEnvNames = {
+    'dev': 'fleming-fund-eb-dev-2'
+};
+const s3bucket = 'elasticbeanstalk-eu-west-1-382810960254';
+
+var environment = null;
+var zipFileName = null;
+
+var s3 = null;
+var eb = null;
+
+
+start();
+
+async function start() {
+    getDetailsFromCommandLineArguments();
+
+    console.log('calculating version names');
+    var now = new Date().toISOString();
+    var s3fileName = `${siteName}-${environment}-code-version_${now}`;
+    var ebVersionLabel = `${siteName}-${environment}-app-version_${now}`;
+    var ebEnvName = ebEnvNames[environment];
+
+    console.log('loading AWS config');
+    loadAwsConfig();
+
+    console.log('uploading');
+    await upload(zipFileName, s3bucket, s3fileName);
+
+    console.log('creatiung version');
+    await createVersion(ebAppName, ebVersionLabel, s3bucket, s3fileName);
+
+    console.log('deploying version');
+    await deployVersion(ebAppName, ebEnvName, ebVersionLabel);
+}
+
+function getDetailsFromCommandLineArguments() {
+    environment = getArgs()[0];
+    if (!allowedEnvironments.includes(environment)) {
+        printUsage();
+        process.exit();
+    }
+
+    zipFileName = getArgs()[1];
+    if (!zipFileName || zipFileName.length < 1) {
+        printUsage();
+        process.exit();
+    }
+}
+
+function getArgs() {
+    return _(process.argv).drop(2).value();
+}
+
+function printUsage() {
+    console.log('');
+    console.log('usage: deploy--deploy-to-aws <environment> <filename>');
+    console.log('- environment: allowed options: ' + allowedEnvironments.join(', '));
+    console.log('- filename: the zip file to deploy to AWS');
+    console.log('');
+    console.log('you ran: deploy--deploy-to-aws ' + getArgs().join(' '));
+}
+
+function loadAwsConfig() {
+    aws.config.loadFromPath('./.credentials/aws-credentials-deploy-dev.json');
+
+    s3 = new aws.S3();
+    eb = new aws.ElasticBeanstalk();
+}
+
+function upload(zipFileName, s3bucket, s3fileName) {
+    return new Promise(resolve => {
+        s3.upload({
+            Bucket: s3bucket,
+            Key: s3fileName,
+            Body: fs.createReadStream(zipFileName)
+        },
+        function(error, data) {
+            if (error) throw error;
+            console.log('- uploaded');
+            resolve();
+        });
+    });
+}
+
+function createVersion(appName, ebVersionLabel, s3bucket, s3fileName) {
+    return new Promise(resolve => {
+        eb.createApplicationVersion({
+            ApplicationName: appName,
+            VersionLabel: ebVersionLabel,
+            SourceBundle: {
+                S3Bucket: s3bucket,
+                S3Key: s3fileName
+            }
+        },
+        function(error, data) {
+            if (error) throw error;
+            console.log('- created version');
+            resolve();
+        });
+    });
+}
+
+function deployVersion(appName, envName, ebVersionLabel) {
+    return new Promise(resolve => {
+        eb.updateEnvironment({
+            ApplicationName: appName,
+            EnvironmentName: envName,
+            VersionLabel: ebVersionLabel
+        },
+        function(error, data) {
+            if (error) throw error;
+            console.log('- deployed version');
+            resolve();
+        });
+    });
+}
