@@ -1,9 +1,9 @@
 
-set -x
+set -v
 
 ./node_modules/mysql-file-sync/bin/mysql-file-sync
 
-set +x
+set +v
 
 echo ''
 echo 'Done! Press any key to  exit'

@@ -13,3 +13,8 @@ mv ./.temp/uploads-wp-install/uploads ./dist/wordpress/wp-content
 
 
 npx webpack --config ./webpack.prod.js
+
+
+cd dist/wordpress
+DATE=`date '+%Y-%m-%d_%H-%M-%S'`
+../../dependencies/7zip/7z.exe a "../../deployments/fleming-fund_$DATE.zip" -ir!* -xr!wp-content/uploads -xr!license.txt -xr!readme.html

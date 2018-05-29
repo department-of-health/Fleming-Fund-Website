@@ -23,7 +23,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(
             ['dist/wordpress/wp-content/themes/fleming-theme'],
-            { watch: true }
+            { watch: true } // This "watch" is not activated unless the global "watch" is also activated (i.e. only in webpack.dev.js)
         ),
         new ExtractTextPlugin({
             filename: 'dist/wordpress/wp-content/themes/fleming-theme/fleming-[contenthash].css',
@@ -45,6 +45,4 @@ module.exports = {
         ],
         { copyUnmodified: true })
     ],
-    watch: true
 }
-
