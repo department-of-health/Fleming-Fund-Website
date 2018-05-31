@@ -1,58 +1,55 @@
-// getskeleton.com responsive framework
-@import 'skeleton-scss/skeleton';
+// The getskeleton.com responsive CSS framework, as a starting point.
+@import "skeleton-scss/skeleton";
 
-// Site-specific layout
-.structure {
-  position: relative; // to make div.section-id work; may not be needed eventually
+// Fleming-specific
+@import "common-scss/fonts";
+@import "common-scss/grey-box";
+
+// Extra styles created for header, footer and front-page
+nav.global-nav {
+  background-color: black;
+  color: white;
   padding: 1em;
-  margin-bottom: 1em;
+  font-size: 16px;
+
+  @include horizontal-ul("  |  ");
 }
 
-.box {
-  @extend .structure;
-  background: #e0e0e0;
-}
+ul.large-links {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 2em;
 
-section.header {
-}
+  li {
+    list-style-type: none;
+    display: inline;
+    font-size: 21px;
+    line-height: 1.33;
+  }
 
-@mixin horizontal-ul($separator) {
-  ul {
-    margin: 0;
-    padding: 0;
-
-    li {
-      list-style-type: none;
-      display: inline;
-    }
-
-    li:not(:first-child):before {
-      content: $separator;
-    }
+  li:not(:first-child):before {
+    margin-left: 0.5ex;
+    margin-right: 0.5ex;
+    content: ' | ';
   }
 }
 
-nav {
-  &.box {
-    margin-bottom: 2em;
+ul.horizontal-pipe {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style-type: none;
+    display: inline;
   }
-  @include horizontal-ul(" | ");
+
+  li:not(:first-child):before {
+    margin-left: 0.5ex;
+    margin-right: 0.5ex;
+    content: ' | ';
+  }
 }
 
-div.breadcrumbs {
-  @include horizontal-ul(" > ");
-}
-
-div.footer {
-  margin-top: 2em;
-}
-
-div.section-id {
-  position: absolute;
-  color: red;
-  top: 0.25em;
-  right: 0.5em;
-}
 
 // Per-page CSS
 @import 'page-types/single-organisation';

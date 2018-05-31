@@ -1,0 +1,53 @@
+.structure {
+  position: relative; // to make div.section-id work; may not be needed eventually
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.box {
+  @extend .structure;
+  background: #e0e0e0;
+}
+
+section.header {
+}
+
+@mixin horizontal-ul($separator) {
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+      display: inline;
+    }
+
+    li:not(:first-child):before {
+      margin-left: 0.5ex;
+      margin-right: 0.5ex;
+      content: $separator;
+    }
+  }
+}
+
+nav {
+  &.box {
+    margin-bottom: 2em;
+  }
+  @include horizontal-ul(" | ");
+}
+
+div.breadcrumbs {
+  @include horizontal-ul(" > ");
+}
+
+div.footer {
+  margin-top: 2em;
+}
+
+div.section-id {
+  position: absolute;
+  color: red;
+  top: 0.25em;
+  right: 0.5em;
+}
