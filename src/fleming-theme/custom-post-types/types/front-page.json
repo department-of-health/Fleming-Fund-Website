@@ -1,66 +1,12 @@
 [
     {
-        "key": "group_5b069e3a3c9df",
-        "title": "Publications field group",
+        "key": "group_5b0ecf17bb9ec",
+        "title": "Front Page",
         "fields": [
             {
-                "key": "field_5b069f204fa9b",
-                "label": "Content",
-                "name": "content",
-                "type": "textarea",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "maxlength": "",
-                "rows": "",
-                "new_lines": ""
-            },
-            {
-                "key": "field_5b069f714fa9c",
-                "label": "URL",
-                "name": "url",
-                "type": "url",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": ""
-            },
-            {
-                "key": "field_5b069f7c4fa9d",
-                "label": "Files",
-                "name": "files",
-                "type": "file",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "return_format": "url",
-                "library": "all",
-                "min_size": "",
-                "max_size": "",
-                "mime_types": ""
-            },
-            {
-                "key": "field_5b06a1224fa9e",
-                "label": "Type",
-                "name": "type",
+                "key": "field_5b0ecf9a4f40b",
+                "label": "Headline Case Study",
+                "name": "headline_case_study",
                 "type": "post_object",
                 "instructions": "",
                 "required": 0,
@@ -71,7 +17,7 @@
                     "id": ""
                 },
                 "post_type": [
-                    "publication_types"
+                    "publications"
                 ],
                 "taxonomy": [],
                 "allow_null": 0,
@@ -80,9 +26,9 @@
                 "ui": 1
             },
             {
-                "key": "field_5b06a1484fa9f",
-                "label": "Topic",
-                "name": "topic",
+                "key": "field_5b0ed0f54f40c",
+                "label": "Headline Grant Type",
+                "name": "headline_grant_type",
                 "type": "post_object",
                 "instructions": "",
                 "required": 0,
@@ -93,7 +39,7 @@
                     "id": ""
                 },
                 "post_type": [
-                    "topics"
+                    "grant_types"
                 ],
                 "taxonomy": [],
                 "allow_null": 0,
@@ -102,9 +48,9 @@
                 "ui": 1
             },
             {
-                "key": "field_5b06a1634faa0",
-                "label": "Discipline",
-                "name": "discipline",
+                "key": "field_5b0ed1204f40d",
+                "label": "Headline Project",
+                "name": "headline_project",
                 "type": "post_object",
                 "instructions": "",
                 "required": 0,
@@ -115,7 +61,7 @@
                     "id": ""
                 },
                 "post_type": [
-                    "disciplines"
+                    "projects"
                 ],
                 "taxonomy": [],
                 "allow_null": 0,
@@ -124,9 +70,9 @@
                 "ui": 1
             },
             {
-                "key": "field_5b06a1734faa1",
-                "label": "Aim",
-                "name": "aim",
+                "key": "field_5b0ed1a44f40e",
+                "label": "Useful Link 1",
+                "name": "useful_link_1",
                 "type": "post_object",
                 "instructions": "",
                 "required": 0,
@@ -136,9 +82,7 @@
                     "class": "",
                     "id": ""
                 },
-                "post_type": [
-                    "aims"
-                ],
+                "post_type": [],
                 "taxonomy": [],
                 "allow_null": 0,
                 "multiple": 0,
@@ -146,9 +90,9 @@
                 "ui": 1
             },
             {
-                "key": "field_5b06a1824faa2",
-                "label": "Country\/Region",
-                "name": "country\/region",
+                "key": "field_5b0ed3e34f40f",
+                "label": "Useful Link 2",
+                "name": "useful_link_2",
                 "type": "post_object",
                 "instructions": "",
                 "required": 0,
@@ -158,13 +102,50 @@
                     "class": "",
                     "id": ""
                 },
-                "post_type": [
-                    "regions",
-                    "countries"
-                ],
+                "post_type": [],
                 "taxonomy": [],
-                "allow_null": 1,
-                "multiple": 1,
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
+            },
+            {
+                "key": "field_5b0ed3eb4f411",
+                "label": "Useful Link 3",
+                "name": "useful_link_3",
+                "type": "post_object",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [],
+                "taxonomy": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
+            },
+            {
+                "key": "field_5b0ed3ea4f410",
+                "label": "Useful Link 4",
+                "name": "useful_link_4",
+                "type": "post_object",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [],
+                "taxonomy": [],
+                "allow_null": 0,
+                "multiple": 0,
                 "return_format": "object",
                 "ui": 1
             }
@@ -172,9 +153,9 @@
         "location": [
             [
                 {
-                    "param": "post_type",
+                    "param": "page_type",
                     "operator": "==",
-                    "value": "publications"
+                    "value": "front_page"
                 }
             ]
         ],

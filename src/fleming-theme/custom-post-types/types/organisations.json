@@ -17,7 +17,7 @@
                     "id": ""
                 },
                 "post_type": [
-                    "organisation_type"
+                    "organisation_types"
                 ],
                 "taxonomy": [],
                 "allow_null": 0,

@@ -17,7 +17,7 @@
                     "id": ""
                 },
                 "post_type": [
-                    "country"
+                    "countries"
                 ],
                 "taxonomy": [],
                 "allow_null": 1,
@@ -39,7 +39,7 @@
                     "id": ""
                 },
                 "post_type": [
-                    "region"
+                    "regions"
                 ],
                 "taxonomy": [],
                 "allow_null": 0,
@@ -61,7 +61,7 @@
                     "id": ""
                 },
                 "post_type": [
-                    "grant_type"
+                    "grant_types"
                 ],
                 "taxonomy": [],
                 "allow_null": 0,
@@ -83,7 +83,7 @@
                     "id": ""
                 },
                 "post_type": [
-                    "aim"
+                    "aims"
                 ],
                 "taxonomy": [],
                 "allow_null": 1,
@@ -105,7 +105,7 @@
                     "id": ""
                 },
                 "post_type": [
-                    "discipline"
+                    "disciplines"
                 ],
                 "taxonomy": [],
                 "allow_null": 1,
@@ -126,7 +126,9 @@
                     "class": "",
                     "id": ""
                 },
-                "post_type": [],
+                "post_type": [
+                    "topics"
+                ],
                 "taxonomy": [],
                 "allow_null": 0,
                 "multiple": 1,
@@ -280,7 +282,7 @@
                     "id": ""
                 },
                 "post_type": [
-                    "event"
+                    "events"
                 ],
                 "taxonomy": [],
                 "allow_null": 0,

@@ -1,9 +1,9 @@
 <?php
 
-register_post_type('publications', array(
+register_post_type('topics', array(
     'labels'                => array(
-        'name' => __( 'Publications' ),
-        'singular_name' => __( 'Publication' )
+        'name' => __( 'Topics' ),
+        'singular_name' => __( 'Topic' )
     ),
     'description'           => '',
     'exclude_from_search'   => false,
@@ -14,6 +14,6 @@ register_post_type('publications', array(
     'show_in_menu'          => true,
     'show_in_rest'          => true,
     'menu_icon'             => 'dashicons-palmtree',
-    'menu_position'         => 9,
+    'menu_position'         => 10,
     'supports'              => array('title', 'revisions')
 ));

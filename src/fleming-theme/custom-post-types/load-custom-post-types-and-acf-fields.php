@@ -8,8 +8,12 @@ function load_custom_post_types_and_acf_fields() {
     include __DIR__ . '/types/countries.php';
     load_acf_fields('types/countries.json');
 
+    include __DIR__ . '/types/disciplines.php';
+
     include __DIR__ . '/types/events.php';
     load_acf_fields('types/events.json');
+
+    load_acf_fields('types/front-page.json');
 
     include __DIR__ . '/types/grant-types.php';
     load_acf_fields('types/grant-types.json');
@@ -36,6 +40,8 @@ function load_custom_post_types_and_acf_fields() {
 
     include __DIR__ . '/types/regions.php';
     load_acf_fields('types/regions.json');
+
+    include __DIR__ . '/types/topics.php';
 
 }
 

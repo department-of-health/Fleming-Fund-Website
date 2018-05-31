@@ -17,7 +17,7 @@
                     "id": ""
                 },
                 "post_type": [
-                    "grant"
+                    "grants"
                 ],
                 "taxonomy": [],
                 "allow_null": 0,
@@ -58,7 +58,7 @@
                     "id": ""
                 },
                 "post_type": [
-                    "aim"
+                    "aims"
                 ],
                 "taxonomy": [],
                 "allow_null": 0,
@@ -80,7 +80,7 @@
                     "id": ""
                 },
                 "post_type": [
-                    "discipline"
+                    "disciplines"
                 ],
                 "taxonomy": [],
                 "allow_null": 0,
