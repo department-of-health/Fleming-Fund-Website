@@ -29,15 +29,6 @@ function fleming_get_content() {
         "fields" => get_field_objects()
     );
 
-    $args = array('post_type'=>'projects');
-    $projects = get_posts($args);
-
-    $projects = array_filter($projects, function($project) use($fleming_content) {
-        return controlled_by_org($project, $fleming_content["title"]);
-    });
-
-    echo count($projects);
-
     return $fleming_content;
 }
 

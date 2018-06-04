@@ -9,15 +9,7 @@
         Fleming single organisation
 
         <h1>{{ title }}</h1>
-        
-        
-        <p>Address: {{ fields.address.value }}</p>
-        
-        <p>Number of employees: {{ fields.number_of_employees.value }}</p>
-        
-        
-        <h2>About us</h2>
-        
+
         {% for content_block in fields.organisation_flexible_content.value %}
         
             {% if content_block.acf_fc_layout == 'text_block' %}
