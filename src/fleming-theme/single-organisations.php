@@ -12,16 +12,6 @@ include __DIR__ . '/php/get-css-filename.php';
  * VIEWs are located in the ./templates folder and have a .html file extension
  */
 
-function controlled_by_org($project, $orgname) {
-    $fields = get_field_objects($project->ID);
-    $controllers = $fields["org_relationship"]["value"];
-    $result = false;
-    foreach($controllers as $val) {
-        if($val->post_title == $orgname) {$result = true;}
-    }
-    return $result;
-}
-
 function fleming_get_content() {
     $fleming_content = array(
         "css_filename" => get_css_filename(),
