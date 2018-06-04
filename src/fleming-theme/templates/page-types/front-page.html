@@ -11,16 +11,16 @@
   </div>
   <div>
     <div class="three columns">
-      <span style="font-weight: bold">Funding Opportunity Title</span><br/>
-      <span style="font-weight: bold">Status:</span> Open 24/05/2018
+      <span style="font-weight: bold">{{ opportunities[0].title }}</span><br/>
+      <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[0].fields.deadline.value }}
     </div>
     <div class="three columns">
-      <span style="font-weight: bold">Funding Opportunity Title</span><br/>
-      <span style="font-weight: bold">Status:</span> Open 24/05/2018
+      <span style="font-weight: bold">{{ opportunities[1].title }}</span><br/>
+      <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[1].fields.deadline.value }}
     </div>
     <div class="three columns">
-      <span style="font-weight: bold">Funding Opportunity Title</span><br/>
-      <span style="font-weight: bold">Status:</span> Open 24/05/2018
+      <span style="font-weight: bold">{{ opportunities[2].title }}</span><br/>
+      <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[2].fields.deadline.value }}
     </div>
     <div class="three columns">
       <button>How to Apply</button>
@@ -44,11 +44,8 @@
          style="max-width: 100%; height: auto; width: auto;" />
   </div>
   <div class="six columns">
-    <h3>Success Story</h3>
-    <p>Budget: £31,531,637<br/>Status: Implementation</p>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar. Nam dignissim ipsum et diam finibus, quis sodales sem congue. Ut vitae porta dui.
-      Aliquam.</p>
+    <h3>{{ fields.headline_case_study.title }}</h3>
+    <p>{{ fields.headline_case_study.fields.content.value | raw }}</p>
     <button>See All Case Studies</button>
   </div>
 </div>
@@ -57,39 +54,33 @@
   <div class="six columns">
     <p>Grant</p>
     <!-- horizontal line -->
-    <h3>Grant Type</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar. Nam dignissim ipsum et diam finibus, quis sodales sem congue. Ut vitae porta dui.
-      Aliquam.</p>
+    <h3>{{ fields.headline_grant_type.title }}</h3>
+    <p>{{ fields.headline_grant_type.fields.overview.value | raw }}</p>
   </div>
   <div class="six columns">
     <p>Project</p>
     <!-- horizontal line -->
-    <h3>Project Title</h3>
-    <p>Budget: £41,531,637<br/>Status: Implementation</p>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar. Nam dignissim ipsum et diam finibus, quis sodales sem congue. Ut vitae porta dui.
-      Aliquam.</p>
+    <h3>{{ fields.headline_project.title }}</h3>
+    <p>{{ fields.headline_project.fields.progress.value | raw }}</p>
   </div>
 </div>
 
 <!-- horizontal rule -->
 <div class="row">
   <div class="three columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">£2.5m</p>
+    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">£{{ fields.spend_statistic.value }}m</p>
     <p class="supporting" style="width: 100%; text-align: center">Spend statistic</p>
   </div>
   <div class="three columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">4</p>
+    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">{{ fields.grants_given.value }}</p>
     <p class="supporting" style="width: 100%; text-align: center">Grants given</p>
   </div>
   <div class="three columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">25</p>
+    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">{{ fields.performance_indicator.value }}</p>
     <p class="supporting" style="width: 100%; text-align: center">Performance against any KPI</p>
   </div>
   <div class="three columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">25</p>
+    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">{{ fields.another_statistic.value }}</p>
     <p class="supporting" style="width: 100%; text-align: center">Statistical supporting copy</p>
   </div>
 </div>

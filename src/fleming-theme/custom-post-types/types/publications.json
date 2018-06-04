@@ -20,7 +20,7 @@
                 "placeholder": "",
                 "maxlength": "",
                 "rows": "",
-                "new_lines": ""
+                "new_lines": "br"
             },
             {
                 "key": "field_5b069f714fa9c",
