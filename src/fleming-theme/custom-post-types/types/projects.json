@@ -26,6 +26,25 @@
                 "ui": 1
             },
             {
+                "key": "field_5b166538b24ab",
+                "label": "Description",
+                "name": "description",
+                "type": "textarea",
+                "instructions": "A short description (a few sentences), suitable for display in a list of projects.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": "",
+                "new_lines": "br"
+            },
+            {
                 "key": "field_5b06e5d0a5fcf",
                 "label": "Progress",
                 "name": "progress",
@@ -160,6 +179,27 @@
                 "button_label": "Add Row",
                 "min": "",
                 "max": ""
+            },
+            {
+                "key": "field_5b166771b24ac",
+                "label": "Budget",
+                "name": "budget",
+                "type": "number",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "£",
+                "append": "",
+                "min": "",
+                "max": "",
+                "step": ""
             }
         ],
         "location": [

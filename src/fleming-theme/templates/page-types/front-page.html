@@ -11,16 +11,22 @@
   </div>
   <div>
     <div class="three columns">
-      <span style="font-weight: bold">{{ opportunities[0].title }}</span><br/>
-      <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[0].fields.deadline.value }}
+      <a href={{ opportunities[0].data.guid }}>
+        <span style="font-weight: bold">{{ opportunities[0].data.post_title }}</span><br/>
+        <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[0].fields.deadline.value }}
+      </a>
     </div>
     <div class="three columns">
-      <span style="font-weight: bold">{{ opportunities[1].title }}</span><br/>
-      <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[1].fields.deadline.value }}
+      <a href={{ opportunities[1].data.guid }}>
+        <span style="font-weight: bold">{{ opportunities[1].data.post_title }}</span><br/>
+        <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[1].fields.deadline.value }}
+      </a>
     </div>
     <div class="three columns">
-      <span style="font-weight: bold">{{ opportunities[2].title }}</span><br/>
-      <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[2].fields.deadline.value }}
+      <a href={{ opportunities[2].data.guid }}>
+        <span style="font-weight: bold">{{ opportunities[2].data.post_title }}</span><br/>
+        <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[2].fields.deadline.value }}
+      </a>
     </div>
     <div class="three columns">
       <button>How to Apply</button>
@@ -44,7 +50,7 @@
          style="max-width: 100%; height: auto; width: auto;" />
   </div>
   <div class="six columns">
-    <h3>{{ fields.headline_case_study.title }}</h3>
+    <h3>{{ fields.headline_case_study.data.post_title }}</h3>
     <p>{{ fields.headline_case_study.fields.content.value | raw }}</p>
     <button>See All Case Studies</button>
   </div>
@@ -54,14 +60,15 @@
   <div class="six columns">
     <p>Grant</p>
     <!-- horizontal line -->
-    <h3>{{ fields.headline_grant_type.title }}</h3>
+    <h3>{{ fields.headline_grant_type.data.post_title }}</h3>
     <p>{{ fields.headline_grant_type.fields.overview.value | raw }}</p>
   </div>
   <div class="six columns">
     <p>Project</p>
     <!-- horizontal line -->
-    <h3>{{ fields.headline_project.title }}</h3>
-    <p>{{ fields.headline_project.fields.progress.value | raw }}</p>
+    <h3>{{ fields.headline_project.data.post_title }}</h3>
+    <p>Budget: £{{ fields.headline_project.fields.budget.value }}</p>
+    <p>{{ fields.headline_project.fields.description.value | raw }}</p>
   </div>
 </div>
 
@@ -90,19 +97,15 @@
 <h3>Current and Upcoming Opportunities</h3>
 <div class="row">
   <div class="six columns">
-    <h3>Opportunity Title</h3>
-    <p>Budget: £41,531,637<br/>Status: Implementation</p>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar. Nam dignissim ipsum et diam finibus, quis sodales sem congue. Ut vitae porta dui.
-      Aliquam.</p>
+    <h3>{{ fields.highlight_opportunity_1.data.post_title }}</h3>
+    <p>Budget: £{{ fields.highlight_opportunity_1.fields.funds_available.value }}<br/>Status: Implementation</p>
+    <p class="supporting">{{ fields.highlight_opportunity_1.fields.description.value | raw }}</p>
     <button>Apply Now</button>
   </div>
   <div class="six columns">
-    <h3>Opportunity Title</h3>
-    <p>Budget: £41,531,637<br/>Status: Implementation</p>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar. Nam dignissim ipsum et diam finibus, quis sodales sem congue. Ut vitae porta dui.
-      Aliquam.</p>
+    <h3>{{ fields.highlight_opportunity_2.data.post_title }}</h3>
+    <p>Budget: £{{ fields.highlight_opportunity_2.fields.funds_available.value }}<br/>Status: Implementation</p>
+    <p class="supporting">{{ fields.highlight_opportunity_2.fields.description.value | raw }}</p>
     <button>Apply Now</button>
   </div>
 </div>
@@ -112,24 +115,20 @@
 <h3>Useful Links</h3>
 <div class="row">
   <div class="three columns">
-    <h4>Latest Guide</h4>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar.</p>
+    <h4><a href={{ fields.useful_link_1.value.link_url }}>{{ fields.useful_link_1.value.link_text }}</a></h4>
+    <p class="supporting">{{ fields.useful_link_1.value.link_description }}</p>
   </div>
   <div class="three columns">
-    <h4>Latest Guide</h4>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar.</p>
+    <h4><a href={{ fields.useful_link_2.value.link_url }}>{{ fields.useful_link_2.value.link_text }}</a></h4>
+    <p class="supporting">{{ fields.useful_link_2.value.link_description }}</p>
   </div>
   <div class="three columns">
-    <h4>Latest Guide</h4>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar.</p>
+    <h4><a href={{ fields.useful_link_3.value.link_url }}>{{ fields.useful_link_3.value.link_text }}</a></h4>
+    <p class="supporting">{{ fields.useful_link_3.value.link_description }}</p>
   </div>
   <div class="three columns">
-    <h4>Latest Guide</h4>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar.</p>
+    <h4><a href={{ fields.useful_link_4.value.link_url }}>{{ fields.useful_link_4.value.link_text }}</a></h4>
+    <p class="supporting">{{ fields.useful_link_4.value.link_description }}</p>
   </div>
 </div>
 

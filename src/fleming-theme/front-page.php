@@ -39,19 +39,35 @@ function fleming_get_content() {
         "fields" => get_field_objects()
     );
 
-    $fleming_content["fields"]["headline_case_study"] = get_post_title_and_fields(
+    $fleming_content["fields"]["headline_case_study"] = get_post_data_and_fields(
         $fleming_content["fields"]["headline_case_study"]["value"]->ID
     );
-    $fleming_content["fields"]["headline_grant_type"] = get_post_title_and_fields(
+    $fleming_content["fields"]["headline_grant_type"] = get_post_data_and_fields(
         $fleming_content["fields"]["headline_grant_type"]["value"]->ID
     );
-    $fleming_content["fields"]["headline_project"] = get_post_title_and_fields(
+    $fleming_content["fields"]["headline_project"] = get_post_data_and_fields(
         $fleming_content["fields"]["headline_project"]["value"]->ID
+    );
+    $fleming_content['fields']['headline_project']['fields']['budget']['value'] = number_format(
+        $fleming_content['fields']['headline_project']['fields']['budget']['value']
+    );
+
+    $fleming_content["fields"]["highlight_opportunity_1"] = get_post_data_and_fields(
+        $fleming_content["fields"]["highlight_opportunity_1"]["value"]->ID
+    );
+    $fleming_content["fields"]["highlight_opportunity_2"] = get_post_data_and_fields(
+        $fleming_content["fields"]["highlight_opportunity_2"]["value"]->ID
+    );
+    $fleming_content['fields']['highlight_opportunity_1']['fields']['funds_available']['value'] = number_format(
+        $fleming_content['fields']['highlight_opportunity_1']['fields']['funds_available']['value']
+    );
+    $fleming_content['fields']['highlight_opportunity_2']['fields']['funds_available']['value'] = number_format(
+        $fleming_content['fields']['highlight_opportunity_2']['fields']['funds_available']['value']
     );
 
     $opportunities = get_posts(array('post_type'=>'grants','numberposts'=>-1));
     foreach($opportunities as &$opportunity) {
-        $opportunity = get_post_title_and_fields($opportunity->ID);
+        $opportunity = get_post_data_and_fields($opportunity->ID);
     }
     $opportunities = array_filter($opportunities, function($opportunity) {
         return is_in_future($opportunity);

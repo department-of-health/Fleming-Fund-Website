@@ -70,10 +70,54 @@
                 "ui": 1
             },
             {
+                "key": "field_5b156987cc6c3",
+                "label": "Highlight Opportunity 1",
+                "name": "highlight_opportunity_1",
+                "type": "post_object",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "grants"
+                ],
+                "taxonomy": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
+            },
+            {
+                "key": "field_5b1569c7cc6c4",
+                "label": "Highlight Opportunity 2",
+                "name": "highlight_opportunity_2",
+                "type": "post_object",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "grants"
+                ],
+                "taxonomy": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
+            },
+            {
                 "key": "field_5b0ed1a44f40e",
                 "label": "Useful Link 1",
                 "name": "useful_link_1",
-                "type": "post_object",
+                "type": "group",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -82,18 +126,69 @@
                     "class": "",
                     "id": ""
                 },
-                "post_type": [],
-                "taxonomy": [],
-                "allow_null": 0,
-                "multiple": 0,
-                "return_format": "object",
-                "ui": 1
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5b16722ce709f",
+                        "label": "Link URL",
+                        "name": "link_url",
+                        "type": "url",
+                        "instructions": "The URL for the link.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_5b16720ae709e",
+                        "label": "Link Text",
+                        "name": "link_text",
+                        "type": "text",
+                        "instructions": "The text that will be displayed for the link.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5b1672e4e70a0",
+                        "label": "Link Description",
+                        "name": "link_description",
+                        "type": "textarea",
+                        "instructions": "A short description of the link to be displayed below it.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": "",
+                        "new_lines": "br"
+                    }
+                ]
             },
             {
-                "key": "field_5b0ed3e34f40f",
+                "key": "field_5b16731ce70a1",
                 "label": "Useful Link 2",
                 "name": "useful_link_2",
-                "type": "post_object",
+                "type": "group",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -102,18 +197,69 @@
                     "class": "",
                     "id": ""
                 },
-                "post_type": [],
-                "taxonomy": [],
-                "allow_null": 0,
-                "multiple": 0,
-                "return_format": "object",
-                "ui": 1
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5b16731ce70a2",
+                        "label": "Link URL",
+                        "name": "link_url",
+                        "type": "url",
+                        "instructions": "The URL for the link.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_5b16731ce70a3",
+                        "label": "Link Text",
+                        "name": "link_text",
+                        "type": "text",
+                        "instructions": "The text that will be displayed for the link.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5b16731ce70a4",
+                        "label": "Link Description",
+                        "name": "link_description",
+                        "type": "textarea",
+                        "instructions": "A short description of the link to be displayed below it.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": "",
+                        "new_lines": "br"
+                    }
+                ]
             },
             {
-                "key": "field_5b0ed3eb4f411",
+                "key": "field_5b167323e70a5",
                 "label": "Useful Link 3",
                 "name": "useful_link_3",
-                "type": "post_object",
+                "type": "group",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -122,18 +268,69 @@
                     "class": "",
                     "id": ""
                 },
-                "post_type": [],
-                "taxonomy": [],
-                "allow_null": 0,
-                "multiple": 0,
-                "return_format": "object",
-                "ui": 1
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5b167323e70a6",
+                        "label": "Link URL",
+                        "name": "link_url",
+                        "type": "url",
+                        "instructions": "The URL for the link.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_5b167323e70a7",
+                        "label": "Link Text",
+                        "name": "link_text",
+                        "type": "text",
+                        "instructions": "The text that will be displayed for the link.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5b167323e70a8",
+                        "label": "Link Description",
+                        "name": "link_description",
+                        "type": "textarea",
+                        "instructions": "A short description of the link to be displayed below it.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": "",
+                        "new_lines": "br"
+                    }
+                ]
             },
             {
-                "key": "field_5b0ed3ea4f410",
+                "key": "field_5b167329e70a9",
                 "label": "Useful Link 4",
                 "name": "useful_link_4",
-                "type": "post_object",
+                "type": "group",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -142,12 +339,63 @@
                     "class": "",
                     "id": ""
                 },
-                "post_type": [],
-                "taxonomy": [],
-                "allow_null": 0,
-                "multiple": 0,
-                "return_format": "object",
-                "ui": 1
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5b167329e70aa",
+                        "label": "Link URL",
+                        "name": "link_url",
+                        "type": "url",
+                        "instructions": "The URL for the link.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_5b167329e70ab",
+                        "label": "Link Text",
+                        "name": "link_text",
+                        "type": "text",
+                        "instructions": "The text that will be displayed for the link.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_5b167329e70ac",
+                        "label": "Link Description",
+                        "name": "link_description",
+                        "type": "textarea",
+                        "instructions": "A short description of the link to be displayed below it.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": "",
+                        "new_lines": "br"
+                    }
+                ]
             },
             {
                 "key": "field_5b116820af121",
