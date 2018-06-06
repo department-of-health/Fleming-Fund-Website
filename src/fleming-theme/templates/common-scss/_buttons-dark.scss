@@ -1,0 +1,52 @@
+// extending on skeleton _buttons.scsss
+.button.button-dark,
+button.button-dark {
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
+}
+
+input {
+  &[type="submit"].button-dark,
+  &[type="reset"].button-dark,
+  &[type="button"].button-dark {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+  }
+}
+
+// better colour here?
+.button.button-dark:hover,
+button.button-dark:hover {
+  color: #fff;
+  background-color: $light-grey;
+  border-color: $light-grey;
+}
+
+input {
+  &[type="submit"].button-dark:hover,
+  &[type="reset"].button-dark:hover,
+  &[type="button"].button-dark:hover {
+    color: #fff;
+    background-color: $light-grey;
+    border-color: $light-grey;
+  }
+}
+
+.button.button-dark:focus,
+button.button-dark:focus {
+  color: #fff;
+  background-color: $light-grey;
+  border-color: $light-grey;
+}
+
+input {
+  &[type="submit"].button-dark:focus,
+  &[type="reset"].button-dark:focus,
+  &[type="button"].button-dark:focus {
+    color: #fff;
+    background-color: $light-grey;
+    border-color: $light-grey;
+  }
+}
