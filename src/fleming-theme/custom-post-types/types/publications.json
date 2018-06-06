@@ -167,6 +167,71 @@
                 "multiple": 1,
                 "return_format": "object",
                 "ui": 1
+            },
+            {
+                "key": "field_5b17b7e070477",
+                "label": "Publication date",
+                "name": "publication_date",
+                "type": "date_picker",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "display_format": "d\/m\/Y",
+                "return_format": "d\/m\/Y",
+                "first_day": 1
+            },
+            {
+                "key": "field_5b17b9e070478",
+                "label": "Author",
+                "name": "author",
+                "type": "flexible_content",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layouts": {
+                    "5b17bb214b8b9": {
+                        "key": "5b17bb214b8b9",
+                        "name": "authors",
+                        "label": "Authors",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5b17bb317047a",
+                                "label": "Inner Author",
+                                "name": "inner_author",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    }
+                },
+                "button_label": "Add Row",
+                "min": "",
+                "max": ""
             }
         ],
         "location": [
