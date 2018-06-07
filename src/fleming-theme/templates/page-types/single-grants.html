@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grant: {{ title }} | Fleming Fund</title>
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/fleming-theme/{{ css_filename }}">
+    </head>
+
+    <body>
+        <h1>{{ title }}</h1>
+
+        <h4>Deadline: {{ fields.deadline.value }}</h4>
+
+        <p>{{ fields.description.value | raw }}</p>
+        
+    </body>
+</html> 
