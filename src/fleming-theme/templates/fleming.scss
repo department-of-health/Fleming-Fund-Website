@@ -101,5 +101,20 @@ hr.row-divider {
   border-top: 1px solid #000;
 }
 
+hr.row-underline {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  border-width: 0;
+  border-top: 1px solid #000;
+}
+
+// a smaller divider! better name, or make the other one 'large-divider' etc., or this default hr
+hr.row-separator {
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+  border-width: 0;
+  border-top: 1px solid #000;
+}
+
 // Per-page CSS
 @import 'page-types/single-organisation';

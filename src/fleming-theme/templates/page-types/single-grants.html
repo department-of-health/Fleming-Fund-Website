@@ -1,16 +1,91 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Grant: {{ title }} | Fleming Fund</title>
-        <link rel="stylesheet" type="text/css" href="/wp-content/themes/fleming-theme/{{ css_filename }}">
-    </head>
+{{ include('layout/header.html') }}
 
-    <body>
-        <h1>{{ title }}</h1>
+<div class="row" style="margin-top: 3rem;">
+  <p class="supporting" style="font-size: 14px;">Home &gt; Grants &amp; Funding &gt; Country Grant &gt; {{title}}</p>
+</div>
 
-        <h4>Deadline: {{ fields.deadline.value }}</h4>
+<div class="row" style="margin-top: 0; margin-bottom: 1em">
+  <h1>{{ title }}</h1>
+  <ul class="large-links">
+    <li>Overview</li>
+    <li>Eligibility Criteria</li>
+    <li>Application Process</li>
+  </ul>
+</div>
 
-        <p>{{ fields.description.value | raw }}</p>
-        
-    </body>
-</html> 
+<hr class="row-underline" />
+
+<div class="row">
+  <p>(Timeline or timeline graphic)</p>
+  <p>Deadline: {{ fields.deadline.value }}</p>
+</div>
+
+<hr class="row-separator" />
+
+<div class="row">
+  <div class="nine columns">
+    <p>{{ fields.description.value | raw }}</p>
+    <p class="supporting">{{ fields.description.value | raw }}</p>
+  </div>
+  <div class="three columns">
+    <button class="button-dark" style="width: 100%">Download</button>
+    <p>Please note the key dates for RFP, including the need to register interest by 12th June 2018.</p>
+  </div>
+</div>
+
+<hr class="row-separator" />
+
+<h3 class="row-title">Eligibility Criteria</h3>
+<div class="row">
+  <div class="nine columns">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Aenean ut dapibus nunc. Mauris elementum efficitur ultricies.
+    Suspendisse at ante sed augue convallus ultricies eu non libero.
+    Suspendisse quis just ante. Mauris rutrum elit et convallius consectetur.</p>
+  </div>
+</div>
+<div class="row">
+  <div class="one column"></div>
+  <div class="eight columns">
+    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Aenean ut dapibus nunc. Mauris elementum efficitur ultricies.
+      Suspendisse at ante sed augue convallus ultricies eu non libero.
+      Suspendisse quis just ante. Mauris rutrum elit et convallius consectetur.</p>
+  </div>
+</div>
+
+<hr class="row-separator" />
+
+<h3 class="row-title">Application Process</h3>
+<div class="row">
+  <div class="two columns">
+    Step 1
+  </div>
+  <div class="eight columns card">
+    <p>Development and publication of a Request for Proposals</p>
+  </div>
+</div>
+
+<hr class="row-separator" />
+
+<h3 class="row-title">Similar Proposals</h3>
+<div class="row">
+  <div class="six columns card">
+    <h3>Opportunity Title</h3>
+    <p>Budget: £41,531,637<br/>Status: Implementation</p>
+    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
+      ullamcorper pulvinar. Nam dignissim ipsum et diam finibus, quis sodales sem congue. Ut vitae porta dui.
+      Aliquam.</p>
+    <button class="button-dark">Apply Now</button>
+  </div>
+  <div class="six columns card">
+    <h3>Opportunity Title</h3>
+    <p>Budget: £41,531,637<br/>Status: Implementation</p>
+    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
+      ullamcorper pulvinar. Nam dignissim ipsum et diam finibus, quis sodales sem congue. Ut vitae porta dui.
+      Aliquam.</p>
+    <button class="button-dark">Apply Now</button>
+  </div>
+</div>
+
+{{ include('layout/footer.html') }}
