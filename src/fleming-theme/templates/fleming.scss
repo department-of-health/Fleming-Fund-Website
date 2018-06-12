@@ -5,50 +5,56 @@
 @import "common-scss/fonts";
 @import "common-scss/grey-box";
 @import "common-scss/buttons-dark";
+@import "common-scss/navigation";
 
 // Extra styles created for header, footer and front-page
 nav.global-nav {
+  ul {
+    @include pipe_horizontal_ul(true);
+  }
+
   background-color: black;
   color: white;
-  padding: 1em;
-  font-size: 16px;
+  li {
+    font-size: 19px;
+  }
+}
+nav.sub-global-nav {
+  ul {
+    @include pipe_horizontal_ul(true);
+  }
 
-  @include horizontal-ul("  |  ");
+  background-color: #F2F2F2;
+  color: black;
+  li {
+    font-size: 16px;
+  }
+}
+
+div.breadcrumbs {
+  ul {
+    @include breadcrumb_horizontal_ul(false);
+  }
+
+  margin: 2em 0;
+  color: black;
+  li {
+    font-size: 16px;
+  }
 }
 
 ul.large-links {
-  margin: 0;
-  padding: 0;
-  margin-bottom: 2em;
+  @include pipe_horizontal_ul(false);
 
+  margin-bottom: 2em;
   li {
-    list-style-type: none;
-    display: inline;
     font-size: 21px;
     line-height: 1.33;
-  }
-
-  li:not(:first-child):before {
-    margin-left: 0.5ex;
-    margin-right: 0.5ex;
-    content: ' | ';
   }
 }
 
 ul.horizontal-pipe {
-  margin: 0;
-  padding: 0;
-
-  li {
-    list-style-type: none;
-    display: inline;
-  }
-
-  li:not(:first-child):before {
-    margin-left: 0.5ex;
-    margin-right: 0.5ex;
-    content: ' | ';
-  }
+  @include pipe_horizontal_ul(false);
 }
 
 div.card {

@@ -1,32 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Organisation: {{ title }} | Fleming Fund</title>
-    <link rel="stylesheet" type="text/css" href="/wp-content/themes/fleming-theme/{{ css_filename }}">
-  </head>
-  <body>
-  <div class="container">
-    <div class="row">
-      <div class="six columns">
-        <!-- qq link to root -->
-        <img src="/wp-content/themes/fleming-theme/images/fleming_logo2_124.png" alt="The Fleming Fund" />
-      </div>
-      <div class="six columns">
-        <form style="float: right; margin-top: 50px;"><!-- qq slightly crude vertical alignment -->
-          <!-- qq make the form work! -->
-          <input name="search" placeholder="Search" type="text"/>
-          <button id="search" class="button-dark">?</button><!-- qq want a magnifying glass here instead -->
-        </form>
-      </div>
+<head>
+  <title>Organisation: {{ title }} | Fleming Fund</title>
+  <link rel="stylesheet" type="text/css" href="/wp-content/themes/fleming-theme/{{ css_filename }}">
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="six columns">
+      <!-- qq link to root -->
+      <img src="/wp-content/themes/fleming-theme/images/fleming_logo2_124.png" alt="The Fleming Fund" />
     </div>
+    <div class="six columns">
+      <form style="float: right; margin-top: 50px;"><!-- qq slightly crude vertical alignment -->
+        <!-- qq make the form work! -->
+        <input name="search" placeholder="Search" type="text"/>
+        <button id="search" class="button-dark">?</button><!-- qq want a magnifying glass here instead -->
+      </form>
+    </div>
+  </div>
+</div>
 
-    <nav class="global-nav" style="padding: 1em">
-      <!-- qq generate this from somewhere? -->
+<nav class="global-nav">
+  <div class="container">
+    <ul>
+      {% for link in nav.globalMenuLinks %}
+        {% include '1-atoms/link-item-text.html' %}
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+{% if nav.subGlobalMenuLinks is not empty %}
+  <nav class="sub-global-nav">
+    <div class="container">
       <ul>
-        <li>About us</li>
-        <li>Grants &amp; Funding</li>
-        <li>Regions &amp; Countries</li>
-        <li>Knowledge &amp; Resources</li>
-        <li>News &amp; Events</li>
+        {% for link in nav.subGlobalMenuLinks %}
+          {% include '1-atoms/link-item-text.html' %}
+        {% endfor %}
       </ul>
-    </nav>
+    </div>
+  </nav>
+{% endif %}
+
+
+<div class="container">
+  {% include 'layout/breadcrumbs.html' %}

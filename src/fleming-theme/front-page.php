@@ -2,6 +2,7 @@
 
 include __DIR__ . '/php/get-css-filename.php';
 include 'query-utilities.php';
+include 'navigation/index.php';
 
 /**
  * NOTE:
@@ -16,7 +17,7 @@ include 'query-utilities.php';
 function toTimestamp($date) {
     return DateTime::createFromFormat('!d/m/Y', $date)->getTimestamp();
 }
- 
+
 function sort_opportunities($opportunities) {
     usort($opportunities, function($a, $b) {
         $aDate = $a['fields']['deadline']['value'];
@@ -36,7 +37,8 @@ function fleming_get_content() {
     $fleming_content = array(
         "title" => get_the_title(),
         "css_filename" => get_css_filename(),
-        "fields" => get_field_objects()
+        "fields" => get_field_objects(),
+        "nav" => get_home_nav()
     );
 
     $fleming_content["fields"]["headline_case_study"] = get_post_title_and_fields(

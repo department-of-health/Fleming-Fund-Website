@@ -1,0 +1,14 @@
+{% if nav.breadcrumbLinks is not empty %}
+  <div class="breadcrumbs">
+    <ul>
+      {% include '1-atoms/link-item-image.html' with {
+        'link': nav.homeLink,
+        'image_src': '/wp-content/themes/fleming-theme/images/home-icon.png',
+        'image_alt': 'Home'
+      } %}
+      {% for link in nav.breadcrumbLinks %}
+        {% include '1-atoms/link-item-text.html' with {'ignore_target': loop.last} %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

@@ -9,38 +9,6 @@
   background: #e0e0e0;
 }
 
-section.header {
-}
-
-@mixin horizontal-ul($separator) {
-  ul {
-    margin: 0;
-    padding: 0;
-
-    li {
-      list-style-type: none;
-      display: inline;
-    }
-
-    li:not(:first-child):before {
-      margin-left: 0.5ex;
-      margin-right: 0.5ex;
-      content: $separator;
-    }
-  }
-}
-
-nav {
-  &.box {
-    margin-bottom: 2em;
-  }
-  @include horizontal-ul(" | ");
-}
-
-div.breadcrumbs {
-  @include horizontal-ul(" > ");
-}
-
 div.footer {
   margin-top: 2em;
 }

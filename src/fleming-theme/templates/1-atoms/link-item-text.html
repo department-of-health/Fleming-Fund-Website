@@ -1,0 +1,12 @@
+{% set has_target = link.target and not ignore_target %}
+{% if link is not null %}
+  <li {{ link.active ? 'class="active"' }}>
+    {% if has_target %}
+    <a href="{{ link.target }}">
+      {% endif %}
+      {{ link.title }}
+      {% if has_target %}
+    </a>
+    {% endif %}
+  </li>
+{% endif %}
