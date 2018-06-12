@@ -1,5 +1,9 @@
 .quote {
-    color: steelblue;
+    border-left: 10px solid #000000;
+    
+    p {
+        margin-left: 40px;
+    }
 
     strong {
         font-variant: small-caps;
@@ -8,9 +12,9 @@
 
     }
 
-    ::before {
-        content: '"';
-        color: lightgray;
-        font-size: 40px;
-    }
+    // ::before {
+    //     content: '"';
+    //     color: lightgray;
+    //     font-size: 40px;
+    // }
 }

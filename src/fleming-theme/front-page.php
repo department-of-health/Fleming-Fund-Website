@@ -16,7 +16,7 @@ include 'query-utilities.php';
 function toTimestamp($date) {
     return DateTime::createFromFormat('!d/m/Y', $date)->getTimestamp();
 }
- 
+
 function sort_opportunities($opportunities) {
     usort($opportunities, function($a, $b) {
         $aDate = $a['fields']['deadline']['value'];

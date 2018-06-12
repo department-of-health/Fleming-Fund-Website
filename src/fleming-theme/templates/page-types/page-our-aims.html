@@ -1,0 +1,82 @@
+{{ include('layout/header.html') }}
+
+<div class="row" style="margin-top: 3em; margin-bottom: 3em">
+  <h1>Our Aims</h1>
+  <ul class="large-links">
+    <li>Overview</li>
+    <li>Data &amp; Evidence</li>
+    <li>Investment Areas</li>
+  </ul>
+</div>
+
+<div>
+  <p>The aim of the Fleming Fund is to support countries in collecting relevant high-quality data that is shared nationally and globally.
+    This will enable us collectively to better understand the scale and scope of the problem in order to effectively tackle the issue.</p>
+</div>
+
+<div>
+  <h2>Data &amp; Evidence</h2>
+  <p>One of the primary aims of the Fleming Fund is to bla bla</p>
+</div>
+
+<hr class="row-divider" />
+<div class="expandable" id="first">
+  <h2 class=downArrow>&#9660</h2>
+  <h3>Data on resistance</h3>
+  <p>The Global AMR Surveillance System</p>
+</div>
+<div class="expContent" id="firstExp">
+    <p>We will support countries as they develop their capacity to collect and share data on antimicrobial resistance on the Global AMR Surveillance System (GLASS).</p>
+    <p>The Global AMR Surveillance System was launched and is managed by the World Health Organisation (WHO) to collect data on resistance patterns.</p>
+</div>
+
+<hr class="row-divider" />
+<div class="expandable" id="second">
+  <h2 class=downArrow>&#9660</h2>
+  <h3>Data on the burden of disease associated with AMR</h3>
+  <p>The Global Burden of Disease - AMR project</p>
+</div>
+<div class="expContent" id="secondExp">
+    <p>A new collaboration to conduct geospatial modelling and develop maps of the likely burden of antimicrobial resistance...</p>
+    <p>The project will use complex geospatial modelling to improve understanding of the burden of disease associated with AMR...</p>
+</div>
+
+<hr class="row-divider" />
+<div class="expandable" id="third">
+  <h2 class=downArrow>&#9660</h2>
+  <h3>Data on the use of antimicrobial medicines</h3>
+</div>
+<div class="expContent" id="thirdExp">
+    <p>A new collaboration to conduct geospatial modelling and develop maps of the likely burden of antimicrobial resistance...</p>
+    <p>The project will use complex geospatial modelling to improve understanding of the burden of disease associated with AMR...</p>
+</div>
+
+<script>
+  let exp = document.getElementsByClassName("expandable");
+  for (let j = 0; j < exp.length; j++) {
+    exp[j].onclick = function() {
+      content = document.getElementById(this.id + "Exp")
+      if (content.style.display === "block") content.style.display = "none";
+      else content.style.display = "block";
+    }
+  }
+</script>
+
+<hr class="row-divider" />
+<div>
+  <h1>Investment Areas</h1>
+  <p>The five investment areas for Fleming Fund grants and awards are: [iteration or hardcode?]</p>
+</div>
+
+{% for aim in aims %}
+        
+  <h3>{{ aim.data.post_title }}</h3>
+  {% for sub_aim in aim.fields.overview.value %}
+    
+    <p><strong>{{ sub_aim.sub_aim.heading }}:</strong> {{ sub_aim.sub_aim.description }}</p>
+
+  {% endfor %}
+        
+{% endfor %}
+
+{{ include('layout/footer.html') }}
