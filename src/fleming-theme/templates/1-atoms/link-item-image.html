@@ -1,0 +1,11 @@
+{% if link is not null %}
+  <li {{ link.active ? 'class="active"' }}>
+    {% if link.target %}
+    <a href="{{ link.target }}">
+      {% endif %}
+      <img src="{{ image_src }}" alt="{{ image_alt }}"/>
+      {% if link.target %}
+    </a>
+    {% endif %}
+  </li>
+{% endif %}
