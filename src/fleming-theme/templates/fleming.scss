@@ -122,5 +122,11 @@ hr.row-divider {
   border-top: 1px solid #000;
 }
 
+footer {
+  p, li {
+    font-size: 16px;
+  }
+}
+
 // Per-page CSS
 @import 'page-types/single-organisation';
