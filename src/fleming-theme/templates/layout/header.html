@@ -5,21 +5,24 @@
   <link rel="stylesheet" type="text/css" href="/wp-content/themes/fleming-theme/{{ css_filename }}">
 </head>
 <body>
-<div class="container">
-  <div class="row">
-    <div class="six columns">
-      <!-- qq link to root -->
-      <img src="/wp-content/themes/fleming-theme/images/fleming_logo2_124.png" alt="The Fleming Fund"/>
-    </div>
-    <div class="six columns">
-      <form style="float: right; margin-top: 50px;"><!-- qq slightly crude vertical alignment -->
-        <!-- qq make the form work! -->
-        <input name="search" placeholder="Search" type="text"/>
-        <button id="search" class="button-dark">?</button><!-- qq want a magnifying glass here instead -->
-      </form>
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="six columns">
+        <a href="/" class="logo-home">
+          <img src="/wp-content/themes/fleming-theme/images/fleming_logo.png" alt="The Fleming Fund"/>
+        </a>
+      </div>
+      <div class="six columns">
+        <form class="header-search">
+          <!-- qq make the form work! -->
+          <input name="search" placeholder="Search" type="text"/>
+          <button id="search" class="button-dark">?</button><!-- qq want a magnifying glass here instead -->
+        </form>
+      </div>
     </div>
   </div>
-</div>
+</header>
 
 <nav class="global-nav">
   <div class="container">
@@ -59,6 +62,6 @@
   </nav>
 {% endif %}
 
-
+<main>
 <div class="container">
 {% include 'layout/breadcrumbs.html' %}

@@ -6,6 +6,28 @@
 @import "common-scss/buttons-dark";
 @import "common-scss/navigation";
 
+.logo-home {
+  display: inline-block;
+  margin: 15px 0;
+  font-size: 0;
+}
+
+.header-search {
+  float: right;
+  margin: 40px 0 0;
+  white-space: nowrap;
+
+  input {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  button {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
 // Extra styles created for header, footer and front-page
 nav.global-nav {
   ul {
