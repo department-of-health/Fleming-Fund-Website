@@ -22,7 +22,7 @@ function get_nav_model() {
 function fleming_get_content() {
     $fleming_content = array(
         "css_filename" => get_css_filename(),
-        "title" => get_the_title(),
+        "title" => get_raw_title(),
         "fields" => get_field_objects(),
         "nav" => get_nav_model()
     );

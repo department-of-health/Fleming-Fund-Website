@@ -64,6 +64,10 @@ function make_filename_hash($filename) {
 add_filter('sanitize_file_name', 'make_filename_hash', 10);
 
 
+function get_raw_title(...$args) {
+    return get_post_field('post_title', ...$args);
+}
+
 
 ////////////////////////////////////////////////////////////////
 ////////   CUSTOM POST TYPES + ADVANCED CUSTOM FIELDS   ////////

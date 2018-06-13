@@ -57,7 +57,7 @@ class MenuLinksConfig
         ],
         'regions' => [
             'title' => 'Regions & Countries',
-            'target' => '/regions/',
+            'target' => '/regions-countries/',
 
             'children' => [
                 'projects' => [
