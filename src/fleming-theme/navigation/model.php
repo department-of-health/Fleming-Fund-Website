@@ -44,6 +44,11 @@ class NavigationModel
         return $this->getMenuLinksAtLevel(1);
     }
 
+    function getTertiaryMenuLinks()
+    {
+        return $this->getMenuLinksAtLevel(2);
+    }
+
     function getBreadcrumbLinks()
     {
         return $this->breadcrumbLinks;

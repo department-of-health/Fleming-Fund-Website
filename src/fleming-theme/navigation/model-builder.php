@@ -31,7 +31,7 @@ class NavigationModelBuilder
 
         $navigationModel = new NavigationModel();
 
-        $baseMenuConfig = MenuLinksConfig::ALL;
+        $baseMenuConfig = MenuLinksConfig::getAll();
 
         do { // recurse through levels of the route config
             $activeLinkKey = array_shift($selectedItems) ?? null;

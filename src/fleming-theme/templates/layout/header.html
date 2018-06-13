@@ -9,7 +9,7 @@
   <div class="row">
     <div class="six columns">
       <!-- qq link to root -->
-      <img src="/wp-content/themes/fleming-theme/images/fleming_logo2_124.png" alt="The Fleming Fund" />
+      <img src="/wp-content/themes/fleming-theme/images/fleming_logo2_124.png" alt="The Fleming Fund"/>
     </div>
     <div class="six columns">
       <form style="float: right; margin-top: 50px;"><!-- qq slightly crude vertical alignment -->
@@ -24,9 +24,7 @@
 <nav class="global-nav">
   <div class="container">
     <ul>
-      {% for link in nav.globalMenuLinks %}
-        {% include '1-atoms/link-item-text.html' %}
-      {% endfor %}
+      {% include '1-atoms/link-items-text.html' with {'links': nav.globalMenuLinks} %}
     </ul>
   </div>
 </nav>
@@ -34,15 +32,33 @@
 {% if nav.subGlobalMenuLinks is not empty %}
   <nav class="sub-global-nav">
     <div class="container">
-      <ul>
-        {% for link in nav.subGlobalMenuLinks %}
-          {% include '1-atoms/link-item-text.html' %}
-        {% endfor %}
-      </ul>
+      {% if nav.tertiaryMenuLinks is not empty %}
+
+        <ul>
+          {% for link in nav.subGlobalMenuLinks %}
+            {% if link.active %}
+              {% include '1-atoms/link-item-text.html' %}
+            {% endif %}
+          {% endfor %}
+
+          <li class="inline-submenu">
+            <ul>
+              {% include '1-atoms/link-items-text.html' with {'links': nav.tertiaryMenuLinks} %}
+            </ul>
+          </li>
+        </ul>
+
+      {% else %}
+
+        <ul>
+          {% include '1-atoms/link-items-text.html' with {'links': nav.subGlobalMenuLinks} %}
+        </ul>
+
+      {% endif %}
     </div>
   </nav>
 {% endif %}
 
 
 <div class="container">
-  {% include 'layout/breadcrumbs.html' %}
+{% include 'layout/breadcrumbs.html' %}

@@ -31,16 +31,16 @@
   <h2>We are a UK Government aid programme, helping low / middle income countries tackle antimicrobial
     resistance (AMR). Our focus is high-quality data, shared nationally and globally.</h2>
   <ul class="large-links">
-    {% include '1-atoms/link-item-text.html' with {'link': nav.aboutUsLink} %}
-    {% include '1-atoms/link-item-text.html' with {'link': nav.ourAimsLink} %}
-    {% include '1-atoms/link-item-text.html' with {'link': nav.whatIsAMRLink} %}
+    {% include '1-atoms/link-items-text.html' with {'links': [
+      nav.aboutUsLink, nav.ourAimsLink, nav.whatIsAMRLink
+    ]} %}
   </ul>
 </div>
 
 <div class="row">
   <div class="six columns" style="width: 52%"><!-- = six columns + margin -->
     <img src="https://placekitten.com/g/540/480" width="540" height="480" alt=""
-         style="max-width: 100%; height: auto; width: auto;" />
+         style="max-width: 100%; height: auto; width: auto;"/>
   </div>
   <!-- need a margin-independent way of matching height against image -->
   <div class="six columns" style="border: 1px solid; padding: 1.5rem 2rem; min-height: 444px; margin-left: 0px;">
@@ -67,7 +67,9 @@
 
 <div class="row statistics">
   <div class="three columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">£{{ fields.spend_statistic.value }}m</p>
+    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">
+      £{{ fields.spend_statistic.value }}m
+    </p>
     <p class="supporting" style="width: 100%; text-align: center">Spend statistic</p>
   </div>
   <div class="three columns">
@@ -104,7 +106,7 @@
   </div>
 </div>
 
-<hr class="row-divider" />
+<hr class="row-divider"/>
 
 <h3 class="row-title">Useful Links</h3>
 <div class="row">

@@ -1,0 +1,9 @@
+{{ include('layout/header.html') }}
+
+<h1>{{ title }}</h1>
+
+<ul class="large-links">
+  {% include '1-atoms/link-items-text.html' with {'links': nav.allRegionLinks} %}
+</ul>
+
+{{ include('layout/footer.html') }}

@@ -1,7 +1,16 @@
+@mixin is_li_with_left_rightward_arrow {
+  &:before {
+    margin-left: 1ex;
+    margin-right: 1ex;
+    content: '›';
+  }
+}
+
 @mixin horizontal_ul($highlight-active) {
   margin: 0;
   padding: 0;
   font-size: 0;
+  display: inline-block;
 
   li {
     list-style-type: none;
@@ -20,9 +29,13 @@
         padding: 0 0.7ex;
       }
     }
+
+    &.inline-submenu:not(:first-child) {
+      @include is_li_with_left_rightward_arrow;
+    }
   }
 
-  @if($highlight-active) {
+  @if ($highlight-active) {
     li.active a {
       padding-bottom: 0.5em;
       border-bottom: 0.2em solid currentColor;
@@ -33,7 +46,7 @@
 @mixin pipe_horizontal_ul($highlight-active) {
   @include horizontal_ul($highlight-active);
 
-  li:not(:first-child):before {
+  li:not(.inline-submenu):not(:first-child):before {
     margin-left: 1ex;
     margin-right: 1ex;
     height: 1em;
@@ -48,9 +61,7 @@
 @mixin breadcrumb_horizontal_ul($highlight-active) {
   @include horizontal_ul($highlight-active);
 
-  li:not(:first-child):before {
-      margin-left: 1ex;
-      margin-right: 1ex;
-      content: '›';
+  li:not(:first-child) {
+    @include is_li_with_left_rightward_arrow;
   }
 }

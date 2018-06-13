@@ -2,7 +2,8 @@
 
 include_once 'link.php';
 
-trait CommonLinksServer {
+trait CommonLinksServer
+{
 
     function getHomeLink()
     {
@@ -29,15 +30,24 @@ trait CommonLinksServer {
         return $link;
     }
 
+    function getAllRegionLinks()
+    {
+        return MenuLinksConfig::configsToLinks(MenuLinksConfig::getAllRegions());
+    }
+
+    function getCountryLinksWithinRegion(string $regionSlug)
+    {
+        return $this->getMenuRouteLinkChildren('regions', $regionSlug);
+    }
+
     private function getMenuRouteLink(string ...$menuRouteKeys)
     {
-        $config = MenuLinksConfig::ALL[array_shift($menuRouteKeys)];
-        while (count($menuRouteKeys) > 0) {
-            $config = &$config['children'][array_shift($menuRouteKeys)];
-            if (!isset($config)) {
-                return null;
-            }
-        }
-        return MenuLinksConfig::configToLink($config);
+        return MenuLinksConfig::configToLink(MenuLinksConfig::getUnderRoute(...$menuRouteKeys));
+    }
+
+    private function getMenuRouteLinkChildren(string ...$menuRouteKeys)
+    {
+        $childLinkConfigs = MenuLinksConfig::getUnderRoute(...$menuRouteKeys)['children'] ?? [];
+        return array_map('MenuLinksConfig::configToLink', $childLinkConfigs);
     }
 }

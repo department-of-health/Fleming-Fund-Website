@@ -3,6 +3,7 @@ plugins-to-download:
   plugins:
   - name: custom-post-type-ui
   - name: custom-post-type-permalinks
+  - name: post-types-order
   - name: disable-comments
   - name: wp-db-backup
   - name: file-manager-advanced
