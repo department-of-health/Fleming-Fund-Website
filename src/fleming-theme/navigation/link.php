@@ -5,10 +5,12 @@ class Link
     private $title;
     private $target;
     private $isActive;
+    private $external;
 
     function __construct()
     {
         $this->isActive = false;
+        $this->external = false;
     }
 
     /**
@@ -57,5 +59,21 @@ class Link
     public function setIsActive(bool $isActive): void
     {
         $this->isActive = $isActive;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isExternal(): bool
+    {
+        return $this->external;
+    }
+
+    /**
+     * @param bool $external
+     */
+    public function setExternal(bool $external): void
+    {
+        $this->external = $external;
     }
 }

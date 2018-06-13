@@ -1,9 +1,9 @@
 {% if link is not null %}
   <li {{ link.active ? 'class="active"' }}>
     {% if link.target %}
-    <a href="{{ link.target }}">
+    <a href="{{ link.target }}" target="{{ link.external ? '_blank' : '_self' }}">
       {% endif %}
-      <img src="{{ image_src }}" alt="{{ image_alt }}"/>
+      <img src="{{ image_src }}" alt="{{ link.title }}"/>
       {% if link.target %}
     </a>
     {% endif %}

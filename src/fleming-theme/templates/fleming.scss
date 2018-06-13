@@ -75,6 +75,18 @@ ul.large-links {
   }
 }
 
+ul.social-links {
+  @include pipe_horizontal_ul(false, 30px, middle);
+
+  margin-bottom: 2em;
+
+  li {
+    img {
+      height: 24px;
+    }
+  }
+}
+
 ul.horizontal-pipe {
   @include pipe_horizontal_ul(false);
 }

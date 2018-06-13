@@ -40,6 +40,15 @@ trait CommonLinksServer
         return $this->getMenuRouteLinkChildren('regions', $regionSlug);
     }
 
+    function getTwitterLink() {
+        $homeLink = new Link();
+        $homeLink->setTitle('Twitter');
+        $homeLink->setTarget('https://twitter.com/FlemingFund');
+        $homeLink->setExternal(true);
+        return $homeLink;
+
+    }
+
     private function getMenuRouteLink(string ...$menuRouteKeys)
     {
         return MenuLinksConfig::configToLink(MenuLinksConfig::getUnderRoute(...$menuRouteKeys));
