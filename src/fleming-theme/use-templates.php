@@ -3,8 +3,7 @@
 require_once __DIR__ . '/twig/autoload.php';
 
 $loader = new Twig_Loader_Filesystem(__DIR__ . '/templates');
-$twig = new Twig_Environment($loader, ['debug'=>true]);
-$twig->addExtension(new Twig_Extension_Debug());
+$twig = new Twig_Environment($loader);
 
 if (isset($_GET["json"])) {
     header('Content-Type: application/json');
