@@ -53,8 +53,8 @@
 
 <script>
   let exp = document.getElementsByClassName("expandable");
-  for (let j = 0; j < exp.length; j++) {
-    exp[j].onclick = function() {
+  for (let i = 0; i < exp.length; i++) {
+    exp[i].onclick = function() {
       content = document.getElementById(this.id + "Exp")
       if (content.style.display === "block") content.style.display = "none";
       else content.style.display = "block";
@@ -65,7 +65,9 @@
 <hr class="row-divider" />
 <div>
   <h1>Investment Areas</h1>
-  <p>The five investment areas for Fleming Fund grants and awards are: [iteration or hardcode?]</p>
+  <p>The five investment areas for Fleming Fund grants and awards are: {% for i in 0..(aims_count-2) %}{{ aims[i].data.post_title }}, {% endfor %}
+    and {{ aims[aims_count-1].data.post_title}}.
+  </p>
 </div>
 
 {% for aim in aims %}

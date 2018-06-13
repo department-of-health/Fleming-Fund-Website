@@ -108,26 +108,6 @@
   </div>
 </div>
 
-<hr class="row-divider" />
-
-<h3 class="row-title">Useful Links</h3>
-<div class="row" style="height: 200px">
-  <div class="three columns card">
-    <h4><a href={{ fields.useful_link_1.value.link_url }}>{{ fields.useful_link_1.value.link_text }}</a></h4>
-    <p class="supporting">{{ fields.useful_link_1.value.link_description }}</p>
-  </div>
-  <div class="three columns card">
-    <h4><a href={{ fields.useful_link_2.value.link_url }}>{{ fields.useful_link_2.value.link_text }}</a></h4>
-    <p class="supporting">{{ fields.useful_link_2.value.link_description }}</p>
-  </div>
-  <div class="three columns card">
-    <h4><a href={{ fields.useful_link_3.value.link_url }}>{{ fields.useful_link_3.value.link_text }}</a></h4>
-    <p class="supporting">{{ fields.useful_link_3.value.link_description }}</p>
-  </div>
-  <div class="three columns card">
-    <h4><a href={{ fields.useful_link_4.value.link_url }}>{{ fields.useful_link_4.value.link_text }}</a></h4>
-    <p class="supporting">{{ fields.useful_link_4.value.link_description }}</p>
-  </div>
-</div>
+{{ include('layout/useful-links.html') }}
 
 {{ include('layout/footer.html') }}

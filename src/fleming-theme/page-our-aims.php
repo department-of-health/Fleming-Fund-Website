@@ -25,6 +25,7 @@ function fleming_get_content() {
         $aim = get_post_data_and_fields($aim->ID);
     }
     $fleming_content['aims'] = $aims;
+    $fleming_content['aims_count'] = count($aims);
 
     return $fleming_content;
 }
