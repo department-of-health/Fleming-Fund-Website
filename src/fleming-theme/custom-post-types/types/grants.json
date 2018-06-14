@@ -4,6 +4,25 @@
         "title": "Grants field group",
         "fields": [
             {
+                "key": "field_5b1569fa4985d",
+                "label": "Description",
+                "name": "description",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": "",
+                "new_lines": "br"
+            },
+            {
                 "key": "field_5b06962b6ae17",
                 "label": "Countries",
                 "name": "countries",
