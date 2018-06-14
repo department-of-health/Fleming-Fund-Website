@@ -4,9 +4,9 @@
     {% if card.identifier %}
       <p class="identifier">{{ card.identifier }}</p>
     {% endif %}
-    <h3 class="title">{{ card.title }}</h3>
-    <p class="overview">{{ card.overview|nl2br }}</p>
-    <p class="description">{{ card.description }}</p>
+    <h3>{{ card.title }}</h3>
+    <p>{{ card.overview|nl2br }}</p>
+    <p class="supporting">{{ card.content }}</p>
 
     {% if card.cta %}
       <a class="button button-dark">{{ card.cta.title }}</a>

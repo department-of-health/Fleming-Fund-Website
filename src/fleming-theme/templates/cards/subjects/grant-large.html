@@ -2,7 +2,7 @@
   {% include 'cards/large.html' with {'card': {
     'title': grant.data.post_title,
     'overview': 'Budget: £'~grant.fields.funds_available.value~'\nStatus: Implementation',
-    'description': grant.fields.description.value,
+    'content': grant.fields.description.value,
     'cta': {
       'title': 'Apply Now',
       'target': '/grants/'~grant.data.post_name~'/'
