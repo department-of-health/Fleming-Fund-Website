@@ -9,7 +9,9 @@
     <p class="supporting">{{ card.content }}</p>
 
     {% if card.cta %}
-      <a class="button button-dark" href="{{ card.cta.target }}">{{ card.cta.title }}</a>
+      {% if card.cta.title %}
+        <a class="button button-dark" href="{{ card.cta.target }}">{{ card.cta.title }}</a>
+      {% endif %}
       {% include 'cards/common/link-overlay.html' with {'target': card.cta.target} %}
     {% endif %}
 

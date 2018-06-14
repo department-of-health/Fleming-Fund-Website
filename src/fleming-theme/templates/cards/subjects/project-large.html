@@ -4,5 +4,8 @@
     'title': project.data.post_title,
     'overview': project.fields.progress.value,
     'content': project.fields.description.value,
+    'cta': {
+      'target': project.permalink
+    }
   }} %}
 {% endif %}

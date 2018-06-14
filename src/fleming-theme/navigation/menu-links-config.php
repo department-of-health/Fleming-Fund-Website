@@ -133,7 +133,7 @@ class MenuLinksConfig
         foreach ($regions as &$region) {
             $regionName = $region->post_title;
             $regionSlug = $region->post_name;
-            $regionLinkTarget = "/regions/$regionSlug/";
+            $regionLinkTarget = get_permalink($region->ID);
             $regionLinkConfigs[$regionSlug] = [
                 'title' => $regionName,
                 'target' => $regionLinkTarget,
@@ -155,7 +155,7 @@ class MenuLinksConfig
         foreach ($countries as &$country) {
             $countryName = $country->post_title;
             $countrySlug = $country->post_name;
-            $countryLinkTarget = "/countries/$countrySlug/";
+            $countryLinkTarget = get_permalink($country->ID);
             $countryLinkConfig = [
                 'title' => $countryName,
                 'target' => $countryLinkTarget,

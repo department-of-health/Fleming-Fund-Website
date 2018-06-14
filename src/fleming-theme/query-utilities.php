@@ -4,7 +4,11 @@ function get_post_data_and_fields($postID) {
     if (!isset($postID)) {
         return null;
     }
-    $result = array('data'=>get_post($postID), 'fields'=>get_field_objects($postID));
+    $result = [
+        'data'=>get_post($postID),
+        'permalink'=>get_permalink($postID),
+        'fields'=>get_field_objects($postID)
+    ];
     $result['data']->page_title = get_raw_title($postID);
     $result['data']->guid = htmlspecialchars_decode($result['data']->guid);
     return $result;
