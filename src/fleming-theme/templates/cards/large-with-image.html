@@ -1,13 +1,13 @@
 {% if card %}
-  <div class="twelve columns card-with-left-image">
+  <div class="{{ 'twelve columns card-with-left-image'~(card.link_target ? ' has_link') }}">
 
     <div class="image-container">
       <img src="{{ card.image_src }}"/>
     </div>
-    {% include'cards/large.html' with {'no_overlay': true} %}
+    {% include'cards/large.html' with {'no_link_overlay': true} %}
 
-    {% if card.cta %}
-      {% include 'cards/common/link-overlay.html' with {'target': card.cta.target} %}
+    {% if card.link_target %}
+      {% include 'cards/common/link-overlay.html' %}
     {% endif %}
   </div>
 {% endif %}
