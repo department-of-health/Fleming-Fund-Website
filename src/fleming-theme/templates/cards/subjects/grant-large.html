@@ -1,0 +1,11 @@
+{% if grant %}
+  {% include 'cards/large.html' with {'card': {
+    'title': grant.title,
+    'overview': 'Budget: £'~grant.fields.funds_available.value|number_format(0, '.', ','),
+    'description': grant.fields.description.value,
+    'cta': {
+      'title': 'Apply Now',
+      'target': '/grants/'~grant.post_name~'/'
+    }
+  }} %}
+{% endif %}

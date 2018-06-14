@@ -38,31 +38,19 @@
 </div>
 
 <div class="row">
-  <div class="six columns" style="width: 52%"><!-- = six columns + margin -->
-    <img src="https://placekitten.com/g/540/480" width="540" height="480" alt=""
-         style="max-width: 100%; height: auto; width: auto;"/>
-  </div>
-  <!-- need a margin-independent way of matching height against image -->
-  <div class="six columns" style="border: 1px solid; padding: 1.5rem 2rem; min-height: 444px; margin-left: 0px;">
-    <h3>{{ fields.headline_case_study.title }}</h3>
-    <p>{{ fields.headline_case_study.fields.content.value | raw }}</p>
-    <button class="button-dark">See All Case Studies</button>
-  </div>
+  {% include 'cards/subjects/publication-large-with-image.html' with {
+    'publication': fields.headline_case_study,
+    'see_all_cta': true
+  } %}
 </div>
 
 <div class="row">
-  <div class="six columns card">
-    <p class="identifier">Grant</p>
-    <!-- horizontal line -->
-    <h3>{{ fields.headline_grant_type.title }}</h3>
-    <p>{{ fields.headline_grant_type.fields.overview.value | raw }}</p>
-  </div>
-  <div class="six columns card">
-    <p class="identifier">Project</p>
-    <!-- horizontal line -->
-    <h3>{{ fields.headline_project.title }}</h3>
-    <p>{{ fields.headline_project.fields.progress.value | raw }}</p>
-  </div>
+  {% include 'cards/subjects/grant-type-large.html' with {
+    'grant_type': fields.headline_grant_type
+  } %}
+  {% include 'cards/subjects/project-large.html' with {
+    'project': fields.headline_project
+  } %}
 </div>
 
 <div class="row statistics">
@@ -88,22 +76,8 @@
 
 <h3 class="row-title">Current and Upcoming Opportunities</h3>
 <div class="row">
-  <div class="six columns card">
-    <h3>Opportunity Title</h3>
-    <p>Budget: £41,531,637<br/>Status: Implementation</p>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar. Nam dignissim ipsum et diam finibus, quis sodales sem congue. Ut vitae porta dui.
-      Aliquam.</p>
-    <button class="button-dark">Apply Now</button>
-  </div>
-  <div class="six columns card">
-    <h3>Opportunity Title</h3>
-    <p>Budget: £41,531,637<br/>Status: Implementation</p>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar. Nam dignissim ipsum et diam finibus, quis sodales sem congue. Ut vitae porta dui.
-      Aliquam.</p>
-    <button class="button-dark">Apply Now</button>
-  </div>
+  {% include 'cards/subjects/grant-large.html' with {'grant': opportunities[0]} %}
+  {% include 'cards/subjects/grant-large.html' with {'grant': opportunities[1]} %}
 </div>
 
 <hr class="row-divider"/>

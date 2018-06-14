@@ -1,0 +1,8 @@
+{% if project %}
+  {% include 'cards/large.html' with {'card': {
+    'identifier': 'Project',
+    'title': project.title,
+    'overview': project.fields.progress.value,
+    'description': project.fields.description.value,
+  }} %}
+{% endif %}

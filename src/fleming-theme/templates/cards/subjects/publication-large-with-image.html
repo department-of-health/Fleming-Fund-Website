@@ -1,0 +1,11 @@
+{% if publication %}
+  {% include 'cards/large-with-image.html' with {'card': {
+    'title': publication.title,
+    'overview': publication.fields.content.value,
+    'image_src': 'https://placekitten.com/g/640/360',
+    'cta': see_all_cta ? {
+      'title': 'See All Case Studies',
+      'target': '/'
+    }
+  }} %}
+{% endif %}

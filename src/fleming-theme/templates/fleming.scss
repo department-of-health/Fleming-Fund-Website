@@ -5,6 +5,7 @@
 @import "common-scss/grey-box";
 @import "common-scss/buttons-dark";
 @import "common-scss/navigation";
+@import "common-scss/cards";
 
 .logo-home {
   display: inline-block;
@@ -77,24 +78,6 @@ ul.large-links {
 
 ul.horizontal-pipe {
   @include pipe_horizontal_ul(false);
-}
-
-div.card {
-  border: 1px solid;
-  padding: 1.5rem 2rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-
-  .identifier {
-    padding-top: 1.5rem;
-    padding-bottom: 1.25rem;
-    width: 100%;
-    border-bottom: 1px solid $light-grey;
-  }
-
-  p:last-of-type {
-    margin-bottom: 1rem;
-  }
 }
 
 .border-bottom-grey {

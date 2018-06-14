@@ -1,0 +1,76 @@
+.card-cta-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.card {
+  border: 1px solid;
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: block;
+  display: inline-flex;
+  flex-flow: column nowrap;
+  align-content: space-between;
+  align-items: flex-start;
+  color: inherit;
+  font: inherit;
+  text-decoration: initial;
+  position: relative;
+
+  &:hover, &:focus {
+    color: initial;
+  }
+
+  .identifier {
+    padding-top: 1.5rem;
+    padding-bottom: 1.25rem;
+    width: 100%;
+    border-bottom: 1px solid $light-grey;
+  }
+
+  p:last-of-type {
+    margin-bottom: 1rem;
+  }
+}
+
+.card-with-left-image {
+  font-size: 0;
+  position: relative;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: block;
+  display: flex;
+  flex-flow: row wrap;
+
+  .image-container {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+
+    img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+    }
+  }
+
+  .card {
+    margin: 0;
+    display: inline-block;
+    vertical-align: top;
+    float: none;
+  }
+}
+
+@media (#{$bp-larger-than-phablet}) {
+  div.card-with-left-image {
+    .image-container {
+      width: grid-offset-length(6);
+    }
+  }
+}

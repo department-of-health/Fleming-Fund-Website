@@ -4,6 +4,10 @@ button.button-dark {
   color: #fff;
   background-color: #000;
   border-color: #000;
+  border-radius: 0;
+  text-transform: none;
+  font-size: 19px;
+  font-weight: normal;
 }
 
 input {
@@ -13,13 +17,17 @@ input {
     color: #fff;
     background-color: #000;
     border-color: #000;
+    border-radius: 0;
+    text-transform: none;
+    font-size: 19px;
+    font-weight: normal;
   }
 }
 
 // better colour here?
 .button.button-dark:hover,
 button.button-dark:hover {
-  color: #fff;
+  color: #000;
   background-color: $light-grey;
   border-color: $light-grey;
 }
@@ -28,7 +36,7 @@ input {
   &[type="submit"].button-dark:hover,
   &[type="reset"].button-dark:hover,
   &[type="button"].button-dark:hover {
-    color: #fff;
+    color: #000;
     background-color: $light-grey;
     border-color: $light-grey;
   }
@@ -36,7 +44,7 @@ input {
 
 .button.button-dark:focus,
 button.button-dark:focus {
-  color: #fff;
+  color: #000;
   background-color: $light-grey;
   border-color: $light-grey;
 }
@@ -45,7 +53,7 @@ input {
   &[type="submit"].button-dark:focus,
   &[type="reset"].button-dark:focus,
   &[type="button"].button-dark:focus {
-    color: #fff;
+    color: #000;
     background-color: $light-grey;
     border-color: $light-grey;
   }
