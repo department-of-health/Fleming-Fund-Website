@@ -1,7 +1,7 @@
 {% if project %}
   {% include 'cards/large.html' with {'card': {
     'identifier': 'Project',
-    'title': project.title,
+    'title': project.data.post_title,
     'overview': project.fields.progress.value,
     'description': project.fields.description.value,
   }} %}

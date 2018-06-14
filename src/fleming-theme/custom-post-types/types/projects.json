@@ -26,6 +26,25 @@
                 "ui": 1
             },
             {
+                "key": "field_5b166538b24ab",
+                "label": "Description",
+                "name": "description",
+                "type": "textarea",
+                "instructions": "A short description (a few sentences), suitable for display in a list of projects.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": "",
+                "new_lines": "br"
+            },
+            {
                 "key": "field_5b06e5d0a5fcf",
                 "label": "Progress",
                 "name": "progress",
@@ -89,10 +108,10 @@
                 "ui": 1
             },
             {
-                "key": "field_5b06e5faa5fd2",
-                "label": "Dates and Milestones",
-                "name": "dates",
-                "type": "flexible_content",
+                "key": "field_5b166771b24ac",
+                "label": "Budget",
+                "name": "budget",
+                "type": "number",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -101,65 +120,64 @@
                     "class": "",
                     "id": ""
                 },
-                "layouts": {
-                    "5b06e60de5bf9": {
-                        "key": "5b06e60de5bf9",
-                        "name": "date",
-                        "label": "Date",
-                        "display": "block",
-                        "sub_fields": [
-                            {
-                                "key": "field_5b06e61da5fd3",
-                                "label": "Inner Date",
-                                "name": "inner_date",
-                                "type": "date_picker",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "display_format": "",
-                                "return_format": "",
-                                "first_day": 1
-                            }
-                        ],
-                        "min": "",
-                        "max": ""
-                    },
-                    "5b06e62ca5fd4": {
-                        "key": "5b06e62ca5fd4",
-                        "name": "milestone",
-                        "label": "Milestone",
-                        "display": "block",
-                        "sub_fields": [
-                            {
-                                "key": "field_5b06e62ca5fd5",
-                                "label": "Inner Milestone",
-                                "name": "inner_milestone",
-                                "type": "date_picker",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "display_format": "d\/m\/Y",
-                                "return_format": "d\/m\/Y",
-                                "first_day": 1
-                            }
-                        ],
-                        "min": "",
-                        "max": ""
-                    }
-                },
-                "button_label": "Add Row",
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "£",
+                "append": "",
                 "min": "",
-                "max": ""
+                "max": "",
+                "step": ""
+            },
+            {
+                "key": "field_5b17b2884e6c6",
+                "label": "Dates",
+                "name": "dates",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5b17b2994e6c7",
+                        "label": "Start Date",
+                        "name": "start_date",
+                        "type": "date_picker",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "display_format": "d\/m\/Y",
+                        "return_format": "d\/m\/Y",
+                        "first_day": 1
+                    },
+                    {
+                        "key": "field_5b17b31d4e6c8",
+                        "label": "End Date",
+                        "name": "end_date",
+                        "type": "date_picker",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "display_format": "d\/m\/Y",
+                        "return_format": "d\/m\/Y",
+                        "first_day": 1
+                    }
+                ]
             }
         ],
         "location": [

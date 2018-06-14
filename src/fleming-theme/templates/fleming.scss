@@ -80,6 +80,15 @@ ul.horizontal-pipe {
   @include pipe_horizontal_ul(false);
 }
 
+input, button, .button {
+  border-radius: 0 !important;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
 .border-bottom-grey {
   border-bottom: 1px solid $light-grey;
 }
@@ -113,3 +122,24 @@ footer {
 
 // Per-page CSS
 @import 'page-types/single-organisation';
+
+// aims page CSS
+.expandable {
+  cursor: pointer;
+}
+
+.expContent {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+
+.downArrow {
+  float: right;
+}
+
+// about page CSS
+.infocardTitle{
+  min-height: 3em;
+}

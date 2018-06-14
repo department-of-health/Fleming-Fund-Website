@@ -10,16 +10,22 @@
   </div>
   <div>
     <div class="three columns">
-      <span style="font-weight: bold">{{ opportunities[0].title }}</span><br/>
-      <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[0].fields.deadline.value }}
+      <a href={{ opportunities[0].data.guid }}>
+        <span style="font-weight: bold">{{ opportunities[0].data.post_title }}</span><br/>
+        <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[0].fields.deadline.value }}
+      </a>
     </div>
     <div class="three columns">
-      <span style="font-weight: bold">{{ opportunities[1].title }}</span><br/>
-      <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[1].fields.deadline.value }}
+      <a href={{ opportunities[1].data.guid }}>
+        <span style="font-weight: bold">{{ opportunities[1].data.post_title }}</span><br/>
+        <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[1].fields.deadline.value }}
+      </a>
     </div>
     <div class="three columns">
-      <span style="font-weight: bold">{{ opportunities[2].title }}</span><br/>
-      <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[2].fields.deadline.value }}
+      <a href={{ opportunities[2].data.guid }}>
+        <span style="font-weight: bold">{{ opportunities[2].data.post_title }}</span><br/>
+        <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[2].fields.deadline.value }}
+      </a>
     </div>
     <div class="three columns">
       <button>How to Apply</button>
@@ -76,34 +82,10 @@
 
 <h3 class="row-title">Current and Upcoming Opportunities</h3>
 <div class="row">
-  {% include 'cards/subjects/grant-large.html' with {'grant': opportunities[0]} %}
-  {% include 'cards/subjects/grant-large.html' with {'grant': opportunities[1]} %}
+  {% include 'cards/subjects/grant-large.html' with {'grant': fields.highlight_opportunity_1} %}
+  {% include 'cards/subjects/grant-large.html' with {'grant': fields.highlight_opportunity_2} %}
 </div>
 
-<hr class="row-divider"/>
-
-<h3 class="row-title">Useful Links</h3>
-<div class="row">
-  <div class="three columns card">
-    <h4>Latest Guide</h4>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar.</p>
-  </div>
-  <div class="three columns card">
-    <h4>Latest Guide</h4>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar.</p>
-  </div>
-  <div class="three columns card">
-    <h4>Latest Guide</h4>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar.</p>
-  </div>
-  <div class="three columns card">
-    <h4>Latest Guide</h4>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar.</p>
-  </div>
-</div>
+{{ include('layout/useful-links.html') }}
 
 {{ include('layout/footer.html') }}

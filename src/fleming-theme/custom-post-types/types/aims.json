@@ -4,10 +4,10 @@
         "title": "Aims field group",
         "fields": [
             {
-                "key": "field_5b0686f0e9ad6",
+                "key": "field_5b1a9f12fabd8",
                 "label": "Overview",
                 "name": "overview",
-                "type": "textarea",
+                "type": "flexible_content",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -16,11 +16,76 @@
                     "class": "",
                     "id": ""
                 },
-                "default_value": "",
-                "placeholder": "",
-                "maxlength": "",
-                "rows": "",
-                "new_lines": ""
+                "layouts": {
+                    "5b1a9f2f640a2": {
+                        "key": "5b1a9f2f640a2",
+                        "name": "sub_aim",
+                        "label": "Sub-aim",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5b1a9f31fabda",
+                                "label": "Sub-aim",
+                                "name": "sub_aim",
+                                "type": "group",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "layout": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_5b1a9f53fabdb",
+                                        "label": "Heading",
+                                        "name": "heading",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "maxlength": ""
+                                    },
+                                    {
+                                        "key": "field_5b1a9f6bfabdc",
+                                        "label": "Description",
+                                        "name": "description",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "maxlength": ""
+                                    }
+                                ]
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    }
+                },
+                "button_label": "Add Row",
+                "min": "",
+                "max": ""
             }
         ],
         "location": [

@@ -3,4 +3,5 @@ dist/
 .wordpress-download-cache/
 .credentials/
 .temp/
+.idea/
 deployments/

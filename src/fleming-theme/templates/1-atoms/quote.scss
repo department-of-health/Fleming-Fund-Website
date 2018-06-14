@@ -1,16 +1,7 @@
 .quote {
-    color: steelblue;
-
-    strong {
-        font-variant: small-caps;
-        font-style: italic;
-        font-size: 20px;
-
-    }
-
-    ::before {
-        content: '"';
-        color: lightgray;
-        font-size: 40px;
+    border-left: 10px solid #000000;
+    
+    p {
+        margin-left: 40px;
     }
 }
