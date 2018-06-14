@@ -1,7 +1,14 @@
 <hr class="row-divider" />
 
 <h3 class="row-title">Useful Links</h3>
-<div class="row" style="height: 200px">
+<div class="row">
+  {% include 'cards/subjects/useful-link-small.html' with {'useful_link': fields.useful_link_1} %}
+  {% include 'cards/subjects/useful-link-small.html' with {'useful_link': fields.useful_link_2} %}
+  {% include 'cards/subjects/useful-link-small.html' with {'useful_link': fields.useful_link_3} %}
+  {% include 'cards/subjects/useful-link-small.html' with {'useful_link': fields.useful_link_4} %}
+</div>
+
+<div class="row">
   <div class="three columns card">
     <h4 class="infocardTitle"><a href={{ fields.useful_link_1.value.link_url }}>{{ fields.useful_link_1.value.link_text }}</a></h4>
     <p class="supporting">{{ fields.useful_link_1.value.link_description }}</p>
