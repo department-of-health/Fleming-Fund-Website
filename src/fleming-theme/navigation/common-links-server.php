@@ -30,11 +30,54 @@ trait CommonLinksServer
         return $link;
     }
 
+    function getAllPublicationTypeLinks()
+    {
+        return [
+            $this->getCaseStudiesLink(),
+            $this->getGuidesLink(),
+            $this->getResourceLink(),
+            $this->getProtocolLink(),
+            $this->getResearchLink(),
+        ];
+    }
+
     function getCaseStudiesLink()
     {
         $link = new Link();
         $link->setTitle('Case Studies');
-        $link->setTarget('/case-studies/');
+        $link->setTarget('/publication_types/case-study/');
+        return $link;
+    }
+
+    function getGuidesLink()
+    {
+        $link = new Link();
+        $link->setTitle('Guides');
+        $link->setTarget('/publication_types/guide/');
+        return $link;
+    }
+
+    function getResourceLink()
+    {
+        $link = new Link();
+        $link->setTitle('Resource');
+        $link->setTarget('/publication_types/resource/');
+        return $link;
+    }
+
+    function getProtocolLink()
+    {
+        $link = new Link();
+        $link->setTitle('Protocol');
+        $link->setTarget('/publication_types/protocol/');
+        return $link;
+    }
+
+    function getResearchLink()
+    {
+        $link = new Link();
+        $link->setTitle('Research');
+        $link->setTarget('/publication_types/research/');
         return $link;
     }
 

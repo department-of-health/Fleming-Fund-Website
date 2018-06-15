@@ -1,9 +1,6 @@
 {{ include('layout/header.html') }}
 
 <h1>{{ title }}</h1>
-<ul class="large-links">
-  {% include '1-atoms/link-items-text.html' with {'links': nav.allPublicationTypeLinks} %}
-</ul>
 
 <div class="row">
   {% include 'cards/entities/publication-large-with-image.html' with {'publication': allPublications[0]} %}
