@@ -43,18 +43,18 @@
   }
 }
 
-@mixin pipe_horizontal_ul($highlight-active) {
+@mixin pipe_horizontal_ul($highlight-active, $pipe-height: 1em, $pipe-vertical-align: text-top) {
   @include horizontal_ul($highlight-active);
 
   li:not(.inline-submenu):not(:first-child):before {
     margin-left: 1ex;
     margin-right: 1ex;
-    height: 1em;
+    height: $pipe-height;
     width: 1px;
     background: currentColor;
     content: ' ';
     display: inline-block;
-    vertical-align: text-top;
+    vertical-align: $pipe-vertical-align;
   }
 }
 
