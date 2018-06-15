@@ -1,24 +1,38 @@
 </main>
 <footer>
-
   <hr class="row-divider"/>
-
-  <h4>Supported by</h4>
   <div class="row">
-    <div class="two columns">
-      <img src="/wp-content/themes/fleming-theme/images/uk-aid-logo.png" width="108" height="115" alt="UK aid"/>
-    </div>
-    <div class="two columns">
-      <img src="/wp-content/themes/fleming-theme/images/placeholder-logo.png" width="108" height="115" alt=""/>
-    </div>
-    <div class="two columns">
-      <img src="/wp-content/themes/fleming-theme/images/placeholder-logo.png" width="108" height="115" alt=""/>
-    </div>
-    <div class="two columns">
-      <img src="/wp-content/themes/fleming-theme/images/placeholder-logo.png" width="108" height="115" alt=""/>
+    <div class="eight columns">
+
+      <p>Fleming Fund is a government aid programme</p>
+      <div class="footer-content">
+        <img src="/wp-content/themes/fleming-theme/images/placeholder-logo.png" width="108" height="115" alt=""/>
+        <img src="/wp-content/themes/fleming-theme/images/uk-aid-logo.png" width="108" height="115" alt="UK aid"/>
+      </div>
+
+      <p>Supported by</p>
+      <div class="footer-content">
+        <img src="/wp-content/themes/fleming-theme/images/placeholder-logo.png" width="108" height="115" alt=""/>
+        <img src="/wp-content/themes/fleming-theme/images/placeholder-logo.png" width="108" height="115" alt=""/>
+        <img src="/wp-content/themes/fleming-theme/images/placeholder-logo.png" width="108" height="115" alt=""/>
+      </div>
+
     </div>
     <div class="four columns">
-      <!-- twitter etc. -->
+      <p>&nbsp;</p>
+      <div class="footer-content">
+        {% include 'layout/social-links.html' %}
+        <p style="margin-top: 2.5rem; margin-bottom: 0;">
+          <span style="font-weight: bold">&copy; 2018 Fleming Fund</span>
+        </p>
+        <ul class="horizontal-pipe">
+          {% include '1-atoms/link-items-text.html' with {'links':[
+            nav.contactUsLink,
+            nav.termsOfUseLink,
+            nav.privacyStatementLink
+          ]} %}
+        </ul>
+      </div>
       <p style="margin-top: 2.5rem; margin-bottom: 0;"><span style="font-weight: bold">&copy; 2018 Fleming Fund</span>
       </p>
       <ul class="horizontal-pipe">

@@ -81,6 +81,30 @@ trait CommonLinksServer
         return $link;
     }
 
+    function getContactUsLink()
+    {
+        $link = new Link();
+        $link->setTitle('Contact Us');
+        $link->setTarget('/contact-us/');
+        return $link;
+    }
+
+    function getTermsOfUseLink()
+    {
+        $link = new Link();
+        $link->setTitle('Terms of Use');
+        $link->setTarget('/terms-of-use/');
+        return $link;
+    }
+
+    function getPrivacyStatementLink()
+    {
+        $link = new Link();
+        $link->setTitle('Privacy Statement');
+        $link->setTarget('/privacy-statement/');
+        return $link;
+    }
+
     function getAllRegionLinks()
     {
         return MenuLinksConfig::configsToLinks(MenuLinksConfig::getAllRegions());
@@ -89,6 +113,15 @@ trait CommonLinksServer
     function getCountryLinksWithinRegion(string $regionSlug)
     {
         return $this->getMenuRouteLinkChildren('regions', $regionSlug);
+    }
+
+    function getTwitterLink() {
+        $homeLink = new Link();
+        $homeLink->setTitle('Twitter');
+        $homeLink->setTarget('https://twitter.com/FlemingFund');
+        $homeLink->setExternal(true);
+        return $homeLink;
+
     }
 
     private function getMenuRouteLink(string ...$menuRouteKeys)
