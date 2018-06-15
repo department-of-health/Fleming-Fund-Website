@@ -3,7 +3,7 @@
 
     <div class="image-container">
       <img src="{{ card.image_src }}"/>
-      {% if card.link_target and not cta_override %}
+      {% if card.link_target %}
         {% include 'cards/common/link-overlay.html' %}
       {% endif %}
     </div>

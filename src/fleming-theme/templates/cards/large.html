@@ -4,7 +4,13 @@
     {% if card.identifier %}
       <p class="identifier">{{ card.identifier }}</p>
     {% endif %}
-    <h3>{{ card.title }}</h3>
+    <h3>
+      {% if card.link_target %}
+        <a href="{{ card.link_target }}">{{ card.title }}</a>
+      {% else %}
+        {{ card.title }}
+      {% endif %}
+    </h3>
     <p>{{ card.overview|nl2br }}</p>
     <p class="supporting">{{ card.content }}</p>
 

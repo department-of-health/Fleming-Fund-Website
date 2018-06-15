@@ -39,6 +39,10 @@
   h3, h4 {
     a {
       color: inherit;
+
+      &:hover {
+        color: $teal;
+      }
     }
   }
 

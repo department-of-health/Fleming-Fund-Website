@@ -4,7 +4,7 @@
       <img src="https://placekitten.com/g/512/512" class="large avatar"/>
     </div>
     <div class="eight columns">
-      <h3>{{ person.data.post_title }}</h3>
+      <h3><a href="{{ person.permalink }}">{{ person.data.post_title }}</a></h3>
       {% if quote %}
         <p class="solid-left-indent">&quot;{{ quote }}&quot;</p>
       {% endif %}

@@ -28,8 +28,8 @@ input {
 .button.button-dark:hover,
 button.button-dark:hover {
   color: #000;
-  background-color: $light-grey;
-  border-color: $light-grey;
+  background-color: $teal;
+  border-color: $teal;
 }
 
 input {
@@ -37,16 +37,16 @@ input {
   &[type="reset"].button-dark:hover,
   &[type="button"].button-dark:hover {
     color: #000;
-    background-color: $light-grey;
-    border-color: $light-grey;
+    background-color: $teal;
+    border-color: $teal;
   }
 }
 
 .button.button-dark:focus,
 button.button-dark:focus {
   color: #000;
-  background-color: $light-grey;
-  border-color: $light-grey;
+  background-color: $teal;
+  border-color: $teal;
 }
 
 input {
@@ -54,7 +54,7 @@ input {
   &[type="reset"].button-dark:focus,
   &[type="button"].button-dark:focus {
     color: #000;
-    background-color: $light-grey;
-    border-color: $light-grey;
+    background-color: $teal;
+    border-color: $teal;
   }
 }
