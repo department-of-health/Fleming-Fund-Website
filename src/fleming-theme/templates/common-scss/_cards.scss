@@ -99,6 +99,11 @@
   }
 }
 
+.dark-card {
+  background: black;
+  color: white;
+}
+
 @media (#{$bp-larger-than-phablet}) {
   div.card-with-left-image {
     .image-container {

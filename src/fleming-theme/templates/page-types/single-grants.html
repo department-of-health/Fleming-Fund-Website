@@ -10,19 +10,39 @@
 <hr class="row-underline" />
 
 <div class="row">
-  <p>(Timeline or timeline graphic)</p>
+  <p>Applications Open: {{ fields.open.value }}</p>
+</div>
+<div class="row">
+  <p>RFP Publication Date: {{ fields.rfp_publication_date.value }}</p>
+</div>
+<div class="row">
   <p>Deadline: {{ fields.deadline.value }}</p>
+</div>
+<div>
+  <h4>Other Important Dates:</h4>
+  {% for date in fields.other_important_dates.value %}
+    <p>{{date.key_event_name}}: {{date.date}}</p>
+  {% endfor %}
 </div>
 
 <hr class="row-separator" />
 
 <div class="row">
   <div class="nine columns">
-    <p>{{ fields.description.value | raw }}</p>
-    <p class="supporting">{{ fields.description.value | raw }}</p>
+    {% for content_block in fields.description.value %}
+        
+      {% if content_block.acf_fc_layout == 'header_paragraph' %}
+        <p>{{ content_block.header_paragraph_inner }}</p>
+  
+      {% elseif content_block.acf_fc_layout == 'supporting_paragraph' %}
+        <p class="supporting">{{ content_block.supporting_paragraph_inner }}</p>
+  
+      {% endif %}
+    
+    {% endfor %}
   </div>
   <div class="three columns">
-    <button class="button-dark" style="width: 100%">Download</button>
+    <button class="button-dark" style="width: 100%">Download RFP</button>
     <p>Please note the key dates for RFP, including the need to register interest by 12th June 2018.</p>
   </div>
 </div>
@@ -32,54 +52,49 @@
 <h3 class="row-title">Eligibility Criteria</h3>
 <div class="row">
   <div class="nine columns">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Aenean ut dapibus nunc. Mauris elementum efficitur ultricies.
-    Suspendisse at ante sed augue convallus ultricies eu non libero.
-    Suspendisse quis just ante. Mauris rutrum elit et convallius consectetur.</p>
+    <p>{{ fields.criteria.value.introductory_paragraph}}</p>
   </div>
 </div>
+{% for criterion in fields.criteria.value.criteria %}
 <div class="row">
-  <div class="one column"></div>
+  <div class="one column">
+    <h2>&#9654</h2>
+  </div>
   <div class="eight columns">
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Aenean ut dapibus nunc. Mauris elementum efficitur ultricies.
-      Suspendisse at ante sed augue convallus ultricies eu non libero.
-      Suspendisse quis just ante. Mauris rutrum elit et convallius consectetur.</p>
+    <p class="supporting">{{ criterion.criterion }}</p>
   </div>
 </div>
+{% endfor %}
 
 <hr class="row-separator" />
 
 <h3 class="row-title">Application Process</h3>
+{% set stepcounter = 1 %}
+{% for step in fields.application_steps.value %}
 <div class="row">
-  <div class="two columns">
-    Step 1
-  </div>
-  <div class="eight columns card">
-    <p>Development and publication of a Request for Proposals</p>
+  {% if stepcounter < application_steps_count %}
+    <div class="two columns row-title" style="align-items: center">
+      <h3 style="text-align: center; margin-top: 1.4em">Step {{ stepcounter }}</h3>
+    </div>
+    <div class="eight columns card" style="align-items: center">
+  {% else %}
+    <div class="two columns row-title" style="align-items: center">
+      <h3 style="text-align: center; margin-top: 1.4em">&#10004</h3>
+    </div>
+    <div class="eight columns card dark-card" style="align-items: center">
+  {% endif %}
+    <p>{{ step.application_step }}</p>
   </div>
 </div>
+{% set stepcounter = stepcounter + 1 %}
+{% endfor %}
 
 <hr class="row-separator" />
 
 <h3 class="row-title">Similar Proposals</h3>
 <div class="row">
-  <div class="six columns card">
-    <h3>Opportunity Title</h3>
-    <p>Budget: £41,531,637<br/>Status: Implementation</p>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar. Nam dignissim ipsum et diam finibus, quis sodales sem congue. Ut vitae porta dui.
-      Aliquam.</p>
-    <button class="button-dark">Apply Now</button>
-  </div>
-  <div class="six columns card">
-    <h3>Opportunity Title</h3>
-    <p>Budget: £41,531,637<br/>Status: Implementation</p>
-    <p class="supporting">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi
-      ullamcorper pulvinar. Nam dignissim ipsum et diam finibus, quis sodales sem congue. Ut vitae porta dui.
-      Aliquam.</p>
-    <button class="button-dark">Apply Now</button>
-  </div>
+  {% include 'cards/entities/grant-large.html' with {'grant': similar_proposals[0]} %}
+  {% include 'cards/entities/grant-large.html' with {'grant': similar_proposals[1]} %}
 </div>
 
 {{ include('layout/footer.html') }}
