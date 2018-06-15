@@ -42,7 +42,7 @@
     {% endfor %}
   </div>
   <div class="three columns">
-    <button class="button-dark" style="width: 100%">Download RFP</button>
+    <button class="button-dark" style="width: 100%" onClick={{ 'window.open("' ~ fields.rfp_doc.value.url ~ '")' }}>Download RFP</button>
     <p>Please note the key dates for RFP, including the need to register interest by 12th June 2018.</p>
   </div>
 </div>
