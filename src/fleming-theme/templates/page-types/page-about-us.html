@@ -157,19 +157,10 @@
 <hr class="row-divider"/>
 
 <h3>Technical Advisory Group</h3>
+
 <div class="row">
   {% include 'cards/entities/person-large-with-image.html' with {
-    'person': {
-      'data': {
-        'post_title': 'Person\'s Name'
-      },
-      'fields': {
-        'details': {
-          'value': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi ullamcorper
-        pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        }
-      }
-    },
+    'person': tagHighlightPerson,
     'quote': 'I like fish, give me more fish, give now, now, give fish now, no not dry the wet fish give now.',
     'cta_override': {
       'title': 'See full Technical Advisory Group',

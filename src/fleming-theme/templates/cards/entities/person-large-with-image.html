@@ -1,5 +1,5 @@
 {% if person %}
-  <div class="twelve columns">
+  <div class="twelve columns card-with-left-image">
     <div class="four columns" style="padding-top: 1.5em;">
       <img src="https://placekitten.com/g/512/512" class="large avatar"/>
     </div>
@@ -11,6 +11,10 @@
       <p class="supporting">{{ person.fields.details.value }}</p>
       {% if cta_override %}
         <a class="button button-dark" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
+      {% else %}
+        {% include 'cards/common/link-overlay.html' with {'card': {
+          'link_target': person.permalink
+        }} %}
       {% endif %}
     </div>
   </div>

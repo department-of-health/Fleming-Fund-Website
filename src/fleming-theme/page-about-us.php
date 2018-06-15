@@ -22,6 +22,10 @@ function fleming_get_content() {
         'nav' => get_nav_builder()->withMenuRoute('about')->build()
     );
 
+    $allPeople = get_posts(array('post_type'=>'people','numberposts'=>-1));
+    $tagHighlightPerson = get_post_data_and_fields($allPeople[0]->ID);
+    $fleming_content['tagHighlightPerson'] = $tagHighlightPerson;
+
     return $fleming_content;
 }
 

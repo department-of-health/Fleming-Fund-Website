@@ -1,6 +1,6 @@
 {% if card %}
-  <div class="four columns card">
-
+  <div class="four columns card {{ card.extra_classes }}">
+    {{ card.top_html|raw }}
     <h3>
       {% if card.link_target %}
         <a href="{{ card.link_target }}">{{ card.title }}</a>

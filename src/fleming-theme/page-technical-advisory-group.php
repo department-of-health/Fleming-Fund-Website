@@ -22,6 +22,25 @@ function fleming_get_content() {
         'nav' => get_nav_builder()->withMenuRoute('about', 'advisory')->build()
     );
 
+    $allPeople = get_posts(array('post_type'=>'people','numberposts'=>-1));
+    $someone = get_post_data_and_fields($allPeople[0]->ID);
+    $fleming_content['tagMembers'] = [
+        $someone,
+        $someone,
+        $someone,
+        $someone,
+        $someone,
+        $someone,
+        $someone,
+        $someone,
+        $someone,
+        $someone,
+        $someone,
+        $someone,
+        $someone,
+        $someone,
+    ];
+
     return $fleming_content;
 }
 

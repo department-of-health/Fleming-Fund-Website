@@ -11,129 +11,16 @@
 </p>
 
 <div class="row">
-  {% include 'cards/entities/person-medium-with-image.html' with {
-    'person': {
-      'data': {
-        'post_title': 'Person\'s Name'
-      },
-      'fields': {
-        'details': {
-          'value': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi ullamcorper
-        pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        }
-      }
-    }
-  } %}
-  {% include 'cards/entities/person-medium-with-image.html' with {
-    'person': {
-      'data': {
-        'post_title': 'Person\'s Name'
-      },
-      'fields': {
-        'details': {
-          'value': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi ullamcorper
-        pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        }
-      }
-    }
-  } %}
-  {% include 'cards/entities/person-medium-with-image.html' with {
-    'person': {
-      'data': {
-        'post_title': 'Person\'s Name'
-      },
-      'fields': {
-        'details': {
-          'value': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi ullamcorper
-        pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        }
-      }
-    }
-  } %}
-</div>
+  {% for person in tagMembers %}
 
-<div class="row">
-  {% include 'cards/entities/person-medium-with-image.html' with {
-    'person': {
-      'data': {
-        'post_title': 'Person\'s Name'
-      },
-      'fields': {
-        'details': {
-          'value': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi ullamcorper
-        pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        }
-      }
-    }
-  } %}
-  {% include 'cards/entities/person-medium-with-image.html' with {
-    'person': {
-      'data': {
-        'post_title': 'Person\'s Name'
-      },
-      'fields': {
-        'details': {
-          'value': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi ullamcorper
-        pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        }
-      }
-    }
-  } %}
-  {% include 'cards/entities/person-medium-with-image.html' with {
-    'person': {
-      'data': {
-        'post_title': 'Person\'s Name'
-      },
-      'fields': {
-        'details': {
-          'value': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi ullamcorper
-        pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        }
-      }
-    }
-  } %}
-</div>
+  {% include 'cards/entities/person-medium-with-image.html' %}
 
+  {% if loop.index is divisible by(3) %}
+</div>
 <div class="row">
-  {% include 'cards/entities/person-medium-with-image.html' with {
-    'person': {
-      'data': {
-        'post_title': 'Person\'s Name'
-      },
-      'fields': {
-        'details': {
-          'value': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi ullamcorper
-        pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        }
-      }
-    }
-  } %}
-  {% include 'cards/entities/person-medium-with-image.html' with {
-    'person': {
-      'data': {
-        'post_title': 'Person\'s Name'
-      },
-      'fields': {
-        'details': {
-          'value': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi ullamcorper
-        pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        }
-      }
-    }
-  } %}
-  {% include 'cards/entities/person-medium-with-image.html' with {
-    'person': {
-      'data': {
-        'post_title': 'Person\'s Name'
-      },
-      'fields': {
-        'details': {
-          'value': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu massa ut mi ullamcorper
-        pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        }
-      }
-    }
-  } %}
+  {% endif %}
+
+  {% endfor %}
 </div>
 
 {{ include('layout/footer.html') }}
