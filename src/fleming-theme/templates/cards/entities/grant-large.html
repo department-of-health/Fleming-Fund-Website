@@ -1,5 +1,6 @@
 {% if grant %}
   {% include 'cards/large.html' with {'card': {
+    'identifier': 'Grant',
     'title': grant.data.post_title,
     'overview': 'Budget: £'~grant.fields.funds_available.value~'\nStatus: Implementation',
     'content': grant.fields.description.value,
