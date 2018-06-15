@@ -25,6 +25,7 @@ class MenuLinksConfig
                 ],
                 'advisory' => [
                     'title' => 'Technical Advisory Group',
+                    'target' => '/technical-advisory-group/'
                 ],
                 'contact' => [
                     'title' => 'Contact Us',
