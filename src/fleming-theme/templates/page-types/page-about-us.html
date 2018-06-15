@@ -139,19 +139,21 @@
 <hr class="row-divider"/>
 
 <div class="row">
-  <div class="four columns card">
-    <h3>Country Grants</h3>
-    <p class="supporting">To improve the collection and use of AMR data, including antimicrobial use, in target
-      countries using a One Health approach.</p>
-  </div>
-  <div class="four columns card">
-    <h3>Regional Grants</h3>
-    <p class="supporting">To provide long-term mentorship and career enhancement for 4-8 fellows per country.</p>
-  </div>
-  <div class="four columns card">
-    <h3>Fellowships</h3>
-    <p class="supporting">To support regional One Health approaches to improved surveillance of AMR.</p>
-  </div>
+  {% include 'cards/medium.html' with {'card': {
+    'title': 'Country Grants',
+    'content': 'To improve the collection and use of AMR data, including antimicrobial use, in target countries using a One Health approach.',
+    'link_target': '/country-grants/'
+  }} %}
+  {% include 'cards/medium.html' with {'card': {
+    'title': 'Regional Grants',
+    'content': 'To provide long-term mentorship and career enhancement for 4-8 fellows per country.',
+    'link_target': '/regional-grants/'
+  }} %}
+  {% include 'cards/medium.html' with {'card': {
+    'title': 'Fellowships',
+    'content': 'To support regional One Health approaches to improved surveillance of AMR.',
+    'link_target': '/fellowships/'
+  }} %}
 </div>
 
 <hr class="row-divider"/>

@@ -1,0 +1,16 @@
+{% if card %}
+  <div class="{{ 'four columns card'~(card.link_target ? ' has_link') }}">
+
+    <h3>
+      {% if card.link_target %}
+        <a href="{{ card.link_target }}">{{ card.title }}</a>
+      {% endif %}
+    </h3>
+    <p class="supporting">{{ card.content }}</p>
+
+    {% if card.link_target %}
+      {% include 'cards/common/link-overlay.html' with {'target': card.link_target} %}
+    {% endif %}
+
+  </div>
+{% endif %}
