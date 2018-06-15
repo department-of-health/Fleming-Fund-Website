@@ -44,17 +44,17 @@
 </div>
 
 <div class="row">
-  {% include 'cards/subjects/publication-large-with-image.html' with {
+  {% include 'cards/entities/publication-large-with-image.html' with {
     'publication': fields.headline_case_study,
     'see_all_cta': true
   } %}
 </div>
 
 <div class="row">
-  {% include 'cards/subjects/grant-type-large.html' with {
+  {% include 'cards/entities/grant-type-large.html' with {
     'grant_type': fields.headline_grant_type
   } %}
-  {% include 'cards/subjects/project-large.html' with {
+  {% include 'cards/entities/project-large.html' with {
     'project': fields.headline_project
   } %}
 </div>
@@ -82,8 +82,8 @@
 
 <h3 class="row-title">Current and Upcoming Opportunities</h3>
 <div class="row">
-  {% include 'cards/subjects/grant-large.html' with {'grant': fields.highlight_opportunity_1} %}
-  {% include 'cards/subjects/grant-large.html' with {'grant': fields.highlight_opportunity_2} %}
+  {% include 'cards/entities/grant-large.html' with {'grant': fields.highlight_opportunity_1} %}
+  {% include 'cards/entities/grant-large.html' with {'grant': fields.highlight_opportunity_2} %}
 </div>
 
 {{ include('layout/useful-links.html') }}

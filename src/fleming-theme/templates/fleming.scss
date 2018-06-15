@@ -1,11 +1,17 @@
 // The getskeleton.com responsive CSS framework, as a starting point.
 @import "skeleton-scss/skeleton";
 // Fleming-specific
+@import "common-scss/colours";
 @import "common-scss/fonts";
 @import "common-scss/grey-box";
 @import "common-scss/buttons-dark";
 @import "common-scss/navigation";
 @import "common-scss/cards";
+
+h1, h2, h3, h4, h5 {
+  display: block;
+  width: 100%;
+}
 
 .logo-home {
   display: inline-block;
@@ -89,6 +95,37 @@ a {
   text-decoration: none;
 }
 
+.centered-content {
+  text-align: center;
+
+  img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+p.solid-left-indent {
+  border-left: 0.6em solid #000;
+  padding-left: 2em;
+}
+
+img.avatar {
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+
+  &.small {
+    width: 80%;
+    max-width: 150px;
+  }
+  &.large {
+    width: 200px;
+    min-width: 50%;
+    max-width: 100%;
+  }
+}
+
 .border-bottom-grey {
   border-bottom: 1px solid $light-grey;
 }
@@ -111,7 +148,7 @@ hr.row-divider {
   margin-top: 4rem;
   margin-bottom: 5rem;
   border-width: 0;
-  border-top: 1px solid #000;
+  border-top: 2px solid #000;
 }
 
 footer {

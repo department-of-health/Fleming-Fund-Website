@@ -1,3 +1,5 @@
+
+
 .row {
   display: flex;
   flex-flow: row wrap;
@@ -27,8 +29,10 @@
   position: relative;
   overflow: hidden;
 
-  &:hover, &:focus {
-    color: initial;
+  h3, h4 {
+    a {
+      color: inherit;
+    }
   }
 
   .identifier {
@@ -41,6 +45,10 @@
   p:last-of-type {
     margin-bottom: 1rem;
   }
+}
+
+.card.without-border {
+  border: none;
 }
 
 .card-with-left-image {
@@ -70,6 +78,16 @@
     display: inline-block;
     vertical-align: top;
     float: none;
+  }
+}
+
+.card.has_link, .card-with-left-image.has_link {
+  &:hover, &:focus {
+    color: initial;
+
+    h3, h4 {
+      color: $teal;
+    }
   }
 }
 

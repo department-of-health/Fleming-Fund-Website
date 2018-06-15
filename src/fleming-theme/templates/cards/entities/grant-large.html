@@ -3,9 +3,7 @@
     'title': grant.data.post_title,
     'overview': 'Budget: £'~grant.fields.funds_available.value~'\nStatus: Implementation',
     'content': grant.fields.description.value,
-    'cta': {
-      'title': 'Apply Now',
-      'target': grant.permalink
-    }
+    'cta_title': 'Apply Now',
+    'link_target': grant.permalink
   }} %}
 {% endif %}

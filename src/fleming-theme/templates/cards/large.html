@@ -1,5 +1,5 @@
 {% if card %}
-  <div class="six columns card">
+  <div class="{{ 'six columns card'~(card.link_target ? ' has_link') }}">
 
     {% if card.identifier %}
       <p class="identifier">{{ card.identifier }}</p>
@@ -8,11 +8,11 @@
     <p>{{ card.overview|nl2br }}</p>
     <p class="supporting">{{ card.content }}</p>
 
-    {% if card.cta %}
-      {% if card.cta.title %}
-        <a class="button button-dark" href="{{ card.cta.target }}">{{ card.cta.title }}</a>
+    {% if card.link_target %}
+      {% if card.cta_title %}
+        <a class="button button-dark" href="{{ card.link_target }}">{{ card.cta_title }}</a>
       {% endif %}
-      {% include 'cards/common/link-overlay.html' with {'target': card.cta.target} %}
+      {% include 'cards/common/link-overlay.html' %}
     {% endif %}
 
   </div>
