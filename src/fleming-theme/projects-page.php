@@ -15,7 +15,7 @@ include 'query-utilities.php';
 
 function fleming_get_content() {
     $fleming_content = array(
-        "title" => get_the_title(),
+        "title" => get_raw_title(),
         "css_filename" => get_css_filename(),
         "fields" => get_field_objects()
     );

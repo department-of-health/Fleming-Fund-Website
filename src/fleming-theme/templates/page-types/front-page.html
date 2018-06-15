@@ -46,7 +46,10 @@
 <div class="row">
   {% include 'cards/entities/publication-large-with-image.html' with {
     'publication': fields.headline_case_study,
-    'see_all_cta': true
+    'cta_override': {
+      'title': 'See all Case Studies',
+      'target': nav.caseStudiesLink.target
+    }
   } %}
 </div>
 

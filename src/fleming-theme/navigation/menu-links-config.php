@@ -69,6 +69,7 @@ class MenuLinksConfig
         ],
         'knowledge' => [
             'title' => 'Knowledge & Resources',
+            'target' => '/knowledge-resources/'
         ],
         'news' => [
             'title' => 'News & Events',

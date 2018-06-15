@@ -8,7 +8,9 @@
     <p>{{ card.overview|nl2br }}</p>
     <p class="supporting">{{ card.content }}</p>
 
-    {% if card.link_target %}
+    {% if cta_override %}
+      <a class="button button-dark" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
+    {% elseif card.link_target %}
       {% if card.cta_title %}
         <a class="button button-dark" href="{{ card.link_target }}">{{ card.cta_title }}</a>
       {% endif %}

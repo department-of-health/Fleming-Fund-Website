@@ -47,14 +47,13 @@
     padding-bottom: 1.25rem;
     width: 100%;
     border-bottom: 1px solid $light-grey;
-  }
-
-  p {
-    display: flex;
-    flex: 1 1 auto;
+    font-size: 16px;
+    opacity: 0.8;
   }
 
   p:last-of-type {
+    display: flex;
+    flex: 1 1 auto;
     margin-bottom: 1rem;
   }
 
@@ -78,12 +77,12 @@
     vertical-align: top;
     width: 100%;
     position: relative;
+    overflow: hidden;
 
     img {
       display: block;
-      width: auto;
-      height: auto;
-      max-width: 100%;
+      min-width: 100%;
+      min-height: 100%;
     }
   }
 

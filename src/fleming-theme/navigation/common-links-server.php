@@ -30,6 +30,14 @@ trait CommonLinksServer
         return $link;
     }
 
+    function getCaseStudiesLink()
+    {
+        $link = new Link();
+        $link->setTitle('Case Studies');
+        $link->setTarget('/case-studies/');
+        return $link;
+    }
+
     function getAllRegionLinks()
     {
         return MenuLinksConfig::configsToLinks(MenuLinksConfig::getAllRegions());

@@ -1,0 +1,21 @@
+{{ include('layout/header.html') }}
+
+<h1>{{ title }}</h1>
+<ul class="large-links">
+  <li>Case Studies</li>
+  <li>Guides</li>
+  <li>Resource</li>
+  <li>Protocol</li>
+  <li>Research</li>
+</ul>
+
+<div class="row">
+  {% include 'cards/entities/publication-large-with-image.html' with {'publication': allPublications[0]} %}
+</div>
+
+<div class="row">
+  {% include 'cards/entities/publication-large.html' with {'publication': allPublications[1]} %}
+  {% include 'cards/entities/publication-large.html' with {'publication': allPublications[2]} %}
+</div>
+
+{{ include('layout/footer.html') }}
