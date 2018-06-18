@@ -104,6 +104,15 @@
   color: white;
 }
 
+.application-card {
+  align-items: center;
+}
+
+.application-label {
+  text-align: center;
+  margin-top: 1.4em;
+}
+
 @media (#{$bp-larger-than-phablet}) {
   div.card-with-left-image {
     .image-container {

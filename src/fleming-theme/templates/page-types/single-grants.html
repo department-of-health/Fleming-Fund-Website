@@ -69,25 +69,7 @@
 <hr class="row-separator" />
 
 <h3 class="row-title">Application Process</h3>
-{% set stepcounter = 1 %}
-{% for step in fields.application_steps.value %}
-<div class="row">
-  {% if stepcounter < application_steps_count %}
-    <div class="two columns row-title" style="align-items: center">
-      <h3 style="text-align: center; margin-top: 1.4em">Step {{ stepcounter }}</h3>
-    </div>
-    <div class="eight columns card" style="align-items: center">
-  {% else %}
-    <div class="two columns row-title" style="align-items: center">
-      <h3 style="text-align: center; margin-top: 1.4em">&#10004</h3>
-    </div>
-    <div class="eight columns card dark-card" style="align-items: center">
-  {% endif %}
-    <p>{{ step.application_step }}</p>
-  </div>
-</div>
-{% set stepcounter = stepcounter + 1 %}
-{% endfor %}
+{% include 'layout/application-steps.html' %}
 
 <hr class="row-separator" />
 
