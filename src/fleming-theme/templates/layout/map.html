@@ -1,0 +1,88 @@
+{% set map_id = 'map-'~random() %}
+
+</div>
+<div class="map-container">
+  <div class="map" id="{{ map_id }}"></div>
+</div>
+<div class="container">
+
+<script type="text/javascript">
+    //<![CDATA[
+    var mapConfig = {{ map_config|json_encode|raw }};
+    var currentRegion = mapConfig.currentRegion;
+
+    function getCountryFillMap() {
+        var fillMap = {};
+        $.each(mapConfig.countries, function (code, country) {
+            var region = mapConfig.regions[country.region];
+            fillMap[code] = region.baseColour;
+        });
+        return fillMap;
+    }
+
+    function getCountryStyleMap() {
+        var styleMap = {};
+        $.each(mapConfig.countries, function (code, country) {
+            styleMap[code] = 'cursor:pointer';
+        });
+        return styleMap;
+    }
+
+    var map;
+    $(function () {
+        map = $('#{{ map_id }}').vectorMap({
+            map: 'world_mill',
+            backgroundColor: '#f2f2f2',
+            regionStyle: {
+                initial: {
+                    fill: 'white',
+                    "fill-opacity": 1,
+                    stroke: 'none',
+                    "stroke-width": 0,
+                    "stroke-opacity": 1
+                },
+                hover: {
+                    cursor: 'normal'
+                }
+            },
+            focusOn: {
+                regions: mapConfig.regions[currentRegion].countries
+            },
+            series: {
+                regions: [
+                    {attribute: 'fill', values: getCountryFillMap()},
+                    {attribute: 'style', values: getCountryStyleMap()}
+                ]
+            },
+            zoomOnScroll: false,
+            onRegionTipShow: function (e, tip, code) {
+                var country = mapConfig.countries[code];
+                if (country) {
+                    tip.html(country.name);
+                } else {
+                    e.preventDefault();
+                }
+            },
+            onRegionClick: function (e, code) {
+                var country = mapConfig.countries[code];
+                if (country) {
+                    window.location.href = country.URL;
+                }
+            }
+        }).vectorMap('get', 'mapObject');
+    });
+
+    function refocusMap(animate) {
+        if (map !== undefined && currentRegion !== undefined) {
+            map.setFocus({
+                regions: mapConfig.regions[currentRegion].countries,
+                animate: animate
+            });
+        }
+    }
+
+    $(window).resize(function () {
+        refocusMap(false);
+    });
+    //]]>
+</script>
