@@ -2,6 +2,7 @@
 
 include __DIR__ . '/php/get-css-filename.php';
 include 'navigation/index.php';
+include 'map/index.php';
 
 /**
  * NOTE:
@@ -26,12 +27,12 @@ function fleming_get_content()
         "css_filename" => get_css_filename(),
         "title" => get_raw_title(),
         "fields" => get_field_objects(),
-        "nav" => get_nav_model()
+        "nav" => get_nav_model(),
+        "map_config" => get_map_config()
     );
 
     return $fleming_content;
 }
-
 
 $template_name = pathinfo(__FILE__)['filename'];
 include __DIR__ . '/use-templates.php';

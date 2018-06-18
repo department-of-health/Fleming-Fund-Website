@@ -2,6 +2,8 @@
 
 <h1>{{ title }}</h1>
 
+{% include 'layout/map.html' %}
+
 <ul class="large-links">
   {% include '1-atoms/link-items-text.html' with {'links': nav.allRegionLinks} %}
 </ul>
