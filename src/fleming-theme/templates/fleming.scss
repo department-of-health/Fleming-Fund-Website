@@ -80,6 +80,23 @@ div.row.statistics {
   margin-bottom: 3rem;
   padding-top: 3rem;
   padding-bottom: 1.5rem;
+  justify-content: center;
+
+  .column, .columns {
+    margin-left: 0; // so we can deliberately over-fill the row and it will wrap correctly
+  }
+
+  .statistic-value {
+    font-size: 48px; // qq responsive?
+    font-weight: bold;
+    width: 100%;
+    text-align: center
+  }
+
+  .statistic-text {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 h3.row-title {

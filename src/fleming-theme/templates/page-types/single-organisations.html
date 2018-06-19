@@ -1,27 +1,10 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Organisation: {{ title }} | Fleming Fund</title>
-        <link rel="stylesheet" type="text/css" href="/wp-content/themes/fleming-theme/{{ css_filename }}">
-    </head>
+{{ include('layout/header.html') }}
 
-    <body>
-        Fleming single organisation
+<div class="row" style="margin-top: 1em; margin-bottom: 1em">
+    <h1>{{ title }}</h1>
+    {{ include('layout/in-page-links.html') }}
+</div>
 
-        <h1>{{ title }}</h1>
+{% include 'flexible_content.twig' with { 'flexible_content': fields.organisation_flexible_content.value } %}
 
-        {% for content_block in fields.organisation_flexible_content.value %}
-        
-            {% if content_block.acf_fc_layout == 'text_block' %}
-                {% include '1-atoms/text-block.html' %}
-        
-            {% elseif content_block.acf_fc_layout == 'quote' %}
-                {% include '1-atoms/quote.html' %}
-        
-            {% endif %}
-        
-        {% endfor %}
-        
-    </body>
-</html> 
-
+{{ include('layout/footer.html') }}
