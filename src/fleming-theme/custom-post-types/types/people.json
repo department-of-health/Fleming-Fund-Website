@@ -7,7 +7,7 @@
                 "key": "field_5b05760a44815",
                 "label": "Role",
                 "name": "role",
-                "type": "text",
+                "type": "select",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -16,11 +16,20 @@
                     "class": "",
                     "id": ""
                 },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
+                "choices": {
+                    "staff": "Staff",
+                    "advisor": "Advisor",
+                    "contact": "Contact",
+                    "coordinator": "Co-ordinator",
+                    "fellow": "Fellow"
+                },
+                "default_value": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "ajax": 0,
+                "return_format": "value",
+                "placeholder": ""
             },
             {
                 "key": "field_5b05762844816",
@@ -48,7 +57,7 @@
                 "key": "field_5b05764644817",
                 "label": "Details",
                 "name": "details",
-                "type": "textarea",
+                "type": "flexible_content",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -57,11 +66,99 @@
                     "class": "",
                     "id": ""
                 },
-                "default_value": "",
-                "placeholder": "",
-                "maxlength": "",
-                "rows": "",
-                "new_lines": ""
+                "layouts": {
+                    "5b23bcdf1f65a": {
+                        "key": "5b23bcdf1f65a",
+                        "name": "header_paragraph",
+                        "label": "Header Paragraph",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5b23bce3d5550",
+                                "label": "Header Paragraph Inner",
+                                "name": "paragraph_inner",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "5b23c18bc7997": {
+                        "key": "5b23c18bc7997",
+                        "name": "supporting_paragraph",
+                        "label": "Supporting Paragraph",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5b23c18bc7998",
+                                "label": "Supporting Paragraph Inner",
+                                "name": "paragraph_inner",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    }
+                },
+                "button_label": "Add Paragraph",
+                "min": "",
+                "max": ""
+            },
+            {
+                "key": "field_5b290b62902c0",
+                "label": "Projects",
+                "name": "projects",
+                "type": "post_object",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_5b05760a44815",
+                            "operator": "==",
+                            "value": "fellow"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "projects"
+                ],
+                "taxonomy": [],
+                "allow_null": 1,
+                "multiple": 1,
+                "return_format": "object",
+                "ui": 1
             }
         ],
         "location": [

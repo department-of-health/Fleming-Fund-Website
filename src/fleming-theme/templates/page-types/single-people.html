@@ -1,0 +1,46 @@
+{{ include('layout/header.html') }}
+
+<h1>{{ title }}</h1>
+
+<hr class="row-underline" />
+
+<div class="row">
+  <div class="nine columns">
+    {% for content_block in fields.details.value %}
+        
+      {% if content_block.acf_fc_layout == 'header_paragraph' %}
+        <p>{{ content_block.paragraph_inner }}</p>
+  
+      {% elseif content_block.acf_fc_layout == 'supporting_paragraph' %}
+        <p class="supporting">{{ content_block.paragraph_inner }}</p>
+  
+      {% endif %}
+    
+    {% endfor %}
+  </div>
+  <div class="three columns">
+    <div>Fellow - details</div>
+  </div>
+</div>
+
+{% if fields.role.value == 'fellow' %}
+<hr class="row-separator" />
+<h3 class="row-title">Fellow Projects</h3>
+<div class="row">
+  {% include 'cards/entities/project-large.html' with {'project': fields.projects.value[0]} %}
+  {% include 'cards/entities/project-large.html' with {'project': fields.projects.value[1]} %}
+</div>
+
+<hr class="row-separator" />
+<h3 class="row-title">Current Fellows</h3>
+<div class="row">
+  {% for fellow in fellows %}
+  {% include 'cards/entities/person-medium-with-image.html' with {
+    'person': fellow
+  } %}
+  {% endfor %}
+  
+</div>
+{% endif %}
+
+{{ include('layout/footer.html') }}
