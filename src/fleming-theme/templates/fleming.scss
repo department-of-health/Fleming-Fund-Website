@@ -108,6 +108,14 @@ button.square-icon {
   }
 }
 
+button {
+  background: $turquoise;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
 // Per-page CSS
 @import 'page-types/single-organisation';
 
