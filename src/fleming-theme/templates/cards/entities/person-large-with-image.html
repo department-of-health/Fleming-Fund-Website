@@ -8,7 +8,7 @@
       {% if quote %}
         <p class="solid-left-indent">&quot;{{ quote }}&quot;</p>
       {% endif %}
-      <p class="supporting">{{ person.fields.details.value }}</p>
+      <p class="supporting">{{ person.fields.details.value[0].paragraph_inner }}</p>
       {% if cta_override %}
         <a class="button button-dark" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
       {% else %}

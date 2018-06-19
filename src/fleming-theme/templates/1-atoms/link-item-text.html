@@ -1,12 +1,5 @@
-{% set has_target = link.target and not ignore_target %}
-{% if link is not null %}
-  <li {{ link.active ? 'class="active"' }}>
-    {% if has_target %}
-    <a href="{{ link.target }}" target="{{ link.external ? '_blank' : '_self' }}">
-      {% endif %}
-      {{ link.title }}
-      {% if has_target %}
-    </a>
-    {% endif %}
-  </li>
-{% endif %}
+{% embed '1-atoms/link-item.html' %}
+  {% block inner %}
+    {{ link.title }}
+  {% endblock %}
+{% endembed %}
