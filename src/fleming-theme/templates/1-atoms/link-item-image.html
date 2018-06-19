@@ -1,11 +1,5 @@
-{% if link is not null %}
-  <li {{ link.active ? 'class="active"' }}>
-    {% if link.target %}
-    <a href="{{ link.target }}" target="{{ link.external ? '_blank' : '_self' }}">
-      {% endif %}
-      <img src="{{ image_src }}" alt="{{ link.title }}"/>
-      {% if link.target %}
-    </a>
-    {% endif %}
-  </li>
-{% endif %}
+{% embed '1-atoms/link-item.html' %}
+  {% block inner %}
+    <img src="{{ image_src }}" alt="{{ link.title }}"/>
+  {% endblock %}
+{% endembed %}

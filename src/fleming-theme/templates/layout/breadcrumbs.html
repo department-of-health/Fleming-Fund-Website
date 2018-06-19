@@ -1,10 +1,13 @@
 {% if nav.breadcrumbLinks is not empty %}
   <div class="breadcrumbs">
     <ul>
-      {% include '1-atoms/link-item-image.html' with {
-        'link': nav.homeLink,
-        'image_src': '/wp-content/themes/fleming-theme/images/home-icon.png',
-      } %}
+      {% embed '1-atoms/link-item.html' with {'link': nav.homeLink} %}
+        {% block inner %}
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 27">
+            <path d="M16 0 L 23 7 V 2 H 27 V 11 L 32 16  V 18 H 27 V 28 H 21 V 18 H 16 V 28 H 5 V 18 H 0 V 16 Z"/>
+          </svg>
+        {% endblock %}
+      {% endembed %}
       {% for link in nav.breadcrumbLinks %}
         {% include '1-atoms/link-item-text.html' with {'ignore_target': loop.last} %}
       {% endfor %}

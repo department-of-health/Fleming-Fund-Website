@@ -50,6 +50,10 @@ div.breadcrumbs {
   margin: 2em 0 0.5em;
   color: $light-grey-text;
 
+  svg {
+    fill: $light-grey-text;
+  }
+
   li {
     font-size: 16px;
 
