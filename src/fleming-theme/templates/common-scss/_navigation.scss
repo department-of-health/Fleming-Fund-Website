@@ -1,4 +1,4 @@
-@mixin is_li_with_left_rightward_arrow {
+@mixin has_left_rightward_arrow {
   &:before {
     margin-left: 1ex;
     margin-right: 1ex;
@@ -6,7 +6,15 @@
   }
 }
 
-@mixin horizontal_ul($highlight-active) {
+@mixin has_left_leftward_arrow {
+  &:before {
+    margin-left: 1ex;
+    margin-right: 1ex;
+    content: '‹';
+  }
+}
+
+@mixin horizontal_ul {
   margin: 0;
   padding: 0;
   font-size: 0;
@@ -31,37 +39,22 @@
     }
 
     &.inline-submenu:not(:first-child) {
-      @include is_li_with_left_rightward_arrow;
-    }
-  }
-
-  @if ($highlight-active) {
-    li.active a {
-      padding-bottom: 0.5em;
-      border-bottom: 0.2em solid currentColor;
+      @include has_left_rightward_arrow;
     }
   }
 }
 
-@mixin pipe_horizontal_ul($highlight-active, $pipe-height: 1em, $pipe-vertical-align: text-top) {
-  @include horizontal_ul($highlight-active);
+@mixin pipe_horizontal_ul($pipe-height: 0.8em, $pipe-vertical-align: text-top) {
+  @include horizontal_ul;
 
   li:not(.inline-submenu):not(:first-child):before {
-    margin-left: 1ex;
-    margin-right: 1ex;
+    margin: 0.2em 1ex 0;
     height: $pipe-height;
     width: 1px;
     background: currentColor;
+    opacity: 0.45;
     content: ' ';
     display: inline-block;
     vertical-align: $pipe-vertical-align;
-  }
-}
-
-@mixin breadcrumb_horizontal_ul($highlight-active) {
-  @include horizontal_ul($highlight-active);
-
-  li:not(:first-child) {
-    @include is_li_with_left_rightward_arrow;
   }
 }

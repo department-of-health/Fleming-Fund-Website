@@ -1,13 +1,32 @@
-// The getskeleton.com responsive CSS framework, as a starting point.
-@import "skeleton-scss/skeleton";
-// Fleming-specific
+@import "skeleton-scss/base/normalize";
+@import "common-scss/skeleton-override/variables";
+@import "skeleton-scss/base/functions";
+@import "skeleton-scss/base/base-styles";
+@import "skeleton-scss/base/utils";
+@import "skeleton-scss/base/typography";
+
+@import "common-scss/interface-constants";
+@import "common-scss/skeleton-override/grid";
+@import "skeleton-scss/modules/buttons";
+@import "skeleton-scss/modules/forms";
+@import "skeleton-scss/modules/lists";
+@import "skeleton-scss/modules/code";
+@import "skeleton-scss/modules/tables";
+@import "skeleton-scss/modules/spacing";
+@import "skeleton-scss/modules/media-queries";
+
 @import "common-scss/colours";
 @import "common-scss/fonts";
+
 @import "common-scss/grey-box";
 @import "common-scss/buttons-dark";
 @import "common-scss/navigation";
 @import "common-scss/cards";
 @import "common-scss/map";
+
+@import "common-scss/header";
+@import "common-scss/nav";
+@import "common-scss/footer";
 
 h1, h2, h3, h4, h5 {
   display: block;
@@ -18,78 +37,6 @@ h1 {
   margin-bottom: 0;
 }
 
-.logo-home {
-  display: inline-block;
-  margin: 15px 0;
-  font-size: 0;
-}
-
-.header-search {
-  float: right;
-  margin: 40px 0 0;
-  white-space: nowrap;
-
-  input {
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  button {
-    display: inline-block;
-    vertical-align: top;
-  }
-}
-
-// Extra styles created for header, footer and front-page
-nav.global-nav {
-  ul {
-    @include pipe_horizontal_ul(true);
-  }
-
-  background-color: black;
-  color: white;
-  li {
-    font-size: 19px;
-  }
-}
-
-nav.sub-global-nav {
-  ul {
-    @include pipe_horizontal_ul(true);
-  }
-
-  background-color: #F2F2F2;
-  color: black;
-  li {
-    font-size: 16px;
-  }
-}
-
-div.breadcrumbs {
-  ul {
-    @include breadcrumb_horizontal_ul(false);
-  }
-
-  margin: 2em 0 0.5em;
-  color: black;
-  li {
-    font-size: 16px;
-  }
-}
-
-ul.large-links {
-  @include pipe_horizontal_ul(false);
-
-  margin-bottom: 2em;
-  li {
-    font-size: 21px;
-    line-height: 1.33;
-  }
-}
-
-ul.horizontal-pipe {
-  @include pipe_horizontal_ul(false);
-}
 
 input, button, .button {
   border-radius: 0 !important;
@@ -147,97 +94,17 @@ hr.row-divider {
   border-top: 2px solid #000;
 }
 
-footer {
-  p, li {
-    font-size: 14px;
-    margin: 0;
-  }
+button.square-icon {
+  $padding: 10px;
+  box-sizing: border-box;
+  width: $hit-box-height;
+  height: $hit-box-height;
+  padding: $padding;
+  border: none;
 
-  .footer-content {
-    border-top: 1px solid #000;
-    margin: 1em 0 3em;
-    padding-top: 1em;
-  }
-
-  ul {
-    white-space: nowrap;
-  }
-
-  .left, .right {
-    width: 100%;
-  }
-
-  .social-links {
-    @include pipe_horizontal_ul(false, 30px, middle);
-
-    margin-bottom: 2em;
-    display: inline-block;
-    vertical-align: middle;
-
-    li {
-      img {
-        height: 24px;
-      }
-    }
-  }
-
-  .copyright {
-    font-weight: bold;
-    margin-top: 2em;
-    margin-bottom: 0.3em;
-  }
-
-  .about-links {
-    @include pipe_horizontal_ul(false);
-
-    margin-top: 1em;
-    margin-bottom: 2em;
-    display: inline-block;
-    vertical-align: middle;
-
-    li a {
-      padding-top: 0.3em;
-      padding-bottom: 0.3em;
-    }
-
-    .forced-break {
-      display: none;
-    }
-  }
-
-  .right {
-    display: inline-block;
-    vertical-align: middle;
-
-    .footer-content {
-      display: flex;
-      flex-flow: row wrap;
-      width: 100%;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-}
-
-@media (#{$bp-larger-than-desktop}) {
-  footer {
-    .left {
-      width: grid-column-width(8);
-    }
-    .right {
-      width: grid-column-width(4);
-      margin-left: $column-margin;
-    }
-
-    .about-links {
-      .forced-break {
-        display: block;
-      }
-
-      li:last-of-type:before {
-        display: none !important;
-      }
-    }
+  svg {
+    width: ($hit-box-height - 2*$padding);
+    height: ($hit-box-height - 2*$padding);
   }
 }
 

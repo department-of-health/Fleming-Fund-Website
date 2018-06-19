@@ -2,87 +2,113 @@
 
 </div>
 <div class="map-container">
+  <div class="container alignment-helper">
+    <button id="{{ map_id }}-zoom-in" class="zoom-in square-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="6 6 20 20">
+        <path d="M14 6 H 18 V 14 H 26 V 18 H 18 V 26 H 14 V 18 H 6 V 14 H 14 Z"/>
+      </svg>
+    </button>
+    <button id="{{ map_id }}-zoom-out" class="zoom-out square-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="6 6 20 20">
+        <path d="M6 14 H 26 V 18 H 6 Z"/>
+      </svg>
+    </button>
+  </div>
   <div class="map" id="{{ map_id }}"></div>
 </div>
 <div class="container">
 
-<script type="text/javascript">
-    //<![CDATA[
-    var mapConfig = {{ map_config|json_encode|raw }};
-    var currentRegion = mapConfig.currentRegion;
+  <script type="text/javascript">
+      //<![CDATA[
+      var mapConfig = {{ map_config|json_encode|raw }};
+      var currentRegion = mapConfig.currentRegion;
 
-    function getCountryFillMap() {
-        var fillMap = {};
-        $.each(mapConfig.countries, function (code, country) {
-            var region = mapConfig.regions[country.region];
-            fillMap[code] = region.baseColour;
-        });
-        return fillMap;
-    }
+      function getCountryFillMap() {
+          var fillMap = {};
+          $.each(mapConfig.countries, function (code, country) {
+              var region = mapConfig.regions[country.region];
+              fillMap[code] = region.baseColour;
+          });
+          return fillMap;
+      }
 
-    function getCountryStyleMap() {
-        var styleMap = {};
-        $.each(mapConfig.countries, function (code, country) {
-            styleMap[code] = 'cursor:pointer';
-        });
-        return styleMap;
-    }
+      function getCountryStyleMap() {
+          var styleMap = {};
+          $.each(mapConfig.countries, function (code, country) {
+              styleMap[code] = 'cursor:pointer';
+          });
+          return styleMap;
+      }
 
-    var map;
-    $(function () {
-        map = $('#{{ map_id }}').vectorMap({
-            map: 'world_mill',
-            backgroundColor: '#f2f2f2',
-            regionStyle: {
-                initial: {
-                    fill: 'white',
-                    "fill-opacity": 1,
-                    stroke: 'none',
-                    "stroke-width": 0,
-                    "stroke-opacity": 1
-                },
-                hover: {
-                    cursor: 'normal'
-                }
-            },
-            focusOn: {
-                regions: mapConfig.regions[currentRegion].countries
-            },
-            series: {
-                regions: [
-                    {attribute: 'fill', values: getCountryFillMap()},
-                    {attribute: 'style', values: getCountryStyleMap()}
-                ]
-            },
-            zoomOnScroll: false,
-            onRegionTipShow: function (e, tip, code) {
-                var country = mapConfig.countries[code];
-                if (country) {
-                    tip.html(country.name);
-                } else {
-                    e.preventDefault();
-                }
-            },
-            onRegionClick: function (e, code) {
-                var country = mapConfig.countries[code];
-                if (country) {
-                    window.location.href = country.URL;
-                }
-            }
-        }).vectorMap('get', 'mapObject');
-    });
+      var map;
+      $(function () {
+          map = $('#{{ map_id }}').vectorMap({
+              map: 'world_mill',
+              backgroundColor: '#f2f2f2',
+              regionStyle: {
+                  initial: {
+                      fill: 'white',
+                      "fill-opacity": 1,
+                      stroke: 'none',
+                      "stroke-width": 0,
+                      "stroke-opacity": 1
+                  },
+                  hover: {
+                      cursor: 'normal'
+                  }
+              },
+              focusOn: {
+                  regions: mapConfig.regions[currentRegion].countries
+              },
+              series: {
+                  regions: [
+                      {attribute: 'fill', values: getCountryFillMap()},
+                      {attribute: 'style', values: getCountryStyleMap()}
+                  ]
+              },
+              zoomOnScroll: false,
+              panOnDrag: true,
+              zoomMax: 10,
+              onRegionTipShow: function (e, tip, code) {
+                  var country = mapConfig.countries[code];
+                  if (country) {
+                      tip.html(country.name);
+                  } else {
+                      e.preventDefault();
+                  }
+              },
+              onRegionClick: function (e, code) {
+                  var country = mapConfig.countries[code];
+                  if (country) {
+                      window.location.href = country.URL;
+                  }
+              }
+          }).vectorMap('get', 'mapObject');
 
-    function refocusMap(animate) {
-        if (map !== undefined && currentRegion !== undefined) {
-            map.setFocus({
-                regions: mapConfig.regions[currentRegion].countries,
-                animate: animate
-            });
-        }
-    }
+          $('#{{ map_id }}-zoom-in').click(
+              function () {
+                  map.setScale(map.scale * map.params.zoomStep, map.width / 2, map.height / 2, !1, map.params.zoomAnimate)
+              }
+          );
+          $('#{{ map_id }}-zoom-out').click(
+              function () {
+                  map.setScale(map.scale / map.params.zoomStep, map.width / 2, map.height / 2, !1, map.params.zoomAnimate)
+              }
+          );
 
-    $(window).resize(function () {
-        refocusMap(false);
-    });
-    //]]>
-</script>
+      });
+
+      function refocusMap(animate) {
+          if (map !== undefined && currentRegion !== undefined) {
+              map.setFocus({
+                  regions: mapConfig.regions[currentRegion].countries,
+                  animate: animate
+              });
+          }
+      }
+
+      $(window).resize(function () {
+          refocusMap(false);
+      });
+      //]]>
+  </script>
