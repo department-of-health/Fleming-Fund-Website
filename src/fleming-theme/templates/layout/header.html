@@ -48,18 +48,18 @@
         if (searchHidden) {
             $('.mobile-toggle-search button').html(closeIcon);
             $('.search-container')
-                .addClass('showing-on-mobile')
+                .removeClass('hidden-on-mobile')
                 .find('input')
                 .focus();
         } else {
             $('.mobile-toggle-search button').html(searchIcon);
-            $('.search-container').removeClass('showing-on-mobile');
+            $('.search-container').addClass('hidden-on-mobile');
         }
         searchHidden = !searchHidden;
     }
 
     $(function () {
-        searchIcon = $('.square-icon').html();
+        searchIcon = $('.search-container button.square-icon').html();
         $('.logo-container').after($(
             '<div class="mobile-toggle-search">' +
             '<button class="square-icon" onclick="searchToggleButtonClicked();">' +
@@ -67,6 +67,7 @@
             '</button>' +
             '</div>'
         ));
+        $('.search-container').addClass('hidden-on-mobile');
     });
     //]]>
 </script>
@@ -78,6 +79,43 @@
     </ul>
   </div>
 </nav>
+<script type="text/javascript">
+    //!<[CDATA[
+    var menuHidden = true;
+
+    function showMenu() {
+        $('.global-nav')
+            .removeClass('hidden-on-mobile')
+            .find('.mobile-toggle-menu')
+            .html('Menu ▲');
+        menuHidden = false;
+    }
+    function hideMenu() {
+        $('.global-nav')
+            .addClass('hidden-on-mobile')
+            .find('.mobile-toggle-menu')
+            .html('Menu ▼');
+        menuHidden = true;
+    }
+    function menuToggleButtonClicked() {
+        if (menuHidden) {
+            showMenu();
+        } else {
+            hideMenu();
+        }
+    }
+    $(function () {
+        $('.global-nav').prepend($(
+            '<div class="container">' +
+            '<a class="mobile-toggle-menu" href="javascript:menuToggleButtonClicked();" tabindex="0">' +
+            'Menu' +
+            '</a>' +
+            '</div>'
+        ));
+        hideMenu();
+    });
+    //]]>
+</script>
 
 <nav class="sub-global-nav">
   {% if nav.subGlobalMenuLinks is not empty %}

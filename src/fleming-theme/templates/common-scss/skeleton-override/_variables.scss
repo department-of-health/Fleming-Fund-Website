@@ -11,6 +11,7 @@ $bp-larger-than-desktophd : "min-width: 1200px";
 $breakpoint-mobile: 500px;
 $breakpoint-tablet: 750px;
 $breakpoint-desktop: 1000px;
+// TODO There is a 1px conflict when min-width and max-width media queries are applied simultaneously
 
 // Colors
 $light-grey: #e1e1e1;

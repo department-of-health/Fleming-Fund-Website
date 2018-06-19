@@ -77,10 +77,9 @@ header {
     .search-container {
       text-align: center;
       width: 100%;
-      display: none;
 
-      &.showing-on-mobile {
-        display: initial;
+      &.hidden-on-mobile {
+        display: none;
       }
     }
 
