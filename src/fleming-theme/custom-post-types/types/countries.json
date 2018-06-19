@@ -134,6 +134,25 @@
                 "prepend": "",
                 "append": "",
                 "maxlength": ""
+            },
+            {
+                "key": "field_5b27d0c204957",
+                "label": "Country Code",
+                "name": "country_code",
+                "type": "text",
+                "instructions": "The two-letter country code.",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": 2
             }
         ],
         "location": [
