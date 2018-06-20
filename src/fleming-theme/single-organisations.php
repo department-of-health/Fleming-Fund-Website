@@ -19,6 +19,8 @@ function fleming_get_content() {
         "fields" => get_field_objects()
     );
 
+    process_flexible_content($fleming_content, $fleming_content['fields']['organisation_flexible_content']);
+
     return $fleming_content;
 }
 

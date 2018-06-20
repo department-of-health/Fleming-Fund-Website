@@ -1,37 +1,6 @@
 {{ include('layout/header.html') }}
 
-<div class="row border-bottom-grey" style="margin-top: 1em; padding-bottom: 1rem;">
-  <div class="twelve columns">
-    <p class="supporting" style="margin-bottom: 1.25rem">
-      <!-- qq should this be in the heading style? Can't easily use h3 here -->
-      <span style="font-weight: bold; margin-right: 2em;">Current &amp; Upcoming Opportunities</span>
-      <span>More</span>
-    </p>
-  </div>
-  <div class="twelve columns">
-    <div class="three columns">
-      <a href={{ opportunities[0].permalink }}>
-        <span style="font-weight: bold">{{ opportunities[0].data.post_title }}</span><br/>
-        <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[0].fields.deadline.value }}
-      </a>
-    </div>
-    <div class="three columns">
-      <a href={{ opportunities[1].permalink }}>
-        <span style="font-weight: bold">{{ opportunities[1].data.post_title }}</span><br/>
-        <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[1].fields.deadline.value }}
-      </a>
-    </div>
-    <div class="three columns">
-      <a href={{ opportunities[2].permalink }}>
-        <span style="font-weight: bold">{{ opportunities[2].data.post_title }}</span><br/>
-        <span style="font-weight: bold">Status:</span> Deadline {{ opportunities[2].fields.deadline.value }}
-      </a>
-    </div>
-    <div class="three columns">
-      <button>How to Apply</button>
-    </div>
-  </div>
-</div>
+{{ include('layout/current-opportunities.html') }}
 
 <div class="row" style="margin-top: 3em; margin-bottom: 3em">
   <h2>We are a UK Government aid programme, helping low / middle income countries tackle antimicrobial
