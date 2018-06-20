@@ -1,1 +1,20 @@
-Archive organisations
+{{ include('layout/header.html') }}
+
+<div class="row" style="margin-top: 1em; margin-bottom: 1em">
+  <h1>{{ title }}</h1>
+</div>
+<hr class="row-underline"/>
+
+<div class="row">
+  {% for post in posts %}
+  {% include('cards/entities/organisation-large.html') with { 'organisation' : post } %}
+  {% if loop.index is even and not loop.last %}
+</div>
+<div class="row">
+  {% endif %}
+  {% endfor %}
+</div>
+
+<!-- page navigation -->
+
+{{ include('layout/footer.html') }}

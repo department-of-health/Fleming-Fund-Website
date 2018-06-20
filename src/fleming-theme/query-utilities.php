@@ -14,6 +14,19 @@ function get_post_data_and_fields($postID) {
     return $result;
 }
 
+// As above except we want to fetch the current post from the loop, i.e. we want no post ID.
+// Commonise but keep the null check for the previous function somehow?
+function get_current_post_data_and_fields() {
+    $result = [
+        'data'=>get_post(),
+        'permalink'=>get_permalink(),
+        'fields'=>get_field_objects()
+    ];
+    $result['data']->page_title = get_raw_title();
+    $result['data']->guid = htmlspecialchars_decode($result['data']->guid);
+    return $result;
+}
+
 function get_referring_posts($postID, $post_type, $reference_type) {
     $posts = get_posts(array('post_type'=>$post_type,'numberposts'=>-1));
     foreach($posts as &$post) {

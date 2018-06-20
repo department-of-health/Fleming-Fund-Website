@@ -1,0 +1,8 @@
+{% if organisation %}
+  {% include 'cards/large.html' with { 'card': {
+    'identifier': organisation.fields.organisation_type.value.post_title | default('Organisation'),
+    'title': organisation.data.post_title,
+    'overview': 'Excerpt for organisation',
+    'content': 'Content for organisation'
+  }} %}
+{% endif %}
