@@ -8,6 +8,7 @@ register_post_type('events', array(
     'description'           => '',
     'exclude_from_search'   => false,
     'public'                => true,
+    'has_archive'           => true,
     'publicly_queryable'    => true,
     'show_in_nav_menus'     => false,
     'show_ui'               => true,

@@ -1,0 +1,29 @@
+{{ include('layout/header.html') }}
+
+<div class="row" style="margin-top: 1em; margin-bottom: 1em">
+  <h1>{{ title }}</h1>
+</div>
+<hr class="row-underline"/>
+
+<div class="row">
+  {% for post in posts %}
+    {% if post.data.post_type == 'organisations' %}
+      {% include('cards/entities/organisation-large.html') with { 'organisation' : post } %}
+    {% elseif post.data.post_type == 'grants' %}
+      {% include('cards/entities/grant-large.html') with { 'grant' : post } %}
+    {% elseif post.data.post_type == 'projects' %}
+      {% include('cards/entities/project-large.html') with { 'project' : post } %}
+    {% elseif post.data.post_type == 'publication' %}
+      {% include('cards/entities/project-large.html') with { 'publication' : post } %}
+    {% endif %}
+
+    {% if loop.index is even and not loop.last %}
+</div>
+<div class="row">
+    {% endif %}
+  {% endfor %}
+</div>
+
+<!-- page navigation -->
+
+{{ include('layout/footer.html') }}
