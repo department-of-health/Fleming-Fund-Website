@@ -1,0 +1,10 @@
+{% if content_block.values %}
+<div class="row statistics">
+  {% for statistic in content_block.values %}
+  <div class="{{ statistic.column_style }}">
+    <p class="statistic-value">{{ statistic.value }}</p>
+    <p class="supporting statistic-text">{{ statistic.text }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

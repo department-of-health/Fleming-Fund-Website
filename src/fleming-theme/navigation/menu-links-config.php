@@ -16,12 +16,15 @@ class MenuLinksConfig
                 ],
                 'source' => [
                     'title' => 'Source & spending',
+                    'target' => '/sources-spending/',
                 ],
                 'evaluation' => [
                     'title' => 'Independent Evaluation',
+                    'target' => '/independent-evaluation/',
                 ],
                 'partners' => [
                     'title' => 'Partners',
+                    'target' => '/partners/',
                 ],
                 'advisory' => [
                     'title' => 'Technical Advisory Group',
@@ -29,6 +32,7 @@ class MenuLinksConfig
                 ],
                 'contact' => [
                     'title' => 'Contact Us',
+                    'target' => '/contact-us/',
                 ],
             ],
         ],
@@ -39,21 +43,27 @@ class MenuLinksConfig
             'children' => [
                 'global' => [
                     'title' => 'Global grants',
+                    'target' => '/grant_types/global-grant/',
                 ],
                 'regional' => [
                     'title' => 'Regional grants',
+                    'target' => '/grant_types/regional-grant/',
                 ],
                 'country' => [
                     'title' => 'Country grants',
+                    'target' => '/grant_types/country-grant/',
                 ],
                 'fellowships' => [
                     'title' => 'Fellowships scheme',
+                    'target' => '/fellowships-scheme/',
                 ],
                 'other' => [
                     'title' => 'Other Opportunities',
+                    'target' => '/other-opportunities/',
                 ],
                 'apply' => [
                     'title' => 'How to Apply',
+                    'target' => '/application-process/',
                 ],
             ],
         ],
@@ -64,6 +74,7 @@ class MenuLinksConfig
             'children' => [
                 'projects' => [
                     'title' => 'Projects',
+                    'target' => '/projects/',
                 ],
             ],
         ],
@@ -73,6 +84,7 @@ class MenuLinksConfig
         ],
         'news' => [
             'title' => 'News & Events',
+            'target' => '/news-events/',
         ],
     ];
 

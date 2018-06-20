@@ -1,0 +1,198 @@
+<nav class="global-nav">
+  <div class="container">
+    <ul>
+      {% for link in nav.globalMenuLinks %}
+        {% include 'layout/nav-link.html' %}
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+<nav class="sub-global-nav">
+  {% if nav.subGlobalMenuLinks is not empty %}
+    <div class="container">
+      {% if nav.tertiaryMenuLinks is not empty %}
+
+        <ul class="all-but-first-in-submenu">
+          {% for link in nav.subGlobalMenuLinks %}
+            {% if link.active %}
+              {% include '1-atoms/link-item-text.html' %}
+            {% endif %}
+          {% endfor %}
+
+          {% include '1-atoms/link-items-text.html' with {'links': nav.tertiaryMenuLinks} %}
+        </ul>
+
+      {% else %}
+
+        <ul>
+          {% include '1-atoms/link-items-text.html' with {'links': nav.subGlobalMenuLinks} %}
+        </ul>
+
+      {% endif %}
+    </div>
+  {% endif %}
+</nav>
+
+<script type="text/javascript">
+    //!<[CDATA[
+    function showMenu() {
+        $('.global-nav')
+            .removeClass('mobile-hidden')
+            .find('.mobile-toggle-menu')
+            .text('Menu ▲');
+    }
+
+    function hideMenu() {
+        var globalNav = $('.global-nav');
+        globalNav
+            .addClass('mobile-hidden')
+            .find('.mobile-toggle-menu')
+            .text('Menu ▼');
+        hideAllSubmenusBelow(globalNav);
+    }
+
+    function menuToggleButtonClicked() {
+        $('.mobile-toggle-menu').blur();
+        if ($('.global-nav').hasClass('mobile-hidden')) {
+            showMenu();
+        } else {
+            hideMenu();
+        }
+    }
+
+    (function () {
+        $('.global-nav').prepend($(
+            '<div class="container">' +
+            '<a class="mobile-toggle-menu" href="javascript:menuToggleButtonClicked();" tabindex="0"></a>' +
+            '</div>'
+        ));
+        hideMenu();
+    })();
+
+    function hideAllSubmenusBelow(rootMenu) {
+        rootMenu
+            .find('.mobile-submenu-showing')
+            .each(function (i, menuItem) {
+                hideSubmenu($(menuItem));
+            });
+    }
+
+    function showSubmenu(menuItem) {
+        menuItem
+            .addClass('mobile-submenu-showing')
+            .children('.mobile-toggle-submenu')
+            .text('-');
+    }
+
+    function hideSubmenu(menuItem) {
+        menuItem
+            .removeClass('mobile-submenu-showing')
+            .children('.mobile-toggle-submenu')
+            .text('+');
+        hideAllSubmenusBelow(menuItem);
+    }
+
+    function submenuToggleButtonClicked(menuItem) {
+        menuItem.find('.mobile-toggle-submenu').blur();
+        if (menuItem.hasClass('mobile-submenu-showing')) {
+            hideSubmenu(menuItem);
+        } else {
+            showSubmenu(menuItem);
+        }
+    }
+
+    (function () {
+        $('.global-nav')
+            .find('.mobile-submenu')
+            .parent()
+            .prepend(
+                $('<a class="mobile-toggle-submenu" tabindex="0">+</a>')
+                    .click(function () {
+                        submenuToggleButtonClicked($(this).parent());
+                    })
+                    .keypress(function (e) {
+                        if (e.which === 13) {
+                            $(this).click();
+                        }
+                    })
+            );
+    })();
+
+    function showMenuMore() {
+        $('.global-nav')
+            .removeClass('tablet-more-hidden')
+            .find('.tablet-toggle-more a')
+            .text('More ▲');
+    }
+
+    function hideMenuMore() {
+        $('.global-nav')
+            .addClass('tablet-more-hidden')
+            .find('.tablet-toggle-more a')
+            .text('More ▼');
+    }
+
+    function menuMoreToggleButtonClicked() {
+        $('.tablet-toggle-more a').blur();
+        if ($('.global-nav').hasClass('tablet-more-hidden')) {
+            showMenuMore();
+        } else {
+            hideMenuMore();
+        }
+    }
+
+    (function () {
+        var hideOnTablet = $('.global-nav')
+            .find('ul')
+            .first()
+            .children('li')
+            .slice(3);
+        if (hideOnTablet.length > 0) {
+            hideOnTablet
+                .addClass('tablet-hide')
+                .first()
+                .before($('<li class="tablet-toggle-more"><a href="javascript:menuMoreToggleButtonClicked();"></a></li>'));
+            hideMenuMore();
+        }
+    })();
+
+    function showSubmenuMore() {
+        $('.sub-global-nav')
+            .removeClass('tablet-more-hidden')
+            .find('.tablet-toggle-more a')
+            .text('More ▲');
+    }
+
+    function hideSubmenuMore() {
+        $('.sub-global-nav')
+            .addClass('tablet-more-hidden')
+            .find('.tablet-toggle-more a')
+            .text('More ▼');
+    }
+
+    function submenuMoreToggleButtonClicked() {
+        $('.tablet-toggle-more a').blur();
+        if ($('.sub-global-nav').hasClass('tablet-more-hidden')) {
+            showSubmenuMore();
+        } else {
+            hideSubmenuMore();
+        }
+    }
+
+    (function () {
+        var hideOnTablet = $('.sub-global-nav')
+            .find('ul')
+            .first()
+            .children('li')
+            .slice(3);
+        if (hideOnTablet.length > 0) {
+            hideOnTablet
+                .addClass('tablet-hide')
+                .first()
+                .before($('<li class="tablet-toggle-more"><a href="javascript:submenuMoreToggleButtonClicked();"></a></li>'));
+            hideSubmenuMore();
+        }
+    })();
+    //]]>
+</script>

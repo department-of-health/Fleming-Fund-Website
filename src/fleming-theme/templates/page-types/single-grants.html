@@ -31,11 +31,11 @@
   <div class="nine columns">
     {% for content_block in fields.description.value %}
         
-      {% if content_block.acf_fc_layout == 'header_paragraph' %}
-        <p>{{ content_block.header_paragraph_inner }}</p>
-  
-      {% elseif content_block.acf_fc_layout == 'supporting_paragraph' %}
-        <p class="supporting">{{ content_block.supporting_paragraph_inner }}</p>
+    {% if content_block.acf_fc_layout == 'header_paragraph' %}
+      {% include '1-atoms/text-block.html' %}
+
+    {% elseif content_block.acf_fc_layout == 'supporting_paragraph' %}
+      {% include '1-atoms/supporting-text-block.html' %}
   
       {% endif %}
     
@@ -52,7 +52,7 @@
 <h3 class="row-title">Eligibility Criteria</h3>
 <div class="row">
   <div class="nine columns">
-    <p>{{ fields.criteria.value.introductory_paragraph}}</p>
+      {% include '1-atoms/text-block.html' with {'content_block': fields.criteria.value} %}
   </div>
 </div>
 {% for criterion in fields.criteria.value.criteria %}
@@ -61,7 +61,7 @@
     <h2>&#9654</h2>
   </div>
   <div class="eight columns">
-    <p class="supporting">{{ criterion.criterion }}</p>
+      {% include '1-atoms/supporting-text-block.html' with {'content_block': fields.criteria.value} %}
   </div>
 </div>
 {% endfor %}

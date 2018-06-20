@@ -140,8 +140,8 @@
                 "label": "Country Code",
                 "name": "country_code",
                 "type": "text",
-                "instructions": "The two-letter country code.",
-                "required": 1,
+                "instructions": "The two-letter country code. Used to enable the map for this country.",
+                "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
                     "width": "",

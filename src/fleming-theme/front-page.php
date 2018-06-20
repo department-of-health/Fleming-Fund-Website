@@ -76,11 +76,14 @@ function fleming_get_content() {
     $opportunities = get_posts(array('post_type'=>'grants','numberposts'=>-1));
     foreach($opportunities as &$opportunity) {
         $opportunity = get_post_data_and_fields($opportunity->ID);
+        // Compute status - qq needs to be more complicated than this!
+        $opportunity['status'] = 'Deadline ' . $opportunity['fields']['deadline']['value'];
+        // qq render date in locale-specific form?
     }
     $opportunities = array_filter($opportunities, function($opportunity) {
         return is_in_future($opportunity);
     });
-    $opportunities = array_slice(sort_opportunities($opportunities), 0, 4);
+    $opportunities = array_slice(sort_opportunities($opportunities), 0, 3);
     $fleming_content["opportunities"] = $opportunities;
 
     return $fleming_content;

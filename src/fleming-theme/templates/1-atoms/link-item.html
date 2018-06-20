@@ -1,0 +1,16 @@
+{% set has_target = link.target and not ignore_target %}
+{% if link is not null %}
+  <li {{ link.active ? 'class="active"' }}>
+    {% block before_link %}{% endblock %}
+    {% if has_target %}
+    <a href="{{ link.target }}" target="{{ link.external ? '_blank' : '_self' }}">
+      {% endif %}
+      {% block inner %}
+
+      {% endblock %}
+      {% if has_target %}
+    </a>
+    {% endif %}
+    {% block after_link %}{% endblock %}
+  </li>
+{% endif %}
