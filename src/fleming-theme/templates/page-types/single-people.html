@@ -9,10 +9,10 @@
     {% for content_block in fields.details.value %}
         
       {% if content_block.acf_fc_layout == 'header_paragraph' %}
-        <p>{{ content_block.paragraph_inner }}</p>
+        {% include '1-atoms/text-block.html' %}
   
       {% elseif content_block.acf_fc_layout == 'supporting_paragraph' %}
-        <p class="supporting">{{ content_block.paragraph_inner }}</p>
+        {% include '1-atoms/supporting-text-block.html' %}
   
       {% endif %}
     

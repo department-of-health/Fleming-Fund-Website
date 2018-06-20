@@ -45,7 +45,7 @@
                             {
                                 "key": "field_5b23bce3d5550",
                                 "label": "Header Paragraph Inner",
-                                "name": "header_paragraph_inner",
+                                "name": "paragraph_inner",
                                 "type": "text",
                                 "instructions": "",
                                 "required": 0,
@@ -74,7 +74,7 @@
                             {
                                 "key": "field_5b23c18bc7998",
                                 "label": "Supporting Paragraph Inner",
-                                "name": "supporting_paragraph_inner",
+                                "name": "paragraph_inner",
                                 "type": "text",
                                 "instructions": "",
                                 "required": 0,
@@ -117,7 +117,7 @@
                     {
                         "key": "field_5b23bddcd5553",
                         "label": "Introductory Paragraph",
-                        "name": "introductory_paragraph",
+                        "name": "paragraph_inner",
                         "type": "text",
                         "instructions": "",
                         "required": 0,
@@ -155,7 +155,7 @@
                             {
                                 "key": "field_5b23be02d5555",
                                 "label": "Criterion",
-                                "name": "criterion",
+                                "name": "paragraph_inner",
                                 "type": "text",
                                 "instructions": "",
                                 "required": 0,
