@@ -12,8 +12,8 @@
   position: relative;
   width: 100%;
   max-width: $container-width;
-  margin: 0 auto;
   padding: 0 15px;
+  margin: 0 auto;
   box-sizing: border-box;
 }
 
@@ -24,15 +24,14 @@
   box-sizing: border-box;
 }
 
-@media (min-width: $breakpoint-mobile) {
+@media (#{$min-width-mobile}) {
   .container {
     width: $container-width-larger-than-mobile;
     padding: 0;
   }
 }
 
-// For devices larger than 550px
-@media (min-width: $breakpoint-tablet) {
+@media (#{$min-width-tablet}) {
   .container {
     width: $container-width-larger-than-phablet;
   }

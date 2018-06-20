@@ -77,7 +77,7 @@ footer {
   }
 }
 
-@media (min-width: $breakpoint-desktop) {
+@media (#{$min-width-desktop}) {
   footer {
     .left {
       width: grid-column-width(8);

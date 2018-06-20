@@ -48,12 +48,12 @@
         if (searchHidden) {
             $('.mobile-toggle-search button').html(closeIcon);
             $('.search-container')
-                .removeClass('hidden-on-mobile')
+                .removeClass('mobile-hidden')
                 .find('input')
                 .focus();
         } else {
             $('.mobile-toggle-search button').html(searchIcon);
-            $('.search-container').addClass('hidden-on-mobile');
+            $('.search-container').addClass('mobile-hidden');
         }
         searchHidden = !searchHidden;
     }
@@ -67,85 +67,12 @@
             '</button>' +
             '</div>'
         ));
-        $('.search-container').addClass('hidden-on-mobile');
+        $('.search-container').addClass('mobile-hidden');
     });
     //]]>
 </script>
 
-<nav class="global-nav">
-  <div class="container">
-    <ul>
-      {% include '1-atoms/link-items-text.html' with {'links': nav.globalMenuLinks} %}
-    </ul>
-  </div>
-</nav>
-<script type="text/javascript">
-    //!<[CDATA[
-    var menuHidden = true;
-
-    function showMenu() {
-        $('.global-nav')
-            .removeClass('hidden-on-mobile')
-            .find('.mobile-toggle-menu')
-            .html('Menu ▲');
-        menuHidden = false;
-    }
-    function hideMenu() {
-        $('.global-nav')
-            .addClass('hidden-on-mobile')
-            .find('.mobile-toggle-menu')
-            .html('Menu ▼');
-        menuHidden = true;
-    }
-    function menuToggleButtonClicked() {
-        if (menuHidden) {
-            showMenu();
-        } else {
-            hideMenu();
-        }
-    }
-    $(function () {
-        $('.global-nav').prepend($(
-            '<div class="container">' +
-            '<a class="mobile-toggle-menu" href="javascript:menuToggleButtonClicked();" tabindex="0">' +
-            'Menu' +
-            '</a>' +
-            '</div>'
-        ));
-        hideMenu();
-    });
-    //]]>
-</script>
-
-<nav class="sub-global-nav">
-  {% if nav.subGlobalMenuLinks is not empty %}
-    <div class="container">
-      {% if nav.tertiaryMenuLinks is not empty %}
-
-        <ul>
-          {% for link in nav.subGlobalMenuLinks %}
-            {% if link.active %}
-              {% include '1-atoms/link-item-text.html' %}
-            {% endif %}
-          {% endfor %}
-
-          <li class="inline-submenu">
-            <ul>
-              {% include '1-atoms/link-items-text.html' with {'links': nav.tertiaryMenuLinks} %}
-            </ul>
-          </li>
-        </ul>
-
-      {% else %}
-
-        <ul>
-          {% include '1-atoms/link-items-text.html' with {'links': nav.subGlobalMenuLinks} %}
-        </ul>
-
-      {% endif %}
-    </div>
-  {% endif %}
-</nav>
+{% include 'layout/nav.html' %}
 
 <main>
   <div class="container">

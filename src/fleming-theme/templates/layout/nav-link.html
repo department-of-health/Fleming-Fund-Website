@@ -1,0 +1,16 @@
+{% embed '1-atoms/link-item.html' %}
+  {% block inner %}
+    {{ link.title }}
+  {% endblock %}
+
+  {% block after_link %}
+    {% if link.childLinks is not empty %}
+      <ul class="mobile-submenu">
+        {% for link in link.childLinks %}
+          {% include 'layout/nav-link.html' %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endblock %}
+
+{% endembed %}
