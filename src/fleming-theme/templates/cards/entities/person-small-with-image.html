@@ -1,0 +1,13 @@
+{% if person %}
+  {% if supertitle %}
+    {% set supertitle = supertitle ~ ' ' %}
+  {% endif %}
+  {% include 'cards/small.html' with {'card': {
+    'extra_classes': 'without-border wide',
+    'top_html': '<img src="https://placekitten.com/g/512/512" class="small avatar"/>',
+    'title': supertitle ~ person.data.post_title,
+    'content': person.fields.details.value[0].paragraph_inner,
+    'link_target': person.permalink,
+    'cta_override': cta_override
+  }} %}
+{% endif %}
