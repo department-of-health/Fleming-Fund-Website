@@ -1,6 +1,8 @@
 {% if card %}
-  <div class="three columns card">
-
+  <div class="three columns card {{ card.extra_classes }}">
+    {% if card.top_html %}
+      {{ card.top_html|raw }}
+    {% endif %}
     <h4 class="infocardTitle">
       {% if card.link_target %}
         <a href="{{ card.link_target }}">{{ card.title }}</a>
@@ -8,7 +10,9 @@
     </h4>
     <p class="supporting">{{ card.content }}</p>
 
-    {% if card.link_target %}
+    {% if cta_override %}
+      <a class="button button-dark" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
+    {% elseif card.link_target %}
       {% include 'cards/common/link-overlay.html' with {'target': card.link_target} %}
     {% endif %}
 

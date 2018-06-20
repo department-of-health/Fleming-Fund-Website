@@ -7,5 +7,58 @@
 <ul class="large-links">
   {% include '1-atoms/link-items-text.html' with {'links': countryLinks} %}
 </ul>
+<hr class="row-underline" />
+
+<div class="row">
+  <div class="nine columns">
+    {% for content_block in fields.information.value %}
+        
+      {% if content_block.acf_fc_layout == 'header_paragraph' %}
+        <p>{{ content_block.paragraph_inner }}</p>
+  
+      {% elseif content_block.acf_fc_layout == 'supporting_paragraph' %}
+        <p class="supporting">{{ content_block.paragraph_inner }}</p>
+  
+      {% endif %}
+    
+    {% endfor %}
+  </div>
+  {% include 'cards/entities/person-small-with-image.html' with {
+    'person': fields.coordinator.value,
+    'supertitle': 'Regional Coordinator',
+    'cta_override': {
+      'title': 'Contact Now',
+      'target': 'fields.coordinator.value.permalink'
+    }
+  } %}
+</div>
+
+<hr class="row-separator" />
+
+<div class="row statistics">
+  <div class="four columns">
+    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">{{ fields.statistics.value.projects_completed }}</p>
+    <p class="supporting" style="width: 100%; text-align: center">Projects Completed</p>
+  </div>
+  <div class="four columns">
+    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">{{ fields.statistics.value.projects_in_progress }}</p>
+    <p class="supporting" style="width: 100%; text-align: center">Projects in Progress</p>
+  </div>
+  <div class="four columns">
+    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">£{{ fields.statistics.value.funds_provided }}</p>
+    <p class="supporting" style="width: 100%; text-align: center">Funds Provided</p>
+  </div>
+</div>
+
+<div class="row">
+  <h3>Feature Case Study</h3>
+  {% include 'cards/entities/publication-large-with-image.html' with {
+    'publication': fields.case_study,
+    'cta_override': {
+      'title': 'See all Case Studies',
+      'target': nav.caseStudiesLink.target
+    }
+  } %}
+</div>
 
 {{ include('layout/footer.html') }}

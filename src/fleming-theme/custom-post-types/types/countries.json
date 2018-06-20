@@ -153,6 +153,31 @@
                 "prepend": "",
                 "append": "",
                 "maxlength": 2
+            },
+            {
+                "key": "field_5b2949cbff60b",
+                "label": "Relationship",
+                "name": "relationship",
+                "type": "select",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "fund": "Fleming Fund",
+                    "partner": "Partner"
+                },
+                "default_value": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "ajax": 0,
+                "return_format": "value",
+                "placeholder": ""
             }
         ],
         "location": [

@@ -29,6 +29,11 @@ function fleming_get_content() {
         "map_config" => get_map_config(get_post_field( 'post_name'))
     );
 
+    $fleming_content['fields']['coordinator']['value'] = 
+        get_post_data_and_fields($fleming_content['fields']['coordinator']['value']->ID);
+    $fleming_content['fields']['case_study']['value'] = 
+        get_post_data_and_fields($fleming_content['fields']['case_study']['value']->ID);
+
     $fleming_content['countryLinks'] =
         $fleming_content['nav']->getCountryLinksWithinRegion(get_post_field( 'post_name'));
 
