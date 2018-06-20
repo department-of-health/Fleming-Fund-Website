@@ -1,16 +1,22 @@
 {% if card %}
   <div class="three columns card">
+    <div class="header">
 
-    <h4 class="infocardTitle">
+      <h4>
+        {% if card.link_target %}
+          <a href="{{ card.link_target }}">{{ card.title }}</a>
+        {% endif %}
+      </h4>
+
+    </div>
+    <div class="content">
+
+      <p class="supporting">{{ card.content }}</p>
       {% if card.link_target %}
-        <a href="{{ card.link_target }}">{{ card.title }}</a>
+        {% include 'cards/common/link-overlay.html' with {'target': card.link_target} %}
       {% endif %}
-    </h4>
-    <p class="supporting">{{ card.content }}</p>
 
-    {% if card.link_target %}
-      {% include 'cards/common/link-overlay.html' with {'target': card.link_target} %}
-    {% endif %}
+    </div>
 
   </div>
 {% endif %}

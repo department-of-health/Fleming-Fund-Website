@@ -1,13 +1,38 @@
 .row {
+
+  // Card container
+
   display: flex;
   flex-flow: row wrap;
 }
 
 .card, .card-with-left-image {
+
+  // Contextual layout
+
   margin-top: 2rem;
   margin-bottom: 2rem;
   position: relative;
   display: block;
+}
+
+.card {
+
+  // Layout
+
+  $card-padding: 2rem;
+
+  border-top: 1ex solid $light-grey;
+  display: inline-flex;
+  flex-flow: column nowrap;
+  color: inherit;
+  font: inherit;
+  text-decoration: initial;
+  overflow: hidden;
+  border-radius: 1px;
+  font-size: 16px;
+
+  background: $light-grey;
 
   a, button {
     position: relative;
@@ -22,43 +47,68 @@
     bottom: 0;
     left: 0;
   }
-}
 
-.card {
-  border: 1px solid;
-  padding: 1.5rem 2rem;
-  display: inline-flex;
-  flex-flow: column nowrap;
-  align-content: space-between;
-  align-items: flex-start;
-  color: inherit;
-  font: inherit;
-  text-decoration: initial;
-  overflow: hidden;
+  .header {
+    padding: $card-padding;
+    border-bottom: 0.3ex solid #fff;
+  }
 
-  h3, h4 {
-    a {
-      color: inherit;
+  .content {
+    padding: 0 $card-padding $card-padding;
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
 
-      &:hover {
-        color: $teal;
+    p {
+      margin-top: $card-padding;
+
+      &:last-of-type {
+        flex: 1 1 auto;
       }
     }
   }
 
-  .identifier {
-    padding-top: 1.5rem;
-    padding-bottom: 1.25rem;
-    width: 100%;
-    border-bottom: 1px solid $light-grey;
-    font-size: 16px;
-    opacity: 0.8;
+  button, .button {
+    margin: $card-padding 0 0;
   }
 
-  p:last-of-type {
-    display: flex;
-    flex: 1 1 auto;
-    margin-bottom: 1rem;
+  h3, h4 {
+    margin: $card-padding 0;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  h3 {
+    font-size: 2em;
+  }
+
+  h4 {
+    font-size: 1.7em;
+  }
+
+  p {
+    width: 100%;
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .identifier {
+    margin: 0;
+    width: 100%;
+    padding-bottom: $card-padding;
+    border-bottom: 0.2ex solid $light-grey;
+    font-size: 1em;
+  }
+
+  .supporting {
+    font-size: 1em;
+  }
+
+  button, .button {
+    font-size: 1.2em;
   }
 
   &.without-border {
@@ -69,7 +119,87 @@
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
+
+
+  // Map colours
+
+  @each $configName, $colourConfig in $colourConfigs {
+
+    $selectorForColour: if($configName == base, '', '.'+$configName);
+
+    &#{$selectorForColour} {
+      border-top-color: map-get($colourConfig, subtle);
+
+      .header {
+        color: map-get($colourConfig, intense);
+
+        a:hover {
+          color: map-get($colourConfig, subtle);
+        }
+      }
+
+      .identifier {
+        border-bottom-color: map-get($colourConfig, subtle);
+      }
+
+      .content {
+        color: $dark-grey;
+      }
+
+      button, .button {
+        color: #fff;
+        border-color: map-get($colourConfig, intense);
+        background: map-get($colourConfig, intense);
+
+        &:hover, &:focus {
+          border-color: map-get($colourConfig, subtle);
+          background: map-get($colourConfig, subtle);
+        }
+
+        &.hollow {
+          color: map-get($colourConfig, intense);
+          background: transparent;
+
+          &:hover, &:focus {
+            color: map-get($colourConfig, subtle);
+          }
+        }
+
+      }
+
+      &.inverted-header {
+        .header {
+          background:map-get($colourConfig, intense);
+          color: #fff;
+        }
+      }
+    }
+  }
 }
+
+@media (#{$max-width-tablet}) {
+  .card {
+    h3 {
+      font-size: 1.7em;
+    }
+    h4 {
+      font-size: 1.4em;
+    }
+  }
+}
+
+@media (#{$max-width-mobile}) {
+  .card {
+    h3 {
+      font-size: 1.5em;
+    }
+    h4 {
+      font-size: 1.2em;
+    }
+  }
+}
+
+// Special types
 
 .card-with-left-image {
   font-size: 0;
@@ -91,13 +221,25 @@
   }
 
   .card {
+    border: none;
     margin: 0;
     display: inline-block;
     display: inline-flex;
     vertical-align: top;
     float: none;
+    padding-top: 1rem;
   }
 }
+
+@media (#{$min-width-tablet}) {
+  div.card-with-left-image {
+    .image-container {
+      width: grid-offset-length(6);
+    }
+  }
+}
+
+// ???
 
 .dark-card {
   background: black;
@@ -111,12 +253,4 @@
 .application-label {
   text-align: center;
   margin-top: 1.4em;
-}
-
-@media (#{$bp-larger-than-phablet}) {
-  div.card-with-left-image {
-    .image-container {
-      width: grid-offset-length(6);
-    }
-  }
 }

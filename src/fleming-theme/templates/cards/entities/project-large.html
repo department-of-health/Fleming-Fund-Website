@@ -1,10 +1,12 @@
 {% if project %}
+  {# TODO pull the colour scheme from the project's (country's) region #}
+  {# TODO insert the region(s) / country(s) into the identifier #}
   {% include 'cards/large.html' with {'card': {
+    'colour_scheme': 'purple',
     'identifier': 'Project',
     'title': project.data.post_title,
     'overview': 'Budget: £'~project.fields.budget.value~'\nStatus: Implementation',
     'content': project.fields.description.value,
     'link_target': project.permalink,
-    'cta_title': 'Apply Now',
   }} %}
 {% endif %}

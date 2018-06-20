@@ -2,15 +2,21 @@
 
 {{ include('layout/current-opportunities.html') }}
 
-<div class="row" style="margin-top: 3em; margin-bottom: 3em">
-  <h2>We are a UK Government aid programme, helping low / middle income countries tackle antimicrobial
-    resistance (AMR). Our focus is high-quality data, shared nationally and globally.</h2>
-  <ul class="large-links">
-    {% include '1-atoms/link-items-text.html' with {'links': [
-      nav.aboutUsLink, nav.ourAimsLink, nav.whatIsAMRLink
-    ]} %}
-  </ul>
-</div>
+{% embed 'layout/full-width-container.html' %}
+  {% block container %}
+    <div class="home-splash">
+      <div class="container">
+        <h2>We are a UK Government aid programme, helping low / middle income countries tackle antimicrobial
+          resistance (AMR). Our focus is high-quality data, shared nationally and globally.</h2>
+        <ul class="large-links">
+          {% include '1-atoms/link-items-text.html' with {'links': [
+            nav.aboutUsLink, nav.ourAimsLink, nav.whatIsAMRLink
+          ]} %}
+        </ul>
+      </div>
+    </div>
+  {% endblock %}
+{% endembed %}
 
 <div class="row">
   {% include 'cards/entities/publication-large-with-image.html' with {
@@ -30,6 +36,8 @@
     'project': fields.headline_project
   } %}
 </div>
+
+<hr class="row-divider"/>
 
 <div class="row statistics">
   <div class="three columns">
@@ -52,12 +60,18 @@
   </div>
 </div>
 
-<h3 class="row-title">Current and Upcoming Opportunities</h3>
-<div class="row">
-  {% include 'cards/entities/grant-large.html' with {'grant': fields.highlight_opportunity_1} %}
-  {% include 'cards/entities/grant-large.html' with {'grant': fields.highlight_opportunity_2} %}
-</div>
+{% embed 'layout/supporting-content.html' %}
+  {% block content %}
 
-{{ include('layout/useful-links.html') }}
+    <h3>Current and Upcoming Opportunities</h3>
+    <div class="row">
+      {% include 'cards/entities/grant-large.html' with {'grant': fields.highlight_opportunity_1} %}
+      {% include 'cards/entities/grant-large.html' with {'grant': fields.highlight_opportunity_2} %}
+    </div>
+
+    {{ include('layout/useful-links.html') }}
+
+  {% endblock %}
+{% endembed %}
 
 {{ include('layout/footer.html') }}

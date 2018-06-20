@@ -1,5 +1,6 @@
 {% if publication %}
   {% include 'cards/large.html' with {'card': {
+    'colour_scheme': null,
     'identifier': publication.fields.type.value.post_title,
     'title': publication.data.post_title,
     'overview': 'Date: 2018-01-01',

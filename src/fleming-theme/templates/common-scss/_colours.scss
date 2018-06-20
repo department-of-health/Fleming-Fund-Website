@@ -1,5 +1,5 @@
 // From https://projects.invisionapp.com/share/VYJF6DC63M7#/screens/297183189
-$turquoise: #009898;
+
 $forest: #007145;
 $navy: #256b99;
 $purple: #75447e;
@@ -17,4 +17,39 @@ $light-text: #fff;
 
 $mid-grey: #919191;
 
+$turquoise: #009898;
+$mid-turquoise: #30b6bb;
 $light-turquoise: #82d3d6;
+
+$colourConfigs: (
+        base: (
+                dark: #009898,
+                intense: #009898,
+                mid: #30b6bb,
+                subtle: #30b6bb,
+        ),
+        purple: (
+                dark: #66356e,
+                intense: #75447e,
+                mid: #8c5b94,
+                subtle: #c894c2,
+        ),
+        pink: (
+                dark: #ae2573,
+                intense: #ae2573,
+                mid: #c73f8c,
+                subtle: #d968a8,
+        ),
+        green: (
+                dark: #007145,
+                intense: #007145,
+                mid: #24966b,
+                subtle: #3fac4e,
+        ),
+        blue: (
+                dark: #256b99,
+                intense: #256b99,
+                mid: #2c87c6,
+                subtle: #2c87c6,
+        ),
+);

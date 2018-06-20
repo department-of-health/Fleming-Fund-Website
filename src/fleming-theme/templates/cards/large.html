@@ -1,27 +1,32 @@
 {% if card %}
-  <div class="six columns card">
+  <div class="six columns card{{ card.colour_scheme ? ' '~card.colour_scheme}}{{ card.inverted_header ? ' inverted-header' }}">
+    <div class="header">
 
-    {% if card.identifier %}
-      <p class="identifier">{{ card.identifier }}</p>
-    {% endif %}
-    <h3>
-      {% if card.link_target %}
-        <a href="{{ card.link_target }}">{{ card.title }}</a>
-      {% else %}
-        {{ card.title }}
+      {% if card.identifier %}
+        <p class="identifier">{{ card.identifier }}</p>
       {% endif %}
-    </h3>
-    <p>{{ card.overview|nl2br }}</p>
-    <p class="supporting">{{ card.content }}</p>
+      <h3>
+        {% if card.link_target %}
+          <a href="{{ card.link_target }}">{{ card.title }}</a>
+        {% else %}
+          {{ card.title }}
+        {% endif %}
+      </h3>
+      <p>{{ card.overview|nl2br }}</p>
 
-    {% if cta_override %}
-      <a class="button button-dark" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
-    {% elseif card.link_target %}
-      {% if card.cta_title %}
-        <a class="button button-dark" href="{{ card.link_target }}">{{ card.cta_title }}</a>
+    </div>
+    <div class="content">
+
+      <p class="supporting">{{ card.content }}</p>
+      {% if cta_override %}
+        <a class="button hollow" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
+      {% elseif card.link_target %}
+        {% if card.cta_title %}
+          <a class="button hollow" href="{{ card.link_target }}">{{ card.cta_title }}</a>
+        {% endif %}
+        {% include 'cards/common/link-overlay.html' %}
       {% endif %}
-      {% include 'cards/common/link-overlay.html' %}
-    {% endif %}
 
+    </div>
   </div>
 {% endif %}
