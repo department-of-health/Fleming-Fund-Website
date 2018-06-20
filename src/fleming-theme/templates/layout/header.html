@@ -48,18 +48,18 @@
         if (searchHidden) {
             $('.mobile-toggle-search button').html(closeIcon);
             $('.search-container')
-                .addClass('showing-on-mobile')
+                .removeClass('mobile-hidden')
                 .find('input')
                 .focus();
         } else {
             $('.mobile-toggle-search button').html(searchIcon);
-            $('.search-container').removeClass('showing-on-mobile');
+            $('.search-container').addClass('mobile-hidden');
         }
         searchHidden = !searchHidden;
     }
 
     $(function () {
-        searchIcon = $('.square-icon').html();
+        searchIcon = $('.search-container button.square-icon').html();
         $('.logo-container').after($(
             '<div class="mobile-toggle-search">' +
             '<button class="square-icon" onclick="searchToggleButtonClicked();">' +
@@ -67,47 +67,12 @@
             '</button>' +
             '</div>'
         ));
+        $('.search-container').addClass('mobile-hidden');
     });
     //]]>
 </script>
 
-<nav class="global-nav">
-  <div class="container">
-    <ul>
-      {% include '1-atoms/link-items-text.html' with {'links': nav.globalMenuLinks} %}
-    </ul>
-  </div>
-</nav>
-
-<nav class="sub-global-nav">
-  {% if nav.subGlobalMenuLinks is not empty %}
-    <div class="container">
-      {% if nav.tertiaryMenuLinks is not empty %}
-
-        <ul>
-          {% for link in nav.subGlobalMenuLinks %}
-            {% if link.active %}
-              {% include '1-atoms/link-item-text.html' %}
-            {% endif %}
-          {% endfor %}
-
-          <li class="inline-submenu">
-            <ul>
-              {% include '1-atoms/link-items-text.html' with {'links': nav.tertiaryMenuLinks} %}
-            </ul>
-          </li>
-        </ul>
-
-      {% else %}
-
-        <ul>
-          {% include '1-atoms/link-items-text.html' with {'links': nav.subGlobalMenuLinks} %}
-        </ul>
-
-      {% endif %}
-    </div>
-  {% endif %}
-</nav>
+{% include 'layout/nav.html' %}
 
 <main>
   <div class="container">

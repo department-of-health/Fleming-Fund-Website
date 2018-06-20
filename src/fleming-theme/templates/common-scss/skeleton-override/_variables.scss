@@ -11,6 +11,12 @@ $bp-larger-than-desktophd : "min-width: 1200px";
 $breakpoint-mobile: 500px;
 $breakpoint-tablet: 750px;
 $breakpoint-desktop: 1000px;
+$max-width-mobile: 'max-width:' + $breakpoint-mobile;
+$min-width-mobile: 'min-width:' + ($breakpoint-mobile + 1px);
+$max-width-tablet: 'max-width:' + $breakpoint-tablet;
+$min-width-tablet: 'min-width:' + ($breakpoint-tablet + 1px);
+$max-width-desktop: 'max-width:' + $breakpoint-desktop;
+$min-width-desktop: 'min-width:' + ($breakpoint-desktop + 1px);
 
 // Colors
 $light-grey: #e1e1e1;

@@ -25,6 +25,19 @@ class NavigationModelBuilder
         return $this;
     }
 
+    /*
+     * Maps config to a Link with child Links.
+     * Recursive
+     */
+    static function buildLinkWithChildren($menuLinkConfig) {
+        $link = MenuLinksConfig::configToLink($menuLinkConfig);
+        if (!empty($menuLinkConfig['children'])) {
+            $childLinks = array_map('self::buildLinkWithChildren', $menuLinkConfig['children']);
+            $link->setChildLinks($childLinks);
+        }
+        return $link;
+    }
+
     function build()
     {
         $selectedItems = $this->selectedRouteKeys; // copy
@@ -38,7 +51,7 @@ class NavigationModelBuilder
 
             $nextNavigationLevelLinks = [];
             foreach ($baseMenuConfig as $linkKey => $menuLinkConfig) {
-                $nextLink = MenuLinksConfig::configToLink($menuLinkConfig);
+                $nextLink = self::buildLinkWithChildren($menuLinkConfig);
                 if ($activeLinkKey === $linkKey) {
                     $nextLink->setIsActive(true);
                     $navigationModel->addBreadcrumb($nextLink);

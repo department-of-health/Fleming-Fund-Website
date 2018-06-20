@@ -66,7 +66,7 @@ header {
   }
 }
 
-@media (max-width: $breakpoint-mobile) {
+@media (#{$max-width-mobile}) {
   header {
     .mobile-toggle-search {
       display: inline-block;
@@ -77,10 +77,9 @@ header {
     .search-container {
       text-align: center;
       width: 100%;
-      display: none;
 
-      &.showing-on-mobile {
-        display: initial;
+      &.mobile-hidden {
+        display: none;
       }
     }
 

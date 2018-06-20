@@ -3,6 +3,8 @@
     margin-left: 1ex;
     margin-right: 1ex;
     content: '›';
+    position: relative;
+    top: -0.2ex;
   }
 }
 
@@ -19,6 +21,10 @@
   padding: 0;
   font-size: 0;
   display: inline-block;
+
+  &.all-but-first-in-submenu li:nth-child(2) {
+    @include has_left_rightward_arrow;
+  }
 
   li {
     list-style-type: none;
@@ -37,17 +43,14 @@
         padding: 0 0.7ex;
       }
     }
-
-    &.inline-submenu:not(:first-child) {
-      @include has_left_rightward_arrow;
-    }
   }
 }
 
 @mixin pipe_horizontal_ul($pipe-height: 0.8em, $pipe-vertical-align: text-top) {
   @include horizontal_ul;
 
-  li:not(.inline-submenu):not(:first-child):before {
+  &.all-but-first-in-submenu li:nth-child(n+3):before,
+  &:not(.all-but-first-in-submenu) li:not(:first-child):before {
     margin: 0.2em 1ex 0;
     height: $pipe-height;
     width: 1px;

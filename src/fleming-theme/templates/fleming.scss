@@ -128,7 +128,7 @@ button.square-icon {
 button {
   background: $turquoise;
 
-  &:hover {
+  &:hover, &:focus {
     opacity: 0.8;
   }
 }

@@ -6,11 +6,13 @@ class Link
     private $target;
     private $isActive;
     private $external;
+    private $childLinks;
 
     function __construct()
     {
         $this->isActive = false;
         $this->external = false;
+        $this->childLinks = [];
     }
 
     /**
@@ -75,5 +77,21 @@ class Link
     public function setExternal(bool $external): void
     {
         $this->external = $external;
+    }
+
+    /**
+     * @return array
+     */
+    public function getChildLinks()
+    {
+        return $this->childLinks;
+    }
+
+    /**
+     * @param array $childLinks
+     */
+    public function setChildLinks($childLinks): void
+    {
+        $this->childLinks = $childLinks;
     }
 }

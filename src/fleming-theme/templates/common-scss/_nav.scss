@@ -1,20 +1,27 @@
 $sub-global-nav-background-color: $light-turquoise;
 
 nav.global-nav {
-  ul {
-    @include pipe_horizontal_ul;
-  }
-
   background-color: $dark-grey;
   color: $light-text;
 
-  li {
-    font-size: 19px;
+  ul {
+    @include pipe_horizontal_ul;
+    width: 100%;
 
-    &.active a {
-      position: relative;
+    li {
+      font-size: 19px;
 
-      &:after {
+      a {
+        position: relative;
+
+        &:hover, &:focus {
+          background: rgba($light-grey, 0.1);
+          outline: none;
+          border: initial;
+        }
+      }
+
+      &.active a:after {
         content: "";
         display: block;
         position: absolute;
@@ -26,11 +33,57 @@ nav.global-nav {
       }
     }
   }
+
+  .mobile-toggle-menu {
+    display: none;
+    padding: 0.7em 0;
+    color: $light-grey;
+
+    &:hover, &:focus {
+      background: rgba($light-grey, 0.1);
+      outline: none;
+      border: initial;
+    }
+  }
+
+  .mobile-toggle-submenu {
+    display: none;
+    float: right;
+    width: $hit-box-height;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .mobile-submenu {
+    box-sizing: border-box;
+    display: none;
+    padding-left: 1rem;
+    border-bottom: 1px solid rgba($light-grey, 0.4);
+
+    li {
+      border: none;
+      font-size: 16px;
+
+      a {
+        padding: 0.4em 0;
+
+        &:not(.mobile-toggle-submenu):before {
+          content: "•";
+          padding: 0 0.5em 0 0;
+        }
+      }
+    }
+  }
+
+  .tablet-toggle-more {
+    display: none;
+  }
 }
 
 nav.sub-global-nav {
   ul {
     @include pipe_horizontal_ul;
+    width: 100%;
   }
 
   background-color: $sub-global-nav-background-color;
@@ -39,6 +92,130 @@ nav.sub-global-nav {
 
   li {
     font-size: 16px;
+    a {
+      &:hover, &:focus {
+        background: rgba($dark-grey, 0.1);
+        outline: none;
+        border: initial;
+      }
+    }
+  }
+
+  .tablet-toggle-more {
+    display: none;
+  }
+}
+
+@media (#{$max-width-tablet}) and (#{$min-width-mobile}) {
+  nav.global-nav {
+    ul {
+      li {
+        font-size: 15px;
+      }
+    }
+  }
+  nav.sub-global-nav {
+    ul {
+      li {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (#{$max-width-desktop}) and (#{$min-width-mobile}) {
+  nav.global-nav, nav.sub-global-nav {
+    ul {
+      li {
+        &.tablet-hide {
+          display: block;
+          width: 100%;
+
+          &:before {
+            display: none !important;
+          }
+
+          a {
+            width: 100%;
+          }
+        }
+
+        &.active a:after {
+          display: none;
+        }
+      }
+    }
+
+    &.tablet-more-hidden {
+      ul {
+        li {
+          &.tablet-hide {
+            display: none;
+          }
+
+          &.active a:after {
+            display: initial;
+          }
+        }
+      }
+    }
+
+    .tablet-toggle-more {
+      display: initial;
+    }
+  }
+}
+
+@media (#{$max-width-mobile}) {
+  nav.global-nav {
+    ul {
+      li {
+        width: 100%;
+        border-top: 1px solid rgba($light-grey, 0.4);
+
+        &:before {
+          display: none !important;
+        }
+
+        a {
+          display: block;
+          overflow: hidden;
+        }
+
+        &.active a:after {
+          display: none;
+        }
+
+        &.mobile-submenu-showing {
+          font-weight: bold;
+
+          & > a {
+            border-bottom: 0.15em solid $turquoise;
+
+          }
+
+          & > .mobile-submenu {
+            display: block;
+          }
+        }
+      }
+    }
+
+    &.mobile-hidden ul {
+      display: none;
+    }
+
+    .mobile-toggle-menu {
+      display: block;
+    }
+
+    .mobile-toggle-submenu {
+      display: block;
+    }
+  }
+
+  nav.sub-global-nav * {
+    display: none;
   }
 }
 
@@ -63,7 +240,7 @@ div.breadcrumbs {
   }
 }
 
-@media(max-width: $breakpoint-mobile) {
+@media(#{$max-width-mobile}) {
   div.breadcrumbs {
     li {
       $breadcrumb_li_on_mobile_selector: ":nth-last-child(2)";
