@@ -13,6 +13,8 @@ function load_custom_post_types_and_acf_fields() {
     include __DIR__ . '/types/events.php';
     load_acf_fields('types/events.json');
 
+    load_acf_fields('types/flexible-content.json');
+
     load_acf_fields('types/front-page.json');
 
     include __DIR__ . '/types/grant-types.php';

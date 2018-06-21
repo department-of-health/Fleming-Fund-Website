@@ -55,10 +55,10 @@
             },
             {
                 "key": "field_5b05764644817",
-                "label": "Details",
-                "name": "details",
-                "type": "flexible_content",
-                "instructions": "",
+                "label": "Summary",
+                "name": "summary",
+                "type": "text",
+                "instructions": "A short summary for cards.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -66,69 +66,11 @@
                     "class": "",
                     "id": ""
                 },
-                "layouts": {
-                    "5b23bcdf1f65a": {
-                        "key": "5b23bcdf1f65a",
-                        "name": "header_paragraph",
-                        "label": "Header Paragraph",
-                        "display": "block",
-                        "sub_fields": [
-                            {
-                                "key": "field_5b23bce3d5550",
-                                "label": "Header Paragraph Inner",
-                                "name": "paragraph_inner",
-                                "type": "text",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "default_value": "",
-                                "placeholder": "",
-                                "prepend": "",
-                                "append": "",
-                                "maxlength": ""
-                            }
-                        ],
-                        "min": "",
-                        "max": ""
-                    },
-                    "5b23c18bc7997": {
-                        "key": "5b23c18bc7997",
-                        "name": "supporting_paragraph",
-                        "label": "Supporting Paragraph",
-                        "display": "block",
-                        "sub_fields": [
-                            {
-                                "key": "field_5b23c18bc7998",
-                                "label": "Supporting Paragraph Inner",
-                                "name": "paragraph_inner",
-                                "type": "text",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "default_value": "",
-                                "placeholder": "",
-                                "prepend": "",
-                                "append": "",
-                                "maxlength": ""
-                            }
-                        ],
-                        "min": "",
-                        "max": ""
-                    }
-                },
-                "button_label": "Add Paragraph",
-                "min": "",
-                "max": ""
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": 70
             },
             {
                 "key": "field_5b290b62902c0",

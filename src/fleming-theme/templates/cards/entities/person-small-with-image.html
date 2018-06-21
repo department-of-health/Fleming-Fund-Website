@@ -6,7 +6,7 @@
     'extra_classes': 'without-border wide',
     'top_html': '<img src="https://placekitten.com/g/512/512" class="small avatar"/>',
     'title': supertitle ~ person.data.post_title,
-    'content': person.fields.details.value[0].paragraph_inner,
+    'content': person.fields.summary.value,
     'link_target': person.permalink,
     'cta_override': cta_override
   }} %}

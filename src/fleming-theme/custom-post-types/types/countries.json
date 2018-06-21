@@ -26,10 +26,10 @@
                 "ui": 1
             },
             {
-                "key": "field_5b0582ff8059c",
+                "key": "field_5b2940584138d",
                 "label": "Statistics",
                 "name": "statistics",
-                "type": "flexible_content",
+                "type": "group",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -38,42 +38,72 @@
                     "class": "",
                     "id": ""
                 },
-                "layouts": {
-                    "5b0583168350c": {
-                        "key": "5b0583168350c",
-                        "name": "statistics",
-                        "label": "Statistics",
-                        "display": "block",
-                        "sub_fields": [
-                            {
-                                "key": "field_5b05835e8059f",
-                                "label": "Statistic",
-                                "name": "statistic",
-                                "type": "number",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "default_value": "",
-                                "placeholder": "",
-                                "prepend": "",
-                                "append": "",
-                                "min": "",
-                                "max": "",
-                                "step": ""
-                            }
-                        ],
-                        "min": "",
-                        "max": ""
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5b2940634138e",
+                        "label": "Projects Completed",
+                        "name": "projects_completed",
+                        "type": "number",
+                        "instructions": "",
+                        "required": 1,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "min": 0,
+                        "max": "",
+                        "step": 1
+                    },
+                    {
+                        "key": "field_5b29408d4138f",
+                        "label": "Projects in Progress",
+                        "name": "projects_in_progress",
+                        "type": "number",
+                        "instructions": "",
+                        "required": 1,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "min": 0,
+                        "max": "",
+                        "step": 1
+                    },
+                    {
+                        "key": "field_5b2940ae41390",
+                        "label": "Funds Provided",
+                        "name": "funds_provided",
+                        "type": "number",
+                        "instructions": "",
+                        "required": 1,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "£",
+                        "append": "",
+                        "min": 0,
+                        "max": "",
+                        "step": ""
                     }
-                },
-                "button_label": "Add Row",
-                "min": "",
-                "max": ""
+                ]
             },
             {
                 "key": "field_5b058372805a0",

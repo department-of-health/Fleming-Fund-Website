@@ -2,6 +2,7 @@
 
 include __DIR__ . '/php/get-css-filename.php';
 include 'navigation/index.php';
+include 'query-utilities.php';
 
 /**
  * NOTE:
@@ -30,6 +31,9 @@ function fleming_get_content()
         "fields" => get_field_objects(),
         "nav" => get_nav_model()
     );
+
+    $region_data = get_post_data_and_fields($fleming_content["fields"]["region"]["value"]->ID);
+    $fleming_content["coordinator"] = get_post_data_and_fields($region_data["fields"]["coordinator"]["value"]->ID);
 
     return $fleming_content;
 }
