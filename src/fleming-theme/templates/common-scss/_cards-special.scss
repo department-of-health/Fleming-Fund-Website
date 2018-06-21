@@ -1,0 +1,122 @@
+.card.with-left-image {
+  font-size: 0;
+  display: flex;
+  flex-flow: row wrap;
+  border: none;
+
+  .image-container {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .card {
+    border: none;
+    margin: 0;
+    display: inline-block;
+    //display: inline-flex;
+    vertical-align: top;
+    padding-top: 1rem;
+    width: 100%;
+
+    .header {
+      border-bottom: none;
+    }
+  }
+}
+
+@media (#{$min-width-desktop}) {
+  .card.with-left-image {
+    .card {
+      width: grid-column-width(6);
+      margin: 0;
+    }
+    .image-container {
+      width: grid-offset-length(6);
+      margin: 0;
+
+      img {
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+      }
+    }
+  }
+}
+
+.card-container.statistics {
+  @include cardsAreCentered;
+
+  .card {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 1.5rem;
+
+    .statistic-value {
+      font-size: 48px; // qq responsive?
+      font-weight: bold;
+      width: 100%;
+    }
+
+    .statistic-text {
+      width: 100%;
+    }
+  }
+}
+
+.card-container.opportunities {
+  .card {
+    font-weight: bold;
+    font-size: 0.9em;
+
+    .status {
+      font-weight: normal;
+    }
+
+    button, .button {
+      margin: 0;
+    }
+  }
+}
+
+.card-container.people {
+  @include cardsAreCentered;
+
+  .card {
+    img {
+      border-radius: 50%;
+      max-width: 250px;
+      width: 100%;
+    }
+  }
+}
+
+
+@media (#{$min-width-mobile}) {
+  .card-container.people.cover {
+    .card.with-left-image {
+      .card {
+        width: grid-column-width(8);
+      }
+      .image-container {
+        width: grid-offset-length(4);
+
+        img {
+          padding-top: 1.5rem;
+          min-height: auto;
+          min-width: auto;
+        }
+      }
+    }
+  }
+}

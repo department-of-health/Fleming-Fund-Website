@@ -1,21 +1,9 @@
 {% if person %}
-  <div class="twelve columns card-with-left-image">
-    <div class="four columns" style="padding-top: 1.5em;">
-      <img src="https://placekitten.com/g/512/512" class="large avatar"/>
-    </div>
-    <div class="eight columns">
-      <h3><a href="{{ person.permalink }}">{{ person.data.post_title }}</a></h3>
-      {% if quote %}
-        <p class="solid-left-indent">&quot;{{ quote }}&quot;</p>
-      {% endif %}
-      <p class="supporting">{{ person.fields.details.value[0].paragraph_inner }}</p>
-      {% if cta_override %}
-        <a class="button button-dark" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
-      {% else %}
-        {% include 'cards/common/link-overlay.html' with {'card': {
-          'link_target': person.permalink
-        }} %}
-      {% endif %}
-    </div>
-  </div>
+  {% include 'cards/large-with-image.html' with {'card': {
+    'decorated': false,
+    'title': person.data.post_title,
+    'content': person.fields.details.value[0].paragraph_inner,
+    'image_src': 'https://placekitten.com/g/512/512',
+    'link_target': person.permalink
+  }} %}
 {% endif %}
