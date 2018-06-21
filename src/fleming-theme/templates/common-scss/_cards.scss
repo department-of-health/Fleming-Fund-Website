@@ -10,7 +10,6 @@
 
   $card-padding: 2rem;
 
-  border-top: 1ex solid $light-grey;
   display: inline-flex;
   flex-flow: column nowrap;
   color: inherit;
@@ -19,8 +18,6 @@
   overflow: hidden;
   border-radius: 1px;
   font-size: 16px;
-
-  background: $light-grey;
 
   a, button {
     position: relative;
@@ -111,54 +108,59 @@
 
   // Map colours
 
-  @each $configName, $colourConfig in $colourConfigs {
+  &.decorated {
+    background: $light-grey;
+    border-top: 1ex solid $light-grey;
 
-    $selectorForColour: if($configName == base, '', '.'+$configName);
+    @each $configName, $colourConfig in $colourConfigs {
 
-    &#{$selectorForColour} {
-      border-top-color: map-get($colourConfig, subtle);
+      $selectorForColour: if($configName == base, '', '.'+$configName);
 
-      .header {
-        color: map-get($colourConfig, intense);
+      &#{$selectorForColour} {
+        border-top-color: map-get($colourConfig, subtle);
 
-        a:hover {
-          color: map-get($colourConfig, subtle);
-        }
-      }
-
-      .identifier {
-        border-bottom-color: map-get($colourConfig, subtle);
-      }
-
-      .content {
-        color: $dark-grey;
-      }
-
-      button, .button {
-        color: #fff;
-        border-color: map-get($colourConfig, intense);
-        background: map-get($colourConfig, intense);
-
-        &:hover, &:focus {
-          border-color: map-get($colourConfig, subtle);
-          background: map-get($colourConfig, subtle);
-        }
-
-        &.hollow {
+        .header {
           color: map-get($colourConfig, intense);
-          background: transparent;
 
-          &:hover, &:focus {
+          a:hover {
             color: map-get($colourConfig, subtle);
           }
         }
 
-      }
+        .identifier {
+          border-bottom-color: map-get($colourConfig, subtle);
+        }
 
-      &.inverted-header {
-        .header {
-          background: map-get($colourConfig, intense);
+        .content {
+          color: $dark-grey;
+        }
+
+        button, .button {
           color: #fff;
+          border-color: map-get($colourConfig, intense);
+          background: map-get($colourConfig, intense);
+
+          &:hover, &:focus {
+            border-color: map-get($colourConfig, subtle);
+            background: map-get($colourConfig, subtle);
+          }
+
+          &.hollow {
+            color: map-get($colourConfig, intense);
+            background: transparent;
+
+            &:hover, &:focus {
+              color: map-get($colourConfig, subtle);
+            }
+          }
+
+        }
+
+        &.inverted-header {
+          .header {
+            background: map-get($colourConfig, intense);
+            color: #fff;
+          }
         }
       }
     }
@@ -202,13 +204,13 @@
   &.cover .card {
     @include perRow(1);
   }
-  &.large .card {
+  &.two-max .card {
     @include perRow(2);
   }
-  &.medium .card {
+  &.three-max .card {
     @include perRow(3);
   }
-  &.small .card {
+  &.four-max .card {
     @include perRow(4);
   }
 }
@@ -224,14 +226,14 @@
   }
 
   .card-container {
-    &.large .card {
+    &.two-max .card {
       @include perRow(2);
     }
-    &.medium .card {
-      @include perRow(2);
-    }
-    &.small .card {
+    &.three-max .card {
       @include perRow(3);
+    }
+    &.four-max .card {
+      @include perRow(2);
     }
   }
 }
@@ -247,13 +249,13 @@
   }
 
   .card-container {
-    &.large .card {
+    &.two-max .card {
       @include perRow(1);
     }
-    &.medium .card {
+    &.three-max .card {
       @include perRow(1);
     }
-    &.small .card {
+    &.four-max .card {
       @include perRow(2);
     }
   }
@@ -288,22 +290,11 @@
     //display: inline-flex;
     vertical-align: top;
     padding-top: 1rem;
-  }
-}
+    width: 100%;
 
-.card.statistic {
-  background: transparent;
-  border: none;
-  text-align: center;
-  margin: 0;
-
-  p.value {
-    font-size: 3.5em;
-    font-weight: bold;
-    margin: 1ex 0;
-  }
-  p.label {
-    font-size: 1em;
+    .header {
+      border-bottom: none;
+    }
   }
 }
 
@@ -323,6 +314,21 @@
         width: auto;
       }
     }
+  }
+}
+
+.card.statistic {
+  background: transparent;
+  border: none;
+  text-align: center;
+
+  p.value {
+    font-size: 3.5em;
+    font-weight: bold;
+    margin: 0 0 1ex;
+  }
+  p.label {
+    font-size: 1em;
   }
 }
 

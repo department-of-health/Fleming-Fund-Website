@@ -28,7 +28,7 @@
   } %}
 </div>
 
-<div class="card-container large">
+<div class="card-container two-max">
   {% include 'cards/entities/project-large.html' with {
     'project': fields.headline_project
   } %}
@@ -39,7 +39,7 @@
 
 <hr class="row-divider"/>
 
-<div class="card-container small">
+<div class="card-container four-max">
   {% include 'cards/entities/statistic-small.html' with {'statistic': {
     'value': '£'~fields.spend_statistic.value~'m',
     'label': 'Spend statistic'
@@ -62,10 +62,12 @@
   {% block content %}
 
     <h3>Current and Upcoming Opportunities</h3>
-    <div class="card-container large">
+    <div class="card-container two-max">
       {% include 'cards/entities/grant-large.html' with {'grant': fields.highlight_opportunity_1} %}
       {% include 'cards/entities/grant-large.html' with {'grant': fields.highlight_opportunity_2} %}
     </div>
+
+    <hr class="row-divider"/>
 
     {{ include('layout/useful-links.html') }}
 

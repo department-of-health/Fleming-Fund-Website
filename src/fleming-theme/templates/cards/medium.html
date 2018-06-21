@@ -1,5 +1,5 @@
 {% if card %}
-  <div class="card {{ card.extra_classes }}">
+  <div class="card{{ card.decorated ? ' decorated' }} {{ card.extra_classes }}">
     <div class="header">
 
       {{ card.top_html|raw }}
