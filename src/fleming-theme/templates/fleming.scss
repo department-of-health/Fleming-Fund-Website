@@ -61,23 +61,6 @@ p.solid-left-indent {
   padding-left: 2em;
 }
 
-img.avatar {
-  border-radius: 50%;
-  display: inline-block;
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-
-  &.four-max {
-    width: 80%;
-    max-width: 150px;
-  }
-  &.two-max {
-    width: 200px;
-    min-width: 50%;
-    max-width: 100%;
-  }
-}
-
 .border-bottom-grey {
   border-bottom: 1px solid $light-grey;
 }

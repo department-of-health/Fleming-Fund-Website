@@ -1,0 +1,8 @@
+@mixin cardsAreCentered {
+  text-align: center;
+  justify-content: center;
+
+  .card {
+    text-align: initial;
+  }
+}
