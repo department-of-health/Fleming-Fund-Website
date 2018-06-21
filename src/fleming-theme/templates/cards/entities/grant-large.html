@@ -2,6 +2,7 @@
   {# TODO pull the colour scheme from the grant's (country's) region #}
   {# TODO insert the region(s) / country(s) into the identifier #}
   {% include 'cards/large.html' with {'card': {
+    'decorated': true,
     'colour_scheme': 'blue',
     'inverted_header': true,
     'identifier': grant.fields.type.value.post_title,

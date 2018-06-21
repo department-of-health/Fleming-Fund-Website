@@ -1,4 +1,6 @@
 footer {
+  font-size: 0;
+
   p, li {
     font-size: 16px;
     margin: 0;
@@ -7,8 +9,8 @@ footer {
 
   .footer-content {
     border-top: 1px solid $turquoise;
-    margin: 1em 0 3em;
-    padding-top: 1em;
+    margin: 1rem 0 3rem;
+    padding-top: 1rem;
   }
 
   ul {
@@ -63,6 +65,17 @@ footer {
     }
   }
 
+  .left {
+    .footer-content {
+      img {
+        max-width: 33.3%;
+        max-height: 128px;
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+
   .right {
     display: inline-block;
     vertical-align: middle;
@@ -81,10 +94,12 @@ footer {
   footer {
     .left {
       width: grid-column-width(8);
+      display: inline-block;
     }
     .right {
       width: grid-column-width(4);
       margin-left: $column-margin;
+      vertical-align: top;
     }
 
     .about-links {
