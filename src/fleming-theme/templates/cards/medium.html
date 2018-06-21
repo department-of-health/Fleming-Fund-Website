@@ -1,16 +1,22 @@
 {% if card %}
-  <div class="four columns card {{ card.extra_classes }}">
-    {{ card.top_html|raw }}
-    <h3>
-      {% if card.link_target %}
-        <a href="{{ card.link_target }}">{{ card.title }}</a>
-      {% endif %}
-    </h3>
-    <p class="supporting">{{ card.content }}</p>
+  <div class="card{{ card.decorated ? ' decorated' }} {{ card.extra_classes }}">
+    <div class="header">
 
-    {% if card.link_target %}
-      {% include 'cards/common/link-overlay.html' with {'target': card.link_target} %}
-    {% endif %}
+      {{ card.top_html|raw }}
+      <h3>
+        {% if card.link_target %}
+          <a href="{{ card.link_target }}">{{ card.title }}</a>
+        {% endif %}
+      </h3>
+
+    </div>
+    <div class="content">
+
+      <p class="supporting">{{ card.content }}</p>
+      {% if card.link_target %}
+        {% include 'cards/common/link-overlay.html' with {'target': card.link_target} %}
+      {% endif %}
+    </div>
 
   </div>
 {% endif %}

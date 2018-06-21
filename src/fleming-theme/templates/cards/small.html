@@ -1,20 +1,30 @@
 {% if card %}
-  <div class="three columns card {{ card.extra_classes }}">
+  <div class="card{{ card.decorated ? ' decorated' }} {{ card.extra_classes }}">
     {% if card.top_html %}
       {{ card.top_html|raw }}
     {% endif %}
-    <h4 class="infocardTitle">
-      {% if card.link_target %}
-        <a href="{{ card.link_target }}">{{ card.title }}</a>
-      {% endif %}
-    </h4>
-    <p class="supporting">{{ card.content }}</p>
+    <div class="header">
 
-    {% if cta_override %}
-      <a class="button button-dark" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
-    {% elseif card.link_target %}
-      {% include 'cards/common/link-overlay.html' with {'target': card.link_target} %}
-    {% endif %}
+      <h4>
+        {% if card.link_target %}
+          <a href="{{ card.link_target }}">{{ card.title }}</a>
+        {% endif %}
+      </h4>
+
+    </div>
+    <div class="content">
+
+      <p class="supporting">{{ card.content }}</p>
+      {% if card.link_target %}
+        {% include 'cards/common/link-overlay.html' with {'target': card.link_target} %}
+      {% endif %}
+
+      {% if cta_override %}
+        <a class="button button-dark" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
+      {% elseif card.link_target %}
+        {% include 'cards/common/link-overlay.html' with {'target': card.link_target} %}
+      {% endif %}
+    </div>
 
   </div>
 {% endif %}

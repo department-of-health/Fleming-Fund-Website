@@ -1,0 +1,42 @@
+@import "buttons-dark";
+
+button, a.button {
+  box-sizing: content-box;
+  padding: 1.5ex 2.5ex;
+  font-size: inherit;
+  line-height: 1em;
+  height: 1em;
+  white-space: nowrap;
+  text-transform: none;
+  font-weight: normal;
+  background: $turquoise;
+  color: #fff;
+
+  &:hover, &:focus {
+    opacity: 0.8;
+  }
+
+  &.hollow {
+    background: transparent;
+    border: 1px solid $turquoise;
+    color: $turquoise;
+  }
+
+  &:not(.square-icon) {
+    min-width: 6em;
+  }
+
+  &.square-icon {
+    $padding: 10px;
+    box-sizing: border-box;
+    width: $hit-box-height;
+    height: $hit-box-height;
+    padding: $padding;
+    border: none;
+
+    svg {
+      width: ($hit-box-height - 2*$padding);
+      height: ($hit-box-height - 2*$padding);
+    }
+  }
+}

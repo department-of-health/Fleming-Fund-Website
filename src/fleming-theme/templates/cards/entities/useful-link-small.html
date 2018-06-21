@@ -1,5 +1,6 @@
 {% if useful_link %}
   {% include 'cards/small.html' with {'card': {
+    'decorated': true,
     'title': useful_link.value.link_text,
     'content': useful_link.value.link_description,
     'link_target': useful_link.value.link_url

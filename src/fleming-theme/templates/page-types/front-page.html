@@ -1,18 +1,32 @@
 {{ include('layout/header.html') }}
 
-{{ include('layout/current-opportunities.html') }}
+{% embed 'layout/full-width-container.html' %}
+  {% block container %}
+    <div style="background: #f4f4f4; padding: 1.25rem 0 0;">
+      <div class="container">
+        {{ include('layout/current-opportunities.html') }}
+      </div>
+    </div>
+  {% endblock %}
+{% endembed %}
 
-<div class="row" style="margin-top: 3em; margin-bottom: 3em">
-  <h2>We are a UK Government aid programme, helping low / middle income countries tackle antimicrobial
-    resistance (AMR). Our focus is high-quality data, shared nationally and globally.</h2>
-  <ul class="large-links">
-    {% include '1-atoms/link-items-text.html' with {'links': [
-      nav.aboutUsLink, nav.ourAimsLink, nav.whatIsAMRLink
-    ]} %}
-  </ul>
-</div>
+{% embed 'layout/full-width-container.html' %}
+  {% block container %}
+    <div class="home-splash">
+      <div class="container">
+        <h2>We are a UK Government aid programme, helping low / middle income countries tackle antimicrobial
+          resistance (AMR). Our focus is high-quality data, shared nationally and globally.</h2>
+        <ul class="large-links">
+          {% include '1-atoms/link-items-text.html' with {'links': [
+            nav.aboutUsLink, nav.ourAimsLink, nav.whatIsAMRLink
+          ]} %}
+        </ul>
+      </div>
+    </div>
+  {% endblock %}
+{% endembed %}
 
-<div class="row">
+<div class="card-container cover">
   {% include 'cards/entities/publication-large-with-image.html' with {
     'publication': fields.headline_case_study,
     'cta_override': {
@@ -22,7 +36,7 @@
   } %}
 </div>
 
-<div class="row">
+<div class="card-container two-max">
   {% include 'cards/entities/project-large.html' with {
     'project': fields.headline_project
   } %}
@@ -31,33 +45,41 @@
   } %}
 </div>
 
-<div class="row statistics">
-  <div class="three columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">
-      £{{ fields.spend_statistic.value }}m
-    </p>
-    <p class="supporting" style="width: 100%; text-align: center">Spend statistic</p>
-  </div>
-  <div class="three columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">{{ fields.grants_given.value }}</p>
-    <p class="supporting" style="width: 100%; text-align: center">Grants given</p>
-  </div>
-  <div class="three columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">{{ fields.performance_indicator.value }}</p>
-    <p class="supporting" style="width: 100%; text-align: center">Performance against any KPI</p>
-  </div>
-  <div class="three columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">{{ fields.another_statistic.value }}</p>
-    <p class="supporting" style="width: 100%; text-align: center">Statistical supporting copy</p>
-  </div>
+<hr class="row-divider"/>
+
+<div class="card-container four-max">
+  {% include 'cards/entities/statistic-small.html' with {'statistic': {
+    'value': '£'~fields.spend_statistic.value~'m',
+    'label': 'Spend statistic'
+  }} %}
+  {% include 'cards/entities/statistic-small.html' with {'statistic': {
+    'value': fields.grants_given.value,
+    'label': 'Grants given'
+  }} %}
+  {% include 'cards/entities/statistic-small.html' with {'statistic': {
+    'value': fields.performance_indicator.value,
+    'label': 'Performance against any KPI'
+  }} %}
+  {% include 'cards/entities/statistic-small.html' with {'statistic': {
+    'value': fields.another_statistic.value,
+    'label': 'Statistical supporting copy'
+  }} %}
 </div>
 
-<h3 class="row-title">Current and Upcoming Opportunities</h3>
-<div class="row">
-  {% include 'cards/entities/grant-large.html' with {'grant': fields.highlight_opportunity_1} %}
-  {% include 'cards/entities/grant-large.html' with {'grant': fields.highlight_opportunity_2} %}
-</div>
+{% embed 'layout/supporting-content.html' %}
+  {% block content %}
 
-{{ include('layout/useful-links.html') }}
+    <h3>Current and Upcoming Opportunities</h3>
+    <div class="card-container two-max">
+      {% include 'cards/entities/grant-large.html' with {'grant': fields.highlight_opportunity_1} %}
+      {% include 'cards/entities/grant-large.html' with {'grant': fields.highlight_opportunity_2} %}
+    </div>
+
+    <hr class="row-divider"/>
+
+    {{ include('layout/useful-links.html') }}
+
+  {% endblock %}
+{% endembed %}
 
 {{ include('layout/footer.html') }}

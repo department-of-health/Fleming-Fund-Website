@@ -1,23 +1,25 @@
 {% if opportunities %}
-<div class="row border-bottom-grey" style="margin-top: 1em; padding-bottom: 1rem;">
-  <div class="twelve columns">
-    <p class="supporting" style="margin-bottom: 1.25rem">
-      <span style="font-weight: bold; margin-right: 2em;">Current &amp; Upcoming Opportunities</span>
-      <span>More</span><!-- qq link this -->
-    </p>
-  </div>
-  <div class="twelve columns">
-    {% for opportunity in opportunities %}
-    <div class="three columns">
-      <a href={{ opportunity.permalink }}>
-        <span style="font-weight: bold">{{ opportunity.data.post_title }}</span><br/>
-        <span style="font-weight: bold">Status:</span> {{ opportunity.status }}
-      </a>
-    </div>
+  <p class="supporting" style="margin: 0; color: #009898;">
+    <span style="font-weight: bold; margin-right: 2em;">Current &amp; Upcoming Opportunities</span>
+    <span>More</span><!-- qq link this -->
+  </p>
+  <div class="card-container four-max opportunities">
+
+    {% for i in 0..2 %}
+      <div class="card">
+        {% set opportunity = opportunities[i] %}
+        {% if opportunity %}
+          <a href={{ opportunity.permalink }}>
+            {{ opportunity.data.post_title }}<br/>
+            <span class="status"><b>Status:</b> {{ opportunity.status }}</span>
+          </a>
+        {% endif %}
+      </div>
     {% endfor %}
-    <div class="three columns">
-      <button>How to Apply</button><!-- qq link this -->
+
+    <div class="card">
+      <button class="hollow">How to Apply</button><!-- qq link this -->
     </div>
+
   </div>
-</div>
 {% endif %}

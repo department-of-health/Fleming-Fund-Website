@@ -38,25 +38,25 @@
 
 <div>
   <h3>Core Principles</h3>
-  <div class="row">
-    <div class="three columns card">
-      <h3 class="infocardTitle">One Health</h3>
+  <div class="card-container four-max">
+    <div class="card">
+      <h3>One Health</h3>
       <p class="supporting">Taking a One Health approach to funding encompassing public health, animal health and
         agriculture, and the environment.</p>
     </div>
-    <div class="three columns card">
-      <h3 class="infocardTitle">Country Ownership</h3>
+    <div class="card">
+      <h3>Country Ownership</h3>
       <p class="supporting">Implementing the National Action Plans which the country has developed (usually though an
         AMR Coordination Committee).</p>
     </div>
-    <div class="three columns card">
-      <h3 class="infocardTitle">Alignment of Approach</h3>
+    <div class="card">
+      <h3>Alignment of Approach</h3>
       <p class="supporting">Funding is aligned with what other donors are funding and conforms with broader global
         initiatives, for example GLASS and the
         Global Action Plan on Antimicrobial Resistance.</p>
     </div>
-    <div class="three columns card">
-      <h3 class="infocardTitle">Sustainability</h3>
+    <div class="card">
+      <h3>Sustainability</h3>
       <p class="supporting">Ensuring that sustainable systems are a critical part of the funding decisions taken.</p>
     </div>
   </div>
@@ -71,60 +71,61 @@
     AMR is a major concern because drug-resistant infections can kill, spread to others, and impose huge costs on
     individuals and society.</p>
 </div>
-<div class="row statistics">
-  <div class="three columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">700</p>
-    <p class="supporting" style="width: 100%; text-align: center">Thousand People</p>
+
+<div class="card-container four-max">
+  {% include 'cards/entities/statistic-small.html' with {'statistic': {
+    'value': 700,
+    'label': 'Thousand People'
+  }} %}
+  {% include 'cards/entities/statistic-small.html' with {'statistic': {
+    'value': 100,
+    'label': 'Grants given'
+  }} %}
+  {% include 'cards/entities/statistic-small.html' with {'statistic': {
+    'value': 10,
+    'label': 'Million People'
+  }} %}
+  {% include 'cards/entities/statistic-small.html' with {'statistic': {
+    'value': 10,
+    'label': 'Point Plan'
+  }} %}
+</div>
+
+<div class="card-container four-max">
+  <div class="card">
+    <p>Info graphic</p>
   </div>
-  <div class="three columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">100</p>
-    <p class="supporting" style="width: 100%; text-align: center">Trillion US Dollars</p>
+  <div class="card">
+    <p>Info graphic</p>
   </div>
-  <div class="three columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">10</p>
-    <p class="supporting" style="width: 100%; text-align: center">Million People</p>
+  <div class="card">
+    <p>Info graphic</p>
   </div>
-  <div class="three columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">10</p>
-    <p class="supporting" style="width: 100%; text-align: center">Point Plan</p>
+  <div class="card">
+    <p>Info graphic</p>
   </div>
 </div>
 
-<div class="row">
-  <div class="three columns card">
-    <p>Info graphic</p>
-  </div>
-  <div class="three columns card">
-    <p>Info graphic</p>
-  </div>
-  <div class="three columns card">
-    <p>Info graphic</p>
-  </div>
-  <div class="three columns card">
-    <p>Info graphic</p>
-  </div>
-</div>
-
-<div class="row">
-  <div class="three columns">
+<div class="card-container four-max">
+  <div class="card">
     <h4>Why AMR is a threat</h4>
     <p class="supporting">Almost 700,000 people worldwide die annually from drug-resistant infections. Without effective
       antimicrobial treatments,
       infections that have been treatable for decades could, once again, cause widespread death and suffering.</p>
   </div>
-  <div class="three columns">
+  <div class="card">
     <h4>Why AMR is a threat</h4>
     <p class="supporting">Almost 700,000 people worldwide die annually from drug-resistant infections. Without effective
       antimicrobial treatments,
       infections that have been treatable for decades could, once again, cause widespread death and suffering.</p>
   </div>
-  <div class="three columns">
+  <div class="card">
     <h4>Why AMR is a threat</h4>
     <p class="supporting">Almost 700,000 people worldwide die annually from drug-resistant infections. Without effective
       antimicrobial treatments,
       infections that have been treatable for decades could, once again, cause widespread death and suffering.</p>
   </div>
-  <div class="three columns">
+  <div class="card">
     <h4>Why AMR is a threat</h4>
     <p class="supporting">Almost 700,000 people worldwide die annually from drug-resistant infections. Without effective
       antimicrobial treatments,
@@ -136,7 +137,7 @@
 
 <hr class="row-divider"/>
 
-<div class="row">
+<div class="card-container three-max">
   {% include 'cards/medium.html' with {'card': {
     'title': 'Country Grants',
     'content': 'To improve the collection and use of AMR data, including antimicrobial use, in target countries using a One Health approach.',
@@ -158,7 +159,7 @@
 
 <h3>Technical Advisory Group</h3>
 
-<div class="row">
+<div class="card-container cover">
   {% include 'cards/entities/person-large-with-image.html' with {
     'person': tagHighlightPerson,
     'quote': 'I like fish, give me more fish, give now, now, give fish now, no not dry the wet fish give now.',
@@ -169,6 +170,10 @@
   } %}
 </div>
 
-{{ include('layout/useful-links.html') }}
+{% embed 'layout/supporting-content.html' %}
+  {% block content %}
+    {{ include('layout/useful-links.html') }}
+  {% endblock %}
+{% endembed %}
 
 {{ include('layout/footer.html') }}

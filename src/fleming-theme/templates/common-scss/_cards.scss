@@ -1,13 +1,23 @@
-.row {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-.card, .card-with-left-image {
+.card {
   margin-top: 2rem;
   margin-bottom: 2rem;
   position: relative;
   display: block;
+}
+
+.card {
+  // Internal layout
+
+  $card-padding: 2rem;
+
+  display: inline-flex;
+  flex-flow: column nowrap;
+  color: inherit;
+  font: inherit;
+  text-decoration: initial;
+  overflow: hidden;
+  border-radius: 1px;
+  font-size: 16px;
 
   a, button {
     position: relative;
@@ -22,59 +32,242 @@
     bottom: 0;
     left: 0;
   }
-}
 
-.card {
-  border: 1px solid;
-  padding: 1.5rem 2rem;
-  display: inline-flex;
-  flex-flow: column nowrap;
-  align-content: space-between;
-  align-items: flex-start;
-  color: inherit;
-  font: inherit;
-  text-decoration: initial;
-  overflow: hidden;
+  .header {
+    padding: $card-padding;
+    border-bottom: 0.3ex solid #fff;
+  }
 
-  h3, h4 {
-    a {
-      color: inherit;
+  .content {
+    padding: 0 $card-padding $card-padding;
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
 
-      &:hover {
-        color: $teal;
+    p {
+      margin-top: $card-padding;
+
+      &:last-of-type {
+        flex: 1 1 auto;
       }
     }
   }
 
-  .identifier {
-    padding-top: 1.5rem;
-    padding-bottom: 1.25rem;
+  button, .button {
+    margin: $card-padding 0 0;
+  }
+
+  h3, h4 {
+    margin: $card-padding 0;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  h3 {
+    font-size: 2em;
+  }
+
+  h4 {
+    font-size: 1.7em;
+  }
+
+  p {
     width: 100%;
-    border-bottom: 1px solid $light-grey;
-    font-size: 16px;
-    opacity: 0.8;
+    font-size: 2rem;
+    margin: 0;
   }
 
-  p:last-of-type {
-    display: flex;
-    flex: 1 1 auto;
-    margin-bottom: 1rem;
+  .identifier {
+    margin: 0;
+    width: 100%;
+    padding-bottom: $card-padding;
+    border-bottom: 0.2ex solid $light-grey;
+    font-size: 1em;
   }
 
-  &.without-border {
+  .supporting {
+    font-size: 1em;
+  }
+
+  button, .button {
+    font-size: 1.2em;
+  }
+
+  &.clean {
     border: none;
+    background: transparent;
   }
 
   &.wide {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
+
+  // Map colours
+
+  &.decorated {
+    background: $light-grey;
+    border-top: 1ex solid $light-grey;
+
+    @each $configName, $colourConfig in $colourConfigs {
+
+      $selectorForColour: if($configName == base, '', '.'+$configName);
+
+      &#{$selectorForColour} {
+        border-top-color: map-get($colourConfig, subtle);
+
+        .header {
+          color: map-get($colourConfig, intense);
+
+          a:hover {
+            color: map-get($colourConfig, subtle);
+          }
+        }
+
+        .identifier {
+          border-bottom-color: map-get($colourConfig, subtle);
+        }
+
+        .content {
+          color: $dark-grey;
+        }
+
+        button, .button {
+          color: #fff;
+          border-color: map-get($colourConfig, intense);
+          background: map-get($colourConfig, intense);
+
+          &:hover, &:focus {
+            border-color: map-get($colourConfig, subtle);
+            background: map-get($colourConfig, subtle);
+          }
+
+          &.hollow {
+            color: map-get($colourConfig, intense);
+            background: transparent;
+
+            &:hover, &:focus {
+              color: map-get($colourConfig, subtle);
+            }
+          }
+
+        }
+
+        &.inverted-header {
+          .header {
+            background: map-get($colourConfig, intense);
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
 }
 
-.card-with-left-image {
+// Layout
+
+@mixin perRow($numPerRow) {
+  @if ($numPerRow == 1) {
+    width: 100%;
+    margin-right: 0 !important;
+  } @else {
+    width: grid-column-width(12/$numPerRow);
+    margin-right: ($numPerRow - 1) * $column-margin / $numPerRow;
+    &:nth-of-type(#{$numPerRow}n) {
+      margin-right: 0;
+    }
+    &:not(:nth-of-type(#{$numPerRow}n)) {
+      margin-right: $column-margin;
+    }
+  }
+}
+
+.card-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .card {
+    margin-top: ($column-margin / 2);
+    margin-bottom: ($column-margin / 2);
+  }
+
+  &.cover .card {
+    @include perRow(1);
+  }
+  &.two-max .card {
+    @include perRow(2);
+  }
+  &.three-max .card {
+    @include perRow(3);
+  }
+  &.four-max .card {
+    @include perRow(4);
+  }
+}
+
+@media (#{$max-width-tablet}) {
+  .card {
+    h3 {
+      font-size: 1.7em;
+    }
+    h4 {
+      font-size: 1.4em;
+    }
+  }
+
+  .card-container {
+    &.two-max .card {
+      @include perRow(2);
+    }
+    &.three-max .card {
+      @include perRow(3);
+    }
+    &.four-max .card {
+      @include perRow(2);
+    }
+  }
+}
+
+@media (#{$max-width-mobile}) {
+  .card {
+    h3 {
+      font-size: 1.5em;
+    }
+    h4 {
+      font-size: 1.2em;
+    }
+  }
+
+  .card-container {
+    &.two-max .card {
+      @include perRow(1);
+    }
+    &.three-max .card {
+      @include perRow(1);
+    }
+    &.four-max .card {
+      @include perRow(2);
+    }
+  }
+}
+
+// Special types
+
+.card.with-left-image {
   font-size: 0;
   display: flex;
   flex-flow: row wrap;
+  border: none;
 
   .image-container {
     display: inline-block;
@@ -85,19 +278,76 @@
 
     img {
       display: block;
-      min-width: 100%;
-      min-height: 100%;
+      width: 100%;
+      height: auto;
     }
   }
 
   .card {
+    border: none;
     margin: 0;
     display: inline-block;
-    display: inline-flex;
+    //display: inline-flex;
     vertical-align: top;
-    float: none;
+    padding-top: 1rem;
+    width: 100%;
+
+    .header {
+      border-bottom: none;
+    }
   }
 }
+
+@media (#{$min-width-desktop}) {
+  .card.with-left-image {
+    .card {
+      width: grid-column-width(6);
+      margin: 0;
+    }
+    .image-container {
+      width: grid-offset-length(6);
+      margin: 0;
+
+      img {
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+      }
+    }
+  }
+}
+
+.card.statistic {
+  background: transparent;
+  border: none;
+  text-align: center;
+
+  p.value {
+    font-size: 3.5em;
+    font-weight: bold;
+    margin: 0 0 1ex;
+  }
+  p.label {
+    font-size: 1em;
+  }
+}
+
+.card-container.opportunities {
+  .card {
+    font-weight: bold;
+    font-size: 0.9em;
+
+    .status {
+      font-weight: normal;
+    }
+
+    button, .button {
+      margin: 0;
+    }
+  }
+}
+
+// ???
 
 .dark-card {
   background: black;
@@ -111,12 +361,4 @@
 .application-label {
   text-align: center;
   margin-top: 1.4em;
-}
-
-@media (#{$bp-larger-than-phablet}) {
-  div.card-with-left-image {
-    .image-container {
-      width: grid-offset-length(6);
-    }
-  }
 }

@@ -19,14 +19,15 @@
 @import "common-scss/fonts";
 
 @import "common-scss/grey-box";
-@import "common-scss/buttons-dark";
+@import "common-scss/buttons";
 @import "common-scss/navigation";
 @import "common-scss/cards";
-@import "common-scss/map";
 
-@import "common-scss/header";
-@import "common-scss/nav";
-@import "common-scss/footer";
+@import "common-scss/layout";
+@import "layout/map";
+@import "layout/header";
+@import "layout/nav";
+@import "layout/footer";
 
 h1, h2, h3, h4, h5 {
   display: block;
@@ -37,13 +38,21 @@ h1 {
   margin-bottom: 0;
 }
 
+h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+body {
+  color: $dark-grey;
+}
 
 input, button, .button {
   border-radius: 0 !important;
 }
 
 a {
-  color: black;
+  color: inherit;
   text-decoration: none;
 }
 
@@ -58,11 +67,11 @@ img.avatar {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
 
-  &.small {
+  &.four-max {
     width: 80%;
     max-width: 150px;
   }
-  &.large {
+  &.two-max {
     width: 200px;
     min-width: 50%;
     max-width: 100%;
@@ -74,8 +83,6 @@ img.avatar {
 }
 
 div.row.statistics {
-  border-top: 1px solid;
-  border-bottom: 1px solid;
   margin-top: 3rem;
   margin-bottom: 3rem;
   padding-top: 3rem;
@@ -101,39 +108,17 @@ div.row.statistics {
 
 h3.row-title {
   margin-top: 5rem;
-  margin-bottom: 0.5rem
 }
 
 hr.row-divider {
   margin-top: 4rem;
   margin-bottom: 5rem;
   border-width: 0;
-  border-top: 2px solid #000;
-}
-
-button.square-icon {
-  $padding: 10px;
-  box-sizing: border-box;
-  width: $hit-box-height;
-  height: $hit-box-height;
-  padding: $padding;
-  border: none;
-
-  svg {
-    width: ($hit-box-height - 2*$padding);
-    height: ($hit-box-height - 2*$padding);
-  }
-}
-
-button {
-  background: $turquoise;
-
-  &:hover, &:focus {
-    opacity: 0.8;
-  }
+  border-top: 1px solid $mid-turquoise;
 }
 
 // Per-page CSS
+@import 'page-types/front-page';
 @import 'page-types/single-organisation';
 
 // aims page CSS
@@ -150,9 +135,4 @@ button {
 
 .downArrow {
   float: right;
-}
-
-// about page CSS
-.infocardTitle{
-  min-height: 3em;
 }
