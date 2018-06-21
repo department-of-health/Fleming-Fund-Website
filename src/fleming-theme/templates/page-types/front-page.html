@@ -1,6 +1,14 @@
 {{ include('layout/header.html') }}
 
-{{ include('layout/current-opportunities.html') }}
+{% embed 'layout/full-width-container.html' %}
+  {% block container %}
+    <div style="background: #f4f4f4; padding: 1.25rem 0 0;">
+      <div class="container">
+        {{ include('layout/current-opportunities.html') }}
+      </div>
+    </div>
+  {% endblock %}
+{% endembed %}
 
 {% embed 'layout/full-width-container.html' %}
   {% block container %}
@@ -39,22 +47,22 @@
 
 <hr class="row-divider"/>
 
-<div class="card-container four-max">
+<div class="card-container statistics four-max">
   {% include 'cards/entities/statistic-small.html' with {'statistic': {
     'value': '£'~fields.spend_statistic.value~'m',
-    'label': 'Spend statistic'
+    'text': 'Spend statistic'
   }} %}
   {% include 'cards/entities/statistic-small.html' with {'statistic': {
     'value': fields.grants_given.value,
-    'label': 'Grants given'
+    'text': 'Grants given'
   }} %}
   {% include 'cards/entities/statistic-small.html' with {'statistic': {
     'value': fields.performance_indicator.value,
-    'label': 'Performance against any KPI'
+    'text': 'Performance against any KPI'
   }} %}
   {% include 'cards/entities/statistic-small.html' with {'statistic': {
     'value': fields.another_statistic.value,
-    'label': 'Statistical supporting copy'
+    'text': 'Statistical supporting copy'
   }} %}
 </div>
 

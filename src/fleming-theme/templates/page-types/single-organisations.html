@@ -1,9 +1,7 @@
 {{ include('layout/header.html') }}
 
-<div class="row" style="margin-top: 1em; margin-bottom: 1em">
-    <h1>{{ title }}</h1>
-    {{ include('layout/in-page-links.html') }}
-</div>
+<h1>{{ title }}</h1>
+{{ include('layout/in-page-links.html') }}
 
 {% include 'flexible_content.twig' with { 'flexible_content': fields.organisation_flexible_content.value } %}
 

@@ -72,22 +72,22 @@
     individuals and society.</p>
 </div>
 
-<div class="card-container four-max">
+<div class="card-container statistics four-max">
   {% include 'cards/entities/statistic-small.html' with {'statistic': {
     'value': 700,
-    'label': 'Thousand People'
+    'text': 'Thousand People'
   }} %}
   {% include 'cards/entities/statistic-small.html' with {'statistic': {
     'value': 100,
-    'label': 'Grants given'
+    'text': 'Grants given'
   }} %}
   {% include 'cards/entities/statistic-small.html' with {'statistic': {
     'value': 10,
-    'label': 'Million People'
+    'text': 'Million People'
   }} %}
   {% include 'cards/entities/statistic-small.html' with {'statistic': {
     'value': 10,
-    'label': 'Point Plan'
+    'text': 'Point Plan'
   }} %}
 </div>
 
@@ -139,16 +139,19 @@
 
 <div class="card-container three-max">
   {% include 'cards/medium.html' with {'card': {
+    'decorated': true,
     'title': 'Country Grants',
     'content': 'To improve the collection and use of AMR data, including antimicrobial use, in target countries using a One Health approach.',
     'link_target': '/country-grants/'
   }} %}
   {% include 'cards/medium.html' with {'card': {
+    'decorated': true,
     'title': 'Regional Grants',
     'content': 'To provide long-term mentorship and career enhancement for 4-8 fellows per country.',
     'link_target': '/regional-grants/'
   }} %}
   {% include 'cards/medium.html' with {'card': {
+    'decorated': true,
     'title': 'Fellowships',
     'content': 'To support regional One Health approaches to improved surveillance of AMR.',
     'link_target': '/fellowships/'

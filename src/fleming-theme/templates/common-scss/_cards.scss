@@ -317,18 +317,41 @@
   }
 }
 
-.card.statistic {
-  background: transparent;
-  border: none;
+.card-container.statistics {
   text-align: center;
+  justify-content: center;
 
-  p.value {
-    font-size: 3.5em;
-    font-weight: bold;
-    margin: 0 0 1ex;
+  .card {
+
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 1.5rem;
+
+    .statistic-value {
+      font-size: 48px; // qq responsive?
+      font-weight: bold;
+      width: 100%;
+    }
+
+    .statistic-text {
+      width: 100%;
+    }
   }
-  p.label {
-    font-size: 1em;
+}
+
+.card-container.opportunities {
+  .card {
+    font-weight: bold;
+    font-size: 0.9em;
+
+    .status {
+      font-weight: normal;
+    }
+
+    button, .button {
+      margin: 0;
+    }
   }
 }
 
