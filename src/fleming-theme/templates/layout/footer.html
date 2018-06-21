@@ -2,49 +2,47 @@
 </main>
 <footer>
   <div class="container">
-    <div class="row">
-      <div class="left">
+    <div class="left">
 
-        <p>Fleming Fund is a government aid programme</p>
-        <div class="footer-content">
-          <img src="/wp-content/themes/fleming-theme/images/placeholder-logo.png" width="108" height="115" alt=""/>
-          <img src="/wp-content/themes/fleming-theme/images/uk-aid-logo.png" width="108" height="115" alt="UK aid"/>
-        </div>
-
-        <p>Supported by</p>
-        <div class="footer-content">
-          <img src="/wp-content/themes/fleming-theme/images/placeholder-logo.png" width="108" height="115" alt=""/>
-          <img src="/wp-content/themes/fleming-theme/images/placeholder-logo.png" width="108" height="115" alt=""/>
-          <img src="/wp-content/themes/fleming-theme/images/placeholder-logo.png" width="108" height="115" alt=""/>
-        </div>
-
+      <p>Fleming Fund is a government aid programme</p>
+      <div class="footer-content">
+        <img src="/wp-content/themes/fleming-theme/images/placeholder-logo.png" width="108" height="115" alt=""/>
+        <img src="/wp-content/themes/fleming-theme/images/uk-aid-logo.png" width="108" height="115" alt="UK aid"/>
       </div>
-      <div class="right">
-        <p>&nbsp;</p>
-        <div class="footer-content">
-          <ul class="social-links">
-            {% include '1-atoms/link-item-image.html' with {
-              'link': nav.twitterLink,
-              'image_src': '/wp-content/themes/fleming-theme/images/social/twitter.png',
-            } %}
-            {% include '1-atoms/link-item-image.html' with {
-              'link': nav.twitterLink,
-              'image_src': '/wp-content/themes/fleming-theme/images/social/twitter.png',
-            } %}
-            {% include '1-atoms/link-item-image.html' with {
-              'link': nav.twitterLink,
-              'image_src': '/wp-content/themes/fleming-theme/images/social/twitter.png',
-            } %}
+
+      <p>Supported by</p>
+      <div class="footer-content">
+        <img src="/wp-content/themes/fleming-theme/images/placeholder-logo.png" width="108" height="115" alt=""/>
+        <img src="/wp-content/themes/fleming-theme/images/placeholder-logo.png" width="108" height="115" alt=""/>
+        <img src="/wp-content/themes/fleming-theme/images/placeholder-logo.png" width="108" height="115" alt=""/>
+      </div>
+
+    </div>
+    <div class="right">
+      <p>&nbsp;</p>
+      <div class="footer-content">
+        <ul class="social-links">
+          {% include '1-atoms/link-item-image.html' with {
+            'link': nav.twitterLink,
+            'image_src': '/wp-content/themes/fleming-theme/images/social/twitter.png',
+          } %}
+          {% include '1-atoms/link-item-image.html' with {
+            'link': nav.twitterLink,
+            'image_src': '/wp-content/themes/fleming-theme/images/social/twitter.png',
+          } %}
+          {% include '1-atoms/link-item-image.html' with {
+            'link': nav.twitterLink,
+            'image_src': '/wp-content/themes/fleming-theme/images/social/twitter.png',
+          } %}
+        </ul>
+        <div class="about">
+          <p class="copyright">&copy; 2018 Fleming Fund</p>
+          <ul class="about-links">
+            {% include '1-atoms/link-item-text.html' with {'link': nav.contactUsLink} %}
+            {% include '1-atoms/link-item-text.html' with {'link': nav.termsOfUseLink} %}
+            <br class="forced-break"/>
+            {% include '1-atoms/link-item-text.html' with {'link': nav.privacyStatementLink} %}
           </ul>
-          <div class="about">
-            <p class="copyright">&copy; 2018 Fleming Fund</p>
-            <ul class="about-links">
-              {% include '1-atoms/link-item-text.html' with {'link': nav.contactUsLink} %}
-              {% include '1-atoms/link-item-text.html' with {'link': nav.termsOfUseLink} %}
-              <br class="forced-break"/>
-              {% include '1-atoms/link-item-text.html' with {'link': nav.privacyStatementLink} %}
-            </ul>
-          </div>
         </div>
       </div>
     </div>
