@@ -3,6 +3,7 @@
     {% if card.top_html %}
       {{ card.top_html|raw }}
     {% endif %}
+  <div class="card{{ card.decorated ? ' decorated' }}">
     <div class="header">
 
       <h4>

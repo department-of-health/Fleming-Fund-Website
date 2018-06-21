@@ -118,7 +118,6 @@
 
       &#{$selectorForColour} {
         border-top-color: map-get($colourConfig, subtle);
-
         .header {
           color: map-get($colourConfig, intense);
 
@@ -317,18 +316,26 @@
   }
 }
 
-.card.statistic {
-  background: transparent;
-  border: none;
+.card-container.statistics {
   text-align: center;
+  justify-content: center;
 
-  p.value {
-    font-size: 3.5em;
-    font-weight: bold;
-    margin: 0 0 1ex;
-  }
-  p.label {
-    font-size: 1em;
+  .card {
+
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 1.5rem;
+
+    .statistic-value {
+      font-size: 48px; // qq responsive?
+      font-weight: bold;
+      width: 100%;
+    }
+
+    .statistic-text {
+      width: 100%;
+    }
   }
 }
 

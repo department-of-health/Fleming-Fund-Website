@@ -47,22 +47,22 @@
 
 <hr class="row-divider"/>
 
-<div class="card-container four-max">
+<div class="card-container statistics four-max">
   {% include 'cards/entities/statistic-small.html' with {'statistic': {
     'value': '£'~fields.spend_statistic.value~'m',
-    'label': 'Spend statistic'
+    'text': 'Spend statistic'
   }} %}
   {% include 'cards/entities/statistic-small.html' with {'statistic': {
     'value': fields.grants_given.value,
-    'label': 'Grants given'
+    'text': 'Grants given'
   }} %}
   {% include 'cards/entities/statistic-small.html' with {'statistic': {
     'value': fields.performance_indicator.value,
-    'label': 'Performance against any KPI'
+    'text': 'Performance against any KPI'
   }} %}
   {% include 'cards/entities/statistic-small.html' with {'statistic': {
     'value': fields.another_statistic.value,
-    'label': 'Statistical supporting copy'
+    'text': 'Statistical supporting copy'
   }} %}
 </div>
 
