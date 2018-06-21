@@ -1,6 +1,14 @@
 {{ include('layout/header.html') }}
 
-{{ include('layout/current-opportunities.html') }}
+{% embed 'layout/full-width-container.html' %}
+  {% block container %}
+    <div style="background: #f4f4f4; padding: 1.25rem 0 0;">
+      <div class="container">
+        {{ include('layout/current-opportunities.html') }}
+      </div>
+    </div>
+  {% endblock %}
+{% endembed %}
 
 {% embed 'layout/full-width-container.html' %}
   {% block container %}

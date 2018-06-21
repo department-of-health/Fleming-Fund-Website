@@ -332,6 +332,21 @@
   }
 }
 
+.card-container.opportunities {
+  .card {
+    font-weight: bold;
+    font-size: 0.9em;
+
+    .status {
+      font-weight: normal;
+    }
+
+    button, .button {
+      margin: 0;
+    }
+  }
+}
+
 // ???
 
 .dark-card {
