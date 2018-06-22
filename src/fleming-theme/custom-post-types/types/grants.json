@@ -117,7 +117,7 @@
                     {
                         "key": "field_5b23bddcd5553",
                         "label": "Introductory Paragraph",
-                        "name": "paragraph_inner",
+                        "name": "text_block_inner",
                         "type": "text",
                         "instructions": "",
                         "required": 0,
@@ -155,7 +155,7 @@
                             {
                                 "key": "field_5b23be02d5555",
                                 "label": "Criterion",
-                                "name": "paragraph_inner",
+                                "name": "text_block_inner",
                                 "type": "text",
                                 "instructions": "",
                                 "required": 0,

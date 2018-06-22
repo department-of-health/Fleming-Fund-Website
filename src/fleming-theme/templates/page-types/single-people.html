@@ -6,17 +6,7 @@
 
 <div class="row">
   <div class="nine columns">
-    {% for content_block in fields.details.value %}
-        
-      {% if content_block.acf_fc_layout == 'header_paragraph' %}
-        {% include '1-atoms/text-block.html' %}
-  
-      {% elseif content_block.acf_fc_layout == 'supporting_paragraph' %}
-        {% include '1-atoms/supporting-text-block.html' %}
-  
-      {% endif %}
-    
-    {% endfor %}
+    {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
   </div>
   <div class="three columns">
     {% include '1-atoms/contact-details.html' %}

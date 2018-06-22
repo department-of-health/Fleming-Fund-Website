@@ -3,5 +3,48 @@
 <h1>{{ title }}</h1>
 
 <hr class="row-divider"/>
+<div class="row">
+  <div class="nine columns">
+    {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+  </div>
+  <div class="three columns card-container small">
+  {% include 'cards/entities/person-small-with-image.html' with {
+    'person': coordinator,
+    'supertitle': 'Regional Coordinator',
+    'cta_override': {
+      'title': 'Contact Now',
+      'target': 'mailto:' ~ coordinator.fields.email.value
+    }
+  } %}
+  </div>
+</div>
+
+<div class="row statistics">
+  <div class="four columns">
+    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">{{ fields.statistics.value.projects_completed }}</p>
+    <p class="supporting" style="width: 100%; text-align: center">Projects Completed</p>
+  </div>
+  <div class="four columns">
+    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">{{ fields.statistics.value.projects_in_progress }}</p>
+    <p class="supporting" style="width: 100%; text-align: center">Projects in Progress</p>
+  </div>
+  <div class="four columns">
+    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">£{{ fields.statistics.value.funds_provided }}</p>
+    <p class="supporting" style="width: 100%; text-align: center">Funds Provided</p>
+  </div>
+</div>
+
+{% if fields.case_study.value %}
+<div class="row">
+  <h3>Feature Case Study</h3>
+  {% include 'cards/entities/publication-large-with-image.html' with {
+    'publication': fields.case_study,
+    'cta_override': {
+      'title': 'See all Case Studies',
+      'target': nav.caseStudiesLink.target
+    }
+  } %}
+</div>
+{% endif %}
 
 {{ include('layout/footer.html') }}
