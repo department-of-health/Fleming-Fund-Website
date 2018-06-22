@@ -13,14 +13,16 @@
   <div class="nine columns">
       {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
   </div>
-  {% include 'cards/entities/person-small-with-image.html' with {
-    'person': fields.coordinator.value,
-    'supertitle': 'Regional Coordinator',
-    'cta_override': {
-      'title': 'Contact Now',
-      'target': 'mailto:' ~ fields.coordinator.value.fields.email.value
-    }
-  } %}
+  <div class="three columns card-container small">
+    {% include 'cards/entities/person-small-with-image.html' with {
+      'person': fields.coordinator.value,
+      'supertitle': 'Regional Coordinator',
+      'cta_override': {
+        'title': 'Contact Now',
+        'target': 'mailto:' ~ fields.coordinator.value.fields.email.value
+      }
+    } %}
+  </div>
 </div>
 
 <hr class="row-separator" />

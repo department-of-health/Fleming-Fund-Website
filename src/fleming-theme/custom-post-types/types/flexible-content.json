@@ -412,6 +412,20 @@
                     "operator": "==",
                     "value": "grants"
                 }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "publications"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "events"
+                }
             ]
         ],
         "menu_order": 0,

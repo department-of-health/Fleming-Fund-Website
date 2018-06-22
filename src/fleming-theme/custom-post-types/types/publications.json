@@ -4,25 +4,6 @@
         "title": "Publications field group",
         "fields": [
             {
-                "key": "field_5b069f204fa9b",
-                "label": "Content",
-                "name": "content",
-                "type": "textarea",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "maxlength": "",
-                "rows": "",
-                "new_lines": "br"
-            },
-            {
                 "key": "field_5b069f714fa9c",
                 "label": "URL",
                 "name": "url",
@@ -40,8 +21,8 @@
             },
             {
                 "key": "field_5b069f7c4fa9d",
-                "label": "Files",
-                "name": "files",
+                "label": "File",
+                "name": "file",
                 "type": "file",
                 "instructions": "",
                 "required": 0,
