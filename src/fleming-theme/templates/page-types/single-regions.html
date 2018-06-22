@@ -4,9 +4,17 @@
 
 {% include 'layout/map.html' %}
 
+<div class="row">
 <ul class="large-links">
-  {% include '1-atoms/link-items-text.html' with {'links': countryLinks} %}
+  {% include '1-atoms/link-items-text.html' with {'links': fundCountryLinks} %}
 </ul>
+</div>
+<div class="row">
+<ul class="large-links">
+  {% include '1-atoms/link-items-text.html' with {'links': partnerCountryLinks} %}
+</ul>
+</div>
+
 <hr class="row-underline" />
 
 <div class="row">

@@ -46,7 +46,7 @@
                         "name": "projects_completed",
                         "type": "number",
                         "instructions": "",
-                        "required": 1,
+                        "required": 0,
                         "conditional_logic": 0,
                         "wrapper": {
                             "width": "",
@@ -67,7 +67,7 @@
                         "name": "projects_in_progress",
                         "type": "number",
                         "instructions": "",
-                        "required": 1,
+                        "required": 0,
                         "conditional_logic": 0,
                         "wrapper": {
                             "width": "",
@@ -88,7 +88,7 @@
                         "name": "funds_provided",
                         "type": "number",
                         "instructions": "",
-                        "required": 1,
+                        "required": 0,
                         "conditional_logic": 0,
                         "wrapper": {
                             "width": "",
