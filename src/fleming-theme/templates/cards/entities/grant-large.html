@@ -1,7 +1,7 @@
 {% if grant %}
   {# TODO pull the colour scheme from the grant's (country's) region #}
   {# TODO insert the region(s) / country(s) into the identifier #}
-  {% include 'cards/large.html' with {'card': {
+  {% include 'cards/base.html' with {'card': {
     'decorated': true,
     'colour_scheme': 'blue',
     'inverted_header': true,

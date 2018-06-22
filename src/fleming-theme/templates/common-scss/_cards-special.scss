@@ -120,3 +120,54 @@
     }
   }
 }
+
+.card-container.inline-links {
+  border: 0 solid $turquoise;
+  border-width: 1px 0;
+  color: $turquoise;
+  margin-bottom: 1em;
+
+  .card {
+
+    .header {
+      display: none;
+    }
+
+    .content {
+      padding: 0;
+      font-size: 1em;
+
+      p {
+        margin: 0 !important;
+      }
+    }
+  }
+}
+
+@media (#{$min-width-mobile}) {
+  .card-container.inline-links {
+    .card {
+      .content {
+        font-size: 1.1em;
+      }
+    }
+  }
+}
+
+@media (#{$min-width-tablet}) {
+  .card-container.inline-links {
+    justify-content: flex-start;
+    border-width: 0 0 1px;
+    padding-bottom: 1ex;
+
+    .card {
+      display: inline-block;
+      width: auto;
+      margin: 0 2em 0 0 !important;
+
+      .content {
+        font-size: 1.2em;
+      }
+    }
+  }
+}

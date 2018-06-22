@@ -1,14 +1,25 @@
 {{ include('layout/header.html') }}
 
 <h1>About the Fleming Fund</h1>
-<ul class="large-links">
-  <li>Overview</li>
-  <li>AMR Overview</li>
-  <li>Grant Types</li>
-  <li>Technical Advisory Group</li>
-</ul>
 
-<hr class="row-divider"/>
+{% include 'layout/in-page-links.html' with {'in_page_links': [
+  {
+    'title': 'Overview',
+    'target': '#'
+  },
+  {
+    'title': 'AMR Overview',
+    'target': '#'
+  },
+  {
+    'title': 'Grant Types',
+    'target': '#'
+  },
+  {
+    'title': 'Technical Advisory Group',
+    'target': '#'
+  },
+]} %}
 
 <div>
   <p>The Fleming Fund is a UK Government aid programme to help low and middle income countries
@@ -138,19 +149,19 @@
 <hr class="row-divider"/>
 
 <div class="card-container three-max">
-  {% include 'cards/medium.html' with {'card': {
+  {% include 'cards/base.html' with {'card': {
     'decorated': true,
     'title': 'Country Grants',
     'content': 'To improve the collection and use of AMR data, including antimicrobial use, in target countries using a One Health approach.',
     'link_target': '/country-grants/'
   }} %}
-  {% include 'cards/medium.html' with {'card': {
+  {% include 'cards/base.html' with {'card': {
     'decorated': true,
     'title': 'Regional Grants',
     'content': 'To provide long-term mentorship and career enhancement for 4-8 fellows per country.',
     'link_target': '/regional-grants/'
   }} %}
-  {% include 'cards/medium.html' with {'card': {
+  {% include 'cards/base.html' with {'card': {
     'decorated': true,
     'title': 'Fellowships',
     'content': 'To support regional One Health approaches to improved surveillance of AMR.',

@@ -1,5 +1,7 @@
 {% if in_page_links %}
-  <ul class="large-links">
-    {% include '1-atoms/link-items-text.html' with {'links': in_page_links} %}
-  </ul>
+  <div class="card-container two-max inline-links">
+    {% for link in in_page_links %}
+      {% include 'cards/entities/inline-link-small.html' %}
+    {% endfor %}
+  </div>
 {% endif %}

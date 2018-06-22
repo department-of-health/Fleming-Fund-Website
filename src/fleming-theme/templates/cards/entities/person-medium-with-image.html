@@ -1,5 +1,5 @@
 {% if person %}
-  {% include 'cards/medium.html' with {'card': {
+  {% include 'cards/base.html' with {'card': {
     'top_html': '<img src="https://placekitten.com/g/512/512"/>',
     'title': person.data.post_title,
     'content': person.fields.summary.value,

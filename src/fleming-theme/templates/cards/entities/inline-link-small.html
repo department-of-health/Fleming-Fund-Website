@@ -1,0 +1,7 @@
+{% if link %}
+  {% include 'cards/base.html' with {'card': {
+    'decorated': false,
+    'content': link.title,
+    'link_target': link.target
+  }} %}
+{% endif %}
