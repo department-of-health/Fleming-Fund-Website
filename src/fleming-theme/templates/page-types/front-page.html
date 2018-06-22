@@ -16,11 +16,9 @@
       <div class="container">
         <h2>We are a UK Government aid programme, helping low / middle income countries tackle antimicrobial
           resistance (AMR). Our focus is high-quality data, shared nationally and globally.</h2>
-        <ul class="large-links">
-          {% include '1-atoms/link-items-text.html' with {'links': [
-            nav.aboutUsLink, nav.ourAimsLink, nav.whatIsAMRLink
-          ]} %}
-        </ul>
+        {% include 'layout/link-collection.html' with {'links': [
+          nav.aboutUsLink, nav.ourAimsLink, nav.whatIsAMRLink
+        ]} %}
       </div>
     </div>
   {% endblock %}
