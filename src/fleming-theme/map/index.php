@@ -20,17 +20,17 @@ function get_map_config(string $currentRegion = 'all') {
         $mapConfig['countries'][$countryCode] = [
             'name' => $countryName,
             'region' => $regionSlug,
-            'URL' => $country['permalink']
+            'URL' => $country['permalink'],
+            'isPartner' => $country['fields']['relationship']['value'] !== 'fund'
         ];
 
         $mapConfig['regions']['all']['countries'][] = $countryCode;
     }
 
-    $regionColours = ['#ae2573', '#75447e', '#007145', '#256b99'];
     foreach ($countryCodesByRegion as $regionSlug => $countryCodes) {
         $mapConfig['regions'][$regionSlug] = [
             'countries' => $countryCodes,
-            'baseColour' => array_shift($regionColours)
+            'colourScheme' => region_slug_to_colour_scheme_name($regionSlug)
         ];
     }
 

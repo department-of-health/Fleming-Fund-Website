@@ -49,4 +49,24 @@
       background: $light-grey;
     }
   }
+
+  // Map colours
+
+  .jvectormap-region {
+    fill-opacity: 1;
+
+    @each $configName, $colourConfig in $colourConfigs {
+      &.#{$configName} {
+        fill: map-get($colourConfig, intense);
+
+        &.partner {
+          fill: map-get($colourConfig, subtle)
+        }
+
+        &:hover {
+          fill-opacity: 0.6;
+        }
+      }
+    }
+  }
 }
