@@ -10,16 +10,9 @@
   context.
 </p>
 
-<div class="row">
+<div class="people card-container three-max">
   {% for person in tagMembers %}
-
-  {% include 'cards/entities/person-medium-with-image.html' %}
-
-  {% if loop.index is divisible by(3) %}
-</div>
-<div class="row">
-  {% endif %}
-
+    {% include 'cards/entities/person-medium-with-image.html' %}
   {% endfor %}
 </div>
 

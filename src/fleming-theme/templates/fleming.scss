@@ -61,49 +61,8 @@ p.solid-left-indent {
   padding-left: 2em;
 }
 
-img.avatar {
-  border-radius: 50%;
-  display: inline-block;
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-
-  &.four-max {
-    width: 80%;
-    max-width: 150px;
-  }
-  &.two-max {
-    width: 200px;
-    min-width: 50%;
-    max-width: 100%;
-  }
-}
-
 .border-bottom-grey {
   border-bottom: 1px solid $light-grey;
-}
-
-div.row.statistics {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  padding-top: 3rem;
-  padding-bottom: 1.5rem;
-  justify-content: center;
-
-  .column, .columns {
-    margin-left: 0; // so we can deliberately over-fill the row and it will wrap correctly
-  }
-
-  .statistic-value {
-    font-size: 48px; // qq responsive?
-    font-weight: bold;
-    width: 100%;
-    text-align: center
-  }
-
-  .statistic-text {
-    width: 100%;
-    text-align: center;
-  }
 }
 
 h3.row-title {

@@ -1,7 +1,6 @@
 {% if person %}
   {% include 'cards/medium.html' with {'card': {
-    'extra_classes': 'clean wide',
-    'top_html': '<img src="https://placekitten.com/g/512/512" class="small avatar"/>',
+    'top_html': '<img src="https://placekitten.com/g/512/512"/>',
     'title': person.data.post_title,
     'content': person.fields.summary.value,
     'link_target': person.permalink

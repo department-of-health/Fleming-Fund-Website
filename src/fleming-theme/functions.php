@@ -56,38 +56,6 @@ function process_flexible_content( &$fields, &$content ) {
                 );
                 $show_in_page_links = true;
             }
-            elseif ($type == 'statistics') {
-                // Arrange statistics as:
-                // * 1,2,3 = one row, 1/3 wide; 4 = one row, 1/4 wide
-                // * 5 = 3+2, 6 = 3+3, 9 = 3+3+3
-                // * otherwise row of 4, then check again
-                $values = &$content_block['values'];
-                $index = 0;
-                $count = count($values);
-                while ($index < $count) {
-                    $remaining = $count - $index;
-                    switch ($remaining) {
-                        case 1:
-                        case 2:
-                        case 3:
-                        case 5:
-                        case 6:
-                        case 9:
-                            $width = "four columns";
-                            $fill = min($remaining, 3);
-                            break;
-                        default:
-                            $width = "three columns";
-                            $fill = min($remaining, 4);
-                            break;
-                    }
-                    while (($fill > 0) && ($index < $count)) {
-                        $values[$index]['column_style'] = $width;
-                        ++$index;
-                        --$fill;
-                    }
-                }
-            }
         }
     }
 
