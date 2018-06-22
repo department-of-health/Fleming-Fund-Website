@@ -206,9 +206,9 @@
             },
             {
                 "key": "field_5b17b9e070478",
-                "label": "Author",
-                "name": "author",
-                "type": "flexible_content",
+                "label": "Authors",
+                "name": "authors",
+                "type": "repeater",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -217,40 +217,32 @@
                     "class": "",
                     "id": ""
                 },
-                "layouts": {
-                    "5b17bb214b8b9": {
-                        "key": "5b17bb214b8b9",
-                        "name": "authors",
-                        "label": "Authors",
-                        "display": "block",
-                        "sub_fields": [
-                            {
-                                "key": "field_5b17bb317047a",
-                                "label": "Inner Author",
-                                "name": "inner_author",
-                                "type": "text",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "default_value": "",
-                                "placeholder": "",
-                                "prepend": "",
-                                "append": "",
-                                "maxlength": ""
-                            }
-                        ],
-                        "min": "",
-                        "max": ""
+                "collapsed": "",
+                "min": 0,
+                "max": 0,
+                "layout": "table",
+                "button_label": "Add Author",
+                "sub_fields": [
+                    {
+                        "key": "field_5b27d7615c279",
+                        "label": "Author",
+                        "name": "author",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
                     }
-                },
-                "button_label": "Add Row",
-                "min": "",
-                "max": ""
+                ]
             }
         ],
         "location": [

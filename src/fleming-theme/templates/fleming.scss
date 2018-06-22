@@ -76,6 +76,13 @@ hr.row-divider {
   border-top: 1px solid $mid-turquoise;
 }
 
+hr.row-border {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  border-width: 0;
+  border-top: 1px solid $mid-turquoise;
+}
+
 // Per-page CSS
 @import 'page-types/front-page';
 @import 'page-types/single-organisation';

@@ -6,10 +6,13 @@
   <div class="nine columns">
     {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
   </div>
-  <div>
-    <hr class="row-divider"/>
-    <p class="supporting"><strong>Date:</strong> {{ fields.publication_date.value }}</p>
-    <hr class="row-divider"/>
+  <div class="three columns">
+    <hr class="row-border"/>
+    <div><strong>Author:</strong> {{ fields.authors.value }}</div><br/>
+    <div><strong>Date:</strong> {{ fields.publication_date.value }}</div><br/>
+    <div><strong>Type:</strong> {{ fields.type.value.post_title }}</div><br/>
+    <div><strong>Region:</strong> {{ fields.country_region.value }}</div><br/>
+    <hr class="row-border"/>
   </div>
 </div>
 
@@ -19,6 +22,10 @@
 <button class="button-dark" onClick={{ 'window.open("' ~ fields.document.value.file.url ~ '")' }}>View PDF</button>
 {% endif %}
 
-<div>[more like this]</div>
+<h3 class="row-title">More Like This</h3>
+<div class="row">
+  {% include 'cards/entities/publication-large.html' with {'publication': more_like_this[0]} %}
+  {% include 'cards/entities/publication-large.html' with {'publication': more_like_this[1]} %}
+</div>
 
 {{ include('layout/footer.html') }}

@@ -25,11 +25,15 @@ function fleming_get_content() {
             ->build()
     );
 
-    $fleming_content["similar_events"] = get_posts(array('post_type'=>'publications','numberposts'=>3)); //this is placeholder code until we know how similarity will work
-    foreach($fleming_content["similar_events"] as &$post) {$post = get_post_data_and_fields($post->ID);}
+    $dummy = get_posts(array('post_type'=>'publications','numberposts'=>2)); 
+    foreach($dummy as &$post) {$post = get_post_data_and_fields($post->ID);}
+    $fleming_content["more_like_this"] = $dummy;
 
     foreach($fleming_content["fields"]["authors"]["value"] as &$single_author) {$single_author = $single_author["author"];}
     $fleming_content["fields"]["authors"]["value"] = implode(", ", $fleming_content["fields"]["authors"]["value"]);
+
+    foreach($fleming_content["fields"]["country_region"]["value"] as &$location) {$location = $location->post_title;}
+    $fleming_content["fields"]["country_region"]["value"] = implode(", ", $fleming_content["fields"]["country_region"]["value"]);
 
     return $fleming_content;
 }
