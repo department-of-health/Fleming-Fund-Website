@@ -2,7 +2,7 @@
 
 <h1>{{ title }}</h1>
 
-<hr class="row-underline" />
+<hr class="row-underline"/>
 
 <div class="row">
   <div class="nine columns">
@@ -14,23 +14,23 @@
 </div>
 
 {% if fields.role.value == 'fellow' %}
-<hr class="row-separator" />
-<h3 class="row-title">Fellow Projects</h3>
-<div class="row">
-  {% include 'cards/entities/project-large.html' with {'project': fields.projects.value[0]} %}
-  {% include 'cards/entities/project-large.html' with {'project': fields.projects.value[1]} %}
-</div>
+  <hr class="row-separator"/>
+  <h3 class="row-title">Fellow Projects</h3>
+  <div class="card-container two-max">
+    {% include 'cards/entities/project-large.html' with {'project': fields.projects.value[0]} %}
+    {% include 'cards/entities/project-large.html' with {'project': fields.projects.value[1]} %}
+  </div>
 
-<hr class="row-separator" />
-<h3 class="row-title">Current Fellows</h3>
-<div class="row">
-  {% for fellow in fellows %}
-  {% include 'cards/entities/person-medium-with-image.html' with {
-    'person': fellow
-  } %}
-  {% endfor %}
-  
-</div>
+  <hr class="row-separator"/>
+  <h3 class="row-title">Current Fellows</h3>
+  <div class="card-container people three-max">
+    {% for fellow in fellows %}
+      {% include 'cards/entities/person-medium-with-image.html' with {
+        'person': fellow
+      } %}
+    {% endfor %}
+
+  </div>
 {% endif %}
 
 {{ include('layout/footer.html') }}
