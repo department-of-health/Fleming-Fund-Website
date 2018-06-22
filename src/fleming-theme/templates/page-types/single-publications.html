@@ -1,0 +1,22 @@
+{{ include('layout/header.html') }}
+
+<h1>{{ title }}</h1>
+
+<div class="row">
+  <div class="nine columns">
+    {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+  </div>
+  <div>
+    [details box]
+  </div>
+</div>
+
+{% if fields.file.value %}
+<hr class="row-divider"/>
+<h4>The full ???? page document is available here</h4>
+<button class="button-dark" style="width: 100%" onClick={{ 'window.open("' ~ fields.file.value.url ~ '")' }}>View PDF</button>
+{% endif %}
+
+<div>[more like this]</div>
+
+{{ include('layout/footer.html') }}
