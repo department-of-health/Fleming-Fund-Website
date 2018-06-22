@@ -34,7 +34,8 @@
 <script type="text/javascript">
     //<![CDATA[
     var mapConfig = {{ map_config|json_encode|raw }};
-    var currentRegion = mapConfig.currentRegion;
+    var highlightedRegion = mapConfig.currentRegion;
+    var focusedRegion = mapConfig.currentRegion;
 
     function getCountryFillMap() {
         var fillMap = {};
@@ -68,7 +69,8 @@
             classMap[code]
                 = 'jvectormap-region jvectormap-element '
                 + (country.isPartner ? 'partner ' : '')
-                + region.colourScheme;
+                + region.colourScheme
+                + ((highlightedRegion === 'all') || (highlightedRegion === country.region) ? '' : ' not-highlighted');
         });
         return classMap;
     }
@@ -91,7 +93,7 @@
                 }
             },
             focusOn: {
-                regions: mapConfig.regions[currentRegion].countries
+                regions: mapConfig.regions[focusedRegion].countries
             },
             series: {
                 regions: [
@@ -134,9 +136,9 @@
     });
 
     function refocusMap(animate) {
-        if (map !== undefined && currentRegion !== undefined) {
+        if (map !== undefined && focusedRegion !== undefined) {
             map.setFocus({
-                regions: mapConfig.regions[currentRegion].countries,
+                regions: mapConfig.regions[focusedRegion].countries,
                 animate: animate
             });
         }

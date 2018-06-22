@@ -55,6 +55,10 @@
   .jvectormap-region {
     fill-opacity: 1;
 
+    &.not-highlighted {
+      fill-opacity: 0.2;
+    }
+
     @each $configName, $colourConfig in $colourConfigs {
       &.#{$configName} {
         fill: map-get($colourConfig, intense);
