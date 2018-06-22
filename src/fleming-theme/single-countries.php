@@ -17,9 +17,9 @@ include 'query-utilities.php';
 function get_nav_model()
 {
     $regionSlug = get_field_objects()['region']['value']->post_name ?? '';
-    $countrySlug = get_post_field('post_name') ?? '';
     return get_nav_builder()
-        ->withMenuRoute('regions', $regionSlug, $countrySlug)
+        ->withMenuRoute('regions', $regionSlug)
+        ->withAdditionalBreadcrumb(get_raw_title())
         ->build();
 }
 

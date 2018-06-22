@@ -108,6 +108,42 @@ class MenuLinksConfig
         return self::$regions;
     }
 
+    static function getFundCountryLinkConfigsWithinRegion($regionSlug)
+    {
+        return self::getCountriesWithinRegionWithRelationship($regionSlug, 'fund');
+    }
+
+    static function getPartnerCountryLinkConfigsWithinRegion($regionSlug)
+    {
+        return self::getCountriesWithinRegionWithRelationship($regionSlug, 'partner');
+    }
+
+    private static function getCountriesWithinRegionWithRelationship($regionSlug, $relationship)
+    {
+
+        $countryLinkConfigs = [];
+
+        $countries = get_posts(array('post_type' => 'countries', 'numberposts' => -1));
+        foreach ($countries as &$country) {
+            $countryFields = get_field_objects($country->ID);
+
+            if ($countryFields['relationship']['value'] !== $relationship
+                || $countryFields['region']['value']->post_name !== $regionSlug) {
+                continue;
+            }
+
+            $countryName = $country->post_title;
+            $countrySlug = $country->post_name;
+            $countryLinkTarget = get_permalink($country->ID);
+            $countryLinkConfigs[$countrySlug] = [
+                'title' => $countryName,
+                'target' => $countryLinkTarget,
+            ];
+        }
+
+        return $countryLinkConfigs;
+    }
+
     public static function getUnderRoute(string ...$menuRouteKeys)
     {
         $config = self::getAll()[array_shift($menuRouteKeys)];
@@ -137,7 +173,7 @@ class MenuLinksConfig
     {
         self::$all = self::BASE;
         self::populateMenuLinksWithRegions();
-        self::populateMenuLinksWithCountries();
+        self::populateMenuLinksWithFundCountries();
     }
 
     private static function initialiseAllRegionLinks()
@@ -164,21 +200,12 @@ class MenuLinksConfig
             = array_merge(self::getAllRegions(), self::$all['regions']['children']);
     }
 
-    private static function populateMenuLinksWithCountries()
+    private static function populateMenuLinksWithFundCountries()
     {
-        $countries = get_posts(array('post_type' => 'countries', 'numberposts' => -1));
-        foreach ($countries as &$country) {
-            $countryName = $country->post_title;
-            $countrySlug = $country->post_name;
-            $countryLinkTarget = get_permalink($country->ID);
-            $countryLinkConfig = [
-                'title' => $countryName,
-                'target' => $countryLinkTarget,
-            ];
+        foreach (self::getAllRegions() as $regionSlug => $regionLinkConfig) {
+            self::$all['regions']['children'][$regionSlug]['children']
+                = self::getFundCountryLinkConfigsWithinRegion($regionSlug);
 
-            $regionSlug = get_field_objects($country->ID)['region']['value']->post_name ?? '';
-
-            self::$all['regions']['children'][$regionSlug]['children'][$countrySlug] = $countryLinkConfig;
         }
     }
 }

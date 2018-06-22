@@ -110,9 +110,14 @@ trait CommonLinksServer
         return MenuLinksConfig::configsToLinks(MenuLinksConfig::getAllRegions());
     }
 
-    function getCountryLinksWithinRegion(string $regionSlug)
+    static function getFundCountryLinksWithinRegion(string $regionSlug)
     {
-        return $this->getMenuRouteLinkChildren('regions', $regionSlug);
+        return MenuLinksConfig::configsToLinks(MenuLinksConfig::getFundCountryLinkConfigsWithinRegion($regionSlug));
+    }
+
+    static function getPartnerCountryLinksWithinRegion(string $regionSlug)
+    {
+        return MenuLinksConfig::configsToLinks(MenuLinksConfig::getPartnerCountryLinkConfigsWithinRegion($regionSlug));
     }
 
     function getTwitterLink() {
@@ -127,11 +132,5 @@ trait CommonLinksServer
     private function getMenuRouteLink(string ...$menuRouteKeys)
     {
         return MenuLinksConfig::configToLink(MenuLinksConfig::getUnderRoute(...$menuRouteKeys));
-    }
-
-    private function getMenuRouteLinkChildren(string ...$menuRouteKeys)
-    {
-        $childLinkConfigs = MenuLinksConfig::getUnderRoute(...$menuRouteKeys)['children'] ?? [];
-        return array_map('MenuLinksConfig::configToLink', $childLinkConfigs);
     }
 }
