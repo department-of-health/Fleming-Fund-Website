@@ -1,7 +1,11 @@
 {% if links %}
-  <div class="card-container two-max inline-links">
+  <div class="card-container two-max link-collection">
     {% for link in links %}
-      {% include 'cards/entities/inline-link-small.html' %}
+      {% include 'cards/base.html' with {'card': {
+        'decorated': false,
+        'content': link.title,
+        'link_target': link.target
+      }} %}
     {% endfor %}
   </div>
 {% endif %}

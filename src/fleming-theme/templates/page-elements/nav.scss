@@ -266,16 +266,6 @@ div.breadcrumbs {
   }
 }
 
-ul.large-links {
-  @include pipe_horizontal_ul;
-
-  margin-bottom: 2em;
-  li {
-    font-size: 21px;
-    line-height: 1.33;
-  }
-}
-
 ul.horizontal-pipe {
   @include pipe_horizontal_ul;
 }

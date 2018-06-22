@@ -121,14 +121,13 @@
   }
 }
 
-.card-container.inline-links {
+.card-container.link-collection {
   border: 0 solid $turquoise;
   border-width: 1px 0;
   color: $turquoise;
-  margin-bottom: 1em;
+  margin: 0.5em 0 2em;
 
   .card {
-
     .header {
       display: none;
     }
@@ -145,7 +144,7 @@
 }
 
 @media (#{$min-width-mobile}) {
-  .card-container.inline-links {
+  .card-container.link-collection {
     .card {
       .content {
         font-size: 1.1em;
@@ -155,7 +154,7 @@
 }
 
 @media (#{$min-width-tablet}) {
-  .card-container.inline-links {
+  .card-container.link-collection {
     justify-content: flex-start;
     border-width: 0 0 1px;
     padding-bottom: 1ex;

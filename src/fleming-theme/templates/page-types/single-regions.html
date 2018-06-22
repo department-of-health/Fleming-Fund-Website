@@ -4,18 +4,9 @@
 
 {% include 'page-elements/map.html' %}
 
-<div class="row">
-  <ul class="large-links">
-    {% include 'nav/link-items-text.html' with {'links': fundCountryLinks} %}
-  </ul>
-</div>
-<div class="row">
-  <ul class="large-links">
-    {% include 'nav/link-items-text.html' with {'links': partnerCountryLinks} %}
-  </ul>
-</div>
+{% include 'layout/link-collection.html' with {'links': fundCountryLinks} %}
 
-<hr class="row-underline"/>
+{% include 'layout/link-collection.html' with {'links': partnerCountryLinks} %}
 
 <div class="row">
   <div class="nine columns">

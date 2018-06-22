@@ -1,13 +1,21 @@
 {{ include('layout/header.html') }}
 
 <h1>{{ title }}</h1>
-<ul class="large-links">
-  <li>Overview</li>
-  <li>Eligibility Criteria</li>
-  <li>Application Process</li>
-</ul>
 
-<hr class="row-underline" />
+{% include 'layout/link-collection.html' with {'links': [
+  {
+    'title': 'Overview',
+    'target': '#'
+  },
+  {
+    'title': 'Eligibility Criteria',
+    'target': '#'
+  },
+  {
+    'title': 'Application Process',
+    'target': '#'
+  },
+]} %}
 
 <div class="row">
   <p>Applications Open: {{ fields.open.value }}</p>

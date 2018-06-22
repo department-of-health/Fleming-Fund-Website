@@ -1,11 +1,21 @@
 {{ include('layout/header.html') }}
 
 <h1>Our Aims</h1>
-<ul class="large-links">
-  <li>Overview</li>
-  <li>Data &amp; Evidence</li>
-  <li>Investment Areas</li>
-</ul>
+
+{% include 'layout/link-collection.html' with {'links': [
+  {
+    'title': 'Overview',
+    'target': '#'
+  },
+  {
+    'title': 'Data & Evidence',
+    'target': '#'
+  },
+  {
+    'title': 'Investment Areas',
+    'target': '#'
+  },
+]} %}
 
 <div>
   <p>The aim of the Fleming Fund is to support countries in collecting relevant high-quality data that is shared nationally and globally.

@@ -4,10 +4,6 @@
 
 {% include 'page-elements/map.html' %}
 
-<ul class="large-links">
-  {% include 'nav/link-items-text.html' with {'links': nav.allRegionLinks} %}
-</ul>
-
-<hr class="row-divider"/>
+{% include 'layout/link-collection.html' with {'links': nav.allRegionLinks} %}
 
 {{ include('layout/footer.html') }}
