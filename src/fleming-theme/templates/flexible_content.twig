@@ -1,25 +1,5 @@
 {% for content_block in flexible_content %}
 
-    {% if content_block.acf_fc_layout == 'text_block' %}
-        {% include '1-atoms/text-block.html' %}
-    {% elseif content_block.acf_fc_layout == 'supporting_text_block' %}
-        {% include '1-atoms/supporting-text-block.html' %}
-    {% elseif content_block.acf_fc_layout == 'quote' %}
-        {% include '1-atoms/quote.html' %}
-    {% elseif content_block.acf_fc_layout == 'overview_text' %}
-        {% include '1-atoms/overview-text.html' %}
-    {% elseif content_block.acf_fc_layout == 'large_text_block' %}
-        {% include '1-atoms/large-text.html' %}
-    {% elseif content_block.acf_fc_layout == 'section_title' %}
-        {% include '1-atoms/section-title.html' %}
-    {% elseif content_block.acf_fc_layout == 'statistics' %}
-        {% include '1-atoms/statistics.html' %}
-    {% elseif content_block.acf_fc_layout == 'image' %}
-        {% include '1-atoms/image.html' %}
-    {% elseif content_block.acf_fc_layout == 'useful_links' %}
-        {% include 'layout/useful-links.html' %}
-    {% elseif content_block.acf_fc_layout == 'link_button' %}
-        {% include '1-atoms/link-button.html' %}
-    {% endif %}
+  {% include 'flexible-content/'~content_block.acf_fc_layout~'.html' %}
 
 {% endfor %}

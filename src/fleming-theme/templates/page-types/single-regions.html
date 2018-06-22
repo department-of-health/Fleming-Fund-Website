@@ -2,16 +2,16 @@
 
 <h1>{{ title }}</h1>
 
-{% include 'layout/map.html' %}
+{% include 'page-elements/map.html' %}
 
 <div class="row">
   <ul class="large-links">
-    {% include '1-atoms/link-items-text.html' with {'links': fundCountryLinks} %}
+    {% include 'nav/link-items-text.html' with {'links': fundCountryLinks} %}
   </ul>
 </div>
 <div class="row">
   <ul class="large-links">
-    {% include '1-atoms/link-items-text.html' with {'links': partnerCountryLinks} %}
+    {% include 'nav/link-items-text.html' with {'links': partnerCountryLinks} %}
   </ul>
 </div>
 
@@ -36,7 +36,7 @@
 <hr class="row-separator"/>
 
 {# Replicate flexible content model #}
-{% include '1-atoms/statistics.html' with {'content_block': {'values': [
+{% include 'flexible-content/statistics.html' with {'content_block': {'values': [
   {
     'value': fields.statistics.value.projects_completed,
     'text': 'Projects Completed'

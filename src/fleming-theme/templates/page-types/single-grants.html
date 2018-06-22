@@ -42,7 +42,7 @@
 <h3 class="row-title">Eligibility Criteria</h3>
 <div class="row">
   <div class="nine columns">
-      {% include '1-atoms/text-block.html' with {'content_block': fields.criteria.value} %}
+      {% include 'flexible-content/text_block.html' with {'content_block': fields.criteria.value} %}
   </div>
 </div>
 {% for criterion in fields.criteria.value.criteria %}
@@ -51,7 +51,7 @@
     <h2>&#9654</h2>
   </div>
   <div class="eight columns">
-      {% include '1-atoms/supporting-text-block.html' with {'content_block': criterion} %}
+      {% include 'flexible-content/supporting_text_block.html' with {'content_block': criterion} %}
   </div>
 </div>
 {% endfor %}
@@ -59,7 +59,7 @@
 <hr class="row-separator" />
 
 <h3 class="row-title">Application Process</h3>
-{% include 'layout/application-steps.html' %}
+{% include 'page-elements/application-steps.html' %}
 
 <hr class="row-separator" />
 

@@ -21,10 +21,10 @@
         {% for content_block in fields.project_flexible_content.value %}
         
             {% if content_block.acf_fc_layout == 'text_block' %}
-                {% include '1-atoms/text-block.html' %}
+                {% include 'flexible-content/text_block.html' %}
         
             {% elseif content_block.acf_fc_layout == 'quote' %}
-                {% include '1-atoms/quote.html' %}
+                {% include 'flexible-content/quote.html' %}
         
             {% endif %}
         

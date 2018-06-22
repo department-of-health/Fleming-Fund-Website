@@ -2,7 +2,7 @@
   <div class="container">
     <ul>
       {% for link in nav.globalMenuLinks %}
-        {% include 'layout/nav-link.html' %}
+        {% include 'page-elements/nav-link.html' %}
       {% endfor %}
     </ul>
   </div>
@@ -16,17 +16,17 @@
         <ul class="all-but-first-in-submenu">
           {% for link in nav.subGlobalMenuLinks %}
             {% if link.active %}
-              {% include '1-atoms/link-item-text.html' %}
+              {% include 'nav/link-item-text.html' %}
             {% endif %}
           {% endfor %}
 
-          {% include '1-atoms/link-items-text.html' with {'links': nav.tertiaryMenuLinks} %}
+          {% include 'nav/link-items-text.html' with {'links': nav.tertiaryMenuLinks} %}
         </ul>
 
       {% else %}
 
         <ul>
-          {% include '1-atoms/link-items-text.html' with {'links': nav.subGlobalMenuLinks} %}
+          {% include 'nav/link-items-text.html' with {'links': nav.subGlobalMenuLinks} %}
         </ul>
 
       {% endif %}

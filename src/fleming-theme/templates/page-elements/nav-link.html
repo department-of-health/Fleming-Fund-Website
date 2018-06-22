@@ -1,4 +1,4 @@
-{% embed '1-atoms/link-item.html' %}
+{% embed 'nav/link-item.html' %}
   {% block inner %}
     {{ link.title }}
   {% endblock %}
@@ -7,7 +7,7 @@
     {% if link.childLinks is not empty %}
       <ul class="mobile-submenu">
         {% for link in link.childLinks %}
-          {% include 'layout/nav-link.html' %}
+          {% include 'page-elements/nav-link.html' %}
         {% endfor %}
       </ul>
     {% endif %}
