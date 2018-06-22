@@ -15,14 +15,13 @@
     <div class="content">
 
       <p class="supporting">{{ card.content }}</p>
-      {% if card.link_target %}
-        {% include 'cards/common/link-overlay.html' with {'target': card.link_target} %}
-      {% endif %}
-
       {% if cta_override %}
-        <a class="button button-dark" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
+        <a class="button hollow" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
       {% elseif card.link_target %}
-        {% include 'cards/common/link-overlay.html' with {'target': card.link_target} %}
+        {% if card.cta_title %}
+          <a class="button hollow" href="{{ card.link_target }}">{{ card.cta_title }}</a>
+        {% endif %}
+        {% include 'cards/common/link-overlay.html' %}
       {% endif %}
     </div>
 
