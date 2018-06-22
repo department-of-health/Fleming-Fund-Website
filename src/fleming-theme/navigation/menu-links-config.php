@@ -91,6 +91,7 @@ class MenuLinksConfig
 
     private static $all = null;
     private static $regions = null;
+    private static $publicationTypes = null;
 
     public static function getAll()
     {
@@ -106,6 +107,14 @@ class MenuLinksConfig
             self::initialiseAllRegionLinks();
         }
         return self::$regions;
+    }
+
+    public static function getAllPublicationTypes()
+    {
+        if (self::$publicationTypes === null) {
+            self::initialiseAllPublicationTypeLinks();
+        }
+        return self::$publicationTypes;
     }
 
     static function getFundCountryLinkConfigsWithinRegion($regionSlug)
@@ -192,6 +201,24 @@ class MenuLinksConfig
         }
 
         self::$regions = $regionLinkConfigs;
+    }
+
+    private static function initialiseAllPublicationTypeLinks()
+    {
+        $publicationTypes = get_posts(array('post_type' => 'publication_types', 'numberposts' => -1));
+
+        $publicationTypeConfigs = [];
+        foreach ($publicationTypes as &$publicationType) {
+            $regionName = $publicationType->post_title;
+            $regionSlug = $publicationType->post_name;
+            $regionLinkTarget = get_permalink($publicationType->ID);
+            $publicationTypeConfigs[$regionSlug] = [
+                'title' => $regionName,
+                'target' => $regionLinkTarget,
+            ];
+        }
+
+        self::$publicationTypes = $publicationTypeConfigs;
     }
 
     private static function populateMenuLinksWithRegions()

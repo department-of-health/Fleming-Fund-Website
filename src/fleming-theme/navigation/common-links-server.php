@@ -32,13 +32,7 @@ trait CommonLinksServer
 
     function getAllPublicationTypeLinks()
     {
-        return [
-            $this->getCaseStudiesLink(),
-            $this->getGuidesLink(),
-            $this->getResourceLink(),
-            $this->getProtocolLink(),
-            $this->getResearchLink(),
-        ];
+        return MenuLinksConfig::configsToLinks(MenuLinksConfig::getAllPublicationTypes());
     }
 
     function getCaseStudiesLink()
@@ -46,38 +40,6 @@ trait CommonLinksServer
         $link = new Link();
         $link->setTitle('Case Studies');
         $link->setTarget('/publication_types/case-study/');
-        return $link;
-    }
-
-    function getGuidesLink()
-    {
-        $link = new Link();
-        $link->setTitle('Guides');
-        $link->setTarget('/publication_types/guide/');
-        return $link;
-    }
-
-    function getResourceLink()
-    {
-        $link = new Link();
-        $link->setTitle('Resource');
-        $link->setTarget('/publication_types/resource/');
-        return $link;
-    }
-
-    function getProtocolLink()
-    {
-        $link = new Link();
-        $link->setTitle('Protocol');
-        $link->setTarget('/publication_types/protocol/');
-        return $link;
-    }
-
-    function getResearchLink()
-    {
-        $link = new Link();
-        $link->setTitle('Research');
-        $link->setTarget('/publication_types/research/');
         return $link;
     }
 
@@ -120,7 +82,8 @@ trait CommonLinksServer
         return MenuLinksConfig::configsToLinks(MenuLinksConfig::getPartnerCountryLinkConfigsWithinRegion($regionSlug));
     }
 
-    function getTwitterLink() {
+    function getTwitterLink()
+    {
         $homeLink = new Link();
         $homeLink->setTitle('Twitter');
         $homeLink->setTarget('https://twitter.com/FlemingFund');
