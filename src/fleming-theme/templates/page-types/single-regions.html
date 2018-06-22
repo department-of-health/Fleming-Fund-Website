@@ -35,20 +35,21 @@
 
 <hr class="row-separator" />
 
-<div class="row statistics">
-  <div class="four columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">{{ fields.statistics.value.projects_completed }}</p>
-    <p class="supporting" style="width: 100%; text-align: center">Projects Completed</p>
-  </div>
-  <div class="four columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">{{ fields.statistics.value.projects_in_progress }}</p>
-    <p class="supporting" style="width: 100%; text-align: center">Projects in Progress</p>
-  </div>
-  <div class="four columns">
-    <p style="font-size: 48px; font-weight: bold; width: 100%; text-align: center">£{{ fields.statistics.value.funds_provided }}</p>
-    <p class="supporting" style="width: 100%; text-align: center">Funds Provided</p>
-  </div>
-</div>
+{# Replicate flexible content model #}
+{% include '1-atoms/statistics.html' with {'content_block': {'values': [
+  {
+    'value': fields.statistics.value.projects_completed,
+    'text': 'Projects Completed'
+  },
+  {
+    'value': fields.statistics.value.projects_in_progress,
+    'text': 'Projects in Progress'
+  },
+  {
+    'value': '£'~fields.statistics.value.funds_provided,
+    'text': 'Funds Provided'
+  },
+]}} %}
 
 {% if fields.case_study.value %}
 <div class="row">
