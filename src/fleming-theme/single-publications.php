@@ -25,10 +25,11 @@ function fleming_get_content() {
             ->build()
     );
 
-    $fleming_content["application_steps_count"] = count($fleming_content["fields"]["application_steps"]["value"]);
-
     $fleming_content["similar_events"] = get_posts(array('post_type'=>'publications','numberposts'=>3)); //this is placeholder code until we know how similarity will work
     foreach($fleming_content["similar_events"] as &$post) {$post = get_post_data_and_fields($post->ID);}
+
+    foreach($fleming_content["fields"]["authors"]["value"] as &$single_author) {$single_author = $single_author["author"];}
+    $fleming_content["fields"]["authors"]["value"] = implode(", ", $fleming_content["fields"]["authors"]["value"]);
 
     return $fleming_content;
 }

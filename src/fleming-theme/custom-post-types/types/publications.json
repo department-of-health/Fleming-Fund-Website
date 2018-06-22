@@ -20,10 +20,10 @@
                 "placeholder": ""
             },
             {
-                "key": "field_5b069f7c4fa9d",
-                "label": "File",
-                "name": "file",
-                "type": "file",
+                "key": "field_5b2cd3163d8e4",
+                "label": "Document",
+                "name": "document",
+                "type": "group",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -32,11 +32,49 @@
                     "class": "",
                     "id": ""
                 },
-                "return_format": "url",
-                "library": "all",
-                "min_size": "",
-                "max_size": "",
-                "mime_types": ""
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5b2cd31e3d8e5",
+                        "label": "File",
+                        "name": "file",
+                        "type": "file",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "library": "all",
+                        "min_size": "",
+                        "max_size": "",
+                        "mime_types": ""
+                    },
+                    {
+                        "key": "field_5b2cd3323d8e6",
+                        "label": "Page Count",
+                        "name": "page_count",
+                        "type": "number",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "min": "",
+                        "max": "",
+                        "step": ""
+                    }
+                ]
             },
             {
                 "key": "field_5b06a1224fa9e",
@@ -129,7 +167,7 @@
             {
                 "key": "field_5b06a1824faa2",
                 "label": "Country\/Region",
-                "name": "country\/region",
+                "name": "country_region",
                 "type": "post_object",
                 "instructions": "",
                 "required": 0,

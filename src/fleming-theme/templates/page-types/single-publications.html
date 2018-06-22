@@ -7,14 +7,16 @@
     {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
   </div>
   <div>
-    [details box]
+    <hr class="row-divider"/>
+    <p class="supporting"><strong>Date:</strong> {{ fields.publication_date.value }}</p>
+    <hr class="row-divider"/>
   </div>
 </div>
 
-{% if fields.file.value %}
+{% if fields.document.value %}
 <hr class="row-divider"/>
-<h4>The full ???? page document is available here</h4>
-<button class="button-dark" style="width: 100%" onClick={{ 'window.open("' ~ fields.file.value.url ~ '")' }}>View PDF</button>
+<h4>The full {{ fields.document.value.page_count }} page document is available here</h4>
+<button class="button-dark" onClick={{ 'window.open("' ~ fields.document.value.file.url ~ '")' }}>View PDF</button>
 {% endif %}
 
 <div>[more like this]</div>

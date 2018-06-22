@@ -26,7 +26,7 @@
                 "ui": 1
             },
             {
-                "key": "field_5b2940584138d",
+                "key": "field_5b2940584138dxxx",
                 "label": "Statistics",
                 "name": "statistics",
                 "type": "group",
@@ -41,7 +41,7 @@
                 "layout": "block",
                 "sub_fields": [
                     {
-                        "key": "field_5b2940634138e",
+                        "key": "field_5b2940634138exxx",
                         "label": "Projects Completed",
                         "name": "projects_completed",
                         "type": "number",
@@ -62,7 +62,7 @@
                         "step": 1
                     },
                     {
-                        "key": "field_5b29408d4138f",
+                        "key": "field_5b29408d4138fxxx",
                         "label": "Projects in Progress",
                         "name": "projects_in_progress",
                         "type": "number",
@@ -83,7 +83,7 @@
                         "step": 1
                     },
                     {
-                        "key": "field_5b2940ae41390",
+                        "key": "field_5b2940ae41390xxx",
                         "label": "Funds Provided",
                         "name": "funds_provided",
                         "type": "number",
