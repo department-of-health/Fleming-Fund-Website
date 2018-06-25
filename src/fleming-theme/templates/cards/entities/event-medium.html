@@ -1,0 +1,7 @@
+{% if event %}
+  {% include 'cards/medium.html' with {'card': {
+    'title': event.data.post_title,
+    'content': event.fields.summary.value,
+    'link_target': event.permalink
+  }} %}
+{% endif %}

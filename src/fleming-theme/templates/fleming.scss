@@ -86,19 +86,5 @@ hr.row-border {
 // Per-page CSS
 @import 'page-types/front-page';
 @import 'page-types/single-organisation';
-
-// aims page CSS
-.expandable {
-  cursor: pointer;
-}
-
-.expContent {
-  padding: 0 18px;
-  background-color: white;
-  display: none;
-  overflow: hidden;
-}
-
-.downArrow {
-  float: right;
-}
+@import 'page-types/single-events';
+@import 'page-types/page-our-aims';

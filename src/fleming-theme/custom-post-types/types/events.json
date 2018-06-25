@@ -7,7 +7,7 @@
                 "key": "field_5b068a6ee16d6",
                 "label": "Date",
                 "name": "date",
-                "type": "date_time_picker",
+                "type": "date_picker",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -16,9 +16,90 @@
                     "class": "",
                     "id": ""
                 },
-                "display_format": "d\/m\/Y g:i a",
-                "return_format": "d\/m\/Y g:i a",
+                "display_format": "d\/m\/Y",
+                "return_format": "d\/m\/Y",
                 "first_day": 1
+            },
+            {
+                "key": "field_5b2d25ae3d31d",
+                "label": "Time",
+                "name": "time",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5b3101d83c37a",
+                        "label": "Timezone",
+                        "name": "timezone",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 1,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "-12": "-12",
+                            "-11": "-11",
+                            "-10": "-10",
+                            "-9": "-9",
+                            "-8": "-8",
+                            "-7": "-7",
+                            "-6": "-6",
+                            "-5": "-5",
+                            "-4": "-4",
+                            "-3": "-3",
+                            "-2": "-2",
+                            "-1": "-1",
+                            "0": "0",
+                            "1": "1",
+                            "2": "2",
+                            "3": "3",
+                            "4": "4",
+                            "5": "5",
+                            "6": "6",
+                            "7": "7",
+                            "8": "8",
+                            "9": "9",
+                            "10": "10",
+                            "11": "11",
+                            "12": "12"
+                        },
+                        "default_value": [],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "ui": 0,
+                        "ajax": 0,
+                        "return_format": "value",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_5b31033f3c37b",
+                        "label": "Time",
+                        "name": "time",
+                        "type": "time_picker",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "display_format": "H:i:s",
+                        "return_format": "H:i:s"
+                    }
+                ]
             },
             {
                 "key": "field_5b068a87e16d7",
@@ -40,10 +121,10 @@
                 "maxlength": ""
             },
             {
-                "key": "field_5b068aa2e16d8",
-                "label": "Content",
-                "name": "content",
-                "type": "flexible_content",
+                "key": "field_5b06962b6ae17g95jsyfh",
+                "label": "Country",
+                "name": "country",
+                "type": "post_object",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -52,93 +133,33 @@
                     "class": "",
                     "id": ""
                 },
-                "layouts": {
-                    "5b068d1fa5b68": {
-                        "key": "5b068d1fa5b68",
-                        "name": "text_block",
-                        "label": "Text Block",
-                        "display": "block",
-                        "sub_fields": [
-                            {
-                                "key": "field_5b068d99e16da",
-                                "label": "Text block inner",
-                                "name": "text_block_inner",
-                                "type": "text",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "default_value": "",
-                                "placeholder": "",
-                                "prepend": "",
-                                "append": "",
-                                "maxlength": ""
-                            }
-                        ],
-                        "min": "",
-                        "max": ""
-                    },
-                    "5b068d91e16d9": {
-                        "key": "5b068d91e16d9",
-                        "name": "quote",
-                        "label": "Quote",
-                        "display": "block",
-                        "sub_fields": [
-                            {
-                                "key": "field_5b068db4e16db",
-                                "label": "Quote inner",
-                                "name": "quote_inner",
-                                "type": "text",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "default_value": "",
-                                "placeholder": "",
-                                "prepend": "",
-                                "append": "",
-                                "maxlength": ""
-                            },
-                            {
-                                "key": "field_5b068dbee16dc",
-                                "label": "Quotee image",
-                                "name": "quotee_image",
-                                "type": "image",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "return_format": "array",
-                                "preview_size": "thumbnail",
-                                "library": "all",
-                                "min_width": "",
-                                "min_height": "",
-                                "min_size": "",
-                                "max_width": "",
-                                "max_height": "",
-                                "max_size": "",
-                                "mime_types": ""
-                            }
-                        ],
-                        "min": "",
-                        "max": ""
-                    }
+                "post_type": [
+                    "countries"
+                ],
+                "taxonomy": [],
+                "allow_null": 1,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
+            },
+            {
+                "key": "field_5b068aa2e16d8",
+                "label": "Summary",
+                "name": "summary",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
                 },
-                "button_label": "Add Row",
-                "min": "",
-                "max": ""
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
             }
         ],
         "location": [
