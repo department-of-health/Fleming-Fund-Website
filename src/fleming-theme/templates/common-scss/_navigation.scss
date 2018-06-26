@@ -46,7 +46,7 @@
   }
 }
 
-@mixin pipe_horizontal_ul($pipe-height: 0.8em, $pipe-vertical-align: text-top) {
+@mixin pipe_horizontal_ul($pipe-height: 0.8em, $pipe-vertical-align: unset) {
   @include horizontal_ul;
 
   &.all-but-first-in-submenu li:nth-child(n+3):before,

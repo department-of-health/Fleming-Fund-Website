@@ -95,6 +95,50 @@ function countries_partner_only_filter($countries)
     });
 }
 
+function hydrate_grant_for_card(&$grant) {
+    $grant['fields']['funds_available']['value'] = number_format(
+        $grant['fields']['funds_available']['value']
+    );
+
+    $grantType = $grant['fields']['type']['value'];
+
+    $identifier = $grantType->post_title;
+
+    if ($grantType->post_name === 'global-grant') {
+        $grant['colour_scheme'] = 'base';
+    } else {
+
+        $countries = $grant['fields']['countries']['value'];
+        $region = $grant['fields']['region']['value'];
+
+        if (empty($countries)) {
+            if ($region) {
+                $grant['colour_scheme'] = region_slug_to_colour_scheme_name($region->post_name);
+                $identifier .= ': '.$region->post_title;
+            } else {
+                $grant['colour_scheme'] = 'base';
+            }
+        } else {
+            $countryTitles = [];
+            $associatedRegions = [];
+            foreach ($countries as $country) {
+                $country = get_post_data_and_fields($country->ID);
+                $associatedRegions[] = $country['fields']['region']['value']->post_name;
+                $countryTitles[] = $country['data']->post_title;
+            }
+            $identifier .= ': '.implode(', ', $countryTitles);
+            $associatedRegions = array_unique($associatedRegions);
+            if (count($associatedRegions) == 1) {
+                $grant['colour_scheme'] = region_slug_to_colour_scheme_name($associatedRegions[0]);
+            } else {
+                $grant['colour_scheme'] = 'base';
+            }
+        }
+    }
+
+    $grant['identifier'] = $identifier;
+}
+
 
 ////////////////////////////////////////////////////////////////
 ////////                  ADMIN PORTAL                  ////////

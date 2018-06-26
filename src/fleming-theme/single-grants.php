@@ -30,6 +30,7 @@ function fleming_get_content() {
     $similar_proposals = get_posts(array('post_type'=>'grants','numberposts'=>2)); //this is placeholder code until we know how 'similar proposals' will work
     foreach($similar_proposals as &$grant) {
         $grant = get_post_data_and_fields($grant->ID);
+        hydrate_grant_for_card($grant);
     }
     $fleming_content["similar_proposals"] = $similar_proposals;
 

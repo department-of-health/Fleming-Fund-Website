@@ -63,14 +63,10 @@ function fleming_get_content() {
         $fleming_content["fields"]["highlight_opportunity_2"]["value"]->ID
     );
     if ($fleming_content["fields"]["highlight_opportunity_1"]) {
-        $fleming_content['fields']['highlight_opportunity_1']['fields']['funds_available']['value'] = number_format(
-            $fleming_content['fields']['highlight_opportunity_1']['fields']['funds_available']['value']
-        );
+        hydrate_grant_for_card($fleming_content['fields']['highlight_opportunity_1']);
     }
     if ($fleming_content["fields"]["highlight_opportunity_2"]) {
-        $fleming_content['fields']['highlight_opportunity_2']['fields']['funds_available']['value'] = number_format(
-            $fleming_content['fields']['highlight_opportunity_2']['fields']['funds_available']['value']
-        );
+        hydrate_grant_for_card($fleming_content['fields']['highlight_opportunity_2']);
     }
 
     $opportunities = get_posts(array('post_type'=>'grants','numberposts'=>-1));
