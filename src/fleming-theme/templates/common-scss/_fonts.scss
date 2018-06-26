@@ -4,8 +4,8 @@ $bp-desktop-and-tablet: "min-width: 641px";
 // Fallbacks from https://graphicdesign.stackexchange.com/a/17598/5490
 $font-family-headings: "Proxima Nova Bold", "Open Sans", "Gill Sans MT", "Gill Sans", Corbel, Arial, sans-serif;
 // Fallbacks from https://www.cssfontstack.com/Helvetica
-$font-family: Arial, sans-serif;
-// "Helvetica Neue Regular", Helvetica Neue, Helvetica,
+$font-family: "Helvetica Neue Regular", Helvetica Neue, "Segoe UI", Helvetica, Arial, sans-serif;
+//
 
   // Mobile version
 h1 { font-size: 32px; line-height: 1.5;  letter-spacing: -.1rem;  font-family: $font-family-headings; font-weight: bold; } // 32px bold

@@ -4,10 +4,11 @@
   {% endif %}
   {% include 'cards/base.html' with {'card': {
     'extra_classes': 'without-border wide',
+    'decorated': false,
     'top_html': '<img src="https://placekitten.com/g/512/512"/>',
     'title': supertitle ~ person.data.post_title,
     'content': person.fields.summary.value,
     'link_target': person.permalink,
-    'cta_override': cta_override
+    'cta_not_hollow': true
   }} %}
 {% endif %}
