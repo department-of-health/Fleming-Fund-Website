@@ -1,5 +1,14 @@
+@each $configName, $colourConfig in $colourConfigs {
+  pattern#subtle-hatched-#{$configName} path {
+    stroke: map_get($colourConfig, subtle);
+  }
+}
+
 .map-container {
-  margin: 3em 0;
+  display: none;
+  height: 200px;
+  height: 30vh;
+  position: relative;
 
   .alignment-helper {
     height: 0;
@@ -9,10 +18,13 @@
   }
 
   .map {
-    height: 500px;
-    max-height: 60vmin;
     z-index: 0;
-    cursor: move;
+    height: 100%;
+    position: relative;
+  }
+
+  .buttons {
+    display: none;
   }
 
   .jvectormap-zoomin, .jvectormap-zoomout {
@@ -50,6 +62,12 @@
     }
   }
 
+  &.interactive {
+    .buttons {
+      display: block;
+    }
+  }
+
   // Map colours
 
   .jvectormap-region {
@@ -64,7 +82,7 @@
         fill: map-get($colourConfig, intense);
 
         &.partner {
-          fill: map-get($colourConfig, subtle)
+          fill: url(#subtle-hatched- + $configName) map-get($colourConfig, subtle);
         }
 
         &:hover {

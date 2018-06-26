@@ -1,0 +1,162 @@
+
+#map-element {
+  height: 200px;
+  height: 30vh;
+  display: none;
+
+  g {
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .map-container {
+    height: 100%;
+    box-sizing: border-box;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #map-element {
+    g {
+      transition: none;
+    }
+  }
+}
+
+#region-cards {
+  .card {
+    background: #fff;
+    box-shadow: 0 0 7px rgba(0,0,0,0.2);
+    margin-bottom: 40px;
+
+    .header {
+      padding-bottom: 0;
+
+      h3 a {
+        color: $dark-grey;
+      }
+    }
+
+    .content-block {
+      width: 100%;
+      padding-top: 1em;
+      margin-top: 1em;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .legend-label {
+      margin-bottom: 0.5em;
+    }
+
+    .legend-items {
+      &:not(:last-of-type) {
+        margin-bottom: 1em;
+      }
+
+      a {
+        display: inline-block;
+        width: 45%;
+        margin: 0.5em 2% 0.5em 0;
+        vertical-align: top;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .fund-color, .partner-color {
+      display: inline-block;
+      width: 2em;
+      height: 2em;
+      vertical-align: middle;
+      margin-right: 0.5ex;
+    }
+
+    .funds-provided-to-region {
+      font-weight: bold;
+      font-size: 2.5em;
+    }
+
+    @each $configName, $colourConfig in $colourConfigs {
+      &.#{$configName} {
+        .content-block {
+          border-top: 1px solid map_get($colourConfig, intense);
+        }
+
+        .fund-color {
+          background: map_get($colourConfig, intense);
+        }
+
+        .partner-color {
+          background: map_get($colourConfig, subtle);
+        }
+
+        a {
+          color: map_get($colourConfig, intense);
+        }
+
+        h3 a:hover {
+          color: map_get($colourConfig, subtle);
+        }
+
+        .funds-provided-to-region {
+          color: map_get($colourConfig, intense);
+        }
+      }
+    }
+  }
+}
+
+@media (#{$max-width-tablet}) {
+  #map-element {
+    position: relative !important;
+  }
+}
+
+@media (#{$min-width-tablet}) {
+  #region-cards {
+    padding-bottom: 33vh;
+
+    .card {
+      min-height: 33vh;
+      transition: opacity 0.2s linear;
+
+      &.inactive {
+        opacity: 0.4;
+      }
+    }
+  }
+
+  #map-element {
+    width: 100%;
+    height: 400px;
+    height: 100vh;
+    position: relative;
+
+    .map-container {
+      padding: 20px 0;
+      padding: 15vh 0;
+      transition: padding 0.2s linear;
+    }
+
+    &.top {
+      margin-top: 2rem;
+
+      .map-container {
+        padding: 1vh 0 29vh;
+      }
+    }
+    &.fixed {
+
+      position: fixed;
+      top: 0;
+    }
+    &.bottom {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+  }
+}

@@ -2,7 +2,7 @@
 
 include __DIR__ . '/php/get-css-filename.php';
 include 'navigation/index.php';
-include 'map/index.php';
+include 'map/config.php';
 
 /**
  * NOTE:

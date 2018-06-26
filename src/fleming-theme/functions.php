@@ -81,6 +81,20 @@ function region_slug_to_colour_scheme_name(string $regionSlug = null)
     }
 }
 
+function countries_fund_only_filter($countries)
+{
+    return array_filter($countries, function($country) {
+        return $country['fields']['relationship']['value'] === 'fund';
+    });
+}
+
+function countries_partner_only_filter($countries)
+{
+    return array_filter($countries, function($country) {
+        return $country['fields']['relationship']['value'] === 'partner';
+    });
+}
+
 
 ////////////////////////////////////////////////////////////////
 ////////                  ADMIN PORTAL                  ////////
