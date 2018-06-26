@@ -10,9 +10,39 @@
   {% endblock %}
 {% endembed %}
 
-{% include 'layout/link-collection.html' with {'links': fundCountryLinks} %}
+<div class="region-countries-legend">
+  {% if fundCountryLinks is not empty %}
+    <div class="fund-countries">
+      <div class="legend">
+        <p class="label"><span class="color"></span> Fleming Fund</p>
+      </div>
+      <div class="links">
+        {% include 'layout/link-collection.html' with {'links': fundCountryLinks} %}
+      </div>
+    </div>
+  {% endif %}
+  {% if partnerCountryLinks is not empty %}
+    <div class="partner-countries">
+      <div class="legend">
+        <p class="label">
+          <span class="color">
+                <svg xmlns='http://www.w3.org/2000/svg' viewbox="0 0 7 7">
+                  <rect fill='#f2f2f2' x='0' y='0' width='100%' height='100%'/>
+                  <rect fill='url(#subtle-hatched-{{ colour_scheme }})' x='0'
+                        y='0' width='100%' height='100%'/>
+                </svg>
+          </span>
+          Partner
+        </p>
+      </div>
+      <div class="links">
+        {% include 'layout/link-collection.html' with {'links': partnerCountryLinks} %}
+      </div>
+    </div>
+  {% endif %}
+</div>
 
-{% include 'layout/link-collection.html' with {'links': partnerCountryLinks} %}
+<hr class="row-border"/>
 
 <div class="row">
   <div class="nine columns">
@@ -33,32 +63,32 @@
 <hr class="row-separator"/>
 
 {# Replicate flexible content model #}
-{% include 'flexible-content/statistics.html' with {'content_block': {'values': [
-  {
-    'value': fields.statistics.value.projects_completed,
-    'text': 'Projects Completed'
-  },
-  {
-    'value': fields.statistics.value.projects_in_progress,
-    'text': 'Projects in Progress'
-  },
-  {
-    'value': '£'~fields.statistics.value.funds_provided,
-    'text': 'Funds Provided'
-  },
-]}} %}
+  {% include 'flexible-content/statistics.html' with {'content_block': {'values': [
+    {
+      'value': fields.statistics.value.projects_completed,
+      'text': 'Projects Completed'
+    },
+    {
+      'value': fields.statistics.value.projects_in_progress,
+      'text': 'Projects in Progress'
+    },
+    {
+      'value': '£'~fields.statistics.value.funds_provided,
+      'text': 'Funds Provided'
+    },
+  ]}} %}
 
-{% embed 'layout/supporting-content.html' %}
-  {% block content %}
+  {% embed 'layout/supporting-content.html' %}
+    {% block content %}
 
-    {% if fields.case_study.value %}
-      <h3>Featured Case Study</h3>
-      <div class="card-container cover">
-        {% include 'cards/entities/publication-large-with-image.html' with {'publication': fields.case_study.value} %}
-      </div>
-    {% endif %}
+      {% if fields.case_study.value %}
+        <h3>Featured Case Study</h3>
+        <div class="card-container cover">
+          {% include 'cards/entities/publication-large-with-image.html' with {'publication': fields.case_study.value} %}
+        </div>
+      {% endif %}
 
-  {% endblock %}
-{% endembed %}
+    {% endblock %}
+  {% endembed %}
 
 {{ include('layout/footer.html') }}

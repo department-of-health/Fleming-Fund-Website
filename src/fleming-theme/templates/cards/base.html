@@ -22,13 +22,13 @@
         {% endif %}
 
         {% if card.title %}
-          <h3>
+          <{{ card.title_is_paragraph ? 'p' : 'h3' }}>
             {% if card.link_target %}
               <a href="{{ card.link_target }}">{{ card.title }}</a>
             {% else %}
               {{ card.title }}
             {% endif %}
-          </h3>
+          </{{ card.title_is_paragraph ? 'p' : 'h3' }}>
         {% endif %}
 
         {% if card.overview %}

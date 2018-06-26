@@ -6,8 +6,10 @@
 
 .map-container {
   display: none;
+  min-height: 200px;
   height: 200px;
-  height: 30vh;
+  height: 40vh;
+  max-height: 40vh;
   position: relative;
 
   .alignment-helper {

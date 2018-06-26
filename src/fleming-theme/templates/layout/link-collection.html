@@ -3,7 +3,8 @@
     {% for link in links %}
       {% include 'cards/base.html' with {'card': {
         'decorated': false,
-        'content': link.title,
+        'title': link.title,
+        'title_is_paragraph': true,
         'link_target': link.target
       }} %}
     {% endfor %}

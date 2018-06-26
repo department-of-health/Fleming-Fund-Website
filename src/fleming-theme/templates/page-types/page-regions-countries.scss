@@ -11,6 +11,7 @@
   .map-container {
     height: 100%;
     box-sizing: border-box;
+    max-height: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -68,8 +69,8 @@
 
     .fund-color, .partner-color {
       display: inline-block;
-      width: 2em;
-      height: 2em;
+      width: $hit-box-height;
+      height: $hit-box-height;
       vertical-align: middle;
       margin-right: 0.5ex;
     }

@@ -26,7 +26,8 @@ function fleming_get_content() {
         "title" => get_raw_title(),
         "fields" => get_field_objects(),
         "nav" => get_nav_model(),
-        "map_config" => get_map_config(get_post_field( 'post_name'))
+        "map_config" => get_map_config(get_post_field( 'post_name')),
+        "colour_scheme" => region_slug_to_colour_scheme_name(get_post_field( 'post_name'))
     );
 
     $fleming_content['fields']['coordinator']['value'] = 

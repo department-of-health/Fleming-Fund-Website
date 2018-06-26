@@ -83,9 +83,18 @@ hr.row-border {
   border-top: 1px solid $mid-turquoise;
 }
 
+@each $configName, $colourConfig in $colourConfigs {
+  &.colour-scheme-#{$configName} {
+    hr.row-divider, hr.row-border {
+      border-top-color: map_get($colourConfig, intense);
+    }
+  }
+}
+
 // Per-page CSS
 @import 'page-types/front-page';
 @import 'page-types/single-organisation';
 @import 'page-types/single-events';
 @import 'page-types/page-our-aims';
 @import 'page-types/page-regions-countries';
+@import 'page-types/single-regions';

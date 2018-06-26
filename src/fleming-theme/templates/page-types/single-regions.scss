@@ -1,0 +1,56 @@
+.region-countries-legend {
+  position: relative;
+
+  .link-collection {
+    border: none;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .fund-countries, .partner-countries {
+    display: table-row;
+
+    .legend {
+      display: table-cell;
+      border-right: 1em solid transparent;
+      white-space: nowrap;
+    }
+
+    .links {
+      display: table-cell;
+    }
+
+    .color {
+      display: inline-block;
+      width: $hit-box-height;
+      height: $hit-box-height;
+      margin-right: 0.5ex;
+      vertical-align: middle;
+    }
+  }
+}
+
+@each $configName, $colourConfig in $colourConfigs {
+  &.colour-scheme-#{$configName} {
+    .region-countries-legend {
+      .fund-countries {
+        .color {
+          background: map_get($colourConfig, intense);
+        }
+      }
+
+      .partner-countries {
+        .color {
+          background: map_get($colourConfig, subtle);
+        }
+      }
+
+      a {
+        color: map_get($colourConfig, intense);
+      }
+    }
+  }
+}

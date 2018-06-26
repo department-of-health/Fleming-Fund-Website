@@ -128,25 +128,33 @@
   margin: 0.5em 0 2em;
 
   .card {
-    .header {
-      display: none;
-    }
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 
-    .content {
+    .header {
       padding: 0;
+      border: none;
       font-size: 1em;
 
       p {
-        margin: 0 !important;
+        margin: 0;
       }
     }
+
+    .content {
+      display: none;
+    }
+  }
+
+  a:hover {
+    color: $dark-grey;
   }
 }
 
 @media (#{$min-width-mobile}) {
   .card-container.link-collection {
     .card {
-      .content {
+      .header {
         font-size: 1.1em;
       }
     }
@@ -162,9 +170,9 @@
     .card {
       display: inline-block;
       width: auto;
-      margin: 0 2em 0 0 !important;
+      margin: 0.5em 2em 0.5em 0 !important;
 
-      .content {
+      .header {
         font-size: 1.2em;
       }
     }
