@@ -215,6 +215,56 @@
                         "min": "",
                         "max": ""
                     },
+                    "5b326a1c72010": {
+                        "key": "5b326a1c72010",
+                        "name": "bullet_points",
+                        "label": "Bullet points",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5b326bac72012",
+                                "label": "Items",
+                                "name": "items",
+                                "type": "repeater",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "collapsed": "",
+                                "min": 0,
+                                "max": 0,
+                                "layout": "table",
+                                "button_label": "",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_5b326bcb72013",
+                                        "label": "Item",
+                                        "name": "item",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "maxlength": ""
+                                    }
+                                ]
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
                     "5b290ee4e636a": {
                         "key": "5b290ee4e636a",
                         "name": "statistics",

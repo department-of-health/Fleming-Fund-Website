@@ -1,0 +1,7 @@
+{% if content_block.items %}
+<ul>
+  {% for item in content_block.items %}
+  <li>{{ item.item }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
