@@ -1,5 +1,8 @@
 {% if event %}
-  {% include 'cards/medium.html' with {'card': {
+  {% include 'cards/base.html' with {'card': {
+    'decorated': true,
+    'colour_scheme': 'turquoise',
+    'identifier': 'Event',
     'title': event.data.post_title,
     'content': event.fields.summary.value,
     'link_target': event.permalink

@@ -17,15 +17,21 @@
 </div>
 
 {% if fields.document.value and fields.type.value.post_title != 'news' %}
-<hr class="row-divider"/>
-<h4>The full {{ fields.document.value.page_count }} page document is available here</h4>
-<button class="button-dark" onClick={{ 'window.open("' ~ fields.document.value.file.url ~ '")' }}>View PDF</button>
+  <hr class="row-divider"/>
+  <h4>The full {{ fields.document.value.page_count }} page document is available here</h4>
+  <button class="button-dark" onClick={{ 'window.open("' ~ fields.document.value.file.url ~ '")' }}>View PDF</button>
 {% endif %}
 
-<h3 class="row-title">More Like This</h3>
-<div class="row">
-  {% include 'cards/entities/publication-large.html' with {'publication': more_like_this[0]} %}
-  {% include 'cards/entities/publication-large.html' with {'publication': more_like_this[1]} %}
-</div>
+{% embed 'layout/supporting-content.html' %}
+  {% block content %}
+
+    <h3 class="row-title">More Like This</h3>
+    <div class="row">
+      {% include 'cards/entities/publication-large.html' with {'publication': more_like_this[0]} %}
+      {% include 'cards/entities/publication-large.html' with {'publication': more_like_this[1]} %}
+    </div>
+
+  {% endblock %}
+{% endembed %}
 
 {{ include('layout/footer.html') }}

@@ -16,10 +16,16 @@
   </div>
 </div>
 
-<h3 class="row-title">More Like This</h3>
-<div class="row">
-  {% include 'cards/entities/event-medium.html' with {'event': similar_events[0]} %}
-  {% include 'cards/entities/event-medium.html' with {'event': similar_events[1]} %}
-</div>
+{% embed 'layout/supporting-content.html' %}
+  {% block content %}
+
+    <h3 class="row-title">More Like This</h3>
+    <div class="row">
+      {% include 'cards/entities/event-medium.html' with {'event': similar_events[0]} %}
+      {% include 'cards/entities/event-medium.html' with {'event': similar_events[1]} %}
+    </div>
+
+  {% endblock %}
+{% endembed %}
 
 {{ include('layout/footer.html') }}
