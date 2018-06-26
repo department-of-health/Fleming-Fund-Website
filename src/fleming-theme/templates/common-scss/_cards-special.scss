@@ -74,6 +74,16 @@
   }
 }
 
+@each $configName, $colourConfig in $colourConfigs {
+  &.colour-scheme-#{$configName} {
+    .card-container.statistics {
+      .card .statistic-value {
+        color: map_get($colourConfig, intense);
+      }
+    }
+  }
+}
+
 .card-container.opportunities {
   .card {
     font-weight: bold;

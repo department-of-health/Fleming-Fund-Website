@@ -44,10 +44,10 @@
 
           <p class="supporting">{{ card.content }}</p>
           {% if cta_override %}
-            <a class="button hollow" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
+            <a class="button {{ cta_hollow ? 'hollow' }}" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
           {% elseif card.link_target %}
             {% if card.cta_title %}
-              <a class="button hollow" href="{{ card.link_target }}">{{ card.cta_title }}</a>
+              <a class="button {{ cta_hollow ? 'hollow' }}" href="{{ card.link_target }}">{{ card.cta_title }}</a>
             {% endif %}
           {% endif %}
 

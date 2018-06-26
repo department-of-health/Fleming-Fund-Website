@@ -40,3 +40,17 @@ button, a.button {
     }
   }
 }
+
+@each $configName, $colourConfig in $colourConfigs {
+  &.colour-scheme-#{$configName} {
+    button, a.button {
+      background-color: map_get($colourConfig, intense);
+
+      &.hollow {
+        background: transparent;
+        border-color: map_get($colourConfig, intense);
+        color: map_get($colourConfig, intense);
+      }
+    }
+  }
+}
