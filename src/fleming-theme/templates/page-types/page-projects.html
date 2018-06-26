@@ -1,0 +1,11 @@
+{{ include('layout/header.html') }}
+
+<h1>{{ title }}</h1>
+
+<div class="card-container two-max">
+  {% for project in allProjects %}
+    {% include 'cards/entities/project-large.html' %}
+  {% endfor %}
+</div>
+
+{{ include('layout/footer.html') }}
