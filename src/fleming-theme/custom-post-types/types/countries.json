@@ -147,10 +147,10 @@
                 "ui": 1
             },
             {
-                "key": "field_5b058382805a2",
+                "key": "field_5b324b018d82e",
                 "label": "Grant Status",
                 "name": "grant_status",
-                "type": "text",
+                "type": "select",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -159,11 +159,21 @@
                     "class": "",
                     "id": ""
                 },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
+                "choices": [
+                    "Not Active",
+                    "Approach To Country",
+                    "Needs and Capability Assessment",
+                    "Grant Application",
+                    "Application Review",
+                    "Complete"
+                ],
+                "default_value": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "ajax": 0,
+                "return_format": "value",
+                "placeholder": ""
             },
             {
                 "key": "field_5b27d0c204957",
@@ -208,6 +218,28 @@
                 "ajax": 0,
                 "return_format": "value",
                 "placeholder": ""
+            },
+            {
+                "key": "field_5b0ecf9a4f40bqwerty",
+                "label": "Case Study",
+                "name": "case_study",
+                "type": "post_object",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "publications"
+                ],
+                "taxonomy": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
             }
         ],
         "location": [

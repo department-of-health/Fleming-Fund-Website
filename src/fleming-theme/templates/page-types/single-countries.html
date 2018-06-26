@@ -1,6 +1,21 @@
 {{ include('layout/header.html') }}
 
-<h1>{{ title }}</h1>
+<div class="row"><h1 style="float: left; width: 50%">{{ title }}</h1><button style="float: right">Subscribe for {{ title }} updates</button></div>
+
+<div class="row" style="margin-top: 4rem">
+  {% include 'page-elements/status-box.html' with {
+    'level': 1, 'current_status': fields.grant_status.value, 'header': 'Start', 'content': 'Approach to Country'
+  } %}
+  {% include 'page-elements/status-box.html' with {
+    'level': 2, 'current_status': fields.grant_status.value, 'header': '1-2 months', 'content': 'Scoping Visit'
+  } %}
+  {% include 'page-elements/status-box.html' with {
+    'level': 3, 'current_status': fields.grant_status.value, 'header': '3-8 months', 'content': 'Positioning Activities'
+  } %}
+  {% include 'page-elements/status-box.html' with {
+    'level': 4, 'current_status': fields.grant_status.value, 'header': '9+ months', 'content': 'Grant-making'
+  } %}
+</div>
 
 <hr class="row-divider"/>
 <div class="row">
@@ -38,7 +53,30 @@
 {% embed 'layout/supporting-content.html' %}
   {% block content %}
 
+    {% if fields.case_study.value %}
+      <h3>Feature Case Study</h3>
+      <div class="card-container cover">
+        {% include 'cards/entities/publication-large-with-image.html' with {'publication': fields.case_study.value} %}
+      </div>
+    {% endif %}
 
+    {% if opportunities is not empty %}
+      <h3>Current and Upcoming Opportunities</h3>
+      <div class="card-container two-max">
+        {% for grant in opportunities %}
+          {% include 'cards/entities/grant-large.html' with {'grant': grant} %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if projects is not empty %}
+      <h3>Current Projects</h3>
+      <div class="card-container two-max">
+        {% for project in projects %}
+          {% include 'cards/entities/project-large.html' with {'project': project} %}
+        {% endfor %}
+      </div>
+    {% endif %}
 
   {% endblock %}
 {% endembed %}

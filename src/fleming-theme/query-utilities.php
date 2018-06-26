@@ -30,13 +30,13 @@ function get_current_post_data_and_fields() {
 function get_referring_posts($postID, $post_type, $reference_type) {
     $posts = get_posts(array('post_type'=>$post_type,'numberposts'=>-1));
     foreach($posts as &$post) {
-        $post->post_data = get_post_data_and_fields($post->ID);
+        $post = get_post_data_and_fields($post->ID);
     }
     $posts = array_filter($posts, function($post) use($postID, $reference_type) {
-        return $post->post_data['fields'][$reference_type]['value']->ID == $postID;
+        return $post['fields'][$reference_type]['value']->ID == $postID;
     });
     foreach($posts as &$post) {
-        unset($post->post_data);
+        unset($post);
     }
     return array_values($posts); // reset array indices to 0, 1, 2, ...
 }

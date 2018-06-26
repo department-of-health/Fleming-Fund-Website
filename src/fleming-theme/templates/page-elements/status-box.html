@@ -1,0 +1,16 @@
+{% if level < current_status %}
+<div class="progress-box past">
+{% elseif level == current_status %}
+<div class="progress-box now">
+{% elseif level > current_status %}
+<div class="progress-box future">
+{% endif %}
+  <div style="float: left; padding: 0.5em">
+    <div><strong>{{ header }}</strong></div>
+    <div>{{ content }}</div>
+  </div>
+
+  {% if level < current_status %}
+  <div class="tickbox">&#10004;</div>
+  {% endif %}
+</div>
