@@ -11,16 +11,16 @@ class MenuLinksConfig
 
             'children' => [
                 'aims' => [
-                    'title' => 'Our aims',
-                    'target' => '/our-aims/'
+                    'title' => 'Overview',
+                    'target' => '/about-us/'
                 ],
                 'source' => [
-                    'title' => 'Source & spending',
-                    'target' => '/sources-spending/',
+                    'title' => 'How the Fleming Fund works',
+                    'target' => '/how-the-fleming-fund-works/',
                 ],
                 'evaluation' => [
-                    'title' => 'Independent Evaluation',
-                    'target' => '/independent-evaluation/',
+                    'title' => 'Investment Areas',
+                    'target' => '/investment-areas/',
                 ],
                 'partners' => [
                     'title' => 'Partners',
