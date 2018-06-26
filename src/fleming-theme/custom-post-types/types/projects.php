@@ -14,7 +14,7 @@ register_post_type('projects', array(
     'show_ui'               => true,
     'show_in_menu'          => true,
     'show_in_rest'          => true,
-    'menu_icon'             => 'dashicons-palmtree',
-    'menu_position'         => 8,
+    'menu_icon'             => 'dashicons-chart-bar',
+    'menu_position'         => 32,
     'supports'              => array('title', 'revisions')
 ));

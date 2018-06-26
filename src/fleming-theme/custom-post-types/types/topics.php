@@ -13,7 +13,7 @@ register_post_type('topics', array(
     'show_ui'               => true,
     'show_in_menu'          => true,
     'show_in_rest'          => true,
-    'menu_icon'             => 'dashicons-palmtree',
-    'menu_position'         => 10,
+    'menu_icon'             => 'dashicons-format-chat',
+    'menu_position'         => 41,
     'supports'              => array('title', 'revisions')
 ));

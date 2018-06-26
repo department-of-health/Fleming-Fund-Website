@@ -13,7 +13,7 @@ register_post_type('grant_types', array(
     'show_ui'               => true,
     'show_in_menu'          => true,
     'show_in_rest'          => true,
-    'menu_icon'             => 'dashicons-palmtree',
-    'menu_position'         => 3,
+    'menu_icon'             => 'dashicons-money',
+    'menu_position'         => 40,
     'supports'              => array('title', 'revisions')
 ));

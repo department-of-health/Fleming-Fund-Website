@@ -13,7 +13,7 @@ register_post_type('aims', array(
     'show_ui'               => true,
     'show_in_menu'          => true,
     'show_in_rest'          => true,
-    'menu_icon'             => 'dashicons-palmtree',
-    'menu_position'         => 0,
+    'menu_icon'             => 'dashicons-clipboard',
+    'menu_position'         => 45,
     'supports'              => array('title', 'revisions')
 ));

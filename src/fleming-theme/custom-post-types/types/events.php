@@ -14,7 +14,7 @@ register_post_type('events', array(
     'show_ui'               => true,
     'show_in_menu'          => true,
     'show_in_rest'          => true,
-    'menu_icon'             => 'dashicons-palmtree',
-    'menu_position'         => 2,
+    'menu_icon'             => 'dashicons-calendar-alt',
+    'menu_position'         => 34,
     'supports'              => array('title', 'revisions')
 ));
