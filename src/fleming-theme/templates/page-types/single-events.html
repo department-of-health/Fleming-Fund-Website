@@ -9,7 +9,7 @@
   <div class="three columns">
     <hr class="row-border"/>
     <h3 class="colour-text">{{ fields.date.value }}</h3><br/>
-    <h3 class="colour-text">{{ fields.time.value.time }} (UCT + {{ fields.time.value.timezone }})</h3><br/>
+    <h3 class="colour-text">{{ fields.time.value.time }} {{ fields.time.value.timezone_label }} (UCT + {{ fields.time.value.timezone }})</h3><br/>
     <div><strong>Location:</strong> {{ fields.location.value }}</div><br/>
     <div><strong>Country:</strong> {{ fields.country.value.post_title }}</div><br/>
     <hr class="row-border"/>
