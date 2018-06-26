@@ -42,6 +42,7 @@ function fleming_get_content()
     $opportunities = get_posts(array('post_type'=>'grants','numberposts'=>2));
     foreach($opportunities as &$post) {
         $post = get_post_data_and_fields($post->ID);
+        hydrate_grant_for_card($post);
     }
     $fleming_content["opportunities"] = $opportunities;
 
