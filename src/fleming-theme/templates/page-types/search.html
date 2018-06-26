@@ -1,0 +1,9 @@
+{{ include('layout/header.html') }}
+
+<h1>{{ title }} - {{ query_results.summary }}</h1>
+
+{% include 'page-elements/query-results.html' %}
+
+<hr class="row-divider"/>
+
+{{ include('layout/footer.html') }}

@@ -54,3 +54,27 @@ function get_referring_posts($postID, $post_type, $reference_type) {
     }
     return array_values($posts); // reset array indices to 0, 1, 2, ...
 }
+
+
+function get_query_results() {
+    global $wp_query, $paged, $page_size;
+    $max_page = $wp_query->max_num_pages;
+    $page_number = $paged ? $paged : 1;
+
+    $posts = [];
+    for ($i = 0; $i < 10 && have_posts(); $i++) {
+        the_post();
+        $posts[] = get_current_post_data_and_fields();
+    }
+
+    $total_results_summary = strval($wp_query->found_posts) . " result" . ($wp_query->found_posts == 1 ? "" : "s");
+    $pagination_summary = $max_page > 1 ? "" . strval(($page_number - 1)*$page_size + 1) . "-" . strval(min($page_number*$page_size, $wp_query->found_posts)) . " of " : "";
+
+    return array(
+        "posts" => $posts,
+        "query" => get_search_query(),
+        "next_link" => !is_single() && intval($page_number) < $max_page ? next_posts($max_page, false) : null,
+        "previous_link" => !is_single() && $page_number > 1 ? previous_posts(false) : null,
+        "summary" => $pagination_summary . $total_results_summary
+    );
+}

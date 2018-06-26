@@ -1,0 +1,13 @@
+.alignRight {
+  float: right;
+}
+
+.alignLeft {
+  float: left;
+}
+
+.paginationLinks:after {
+  content: '';
+  display: block;
+  clear: both;
+}

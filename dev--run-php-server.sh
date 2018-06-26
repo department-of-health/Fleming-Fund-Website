@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 
 source ./.credentials/set-local-credentials.sh
 

@@ -1,0 +1,9 @@
+{% if topic %}
+  {% include 'cards/base.html' with {'card': {
+    'decorated': true,
+    'identifier': 'Topic',
+    'inverted_header': true,
+    'title': topic.data.post_title,
+    'link_target': topic.permalink
+  }} %}
+{% endif %}

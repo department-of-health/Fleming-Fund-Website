@@ -19,8 +19,7 @@
       </a>
     </div>
     <div class="search-container">
-      <form class="search" action="/search/" method="get">
-        <!-- qq make the form work! -->
+      <form class="search" action="/" method="get">
         <button class="square-icon" type="submit">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <path
@@ -28,7 +27,7 @@
           </svg>
         </button>
         <div class="input-container">
-          <input name="q" placeholder="Search" type="text"/>
+          <input name="s" placeholder="Search" type="text" value="{{query_results.query}}"/>
         </div>
       </form>
     </div>

@@ -268,4 +268,3 @@ function get_raw_title(...$args)
 ////////////////////////////////////////////////////////////////
 
 include __DIR__ . '/custom-post-types/load-custom-post-types-and-acf-fields.php';
-

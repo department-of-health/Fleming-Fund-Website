@@ -1,0 +1,9 @@
+{% if discipline %}
+  {% include 'cards/base.html' with {'card': {
+    'decorated': true,
+    'identifier': 'Discipline',
+    'inverted_header': true,
+    'title': discipline.data.post_title,
+    'link_target': discipline.permalink
+  }} %}
+{% endif %}
