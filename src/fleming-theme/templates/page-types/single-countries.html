@@ -1,6 +1,9 @@
 {{ include('layout/header.html') }}
 
-<div class="row"><h1 style="float: left; width: 50%">{{ title }}</h1><button style="float: right">Subscribe for {{ title }} updates</button></div>
+<div class="row">
+  <h1 style="float: left; width: 50%">{{ title }}</h1>
+  <button style="float: right" onClick={{ 'window.open("https://www.example.com")' }}>Subscribe for {{ title }} updates</button>
+</div>
 
 <div class="row" style="margin-top: 4rem">
   {% include 'page-elements/status-box.html' with {
@@ -23,6 +26,10 @@
     {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
   </div>
   <div class="three columns people card-container cover">
+    {% if fields.nap_doc.value %}
+    <p class="supporting">{{title}}'s National Action Plan is available here</p>
+    <button style="width: 100%" onClick={{ 'window.open("' ~ fields.nap_doc.value.url ~ '")' }}>Download &darr;</button>
+    {% endif %}
     {% include 'cards/entities/person-small-with-image.html' with {
       'person': coordinator,
       'supertitle': 'Regional Coordinator',

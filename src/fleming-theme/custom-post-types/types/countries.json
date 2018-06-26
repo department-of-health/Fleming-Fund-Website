@@ -220,6 +220,25 @@
                 "placeholder": ""
             },
             {
+                "key": "field_5b06976a6ae1eqwerty",
+                "label": "National Action Plan",
+                "name": "nap_doc",
+                "type": "file",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "library": "all",
+                "min_size": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
                 "key": "field_5b0ecf9a4f40bqwerty",
                 "label": "Case Study",
                 "name": "case_study",
