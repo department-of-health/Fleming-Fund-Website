@@ -10,7 +10,7 @@
     {% set card_class = card_class~' inverted-header' %}
   {% endif %}
 
-  <div class="{{ card_class }}">
+  <div class="{{ card_class }}" id="{{ card.id }}">
 
     {% if card.top_html or card.identifier or card.title or card.overview %}
       <div class="header">
@@ -37,18 +37,27 @@
 
       </div>
     {% endif %}
-    <div class="content">
+    {% if card.content or cta_override %}
+      <div class="content">
 
-      <p class="supporting">{{ card.content }}</p>
-      {% if cta_override %}
-        <a class="button hollow" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
-      {% elseif card.link_target %}
-        {% if card.cta_title %}
-          <a class="button hollow" href="{{ card.link_target }}">{{ card.cta_title }}</a>
-        {% endif %}
-        {% include 'cards/common/link-overlay.html' %}
-      {% endif %}
+        {% block content %}
 
-    </div>
+          <p class="supporting">{{ card.content }}</p>
+          {% if cta_override %}
+            <a class="button hollow" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
+          {% elseif card.link_target %}
+            {% if card.cta_title %}
+              <a class="button hollow" href="{{ card.link_target }}">{{ card.cta_title }}</a>
+            {% endif %}
+          {% endif %}
+
+        {% endblock %}
+
+      </div>
+    {% endif %}
+
+    {% if card.link_target and not cta_override and not card.no_link_overlay %}
+      {% include 'cards/common/link-overlay.html' %}
+    {% endif %}
   </div>
 {% endif %}

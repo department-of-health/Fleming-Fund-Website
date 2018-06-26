@@ -1,3 +1,13 @@
+.full-width-container {
+  position: relative;
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
 .supporting-content {
   background: $light-grey;
   padding: 3em 0;

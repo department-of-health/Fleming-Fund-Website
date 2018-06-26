@@ -2,7 +2,7 @@
 
 include __DIR__ . '/php/get-css-filename.php';
 include 'navigation/index.php';
-include 'map/index.php';
+include 'map/config.php';
 
 /**
  * NOTE:
@@ -30,6 +30,14 @@ function fleming_get_content()
         "nav" => get_nav_model(),
         "map_config" => get_map_config()
     );
+
+    $regions = get_posts(array('post_type' => 'regions', 'numberposts' => -1));
+    foreach ($regions as &$region) {
+        $region = get_post_data_and_fields($region->ID);
+        $regionCountries = get_referring_posts($region['data']->ID, 'countries', 'region');
+        $region['countries'] = array_map('get_post_data_and_fields', $regionCountries);
+    }
+    $fleming_content['regions'] = $regions;
 
     return $fleming_content;
 }

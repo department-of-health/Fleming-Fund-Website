@@ -1,35 +1,33 @@
 {% set map_id = 'map-'~random() %}
 
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;" viewBox="0 0 32 32">
+<svg xmlns="http://www.w3.org/2000/svg" style="width:0;height:0;position:absolute;overflow:hidden;">
   <defs>
-    <pattern id="solid-fill">
-      <rect height="32" width="32"/>
-    </pattern>
-    <pattern id="hatched-fill">
-      <circle cx="16" cy="16" r="5" fill="#fff"/>
-    </pattern>
+    {% for region in map_config.regions %}
+        <pattern id="subtle-hatched-{{ region.colourScheme }}"
+                 x="0" y="0" width="2" height="2"
+                 patternUnits="userSpaceOnUse"
+                 patternTransform="rotate(45)">
+            <path d="M1 0 V 2" stroke="darkgrey" stroke-width="1.5" />
+        </pattern>
+    {% endfor %}
   </defs>
 </svg>
 
-{% embed 'layout/full-width-container.html' %}
-  {% block container %}
-    <div class="map-container">
-      <div class="container alignment-helper">
-        <button id="{{ map_id }}-zoom-in" class="zoom-in square-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="6 6 20 20">
-            <path d="M14 6 H 18 V 14 H 26 V 18 H 18 V 26 H 14 V 18 H 6 V 14 H 14 Z"/>
-          </svg>
-        </button>
-        <button id="{{ map_id }}-zoom-out" class="zoom-out square-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="6 6 20 20">
-            <path d="M6 14 H 26 V 18 H 6 Z"/>
-          </svg>
-        </button>
-      </div>
-      <div class="map" id="{{ map_id }}"></div>
-    </div>
-  {% endblock %}
-{% endembed %}
+<div class="map-container {{ map_is_interactive ? 'interactive' }}" aria-hidden="true">
+  <div class="container alignment-helper buttons">
+    <button id="{{ map_id }}-zoom-in" class="zoom-in square-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="6 6 20 20">
+        <path d="M14 6 H 18 V 14 H 26 V 18 H 18 V 26 H 14 V 18 H 6 V 14 H 14 Z"/>
+      </svg>
+    </button>
+    <button id="{{ map_id }}-zoom-out" class="zoom-out square-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="6 6 20 20">
+        <path d="M6 14 H 26 V 18 H 6 Z"/>
+      </svg>
+    </button>
+  </div>
+  <div class="map" id="{{ map_id }}"></div>
+</div>
 
 <script type="text/javascript">
     //<![CDATA[
@@ -77,9 +75,10 @@
 
     var map;
     $(function () {
+        $('.map-container').show();
         map = $('#{{ map_id }}').vectorMap({
             map: 'world_mill',
-            backgroundColor: '#f2f2f2',
+            backgroundColor: '#e5e5e5',
             regionStyle: {
                 initial: {
                     fill: 'white',
@@ -104,7 +103,7 @@
                 ]
             },
             zoomOnScroll: false,
-            panOnDrag: true,
+            panOnDrag: {{ map_is_interactive ? 'true': 'false' }},
             zoomMax: 10,
             onRegionTipShow: function (e, tip, code) {
                 var country = mapConfig.countries[code];
@@ -135,17 +134,22 @@
 
     });
 
-    function refocusMap(animate) {
+    function refocusMap() {
         if (map !== undefined && focusedRegion !== undefined) {
+            map.updateSize();
             map.setFocus({
-                regions: mapConfig.regions[focusedRegion].countries,
-                animate: animate
+                regions: mapConfig.regions[focusedRegion].countries
             });
         }
     }
 
+    function focusMapOn(region) {
+        focusedRegion = region;
+        refocusMap();
+    }
+
     $(window).resize(function () {
-        refocusMap(false);
+        refocusMap();
     });
     //]]>
 </script>

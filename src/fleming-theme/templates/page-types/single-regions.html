@@ -2,7 +2,13 @@
 
 <h1>{{ title }}</h1>
 
-{% include 'page-elements/map.html' %}
+{% embed 'layout/full-width-container.html' %}
+  {% block container %}
+    {% include 'page-elements/map.html' with {
+      'map_is_interactive': true
+    } %}
+  {% endblock %}
+{% endembed %}
 
 {% include 'layout/link-collection.html' with {'links': fundCountryLinks} %}
 

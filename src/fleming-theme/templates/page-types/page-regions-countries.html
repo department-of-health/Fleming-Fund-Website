@@ -2,8 +2,188 @@
 
 <h1>{{ title }}</h1>
 
-{% include 'page-elements/map.html' %}
-
 {% include 'layout/link-collection.html' with {'links': nav.allRegionLinks} %}
+
+{% embed 'layout/full-width-container.html' %}
+  {% block container %}
+    <div id="map-element">
+      {% include 'page-elements/map.html' with {
+        'map_is_interactive': false
+      } %}
+    </div>
+  {% endblock %}
+{% endembed %}
+
+<div class="card-container two-max" id="region-cards">
+  {% include 'cards/base.html' with {'card': {
+    'decorated': true,
+    'id': 'all',
+    'title': 'Overview',
+    'content': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  }} %}
+
+  {% for region in regions %}
+
+    {% embed 'cards/base.html' with {'card': {
+      'decorated': true,
+      'id': region.data.post_name,
+      'colour_scheme': region.data.post_name|region_slug_to_colour_scheme_name,
+      'title': region.data.post_title,
+      'content': true,
+      'link_target': region.permalink,
+      'no_link_overlay': true
+    }} %}
+      {% block content %}
+        <div class="content-block">
+
+          {% set fund_countries = region.countries|fund_only %}
+          {% if fund_countries is not empty %}
+            <p class="legend-label"><span class="fund-color"></span> Fleming Fund</p>
+            <p class="supporting legend-items">
+              {% for country in fund_countries %}
+                <a href="{{ country.permalink }}">{{ country.data.post_title }}</a>
+              {% endfor %}
+            </p>
+          {% endif %}
+
+          {% set partner_countries = region.countries|partner_only %}
+          {% if partner_countries is not empty %}
+            <p class="legend-label">
+              <span class="partner-color">
+                <svg xmlns='http://www.w3.org/2000/svg' viewbox="0 0 7 7">
+                  <rect fill='#f2f2f2' x='0' y='0' width='100%' height='100%'/>
+                  <rect fill='url(#subtle-hatched-{{ region.data.post_name|region_slug_to_colour_scheme_name }})' x='0' y='0' width='100%' height='100%'/>
+                </svg>
+              </span>
+              Partner
+            </p>
+            <p class="supporting legend-items">
+              {% for country in partner_countries %}
+                <a href="{{ country.permalink }}">{{ country.data.post_title }}</a>
+              {% endfor %}
+            </p>
+          {% endif %}
+
+        </div>
+        <div class="content-block">
+          <p class="supporting">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo
+            consequat.
+          </p>
+        </div>
+        {% if region.fields.statistics.value.funds_provided %}
+          <div class="content-block">
+            <p>
+            <span class="funds-provided-to-region">
+              {{ '£'~region.fields.statistics.value.funds_provided }}
+            </span>
+              <br/>
+              awarded to {{ region.data.post_title }}
+            </p>
+          </div>
+        {% endif %}
+      {% endblock %}
+    {% endembed %}
+
+  {% endfor %}
+
+  <script type="text/javascript">
+      //<![CDATA[
+      $('#map-element')
+          .wrap('<div class="container"></div>')
+          .wrap('<div class="eight columns"></div>')
+          .show()
+          .parent()
+          .append('&nbsp;')
+          .after(
+              $('#region-cards')
+                  .removeClass('two-max')
+                  .addClass('cover four columns')
+          );
+
+      function updateMapDimensions() {
+          var mapElement = $('#map-element');
+          mapElement.css({
+              'width': mapElement.parent().width() + 'px'
+          });
+          refocusMap();
+      }
+
+      function setActiveRegionCard(cardID) {
+          if (focusedRegion !== cardID) {
+              focusMapOn(cardID);
+              $('#region-cards').children('.card').each(function (i, card) {
+                  card = $(card);
+                  if (card.attr('id') === cardID) {
+                      card.removeClass('inactive');
+                  } else {
+                      card.addClass('inactive');
+                  }
+              })
+          }
+      }
+
+      function handleScrollForMap() {
+          var mapElement = $('#map-element');
+          var regionCardsContainer = $('#region-cards');
+
+          if (mapElement.offset().left < regionCardsContainer.offset().left) {
+
+              var newMapElementClass = '';
+
+              var topOfViewport = $(window).scrollTop();
+              var topOfMapElementContainer = mapElement.parent().parent().offset().top;
+
+              if (topOfMapElementContainer - topOfViewport > 0) {
+                  newMapElementClass = 'top';
+              } else {
+                  var mapElementContainerHeight = mapElement.parent().parent().height();
+                  var spaceAvailableForMapElement =
+                      topOfMapElementContainer + mapElementContainerHeight - topOfViewport;
+                  if (spaceAvailableForMapElement > mapElement.height()) {
+                      newMapElementClass = 'fixed';
+                  } else {
+                      newMapElementClass = 'bottom';
+                  }
+              }
+              mapElement.removeClass();
+              mapElement.addClass(newMapElementClass);
+
+              var activeCardID = 'all';
+              regionCardsContainer.children('.card').each(function (i, card) {
+                  card = $(card);
+                  var positionInViewport = card.offset().top - topOfViewport;
+                  if (positionInViewport - $(window).height() / 2 < 0) {
+                      activeCardID = card.attr('id');
+                  }
+              });
+              setActiveRegionCard(activeCardID);
+          } else {
+              setActiveRegionCard('all');
+          }
+      }
+
+      function handleResizeForMap() {
+          updateMapDimensions();
+          handleScrollForMap();
+      }
+
+      $(window).scroll(handleScrollForMap);
+      var updateMapAfterResizeTimeout;
+      $(window).resize(function () {
+          clearTimeout(updateMapAfterResizeTimeout);
+          updateMapAfterResizeTimeout = setTimeout(handleResizeForMap, 50);
+      });
+
+      handleResizeForMap();
+
+
+      //]]>
+  </script>
+</div>
+
 
 {{ include('layout/footer.html') }}
