@@ -34,7 +34,7 @@
 }
 
 @each $configName, $colourConfig in $colourConfigs {
-  &.colour-scheme-#{$configName} {
+  &.#{$configName} {
     .region-countries-legend {
       .fund-countries {
         .color {

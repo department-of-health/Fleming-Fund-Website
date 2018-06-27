@@ -3,7 +3,6 @@
     {% set supertitle = supertitle ~ ' ' %}
   {% endif %}
   {% include 'cards/base.html' with {'card': {
-    'extra_classes': 'without-border wide',
     'decorated': false,
     'top_html': '<img src="https://placekitten.com/g/512/512"/>',
     'title': supertitle ~ person.data.post_title,

@@ -84,7 +84,7 @@ hr.row-border {
 }
 
 @each $configName, $colourConfig in $colourConfigs {
-  &.colour-scheme-#{$configName} {
+  &.#{$configName} {
     hr.row-divider, hr.row-border {
       border-top-color: map_get($colourConfig, intense);
     }
