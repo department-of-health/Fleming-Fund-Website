@@ -38,13 +38,7 @@ function fleming_get_content()
     $fleming_content["coordinator"] = get_post_data_and_fields($region_data["fields"]["coordinator"]["value"]->ID);
 
     $fleming_content["opportunities"] = get_referring_posts(get_the_ID(), 'grants', 'countries');
-
-    $opportunities = get_posts(array('post_type'=>'grants','numberposts'=>2));
-    foreach($opportunities as &$post) {
-        $post = get_post_data_and_fields($post->ID);
-        hydrate_grant_for_card($post);
-    }
-    $fleming_content["opportunities"] = $opportunities;
+    $fleming_content["opportunities"] = array_slice($fleming_content["opportunities"],0,2);
 
     $projects = get_posts(array('post_type'=>'projects','numberposts'=>2));
     foreach($projects as &$post) {

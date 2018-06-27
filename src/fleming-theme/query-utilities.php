@@ -34,9 +34,21 @@ function get_referring_posts($postID, $post_type, $reference_type) {
     foreach($posts as &$post) {
         $post = get_post_data_and_fields($post->ID);
     }
-    $posts = array_filter($posts, function($post) use($postID, $reference_type) {
-        return $post['fields'][$reference_type]['value']->ID == $postID;
-    });
+    if (is_array($posts[0]['fields'][$reference_type]['value'])) {
+        $posts = array_filter($posts, function($post) use($postID, $reference_type) {
+            $refers_to_post = false;
+            if ($post['fields'][$reference_type]['value']) {
+                foreach($post['fields'][$reference_type]['value'] as $reference) {
+                    if ($reference->ID == $postID) $refers_to_post = true;
+                }
+            }
+            return $refers_to_post;
+        });
+    } else {
+        $posts = array_filter($posts, function($post) use($postID, $reference_type) {
+            return $post['fields'][$reference_type]['value']->ID == $postID;
+        });
+    }
     foreach($posts as &$post) {
         unset($post);
     }
