@@ -59,15 +59,11 @@ function fleming_get_content() {
     $fleming_content["fields"]["highlight_opportunity_1"] = get_post_data_and_fields(
         $fleming_content["fields"]["highlight_opportunity_1"]["value"]->ID
     );
+    hydrate_grant_for_card($fleming_content['fields']['highlight_opportunity_1']);
     $fleming_content["fields"]["highlight_opportunity_2"] = get_post_data_and_fields(
         $fleming_content["fields"]["highlight_opportunity_2"]["value"]->ID
     );
-    if ($fleming_content["fields"]["highlight_opportunity_1"]) {
-        hydrate_grant_for_card($fleming_content['fields']['highlight_opportunity_1']);
-    }
-    if ($fleming_content["fields"]["highlight_opportunity_2"]) {
-        hydrate_grant_for_card($fleming_content['fields']['highlight_opportunity_2']);
-    }
+    hydrate_grant_for_card($fleming_content['fields']['highlight_opportunity_2']);
 
     $opportunities = get_posts(array('post_type'=>'grants','numberposts'=>-1));
     foreach($opportunities as &$opportunity) {

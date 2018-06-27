@@ -96,13 +96,15 @@ function countries_partner_only_filter($countries)
 }
 
 function hydrate_grant_for_card(&$grant) {
+    if (!isset($grant)) return;
+
     $grant['fields']['funds_available']['value'] = number_format(
         $grant['fields']['funds_available']['value']
     );
 
     $grantType = $grant['fields']['type']['value'];
 
-    $identifier = $grantType->post_title;
+    $identifier = $grantType->post_title ?? 'Grant';
 
     if ($grantType->post_name === 'global-grant') {
         $grant['colour_scheme'] = 'base';
