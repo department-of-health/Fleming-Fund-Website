@@ -10,7 +10,7 @@
 .card {
   // Internal layout
 
-  $card-padding: 2rem;
+  $card-padding: 1.5em;
 
   display: inline-flex;
   flex-flow: column nowrap;
@@ -39,9 +39,39 @@
     max-width: 100%;
   }
 
+
+  button, .button {
+    margin: (0.8 * $card-padding) 0 0;
+    font-size: 1.2em;
+    min-width: 8em;
+  }
+
+  h3 {
+    font-size: 2.5em;
+    margin: (0.2 * $card-padding) 0;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  p {
+    width: 100%;
+    margin: 0;
+    font-size: 1.2em;
+  }
+
   .header {
-    padding: $card-padding;
+    padding: (0.5 * $card-padding) $card-padding $card-padding;
     border-bottom: 0.3ex solid #fff;
+
+    p {
+      font-size: 1.5em;
+
+      &.identifier {
+        font-size: 1em;
+      }
+    }
   }
 
   .content {
@@ -52,7 +82,7 @@
     align-items: flex-start;
 
     p {
-      margin-top: $card-padding;
+      margin-top: (0.5 * $card-padding);
 
       &:last-of-type {
         flex: 1 1 auto;
@@ -60,42 +90,11 @@
     }
   }
 
-  button, .button {
-    margin: $card-padding 0 0;
-    font-size: 1.2em;
-  }
-
-  h3, h4 {
-    margin: $card-padding 0;
-
-    a {
-      color: inherit;
-    }
-  }
-
-  h3 {
-    font-size: 2em;
-  }
-
-  h4 {
-    font-size: 1.7em;
-  }
-
-  p {
-    width: 100%;
-    font-size: 2rem;
-    margin: 0;
-  }
-
   .identifier {
     margin: 0;
     width: 100%;
-    padding-bottom: $card-padding;
+    padding-bottom: (0.5 * $card-padding);
     border-bottom: 0.2ex solid $light-grey;
-    font-size: 1em;
-  }
-
-  .supporting {
     font-size: 1em;
   }
 
@@ -189,14 +188,15 @@
   }
 }
 
+@media (#{$max-width-desktop}) {
+  .card {
+    font-size: 14px;
+  }
+}
+
 @media (#{$max-width-tablet}) {
   .card {
-    h3 {
-      font-size: 1.7em;
-    }
-    h4 {
-      font-size: 1.4em;
-    }
+    font-size: 13px;
   }
 
   .card-container {
@@ -214,12 +214,7 @@
 
 @media (#{$max-width-mobile}) {
   .card {
-    h3 {
-      font-size: 1.5em;
-    }
-    h4 {
-      font-size: 1.2em;
-    }
+    font-size: 13px;
   }
 
   .card-container {

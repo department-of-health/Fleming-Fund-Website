@@ -10,25 +10,38 @@
     margin: 0;
   }
 
-  .fund-countries, .partner-countries {
-    display: table-row;
+  .legend {
+    border-right: 1em solid transparent;
+    white-space: nowrap;
+  }
 
-    .legend {
+  $fractionOfColorWidthAsPadding: 0.25;
+
+  .links {
+    padding-left: ((1 + $fractionOfColorWidthAsPadding) * $hit-box-height);
+  }
+
+  .color {
+    display: inline-block;
+    width: $hit-box-height;
+    height: $hit-box-height;
+    margin-right: ($fractionOfColorWidthAsPadding * $hit-box-height);
+    vertical-align: middle;
+  }
+}
+
+@media (#{$min-width-tablet}) {
+  .region-countries-legend {
+    .fund-countries, .partner-countries {
+      display: table-row;
+    }
+
+    .legend, .links {
       display: table-cell;
-      border-right: 1em solid transparent;
-      white-space: nowrap;
     }
 
     .links {
-      display: table-cell;
-    }
-
-    .color {
-      display: inline-block;
-      width: $hit-box-height;
-      height: $hit-box-height;
-      margin-right: 0.5ex;
-      vertical-align: middle;
+      padding-left: 0;
     }
   }
 }

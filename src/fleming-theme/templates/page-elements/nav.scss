@@ -9,7 +9,8 @@ nav.global-nav {
     width: 100%;
 
     li {
-      font-size: 19px;
+      font-size: 21px;
+      line-height: 1.4em;
 
       a {
         position: relative;
@@ -62,7 +63,8 @@ nav.global-nav {
 
     li {
       border: none;
-      font-size: 16px;
+      font-size: 18px;
+      line-height: 1.2em;
 
       a {
         padding: 0.4em 0;
@@ -187,11 +189,9 @@ nav.sub-global-nav {
         }
 
         &.mobile-submenu-showing {
-          font-weight: bold;
-
           & > a {
             border-bottom: 0.15em solid $turquoise;
-
+            font-weight: bold;
           }
 
           & > .mobile-submenu {

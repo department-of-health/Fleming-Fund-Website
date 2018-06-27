@@ -24,7 +24,7 @@ function fleming_get_content() {
             ->build()
     );
 
-    process_flexible_content($fleming_content, $fleming_content['fields']['organisation_flexible_content']);
+    process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
 
     return $fleming_content;
 }

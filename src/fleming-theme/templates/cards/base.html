@@ -39,7 +39,7 @@
 
         {% block content %}
 
-          <p class="supporting">{{ card.content }}</p>
+          <p>{{ card.content }}</p>
           {% if cta_override %}
             <a class="button {{ card.cta_not_hollow ?? 'hollow' }}" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
           {% elseif card.link_target %}

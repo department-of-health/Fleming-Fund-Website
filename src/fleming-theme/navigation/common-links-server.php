@@ -43,6 +43,11 @@ trait CommonLinksServer
         return $link;
     }
 
+    function getGrantsPageLink()
+    {
+        return $this->getMenuRouteLink('grants');
+    }
+
     function getContactUsLink()
     {
         $link = new Link();
