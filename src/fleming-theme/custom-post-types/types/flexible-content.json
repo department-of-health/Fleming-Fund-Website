@@ -466,6 +466,13 @@
                     "operator": "==",
                     "value": "events"
                 }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                }
             ]
         ],
         "menu_order": 0,

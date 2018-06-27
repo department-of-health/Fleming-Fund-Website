@@ -76,3 +76,5 @@ This is the [Git repository](https://en.wikipedia.org/wiki/Git) for the code tha
 * Both CPTs and CFGs should be loaded via load-custom-post-types-and-acf-fields.php in src/fleming-theme. Just add an include and/or load_acf_fields call inside the eponymous function similar to the ones already there.
 
 * Be careful about underscores and hyphens when naming custom components and files.
+
+* CFGs for pages should exist in page-[page name].json in the same folder.

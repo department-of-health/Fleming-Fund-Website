@@ -50,20 +50,7 @@
 </div>
 
 {# Replicate flexible content model #}
-{% include 'flexible-content/statistics.html' with {'content_block': {'values': [
-  {
-    'value': fields.statistics.value.projects_completed,
-    'text': 'Projects Completed'
-  },
-  {
-    'value': fields.statistics.value.projects_in_progress,
-    'text': 'Projects in Progress'
-  },
-  {
-    'value': '£'~fields.statistics.value.funds_provided,
-    'text': 'Funds Provided'
-  },
-]}} %}
+{% include 'flexible-content/statistics.html' with {'content_block': mapped_statistics} %}
 
 {% embed 'layout/supporting-content.html' %}
   {% block content %}
