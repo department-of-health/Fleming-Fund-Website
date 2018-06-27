@@ -20,7 +20,7 @@
                     "publications"
                 ],
                 "taxonomy": [],
-                "allow_null": 0,
+                "allow_null": 1,
                 "multiple": 0,
                 "return_format": "object",
                 "ui": 1
@@ -42,7 +42,7 @@
                     "grant_types"
                 ],
                 "taxonomy": [],
-                "allow_null": 0,
+                "allow_null": 1,
                 "multiple": 0,
                 "return_format": "object",
                 "ui": 1
@@ -64,7 +64,7 @@
                     "projects"
                 ],
                 "taxonomy": [],
-                "allow_null": 0,
+                "allow_null": 1,
                 "multiple": 0,
                 "return_format": "object",
                 "ui": 1
@@ -86,7 +86,7 @@
                     "grants"
                 ],
                 "taxonomy": [],
-                "allow_null": 0,
+                "allow_null": 1,
                 "multiple": 0,
                 "return_format": "object",
                 "ui": 1
@@ -108,7 +108,7 @@
                     "grants"
                 ],
                 "taxonomy": [],
-                "allow_null": 0,
+                "allow_null": 1,
                 "multiple": 0,
                 "return_format": "object",
                 "ui": 1
