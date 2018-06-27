@@ -146,6 +146,11 @@ function hydrate_grant_for_card(&$grant) {
 ////////                  ADMIN PORTAL                  ////////
 ////////////////////////////////////////////////////////////////
 
+function remove_default_page_editor() {
+    remove_post_type_support( 'page', 'editor' );
+}
+add_action('admin_init', 'remove_default_page_editor');
+
 // Disable unwanted menus in the Admin portal
 function remove_unwanted_menus_in_admin_portal()
 {

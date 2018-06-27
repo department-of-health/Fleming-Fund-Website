@@ -2,6 +2,24 @@
 
 function load_custom_post_types_and_acf_fields() {
 
+    load_acf_fields('types/flexible-content.json');
+
+    // Pages (ACF settings)
+
+    load_acf_fields('types/front-page.json');
+
+    $pageData = is_admin() ? get_post($_GET['post'] ?? $_POST['post_ID']) : get_post();
+    if (isset($pageData)) {
+        if ($pageData->post_type === 'page') {
+            $acfFilename = 'types/page-'.$pageData->post_name.'.json';
+            if (is_file(__DIR__.'/'.$acfFilename)) {
+                load_acf_fields('/'.$acfFilename);
+            }
+        }
+    }
+
+    // Custom post types (type definition + optional ACF settings)
+
     include __DIR__ . '/types/aims.php';
     load_acf_fields('types/aims.json');
 
@@ -12,10 +30,6 @@ function load_custom_post_types_and_acf_fields() {
 
     include __DIR__ . '/types/events.php';
     load_acf_fields('types/events.json');
-
-    load_acf_fields('types/flexible-content.json');
-
-    load_acf_fields('types/front-page.json');
 
     include __DIR__ . '/types/grant-types.php';
     load_acf_fields('types/grant-types.json');
@@ -46,8 +60,11 @@ function load_custom_post_types_and_acf_fields() {
     include __DIR__ . '/types/topics.php';
 
 }
-
-add_action( 'init', 'load_custom_post_types_and_acf_fields' );
+if (is_admin()) {
+    add_action('acf/init', 'load_custom_post_types_and_acf_fields');
+} else {
+    add_action('wp', 'load_custom_post_types_and_acf_fields');
+}
 
 function load_acf_fields($filename) {
     $json_string = file_get_contents(__DIR__ . '/' . $filename);
