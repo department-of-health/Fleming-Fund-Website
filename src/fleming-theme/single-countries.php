@@ -29,7 +29,8 @@ function fleming_get_content()
         "css_filename" => get_css_filename(),
         "title" => get_raw_title(),
         "fields" => get_field_objects(),
-        "nav" => get_nav_model()
+        "nav" => get_nav_model(),
+        "colour_scheme" => region_slug_to_colour_scheme_name()
     );
 
     $fleming_content["fields"]["case_study"]["value"] = get_post_data_and_fields($fleming_content["fields"]["case_study"]["value"]->ID);

@@ -97,7 +97,7 @@ function countries_partner_only_filter($countries)
 
 function hydrate_grant_for_card(&$grant) {
     $grant['fields']['funds_available']['value'] = number_format(
-        $grant['fields']['funds_available']['value']
+        (int) $grant['fields']['funds_available']['value']
     );
 
     $grantType = $grant['fields']['type']['value'];
