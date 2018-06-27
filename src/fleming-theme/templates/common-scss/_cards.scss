@@ -155,6 +155,9 @@
     &:not(:nth-of-type(#{$numPerRow}n)) {
       margin-right: $column-margin;
     }
+    &:last-of-type {
+      margin-right: 0;
+    }
   }
 }
 

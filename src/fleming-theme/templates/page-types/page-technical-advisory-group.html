@@ -5,13 +5,11 @@
 <hr class="row-divider"/>
 
 <p class="large-text">
-  The Technical Advisory Group provides guidance on strategic decisions and the quality of the
-  Fleming Fund's design. It is made up of these 14 experts in the field of AMR from a On Health
-  context.
+  {{ fields.overview.value }}
 </p>
 
 <div class="people card-container three-max">
-  {% for person in tagMembers %}
+  {% for person in fields.members.value %}
     {% include 'cards/entities/person-medium-with-image.html' %}
   {% endfor %}
 </div>

@@ -19,25 +19,6 @@ function init_custom_post_types() {
 add_action('init', 'init_custom_post_types');
 
 function init_acf_fields() {
-    $load_flexible_content = true;
-
-    load_acf_fields('types/front-page.json');
-
-    $pagesWithFlexibleContent = [
-        'about-us',
-    ];
-    $pageData = get_post(is_admin() ? ($_GET['post'] ?? $_POST['post_ID']) : null);
-    if (isset($pageData)) {
-        if ($pageData->post_type === 'page') {
-            $acfFilename = 'types/page-'.$pageData->post_name.'.json';
-            if (is_file(__DIR__.'/'.$acfFilename)) {
-                load_acf_fields('/'.$acfFilename);
-            }
-            if (!in_array($pageData->post_name, $pagesWithFlexibleContent)) {
-                $load_flexible_content = false;
-            }
-        }
-    }
 
     load_acf_fields('types/aims.json');
     load_acf_fields('types/countries.json');
@@ -50,12 +31,39 @@ function init_acf_fields() {
     load_acf_fields('types/projects.json');
     load_acf_fields('types/publications.json');
     load_acf_fields('types/regions.json');
+
+    load_acf_fields('types/front-page.json');
+
+    $load_flexible_content = true;
+    $is_page = false;
+    $pagesWithFlexibleContent = [
+        'about-us',
+    ];
+    $pageData = get_post(is_admin() ? ($_GET['post'] ?? $_POST['post_ID']) : null);
+    if (isset($pageData)) {
+        if ($pageData->post_type === 'page') {
+            $acfFilename = 'types/page-'.$pageData->post_name.'.json';
+            $is_page = true;
+            if (is_file(__DIR__.'/'.$acfFilename)) {
+                load_acf_fields($acfFilename);
+            }
+            if (!in_array($pageData->post_name, $pagesWithFlexibleContent)) {
+                $load_flexible_content = false;
+            }
+        }
+    }
+
     if ($load_flexible_content) {
         load_acf_fields('types/flexible-content.json');
     }
+
+    if (!$is_page) {
+        // Load all the pages that have a post_object field to a custom post type
+        load_acf_fields('types/page-technical-advisory-group.json');
+    }
 }
 if (is_admin()) {
-    add_action('acf/init', 'init_acf_fields');
+    add_action('init', 'init_acf_fields');
 } else {
     add_action('wp', 'init_acf_fields');
 }
