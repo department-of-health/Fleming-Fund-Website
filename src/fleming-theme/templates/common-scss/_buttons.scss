@@ -1,6 +1,6 @@
 @import "buttons-dark";
 
-button, a.button {
+button, .button {
   box-sizing: content-box;
   padding: 1.5ex 2.5ex;
   font-size: inherit;
@@ -9,7 +9,7 @@ button, a.button {
   white-space: nowrap;
   text-transform: none;
   font-weight: normal;
-  background: $turquoise;
+  background: $mid-grey;
   color: #fff;
 
   &:hover, &:focus {
@@ -18,8 +18,8 @@ button, a.button {
 
   &.hollow {
     background: transparent;
-    border: 1px solid $turquoise;
-    color: $turquoise;
+    border: 1px solid $mid-grey;
+    color: $mid-grey;
   }
 
   &:not(.square-icon) {
@@ -42,14 +42,23 @@ button, a.button {
 }
 
 @each $configName, $colourConfig in $colourConfigs {
-  &.colour-scheme-#{$configName} {
-    button, a.button {
-      background-color: map_get($colourConfig, intense);
+  &.#{$configName} {
+    button, .button {
+      border-color: map-get($colourConfig, intense);
+      background: map-get($colourConfig, intense);
+
+      &:hover, &:focus {
+        border-color: map-get($colourConfig, subtle);
+        background: map-get($colourConfig, subtle);
+      }
 
       &.hollow {
+        color: map-get($colourConfig, intense);
         background: transparent;
-        border-color: map_get($colourConfig, intense);
-        color: map_get($colourConfig, intense);
+
+        &:hover, &:focus {
+          color: map-get($colourConfig, subtle);
+        }
       }
     }
   }

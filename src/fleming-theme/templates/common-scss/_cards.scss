@@ -62,6 +62,7 @@
 
   button, .button {
     margin: $card-padding 0 0;
+    font-size: 1.2em;
   }
 
   h3, h4 {
@@ -98,15 +99,6 @@
     font-size: 1em;
   }
 
-  button, .button {
-    font-size: 1.2em;
-  }
-
-  &.clean {
-    border: none;
-    background: transparent;
-  }
-
   &.wide {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -120,9 +112,7 @@
 
     @each $configName, $colourConfig in $colourConfigs {
 
-      $selectorForColour: if($configName == base, '', '.'+$configName);
-
-      &#{$selectorForColour} {
+      &.#{$configName} {
         border-top-color: map-get($colourConfig, subtle);
         .header {
           color: map-get($colourConfig, intense);
@@ -138,27 +128,6 @@
 
         .content {
           color: $dark-grey;
-        }
-
-        button, .button {
-          color: #fff;
-          border-color: map-get($colourConfig, intense);
-          background: map-get($colourConfig, intense);
-
-          &:hover, &:focus {
-            border-color: map-get($colourConfig, subtle);
-            background: map-get($colourConfig, subtle);
-          }
-
-          &.hollow {
-            color: map-get($colourConfig, intense);
-            background: transparent;
-
-            &:hover, &:focus {
-              color: map-get($colourConfig, subtle);
-            }
-          }
-
         }
 
         &.inverted-header {

@@ -75,7 +75,7 @@
 }
 
 @each $configName, $colourConfig in $colourConfigs {
-  &.colour-scheme-#{$configName} {
+  &.#{$configName} {
     .card-container.statistics {
       .card .statistic-value {
         color: map_get($colourConfig, intense);

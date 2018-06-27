@@ -1,10 +1,7 @@
 {% if card %}
-  {% set card_class = 'card' %}
+  {% set card_class = 'card '~(card.colour_scheme ?? 'base') %}
   {% if card.decorated %}
     {% set card_class = card_class~' decorated' %}
-  {% endif %}
-  {% if card.colour_scheme %}
-    {% set card_class = card_class~' '~card.colour_scheme %}
   {% endif %}
   {% if card.inverted_header %}
     {% set card_class = card_class~' inverted-header' %}
