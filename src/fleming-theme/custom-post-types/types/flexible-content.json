@@ -193,6 +193,25 @@
                         "display": "block",
                         "sub_fields": [
                             {
+                                "key": "field_5b336410721e3",
+                                "label": "Heading",
+                                "name": "heading",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            },
+                            {
                                 "key": "field_5b326bac72012",
                                 "label": "Items",
                                 "name": "items",
