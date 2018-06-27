@@ -75,35 +75,6 @@
                         "min": "",
                         "max": ""
                     },
-                    "5b290ea4e6364": {
-                        "key": "5b290ea4e6364",
-                        "name": "large_text_block",
-                        "label": "Large Text Block",
-                        "display": "block",
-                        "sub_fields": [
-                            {
-                                "key": "field_5b2b7f8c46f70",
-                                "label": "Text block inner",
-                                "name": "text_block_inner",
-                                "type": "textarea",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "default_value": "",
-                                "placeholder": "",
-                                "maxlength": "",
-                                "rows": "",
-                                "new_lines": ""
-                            }
-                        ],
-                        "min": "",
-                        "max": ""
-                    },
                     "5b290eb3e6366": {
                         "key": "5b290eb3e6366",
                         "name": "overview_text",

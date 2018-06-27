@@ -1,14 +1,18 @@
 .home-splash {
   background: $turquoise;
-  color: #fff;
   padding: 5rem 0;
   margin: 0 0 3rem;
 
-  * {
+  p.large-text {
     color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: $font-family-headings;
   }
 
   .link-collection {
+    color: #fff;
     margin-bottom: 0;
+    font-size: 1.5em;
   }
 }

@@ -1,28 +1,66 @@
-// Based on https://projects.invisionapp.com/share/VYJF6DC63M7#/screens/297183189
-$bp-desktop-and-tablet: "min-width: 641px";
-
 // Fallbacks from https://graphicdesign.stackexchange.com/a/17598/5490
 $font-family-headings: "Proxima Nova Bold", "Open Sans", "Gill Sans MT", "Gill Sans", Corbel, Arial, sans-serif;
 // Fallbacks from https://www.cssfontstack.com/Helvetica
 $font-family: "Helvetica Neue Regular", Helvetica Neue, "Segoe UI", Helvetica, Arial, sans-serif;
-//
 
-  // Mobile version
-h1 { font-size: 32px; line-height: 1.5;  letter-spacing: -.1rem;  font-family: $font-family-headings; font-weight: bold; } // 32px bold
-h2 { font-size: 24px; line-height: 1.33; letter-spacing: -.1rem;  font-family: $font-family-headings; font-weight: bold; } // 24px bold
-h3 { font-size: 18px; line-height: 1.33; letter-spacing: -.1rem;  font-family: $font-family-headings; font-weight: bold; } // 18px bold
-h4 { font-size: 16px; line-height: 1.5;  letter-spacing: -.08rem; font-family: $font-family-headings; font-weight: bold; } // 16px bold
-h5 { font-size: 16px; line-height: 1.5;  letter-spacing: -.05rem; font-family: $font-family-headings; font-weight: bold; } // 16px bold (copied from h4)
-h6 { font-size: 16px; line-height: 1.5;  letter-spacing: 0;       font-family: $font-family-headings; font-weight: bold; } // 16px bold (copied from h4)
-p, li            { font-size: 16px;   line-height: 1.5;   font-family: $font-family; font-weight: normal; } // 16px body copy paragraph
-p.supporting { font-size: 14px; line-height: 1.714; font-family: $font-family; font-weight: normal; } // 14px supporting text paragraph
+$base-font-size: 21px;
 
-// Desktop and tablet
-@media (#{$bp-desktop-and-tablet}) {
-  h1 { font-size: 48px; line-height: 1.33; } // 48px bold
-  h2 { font-size: 36px; line-height: 1.33; } // 36px bold
-  h3 { font-size: 24px; line-height: 1.33; } // 24px bold
-  h4 { font-size: 19px; line-height: 1.2632; } // 19px bold
-  p, li            { font-size: 19px; line-height: 1.2632; } // 19px body copy paragraph
-  p.supporting { font-size: 16px; line-height: 1.5; } // 16px supporting text paragraph
+body {
+  font-size: $base-font-size;
+  line-height: 1.5;
+  font-family: $font-family;
+  font-weight: normal;
+}
+
+.large-text {
+  font-size: 1.3em;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: $font-family-headings;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 60px;
+}
+
+h2 {
+  font-size: 42px;
+}
+
+h3 {
+  font-size: 32px;
+}
+
+@media (#{$max-width-tablet}) {
+  body {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+}
+
+@media (#{$max-width-mobile}) {
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
 }

@@ -27,7 +27,7 @@
   </div>
   <div class="three columns people card-container cover">
     {% if fields.nap_doc.value %}
-    <p class="supporting">{{title}}'s National Action Plan is available here</p>
+    <p>{{title}}'s National Action Plan is available here</p>
     <button style="width: 100%" onClick={{ 'window.open("' ~ fields.nap_doc.value.url ~ '")' }}>Download &darr;</button>
     {% endif %}
     {% include 'cards/entities/person-small-with-image.html' with {

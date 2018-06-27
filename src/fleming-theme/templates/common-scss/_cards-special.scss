@@ -87,7 +87,7 @@
 .card-container.opportunities {
   .card {
     font-weight: bold;
-    font-size: 0.9em;
+    font-size: 0.8em;
 
     .status {
       font-weight: normal;
@@ -95,6 +95,11 @@
 
     button, .button {
       margin: 0;
+      box-sizing: border-box;
+      padding: 0.7em 0.5ex;
+      min-width: 0;
+      max-width: 100%;
+      height: auto;
     }
   }
 }
@@ -105,28 +110,8 @@
   .card {
     img {
       border-radius: 50%;
-      max-width: 250px;
+      max-width: 150px;
       width: 100%;
-    }
-  }
-}
-
-
-@media (#{$min-width-mobile}) {
-  .card-container.people.cover {
-    .card.with-left-image {
-      .card {
-        width: grid-column-width(8);
-      }
-      .image-container {
-        width: grid-offset-length(4);
-
-        img {
-          padding-top: 1.5rem;
-          min-height: auto;
-          min-width: auto;
-        }
-      }
     }
   }
 }
@@ -144,10 +129,10 @@
     .header {
       padding: 0;
       border: none;
-      font-size: 1em;
 
       p {
         margin: 0;
+        font-size: 1em;
       }
     }
 

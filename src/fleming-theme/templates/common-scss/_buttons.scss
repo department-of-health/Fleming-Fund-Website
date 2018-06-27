@@ -1,5 +1,3 @@
-@import "buttons-dark";
-
 button, .button {
   box-sizing: content-box;
   padding: 1.5ex 2.5ex;
@@ -9,7 +7,7 @@ button, .button {
   white-space: nowrap;
   text-transform: none;
   font-weight: normal;
-  background: $mid-grey;
+  background: $dark-grey;
   color: #fff;
 
   &:hover, &:focus {
@@ -18,8 +16,8 @@ button, .button {
 
   &.hollow {
     background: transparent;
-    border: 1px solid $mid-grey;
-    color: $mid-grey;
+    border: 1px solid $dark-grey;
+    color: $dark-grey;
   }
 
   &:not(.square-icon) {
