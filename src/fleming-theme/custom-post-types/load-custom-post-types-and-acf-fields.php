@@ -2,18 +2,25 @@
 
 function load_custom_post_types_and_acf_fields() {
 
-    load_acf_fields('types/flexible-content.json');
-
     // Pages (ACF settings)
+
+    $pagesWithFlexibleContent = [
+        'about-us',
+    ];
 
     load_acf_fields('types/front-page.json');
 
-    $pageData = is_admin() ? get_post($_GET['post'] ?? $_POST['post_ID']) : get_post();
+    $load_flexible_content = true;
+
+    $pageData = get_post(is_admin() ? ($_GET['post'] ?? $_POST['post_ID']) : null);
     if (isset($pageData)) {
         if ($pageData->post_type === 'page') {
             $acfFilename = 'types/page-'.$pageData->post_name.'.json';
             if (is_file(__DIR__.'/'.$acfFilename)) {
                 load_acf_fields('/'.$acfFilename);
+            }
+            if (!in_array($pageData->post_name, $pagesWithFlexibleContent)) {
+                $load_flexible_content = false;
             }
         }
     }
@@ -58,6 +65,10 @@ function load_custom_post_types_and_acf_fields() {
     load_acf_fields('types/regions.json');
 
     include __DIR__ . '/types/topics.php';
+
+    if ($load_flexible_content) {
+        load_acf_fields('types/flexible-content.json');
+    }
 
 }
 if (is_admin()) {
