@@ -108,10 +108,22 @@
   @include cardsAreCentered;
 
   .card {
+    .header {
+      padding-bottom: 0;
+    }
+    h3 {
+      font-size: 1.3em;
+    }
     img {
       border-radius: 50%;
       max-width: 150px;
       width: 100%;
+    }
+    .identifier {
+      margin-top: 0.5ex;
+    }
+    p {
+      margin-top: 0;
     }
   }
 }

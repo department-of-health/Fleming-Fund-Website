@@ -25,11 +25,18 @@
   <div class="nine columns">
     {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
   </div>
-  <div class="three columns people card-container cover">
+  <div class="three columns">
+    <div class="card-container cover">
     {% if fields.nap_doc.value %}
-    <p>{{title}}'s National Action Plan is available here</p>
-    <button style="width: 100%" onClick={{ 'window.open("' ~ fields.nap_doc.value.url ~ '")' }}>Download &darr;</button>
+    <div class="card base">
+      <div class="content">
+        <p>{{title}}'s National Action Plan is available here</p>
+        <button class="button" onClick={{ 'window.open("' ~ fields.nap_doc.value.url ~ '")' }}>Download &darr;</button>
+      </div>
+    </div>
     {% endif %}
+    </div>
+    <div class="people card-container cover">
     {% include 'cards/entities/person-small-with-image.html' with {
       'person': coordinator,
       'supertitle': 'Regional Coordinator',
@@ -39,6 +46,7 @@
       }
     } %}
   </div>
+</div>
 </div>
 
 {# Replicate flexible content model #}
