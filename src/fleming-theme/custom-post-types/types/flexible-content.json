@@ -1,7 +1,7 @@
 [
     {
         "key": "group_5b2b7f8c3af60",
-        "title": "Flexible Content Field Group",
+        "title": "Flexible Content",
         "fields": [
             {
                 "key": "field_5b2b7f8c41460",
@@ -274,7 +274,7 @@
                                     "class": "",
                                     "id": ""
                                 },
-                                "collapsed": "field_5b292a0b97f47",
+                                "collapsed": "",
                                 "min": 0,
                                 "max": 0,
                                 "layout": "table",
@@ -363,7 +363,82 @@
                         "name": "useful_links",
                         "label": "Useful links",
                         "display": "block",
-                        "sub_fields": [],
+                        "sub_fields": [
+                            {
+                                "key": "field_5b34e5a50209c",
+                                "label": "Values",
+                                "name": "links",
+                                "type": "repeater",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "collapsed": "",
+                                "min": 0,
+                                "max": 0,
+                                "layout": "table",
+                                "button_label": "",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_5b34e9b10209d",
+                                        "label": "Link",
+                                        "name": "link",
+                                        "type": "link",
+                                        "instructions": "",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "return_format": "array"
+                                    },
+                                    {
+                                        "key": "field_5b34e9e50209e",
+                                        "label": "Title override",
+                                        "name": "title_override",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "maxlength": ""
+                                    },
+                                    {
+                                        "key": "field_5b34ea130209f",
+                                        "label": "Description",
+                                        "name": "description",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "maxlength": ""
+                                    }
+                                ]
+                            }
+                        ],
                         "min": "",
                         "max": ""
                     },

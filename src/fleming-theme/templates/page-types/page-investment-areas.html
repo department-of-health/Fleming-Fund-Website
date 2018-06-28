@@ -3,6 +3,23 @@
 <h1>{{ title }}</h1>
 {% include 'layout/link-collection.html' with {'links': in_page_links} %}
 
-{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+<div class="row">
+  <div class="eight columns">
+    {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+  </div>
+</div>
+
+{% if fields.related_content.value is not empty %}
+  {% embed 'layout/supporting-content.html' %}
+    {% block content %}
+      <h3>Related Content</h3>
+      <div class="card-container three-max">
+        {% for publication in fields.related_content.value %}
+          {% include 'cards/entities/publication-large.html' %}
+        {% endfor %}
+      </div>
+    {% endblock %}
+  {% endembed %}
+{% endif %}
 
 {{ include('layout/footer.html') }}

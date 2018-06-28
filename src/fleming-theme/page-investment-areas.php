@@ -1,6 +1,7 @@
 <?php
 
 include __DIR__ . '/php/get-css-filename.php';
+include 'query-utilities.php';
 include 'navigation/index.php';
 
 /**
@@ -24,6 +25,12 @@ function fleming_get_content() {
     );
 
     process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
+
+    if ($fleming_content['fields']['related_content']['value']) {
+        foreach ($fleming_content['fields']['related_content']['value'] as &$publication) {
+            $publication = get_post_data_and_fields($publication->ID);
+        }
+    }
 
     return $fleming_content;
 }

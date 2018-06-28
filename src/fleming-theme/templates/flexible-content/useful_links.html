@@ -1,0 +1,12 @@
+<div class="row useful-links card-container two-max" style="margin-top: 1em; margin-bottom: 1em">
+  {% for useful_link in content_block.links %}
+    {% include 'cards/base.html' with {'card': {
+      'decorated': true,
+      'inverted_header': true,
+      'title': useful_link.title_override | default(useful_link.link.title) | default(useful_link.link.url),
+      'overview': useful_link.description,
+      'inverted_header': true,
+      'link_target': useful_link.link.url,
+    }} %}
+  {% endfor %}
+</div>
