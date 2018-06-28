@@ -2,24 +2,7 @@
 
 <h1>About the Fleming Fund</h1>
 
-{% include 'layout/link-collection.html' with {'links': [
-  {
-    'title': 'Overview',
-    'target': '#'
-  },
-  {
-    'title': 'AMR Overview',
-    'target': '#'
-  },
-  {
-    'title': 'Grant Types',
-    'target': '#'
-  },
-  {
-    'title': 'Technical Advisory Group',
-    'target': '#'
-  },
-]} %}
+{% include 'layout/link-collection.html' with {'links': in_page_links} %}
 
 <div class="row">
   <div class="nine columns">
@@ -27,157 +10,32 @@
   </div>
 </div>
 
-<div>
-  <p class="large-text">The Fleming Fund is a UK Government aid programme to help low and middle income countries
-    address priorities in tackling Antimicrobial Resistance (AMR) through a diverse range of projects.</p>
-  <p>The aim of the Fleming Fund is to support countries in collecting relevant high-quality data
-    that is shared nationally and globally.
-    This will enable us collectively to better understand the scale and scope of the problem in order to effectively
-    tackle the issue.</p>
-</div>
-
-<div>
-  <h4>What will the Fleming Fund focus on?</h4>
-  <ul style="list-style-type: disc">
-    <li>Supporting the development of National Action Plans for AMR</li>
-    <li>Developing and supporting the implementation of protocols and guidance for AMR surveillance and antimicrobial
-      use.
-    </li>
-    <li>Building laboratory capacity for diagnosis.</li>
-    <li>Collecting drug resistance data.</li>
-    <li>Enabling the sharing of drug resistance data locally, regionally and internationally.</li>
-    <li>Collating and analysing data on the sale and use of antimicrobial medicines.</li>
-    <li>Advocating for the application of data to promote the rational use of antimicrobials.</li>
-    <li>Shaping a sustainable system for AMR survieillance and data sharing.</li>
-    <li>Supporting fellowships to provide strong national leadership in addressing AMR.</li>
-  </ul>
-</div>
-
-<div>
-  <h3>Core Principles</h3>
-  <div class="card-container four-max">
-    <div class="card">
-      <h3>One Health</h3>
-      <p>Taking a One Health approach to funding encompassing public health, animal health and
-        agriculture, and the environment.</p>
-    </div>
-    <div class="card">
-      <h3>Country Ownership</h3>
-      <p>Implementing the National Action Plans which the country has developed (usually though an
-        AMR Coordination Committee).</p>
-    </div>
-    <div class="card">
-      <h3>Alignment of Approach</h3>
-      <p>Funding is aligned with what other donors are funding and conforms with broader global
-        initiatives, for example GLASS and the
-        Global Action Plan on Antimicrobial Resistance.</p>
-    </div>
-    <div class="card">
-      <h3>Sustainability</h3>
-      <p>Ensuring that sustainable systems are a critical part of the funding decisions taken.</p>
-    </div>
-  </div>
-</div>
-
-<hr class="row-divider"/>
-
-<div>
-  <h2>AMR Overview</h2>
-  <p class="large-text">Antimicrobial resistance (AMR) occurs when microorganisms such as bacteria, viruses, fungi and parasites change in
-    ways that make treatments ineffective.
-    AMR is a major concern because drug-resistant infections can kill, spread to others, and impose huge costs on
-    individuals and society.</p>
-</div>
-
-<div class="card-container statistics four-max">
-  {% include 'cards/entities/statistic-small.html' with {'statistic': {
-    'value': 700,
-    'text': 'Thousand People'
-  }} %}
-  {% include 'cards/entities/statistic-small.html' with {'statistic': {
-    'value': 100,
-    'text': 'Grants given'
-  }} %}
-  {% include 'cards/entities/statistic-small.html' with {'statistic': {
-    'value': 10,
-    'text': 'Million People'
-  }} %}
-  {% include 'cards/entities/statistic-small.html' with {'statistic': {
-    'value': 10,
-    'text': 'Point Plan'
-  }} %}
-</div>
-
-<div class="card-container four-max">
-  <div class="card">
-    <p>Info graphic</p>
-  </div>
-  <div class="card">
-    <p>Info graphic</p>
-  </div>
-  <div class="card">
-    <p>Info graphic</p>
-  </div>
-  <div class="card">
-    <p>Info graphic</p>
-  </div>
-</div>
-
-<div class="card-container four-max">
-  <div class="card">
-    <h4>Why AMR is a threat</h4>
-    <p>Almost 700,000 people worldwide die annually from drug-resistant infections. Without effective
-      antimicrobial treatments,
-      infections that have been treatable for decades could, once again, cause widespread death and suffering.</p>
-  </div>
-  <div class="card">
-    <h4>Why AMR is a threat</h4>
-    <p>Almost 700,000 people worldwide die annually from drug-resistant infections. Without effective
-      antimicrobial treatments,
-      infections that have been treatable for decades could, once again, cause widespread death and suffering.</p>
-  </div>
-  <div class="card">
-    <h4>Why AMR is a threat</h4>
-    <p>Almost 700,000 people worldwide die annually from drug-resistant infections. Without effective
-      antimicrobial treatments,
-      infections that have been treatable for decades could, once again, cause widespread death and suffering.</p>
-  </div>
-  <div class="card">
-    <h4>Why AMR is a threat</h4>
-    <p>Almost 700,000 people worldwide die annually from drug-resistant infections. Without effective
-      antimicrobial treatments,
-      infections that have been treatable for decades could, once again, cause widespread death and suffering.</p>
-  </div>
-</div>
-
-<button class="button-dark" style="margin-left: auto; margin-right: auto; display: block;">View WHO AMR Guide</button>
-
-<hr class="row-divider"/>
-
-<div class="card-container three-max">
-  {% include 'cards/base.html' with {'card': {
-    'decorated': true,
-    'title': 'Country Grants',
-    'content': 'To improve the collection and use of AMR data, including antimicrobial use, in target countries using a One Health approach.',
-    'link_target': '/country-grants/'
-  }} %}
-  {% include 'cards/base.html' with {'card': {
-    'decorated': true,
-    'title': 'Regional Grants',
-    'content': 'To provide long-term mentorship and career enhancement for 4-8 fellows per country.',
-    'link_target': '/regional-grants/'
-  }} %}
-  {% include 'cards/base.html' with {'card': {
-    'decorated': true,
-    'title': 'Fellowships',
-    'content': 'To support regional One Health approaches to improved surveillance of AMR.',
-    'link_target': '/fellowships/'
-  }} %}
-</div>
-
 {% embed 'layout/supporting-content.html' %}
   {% block content %}
-    {{ include('page-elements/useful-links.html') }}
+
+  <h2>More about Fleming</h2>
+
+  <!--four large cards-->
+  <div class="card-container two-max">
+    {% include 'cards/entities/grant-large.html' with {'grant': {
+      'identifier': 'hello world',
+      'permalink': 'www.example.com',
+      'data': {'post_title': 'test test test'},
+      'fields': {
+        'funds_available': {'value': 10000},
+        'summary': {'value': 'lorem ipsum dolor sit amet'}
+      }
+    }} %}
+    {% include 'cards/base.html' with {'card': {
+      'decorated': true,
+      'colour_scheme': 'base',
+      'inverted_header': true,
+      'title': 'Investment areas',
+      'overview': 'The five main areas the Fleming Fund targets',
+      'link_target': 'investment-areas'
+    }} %}
+  </div>
+
   {% endblock %}
 {% endembed %}
 
