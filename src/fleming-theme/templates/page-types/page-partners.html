@@ -1,0 +1,19 @@
+{{ include('layout/header.html') }}
+
+<h1>{{ title }}</h1>
+
+<hr class="row-divider"/>
+
+{% if fields.overview.value %}
+<p class="large-text">
+  {{ fields.overview.value }}
+</p>
+{% endif %}
+
+<div class="organisations card-container three-max">
+  {% for organisation in allOrganisations %}
+    {% include 'cards/entities/organisation-large.html' %}
+  {% endfor %}
+</div>
+
+{{ include('layout/footer.html') }}

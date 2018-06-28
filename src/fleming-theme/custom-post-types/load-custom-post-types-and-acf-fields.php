@@ -40,6 +40,8 @@ function init_acf_fields() {
         'investment-areas',
     ];
     $allPageAcfFieldDefinitionFiles = [
+        'types/page-partners.json',
+        'types/page-regions-countries.json',
         'types/page-technical-advisory-group.json',
     ];
 
