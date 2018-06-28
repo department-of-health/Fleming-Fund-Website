@@ -123,10 +123,13 @@ $tick-size: 25px;
   .country-timeline {
     flex-flow: column nowrap;
 
+    $proportion-of-tick-size-as-spacing: 0.2;
+    $coloured-left-border-width: ((1 + (2 * $proportion-of-tick-size-as-spacing)) * $tick-size);
+
     .progress-box {
       color: $dark-grey;
       background: none !important;
-      border-left: (1.4 * $tick-size) solid $mid-grey;
+      border-left: $coloured-left-border-width solid $mid-grey;
       padding-left: (0.5 * $tick-size);
       display: block;
       width: 100%;
@@ -145,7 +148,7 @@ $tick-size: 25px;
 
       svg {
         right: auto;
-        left: -(1.2 * $tick-size);
+        left: -((1 + $proportion-of-tick-size-as-spacing) * $tick-size);
         top: (0.3 * $tick-size);
       }
     }
@@ -154,16 +157,16 @@ $tick-size: 25px;
       top: auto;
       bottom: 0;
       right: auto;
-      left: -(1.4 * $tick-size);
-      width: (1.4 * $tick-size);
-      height: (1.4 * $tick-size);
+      left: -$coloured-left-border-width;
+      width: $coloured-left-border-width;
+      height: $coloured-left-border-width;
       overflow: hidden;
       background: none;
 
       .arrow-whitespace {
         position: relative;
-        left: (0.7 * $tick-size);
-        top: (1.4 * $tick-size);
+        left: (0.5 * $coloured-left-border-width);
+        top: $coloured-left-border-width;
         margin-top: -200px;
         margin-left: -500px;
         border-width: 200px 500px;
