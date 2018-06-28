@@ -39,15 +39,27 @@ function fleming_get_content()
     $region_data = get_post_data_and_fields($fleming_content["fields"]["region"]["value"]->ID);
     $fleming_content["coordinator"] = get_post_data_and_fields($region_data["fields"]["coordinator"]["value"]->ID);
 
-    $fleming_content["opportunities"] = get_referring_posts(get_the_ID(), 'grants', 'countries');
-    $fleming_content["opportunities"] = array_slice($fleming_content["opportunities"],0,2);
-    array_map('grant_with_post_data_and_fields', $fleming_content["opportunities"]);
+    // qq - include region and worldwide grants?
+    // qq - sort? filter?
+    $fleming_content["opportunities"] = array_map(
+        'grant_with_post_data_and_fields',
+        array_slice(
+            get_referring_posts(get_the_ID(), 'grants', 'countries'),
+            0,
+            2
+        )
+    );
 
-    $projects = get_posts(array('post_type'=>'projects','numberposts'=>2));
-    foreach($projects as &$post) {
-        $post = get_post_data_and_fields($post->ID);
+    $allProjects = [];
+    foreach ($fleming_content["opportunities"] as $grant) {
+        $projectsForGrant = array_map(
+            'project_with_post_data_and_fields',
+            get_referring_posts($grant['data']->ID, 'projects', 'grant')
+        );
+        $allProjects = array_merge($allProjects, $projectsForGrant);
     }
-    $fleming_content["projects"] = $projects;
+    // qq - sort? filter?
+    $fleming_content["projects"] = array_slice($allProjects, 0, 2);
 
     // Parse the country-specific statistics into the flexible-content statistics format
     $statistic_values = array();
