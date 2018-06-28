@@ -10,15 +10,15 @@ class MenuLinksConfig
             'target' => '/about-us/',
 
             'children' => [
-                'aims' => [
+                'overview' => [
                     'title' => 'Overview',
                     'target' => '/about-us/'
                 ],
-                'source' => [
+                'works' => [
                     'title' => 'How the Fleming Fund works',
                     'target' => '/how-the-fleming-fund-works/',
                 ],
-                'evaluation' => [
+                'investment' => [
                     'title' => 'Investment Areas',
                     'target' => '/investment-areas/',
                 ],
