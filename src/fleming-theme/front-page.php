@@ -6,20 +6,22 @@ include 'navigation/index.php';
 
 /**
  * NOTE:
- * 
+ *
  * This is a CONTROLLER file.
  * It generates an object containing content for the page.
- * 
+ *
  * You might also be interested in the VIEW.
  * VIEWs are located in the ./templates folder and have a .html file extension
  */
 
-function toTimestamp($date) {
+function toTimestamp($date)
+{
     return DateTime::createFromFormat('!d/m/Y', $date)->getTimestamp();
 }
 
-function sort_opportunities($opportunities) {
-    usort($opportunities, function($a, $b) {
+function sort_opportunities($opportunities)
+{
+    usort($opportunities, function ($a, $b) {
         $aDate = $a['fields']['deadline']['value'];
         $bDate = $b['fields']['deadline']['value'];
         return toTimestamp($aDate) - toTimestamp($bDate);
@@ -27,13 +29,17 @@ function sort_opportunities($opportunities) {
     return $opportunities;
 }
 
-function is_in_future($opportunity) {
+function is_in_future($opportunity)
+{
     $date = $opportunity['fields']['deadline']['value'];
-    if ($date == '') return false;
+    if ($date == '') {
+        return false;
+    }
     return (toTimestamp($date) - time()) >= 0;
 }
 
-function fleming_get_content() {
+function fleming_get_content()
+{
     $fleming_content = array(
         "title" => null,
         "css_filename" => get_css_filename(),
@@ -41,38 +47,30 @@ function fleming_get_content() {
         "nav" => get_home_nav()
     );
 
-    $fleming_content["fields"]["headline_case_study"] = get_post_data_and_fields(
-        $fleming_content["fields"]["headline_case_study"]["value"]->ID
+    $fleming_content["fields"]["headline_publication"] = get_post_data_and_fields(
+        $fleming_content["fields"]["headline_publication"]["value"]->ID
     );
-    $fleming_content["fields"]["headline_grant_type"] = get_post_data_and_fields(
-        $fleming_content["fields"]["headline_grant_type"]["value"]->ID
-    );
-    $fleming_content["fields"]["headline_project"] = get_post_data_and_fields(
-        $fleming_content["fields"]["headline_project"]["value"]->ID
-    );
-    if ($fleming_content['fields']['headline_project']) {
-        $fleming_content['fields']['headline_project']['fields']['budget']['value'] = number_format(
-            $fleming_content['fields']['headline_project']['fields']['budget']['value']
+
+    foreach($fleming_content['fields']['headline_projects']['value'] as &$project) {
+        $project = project_with_post_data_and_fields(
+            get_post_data_and_fields($project->ID)
         );
     }
 
-    $fleming_content["fields"]["highlight_opportunity_1"] = get_post_data_and_fields(
-        $fleming_content["fields"]["highlight_opportunity_1"]["value"]->ID
-    );
-    hydrate_grant_for_card($fleming_content['fields']['highlight_opportunity_1']);
-    $fleming_content["fields"]["highlight_opportunity_2"] = get_post_data_and_fields(
-        $fleming_content["fields"]["highlight_opportunity_2"]["value"]->ID
-    );
-    hydrate_grant_for_card($fleming_content['fields']['highlight_opportunity_2']);
+    foreach($fleming_content['fields']['highlight_opportunities']['value'] as &$grant) {
+        $grant = grant_with_post_data_and_fields(
+            get_post_data_and_fields($grant->ID)
+        );
+    }
 
-    $opportunities = get_posts(array('post_type'=>'grants','numberposts'=>-1));
-    foreach($opportunities as &$opportunity) {
+    $opportunities = get_posts(array('post_type' => 'grants', 'numberposts' => -1));
+    foreach ($opportunities as &$opportunity) {
         $opportunity = get_post_data_and_fields($opportunity->ID);
         // Compute status - qq needs to be more complicated than this!
         $opportunity['status'] = 'Deadline ' . $opportunity['fields']['deadline']['value'];
         // qq render date in locale-specific form?
     }
-    $opportunities = array_filter($opportunities, function($opportunity) {
+    $opportunities = array_filter($opportunities, function ($opportunity) {
         return is_in_future($opportunity);
     });
     $opportunities = array_slice(sort_opportunities($opportunities), 0, 3);

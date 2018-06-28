@@ -1,36 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Project: {{ title }} | Fleming Fund</title>
-        <link rel="stylesheet" type="text/css" href="/wp-content/themes/fleming-theme/{{ css_filename }}">
-    </head>
+{% include 'layout/header.html' %}
 
-    <body>
-        Fleming single project
+<h1>{{ title }}</h1>
+{% include 'layout/link-collection.html' with {'links': in_page_links} %}
 
-        <h1>{{ title }}</h1>
-        
-        
-        <p>Description: {{ fields.description.value }}</p>
-        
-        <p>Budget: {{ fields.budget.value }}</p>
-        
-        
-        <h2>About it</h2>
-        
-        {% for content_block in fields.project_flexible_content.value %}
-        
-            {% if content_block.acf_fc_layout == 'text_block' %}
-                {% include 'flexible-content/text_block.html' %}
-        
-            {% elseif content_block.acf_fc_layout == 'quote' %}
-                {% include 'flexible-content/quote.html' %}
-        
-            {% endif %}
-        
-        {% endfor %}
+<p>Description: {{ fields.description.value }}</p>
 
-        <p>Under the auspices of: <a href={{ fields.org_relationship.value[0].guid }}>{{fields.org_relationship.value[0].post_title}}</a></p>
+<p>Budget: {{ fields.budget.value }}</p>
 
-    </body>
-</html> 
+{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+
+<p>Under the auspices of: <a
+      href={{ fields.org_relationship.value[0].guid }}>{{ fields.org_relationship.value[0].post_title }}</a></p>
+
+{% include 'layout/footer.html' %}

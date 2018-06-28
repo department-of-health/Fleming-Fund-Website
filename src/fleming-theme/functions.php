@@ -95,7 +95,7 @@ function countries_partner_only_filter($countries)
     });
 }
 
-function hydrate_grant_for_card(&$grant) {
+function grant_with_post_data_and_fields($grant) {
     if (!isset($grant)) return;
 
     $grant['fields']['funds_available']['value'] = number_format(
@@ -139,6 +139,18 @@ function hydrate_grant_for_card(&$grant) {
     }
 
     $grant['identifier'] = $identifier;
+
+    return $grant;
+}
+
+function project_with_post_data_and_fields($project) {
+    $grant = grant_with_post_data_and_fields(
+        get_post_data_and_fields($project['fields']['grant']['value']->ID)
+    );
+    $project['colour_scheme'] = $grant['colour_scheme'];
+    $project['identifier'] = 'Project';
+
+    return $project;
 }
 
 

@@ -41,7 +41,7 @@ function fleming_get_content()
 
     $fleming_content["opportunities"] = get_referring_posts(get_the_ID(), 'grants', 'countries');
     $fleming_content["opportunities"] = array_slice($fleming_content["opportunities"],0,2);
-    array_walk($fleming_content["opportunities"], 'hydrate_grant_for_card');
+    array_map('grant_with_post_data_and_fields', $fleming_content["opportunities"]);
 
     $projects = get_posts(array('post_type'=>'projects','numberposts'=>2));
     foreach($projects as &$post) {

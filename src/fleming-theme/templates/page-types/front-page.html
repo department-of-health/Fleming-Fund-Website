@@ -14,7 +14,8 @@
   {% block container %}
     <div class="home-splash">
       <div class="container">
-        <p class="large-text">We are a UK Government aid programme, helping low / middle income countries tackle antimicrobial
+        <p class="large-text">We are a UK Government aid programme, helping low / middle income countries tackle
+          antimicrobial
           resistance (AMR). Our focus is high-quality data, shared nationally and globally.</p>
         {% include 'layout/link-collection.html' with {'links': [
           nav.aboutUsLink, nav.ourAimsLink, nav.whatIsAMRLink
@@ -24,25 +25,26 @@
   {% endblock %}
 {% endembed %}
 
-<div class="card-container cover">
-  {% include 'cards/entities/publication-large-with-image.html' with {
-    'publication': fields.headline_case_study,
-    'cta_hollow': true,
-    'cta_override': {
-      'title': 'See all Case Studies',
-      'target': nav.caseStudiesLink.target
-    }
-  } %}
-</div>
+{% if fields.headline_publication %}
+  <div class="card-container cover">
+    {% include 'cards/entities/publication-large-with-image.html' with {
+      'publication': fields.headline_publication,
+      'cta_hollow': true,
+      'cta_override': {
+        'title': 'See all Case Studies',
+        'target': nav.caseStudiesLink.target
+      }
+    } %}
+  </div>
+{% endif %}
 
-<div class="card-container two-max">
-  {% include 'cards/entities/project-large.html' with {
-    'project': fields.headline_project
-  } %}
-  {% include 'cards/entities/project-large.html' with {
-    'project': fields.headline_project
-  } %}
-</div>
+{% if fields.headline_projects.value is not empty %}
+  <div class="card-container two-max">
+    {% for project in fields.headline_projects.value %}
+      {% include 'cards/entities/project-large.html' %}
+    {% endfor %}
+  </div>
+{% endif %}
 
 <hr class="row-divider"/>
 
@@ -68,13 +70,16 @@
 {% embed 'layout/supporting-content.html' %}
   {% block content %}
 
-    <h3>Current and Upcoming Opportunities</h3>
-    <div class="card-container two-max">
-      {% include 'cards/entities/grant-large.html' with {'grant': fields.highlight_opportunity_1} %}
-      {% include 'cards/entities/grant-large.html' with {'grant': fields.highlight_opportunity_2} %}
-    </div>
+    {% if fields.highlight_opportunities.value is not empty %}
+      <h3>Current and Upcoming Opportunities</h3>
+      <div class="card-container two-max">
+        {% for grant in fields.highlight_opportunities.value %}
+          {% include 'cards/entities/grant-large.html' %}
+        {% endfor %}
+      </div>
 
-    <hr class="row-divider"/>
+      <hr class="row-divider"/>
+    {% endif %}
 
     {{ include('page-elements/useful-links.html') }}
 
