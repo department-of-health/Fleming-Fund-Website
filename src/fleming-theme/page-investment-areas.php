@@ -31,7 +31,7 @@ function fleming_get_content() {
             $publication = get_post_data_and_fields($publication->ID);
         }
     }
-    
+
     return $fleming_content;
 }
 
