@@ -28,9 +28,6 @@ function fleming_get_content() {
     $thisGrant = grant_with_post_data_and_fields(get_current_post_data_and_fields());
     $fleming_content['colour_scheme'] = $thisGrant['colour_scheme'];
 
-
-    $fleming_content["application_steps_count"] = count($fleming_content["fields"]["application_steps"]["value"]);
-
     $similar_proposals = get_posts(array('post_type'=>'grants','numberposts'=>2)); //this is placeholder code until we know how 'similar proposals' will work
     foreach($similar_proposals as &$grant) {
         $grant = grant_with_post_data_and_fields(get_post_data_and_fields($grant->ID));
