@@ -1,7 +1,6 @@
 <?php
 
 include __DIR__ . '/php/get-css-filename.php';
-include 'query-utilities.php';
 include 'navigation/index.php';
 
 /**
@@ -16,17 +15,15 @@ include 'navigation/index.php';
 
 function fleming_get_content() {
     $fleming_content = array(
-        "title" => get_raw_title(),
         "css_filename" => get_css_filename(),
+        "title" => get_raw_title(),
         "fields" => get_field_objects(),
-        'nav' => get_nav_builder()->withMenuRoute('regions', 'projects')->build()
+        "nav" => get_nav_builder()
+            ->withMenuRoute('about', 'investment')
+            ->build()
     );
 
-    $allProjects = get_posts(array('post_type'=>'projects','numberposts'=>-1));
-    foreach($allProjects as &$project) {
-        $project = project_with_post_data_and_fields(get_post_data_and_fields($project->ID));
-    }
-    $fleming_content["allProjects"] = $allProjects;
+    process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
 
     return $fleming_content;
 }

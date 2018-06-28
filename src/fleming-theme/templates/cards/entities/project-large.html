@@ -1,12 +1,10 @@
 {% if project %}
-  {# TODO pull the colour scheme from the project's (country's) region #}
-  {# TODO insert the region(s) / country(s) into the identifier #}
   {% include 'cards/base.html' with {'card': {
     'decorated': true,
-    'colour_scheme': 'purple',
-    'identifier': 'Project',
+    'colour_scheme': project.colour_scheme ?? 'base',
+    'identifier': project.identifier,
     'title': project.data.post_title,
-    'overview': 'Budget: £'~project.fields.budget.value~'\nStatus: Implementation',
+    'overview': 'Budget: '~(project.fields.budget.value ? '£'~project.fields.budget.value|format_currency_amount : 'N/A')~'\nStatus: Implementation',
     'content': project.fields.description.value,
     'link_target': project.permalink,
   }} %}

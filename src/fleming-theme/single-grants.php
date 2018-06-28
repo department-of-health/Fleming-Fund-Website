@@ -20,17 +20,17 @@ function fleming_get_content() {
         "title" => get_raw_title(),
         "fields" => get_field_objects(),
         "nav" => get_nav_builder()
-            ->withMenuRoute('grants', 'country')
+            ->withMenuRoute('grants')
             ->withAdditionalBreadcrumb(get_raw_title())
             ->build()
     );
 
-    $fleming_content["application_steps_count"] = count($fleming_content["fields"]["application_steps"]["value"]);
+    $thisGrant = grant_with_post_data_and_fields(get_current_post_data_and_fields());
+    $fleming_content['colour_scheme'] = $thisGrant['colour_scheme'];
 
     $similar_proposals = get_posts(array('post_type'=>'grants','numberposts'=>2)); //this is placeholder code until we know how 'similar proposals' will work
     foreach($similar_proposals as &$grant) {
-        $grant = get_post_data_and_fields($grant->ID);
-        hydrate_grant_for_card($grant);
+        $grant = grant_with_post_data_and_fields(get_post_data_and_fields($grant->ID));
     }
     $fleming_content["similar_proposals"] = $similar_proposals;
 

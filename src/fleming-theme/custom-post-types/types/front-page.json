@@ -5,8 +5,8 @@
         "fields": [
             {
                 "key": "field_5b0ecf9a4f40b",
-                "label": "Headline Case Study",
-                "name": "headline_case_study",
+                "label": "Headline Publication",
+                "name": "headline_publication",
                 "type": "post_object",
                 "instructions": "",
                 "required": 0,
@@ -26,31 +26,9 @@
                 "ui": 1
             },
             {
-                "key": "field_5b0ed0f54f40c",
-                "label": "Headline Grant Type",
-                "name": "headline_grant_type",
-                "type": "post_object",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "post_type": [
-                    "grant_types"
-                ],
-                "taxonomy": [],
-                "allow_null": 1,
-                "multiple": 0,
-                "return_format": "object",
-                "ui": 1
-            },
-            {
                 "key": "field_5b0ed1204f40d",
-                "label": "Headline Project",
-                "name": "headline_project",
+                "label": "Headline Projects",
+                "name": "headline_projects",
                 "type": "post_object",
                 "instructions": "",
                 "required": 0,
@@ -65,14 +43,14 @@
                 ],
                 "taxonomy": [],
                 "allow_null": 1,
-                "multiple": 0,
+                "multiple": 1,
                 "return_format": "object",
                 "ui": 1
             },
             {
                 "key": "field_5b156987cc6c3",
-                "label": "Highlight Opportunity 1",
-                "name": "highlight_opportunity_1",
+                "label": "Highlight Opportunities",
+                "name": "highlight_opportunities",
                 "type": "post_object",
                 "instructions": "",
                 "required": 0,
@@ -87,29 +65,7 @@
                 ],
                 "taxonomy": [],
                 "allow_null": 1,
-                "multiple": 0,
-                "return_format": "object",
-                "ui": 1
-            },
-            {
-                "key": "field_5b1569c7cc6c4",
-                "label": "Highlight Opportunity 2",
-                "name": "highlight_opportunity_2",
-                "type": "post_object",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "post_type": [
-                    "grants"
-                ],
-                "taxonomy": [],
-                "allow_null": 1,
-                "multiple": 0,
+                "multiple": 1,
                 "return_format": "object",
                 "ui": 1
             },

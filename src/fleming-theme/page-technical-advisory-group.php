@@ -22,24 +22,19 @@ function fleming_get_content() {
         'nav' => get_nav_builder()->withMenuRoute('about', 'advisory')->build()
     );
 
-    $allPeople = get_posts(array('post_type'=>'people','numberposts'=>-1));
-    $someone = get_post_data_and_fields($allPeople[0]->ID);
-    $fleming_content['tagMembers'] = [
-        $someone,
-        $someone,
-        $someone,
-        $someone,
-        $someone,
-        $someone,
-        $someone,
-        $someone,
-        $someone,
-        $someone,
-        $someone,
-        $someone,
-        $someone,
-        $someone,
-    ];
+    $num_members = 0;
+
+    if (!empty($fleming_content['fields']['members']['value'])) {
+        foreach ($fleming_content['fields']['members']['value'] as &$tagMember) {
+            $tagMember = get_post_data_and_fields($tagMember->ID);
+        }
+        $num_members = count($fleming_content['fields']['members']['value']);
+    }
+
+    $fleming_content['fields']['overview']['value'] = strtr(
+        $fleming_content['fields']['overview']['value'],
+        ['${COUNT}' => $num_members]
+    );
 
     return $fleming_content;
 }

@@ -19,14 +19,14 @@ function fleming_get_content() {
         "title" => get_raw_title(),
         "css_filename" => get_css_filename(),
         "fields" => get_field_objects(),
-        'nav' => get_nav_builder()->withMenuRoute('regions', 'projects')->build()
+        'nav' => get_nav_builder()->withMenuRoute('grants')->build()
     );
 
-    $allProjects = get_posts(array('post_type'=>'projects','numberposts'=>-1));
-    foreach($allProjects as &$project) {
-        $project = project_with_post_data_and_fields(get_post_data_and_fields($project->ID));
+    $allGrants = get_posts(array('post_type'=>'grants','numberposts'=>-1));
+    foreach($allGrants as &$grant) {
+        $grant = grant_with_post_data_and_fields(get_post_data_and_fields($grant->ID));
     }
-    $fleming_content["allProjects"] = $allProjects;
+    $fleming_content["allGrants"] = $allGrants;
 
     return $fleming_content;
 }

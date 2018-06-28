@@ -1,10 +1,10 @@
 {% if content_block.items %}
-{% if content_block.heading %}
-<h3>{{ content_block.heading }}</h3>
-{% endif %}
-<ul>
-  {% for item in content_block.items %}
-  <li>{{ item.item }}</li>
-  {% endfor %}
-</ul>
+  {% if content_block.heading %}
+    <p><b>{{ content_block.heading }}</b></p>
+  {% endif %}
+  <ul>
+    {% for item in content_block.items %}
+      <li>{{ item.item }}</li>
+    {% endfor %}
+  </ul>
 {% endif %}

@@ -1,9 +1,8 @@
-{% set stepcounter = 1 %}
 {% for step in fields.application_steps.value %}
 <div class="row">
-  {% if stepcounter < application_steps_count %}
+  {% if not loop.last %}
     <div class="two columns row-title" style="align-items: center">
-      <h3 class="application-label">Step {{ stepcounter }}</h3>
+      <h3 class="application-label">Step {{ loop.index }}</h3>
     </div>
     <div class="eight columns card application-card">
   {% else %}
@@ -12,8 +11,7 @@
     </div>
     <div class="eight columns card dark-card application-card">
   {% endif %}
-    <p>{{ step.application_step }}</p>
-  </div>
+      <p>{{ step.application_step }}</p>
+    </div>
 </div>
-{% set stepcounter = stepcounter + 1 %}
 {% endfor %}

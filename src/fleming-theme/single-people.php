@@ -19,7 +19,10 @@ function fleming_get_content() {
         "title" => get_raw_title(),
         "css_filename" => get_css_filename(),
         "fields" => get_field_objects(),
-        'nav' => get_nav_builder()->withMenuRoute('about')->build()
+        'nav' => get_nav_builder()
+            ->withMenuRoute('about')
+            ->withAdditionalBreadcrumb(get_raw_title())
+            ->build()
     );
 
     if($fleming_content["fields"]["role"]["value"] == 'fellow') {

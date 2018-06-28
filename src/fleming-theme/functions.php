@@ -95,12 +95,12 @@ function countries_partner_only_filter($countries)
     });
 }
 
-function hydrate_grant_for_card(&$grant) {
-    if (!isset($grant)) return;
+function format_currency_amount($amount) {
+    return number_format((float) $amount, 0, '.', ',');
+}
 
-    $grant['fields']['funds_available']['value'] = number_format(
-        (int) $grant['fields']['funds_available']['value']
-    );
+function grant_with_post_data_and_fields($grant) {
+    if (!isset($grant)) return null;
 
     $grantType = $grant['fields']['type']['value'];
 
@@ -116,7 +116,7 @@ function hydrate_grant_for_card(&$grant) {
         if (empty($countries)) {
             if ($region) {
                 $grant['colour_scheme'] = region_slug_to_colour_scheme_name($region->post_name);
-                $identifier .= ': '.$region->post_title;
+                $identifier .= ' › '.$region->post_title;
             } else {
                 $grant['colour_scheme'] = 'base';
             }
@@ -128,7 +128,7 @@ function hydrate_grant_for_card(&$grant) {
                 $associatedRegions[] = $country['fields']['region']['value']->post_name;
                 $countryTitles[] = $country['data']->post_title;
             }
-            $identifier .= ': '.implode(', ', $countryTitles);
+            $identifier .= ' › '.implode(' | ', $countryTitles);
             $associatedRegions = array_unique($associatedRegions);
             if (count($associatedRegions) == 1) {
                 $grant['colour_scheme'] = region_slug_to_colour_scheme_name($associatedRegions[0]);
@@ -139,6 +139,22 @@ function hydrate_grant_for_card(&$grant) {
     }
 
     $grant['identifier'] = $identifier;
+
+    // Compute status - qq needs to be more complicated than this!
+    $grant['status'] = 'Deadline ' . $grant['fields']['deadline']['value'];
+    // qq render date in locale-specific form?
+
+    return $grant;
+}
+
+function project_with_post_data_and_fields($project) {
+    $grant = grant_with_post_data_and_fields(
+        get_post_data_and_fields($project['fields']['grant']['value']->ID)
+    );
+    $project['colour_scheme'] = $grant['colour_scheme'];
+    $project['identifier'] = 'Project';
+
+    return $project;
 }
 
 

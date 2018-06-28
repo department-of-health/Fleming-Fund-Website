@@ -1,7 +1,8 @@
+$global-nav-background-color: $dark-grey;
 $sub-global-nav-background-color: $light-turquoise;
 
 nav.global-nav {
-  background-color: $dark-grey;
+  background-color: $global-nav-background-color;
   color: $light-text;
 
   ul {
@@ -11,9 +12,11 @@ nav.global-nav {
     li {
       font-size: 21px;
       line-height: 1.4em;
+      position: relative;
 
       a {
         position: relative;
+        background-color: $global-nav-background-color;
 
         &:hover, &:focus {
           background: rgba($light-grey, 0.1);
@@ -49,7 +52,9 @@ nav.global-nav {
 
   .mobile-toggle-submenu {
     display: none;
-    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
     width: $hit-box-height;
     text-align: center;
     cursor: pointer;

@@ -20,7 +20,7 @@ trait CommonLinksServer
 
     function getOurAimsLink()
     {
-        return $this->getMenuRouteLink('about', 'aims');
+        return $this->getMenuRouteLink('about', 'overview');
     }
 
     function getWhatIsAMRLink()

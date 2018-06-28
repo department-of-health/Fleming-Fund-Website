@@ -17,6 +17,64 @@
                     "id": ""
                 },
                 "layouts": {
+                    "5b290eb3e6366": {
+                        "key": "5b290eb3e6366",
+                        "name": "overview_text",
+                        "label": "Overview",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5b2b7f8c47350",
+                                "label": "Text block inner",
+                                "name": "text_block_inner",
+                                "type": "textarea",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": "",
+                                "maxlength": "",
+                                "rows": "",
+                                "new_lines": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "5b290ed0e6368": {
+                        "key": "5b290ed0e6368",
+                        "name": "section_title",
+                        "label": "Section title",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5b2b7f8c47ef1",
+                                "label": "Section title",
+                                "name": "section_title",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
                     "5aead1249e265": {
                         "key": "5aead1249e265",
                         "name": "text_block",
@@ -49,40 +107,11 @@
                     "5b290e8ce6362": {
                         "key": "5b290e8ce6362",
                         "name": "supporting_text_block",
-                        "label": "Supporting Text Block",
+                        "label": "Supporting text block",
                         "display": "block",
                         "sub_fields": [
                             {
                                 "key": "field_5b2b7f8c46b90",
-                                "label": "Text block inner",
-                                "name": "text_block_inner",
-                                "type": "textarea",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "default_value": "",
-                                "placeholder": "",
-                                "maxlength": "",
-                                "rows": "",
-                                "new_lines": ""
-                            }
-                        ],
-                        "min": "",
-                        "max": ""
-                    },
-                    "5b290eb3e6366": {
-                        "key": "5b290eb3e6366",
-                        "name": "overview_text",
-                        "label": "Overview text block",
-                        "display": "block",
-                        "sub_fields": [
-                            {
-                                "key": "field_5b2b7f8c47350",
                                 "label": "Text block inner",
                                 "name": "text_block_inner",
                                 "type": "textarea",
@@ -152,35 +181,6 @@
                                 "max_height": "",
                                 "max_size": "",
                                 "mime_types": ""
-                            }
-                        ],
-                        "min": "",
-                        "max": ""
-                    },
-                    "5b290ed0e6368": {
-                        "key": "5b290ed0e6368",
-                        "name": "section_title",
-                        "label": "Section title",
-                        "display": "block",
-                        "sub_fields": [
-                            {
-                                "key": "field_5b2b7f8c47ef1",
-                                "label": "Section title",
-                                "name": "section_title",
-                                "type": "text",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "default_value": "",
-                                "placeholder": "",
-                                "prepend": "",
-                                "append": "",
-                                "maxlength": ""
                             }
                         ],
                         "min": "",

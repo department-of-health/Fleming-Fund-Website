@@ -3,7 +3,7 @@ $font-family-headings: "Proxima Nova Bold", "Open Sans", "Gill Sans MT", "Gill S
 // Fallbacks from https://www.cssfontstack.com/Helvetica
 $font-family: "Helvetica Neue Regular", Helvetica Neue, "Segoe UI", Helvetica, Arial, sans-serif;
 
-$base-font-size: 21px;
+$base-font-size: 20px;
 
 body {
   font-size: $base-font-size;
@@ -22,11 +22,11 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
-  font-size: 60px;
+  font-size: 55px;
 }
 
 h2 {
-  font-size: 42px;
+  font-size: 40px;
 }
 
 h3 {
@@ -39,7 +39,7 @@ h3 {
   }
 
   h1 {
-    font-size: 48px;
+    font-size: 47px;
   }
 
   h2 {

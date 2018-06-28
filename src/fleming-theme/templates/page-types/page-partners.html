@@ -4,13 +4,15 @@
 
 <hr class="row-divider"/>
 
+{% if fields.overview.value %}
 <p class="large-text">
   {{ fields.overview.value }}
 </p>
+{% endif %}
 
-<div class="people card-container three-max">
-  {% for person in fields.members.value %}
-    {% include 'cards/entities/person-medium-with-image.html' %}
+<div class="organisations card-container three-max">
+  {% for organisation in allOrganisations %}
+    {% include 'cards/entities/organisation-large.html' %}
   {% endfor %}
 </div>
 

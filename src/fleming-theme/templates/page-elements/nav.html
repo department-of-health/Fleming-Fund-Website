@@ -40,6 +40,7 @@
         $('.global-nav')
             .removeClass('mobile-hidden')
             .find('.mobile-toggle-menu')
+            .attr('aria-label', 'hide menu')
             .text('Menu ▲');
     }
 
@@ -48,6 +49,7 @@
         globalNav
             .addClass('mobile-hidden')
             .find('.mobile-toggle-menu')
+            .attr('aria-label', 'show menu')
             .text('Menu ▼');
         hideAllSubmenusBelow(globalNav);
     }
@@ -64,7 +66,7 @@
     (function () {
         $('.global-nav').prepend($(
             '<div class="container">' +
-            '<a class="mobile-toggle-menu" href="javascript:menuToggleButtonClicked();" tabindex="0"></a>' +
+            '<a class="mobile-toggle-menu" href="javascript:menuToggleButtonClicked();"></a>' +
             '</div>'
         ));
         hideMenu();
@@ -82,6 +84,7 @@
         menuItem
             .addClass('mobile-submenu-showing')
             .children('.mobile-toggle-submenu')
+            .attr('aria-label', 'hide submenu')
             .text('-');
     }
 
@@ -89,6 +92,7 @@
         menuItem
             .removeClass('mobile-submenu-showing')
             .children('.mobile-toggle-submenu')
+            .attr('aria-label', 'show submenu')
             .text('+');
         hideAllSubmenusBelow(menuItem);
     }
@@ -105,9 +109,8 @@
     (function () {
         $('.global-nav')
             .find('.mobile-submenu')
-            .parent()
-            .prepend(
-                $('<a class="mobile-toggle-submenu" tabindex="0">+</a>')
+            .before(
+                $('<a class="mobile-toggle-submenu" aria-label="show submenu" tabindex="0">+</a>')
                     .click(function () {
                         submenuToggleButtonClicked($(this).parent());
                     })
@@ -123,6 +126,7 @@
         $('.global-nav')
             .removeClass('tablet-more-hidden')
             .find('.tablet-toggle-more a')
+            .attr('aria-label', 'hide more')
             .text('More ▲');
     }
 
@@ -130,6 +134,7 @@
         $('.global-nav')
             .addClass('tablet-more-hidden')
             .find('.tablet-toggle-more a')
+            .attr('aria-label', 'show more')
             .text('More ▼');
     }
 
