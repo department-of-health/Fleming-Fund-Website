@@ -37,6 +37,7 @@ function init_acf_fields() {
     $pagesWithFlexibleContent = [
         'about-us',
         'how-the-fleming-fund-works',
+        'investment-areas',
     ];
     $allPageAcfFieldDefinitionFiles = [
         'types/page-technical-advisory-group.json',
