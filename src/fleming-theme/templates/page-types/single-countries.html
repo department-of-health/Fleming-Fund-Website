@@ -5,18 +5,31 @@
   <button style="float: right" onClick={{ 'window.open("https://www.example.com")' }}>Subscribe for {{ title }} updates</button>
 </div>
 
-<div class="row" style="margin-top: 4rem">
+<div class="country-timeline">
   {% include 'page-elements/status-box.html' with {
-    'level': 1, 'current_status': fields.grant_status.value, 'header': 'Start', 'content': 'Approach to Country'
+    'level': 1,
+    'current_status': fields.grant_status.value,
+    'date': 'Start',
+    'status': 'Approach to Country'
   } %}
   {% include 'page-elements/status-box.html' with {
-    'level': 2, 'current_status': fields.grant_status.value, 'header': '1-2 months', 'content': 'Scoping Visit'
+    'level': 2,
+    'current_status': fields.grant_status.value,
+    'date': '1-2 months',
+    'status': 'Scoping Visit'
   } %}
   {% include 'page-elements/status-box.html' with {
-    'level': 3, 'current_status': fields.grant_status.value, 'header': '3-8 months', 'content': 'Positioning Activities'
+    'level': 3,
+    'current_status': fields.grant_status.value,
+    'date': '3-8 months',
+    'status': 'Positioning Activities'
   } %}
   {% include 'page-elements/status-box.html' with {
-    'level': 4, 'current_status': fields.grant_status.value, 'header': '9+ months', 'content': 'Grant-making'
+    'level': 4,
+    'current_status': fields.grant_status.value,
+    'date': '9+ months',
+    'status': 'Grant-making',
+    'last': true
   } %}
 </div>
 
