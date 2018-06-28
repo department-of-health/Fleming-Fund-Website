@@ -34,32 +34,41 @@ function init_acf_fields() {
 
     load_acf_fields('types/front-page.json');
 
-    $load_flexible_content = true;
-    $is_page = false;
     $pagesWithFlexibleContent = [
         'about-us',
     ];
+    $allPageAcfFieldDefinitionFiles = [
+        'types/page-technical-advisory-group.json',
+    ];
+
+    $should_load_flexible_content = true;
+    $currently_modifying_a_page = false;
+
     $pageData = get_post(is_admin() ? ($_GET['post'] ?? $_POST['post_ID']) : null);
     if (isset($pageData)) {
         if ($pageData->post_type === 'page') {
             $acfFilename = 'types/page-'.$pageData->post_name.'.json';
-            $is_page = true;
+            $currently_modifying_a_page = true;
             if (is_file(__DIR__.'/'.$acfFilename)) {
                 load_acf_fields($acfFilename);
             }
             if (!in_array($pageData->post_name, $pagesWithFlexibleContent)) {
-                $load_flexible_content = false;
+                $should_load_flexible_content = false;
             }
         }
+    } else if ($_GET['post_type'] ?? null === 'page') {
+        $currently_modifying_a_page = true;
+        $should_load_flexible_content = false;
     }
 
-    if ($load_flexible_content) {
+    if ($should_load_flexible_content) {
         load_acf_fields('types/flexible-content.json');
     }
 
-    if (!$is_page) {
-        // Load all the pages that have a post_object field to a custom post type
-        load_acf_fields('types/page-technical-advisory-group.json');
+    if (!$currently_modifying_a_page) {
+        foreach ($allPageAcfFieldDefinitionFiles as $pageAcfFieldDefinitionFile) {
+            load_acf_fields($pageAcfFieldDefinitionFile);
+        }
     }
 }
 if (is_admin()) {
