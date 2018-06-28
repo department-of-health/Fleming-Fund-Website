@@ -95,12 +95,12 @@ function countries_partner_only_filter($countries)
     });
 }
 
-function grant_with_post_data_and_fields($grant) {
-    if (!isset($grant)) return;
+function format_currency_amount($amount) {
+    return number_format((float) $amount, 0, '.', ',');
+}
 
-    $grant['fields']['funds_available']['value'] = number_format(
-        (int) $grant['fields']['funds_available']['value']
-    );
+function grant_with_post_data_and_fields($grant) {
+    if (!isset($grant)) return null;
 
     $grantType = $grant['fields']['type']['value'];
 
@@ -139,6 +139,10 @@ function grant_with_post_data_and_fields($grant) {
     }
 
     $grant['identifier'] = $identifier;
+
+    // Compute status - qq needs to be more complicated than this!
+    $grant['status'] = 'Deadline ' . $grant['fields']['deadline']['value'];
+    // qq render date in locale-specific form?
 
     return $grant;
 }

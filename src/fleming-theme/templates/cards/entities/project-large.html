@@ -4,7 +4,7 @@
     'colour_scheme': project.colour_scheme ?? 'base',
     'identifier': project.identifier,
     'title': project.data.post_title,
-    'overview': 'Budget: £'~project.fields.budget.value~'\nStatus: Implementation',
+    'overview': 'Budget: '~(project.fields.budget.value ? '£'~project.fields.budget.value|format_currency_amount : 'N/A')~'\nStatus: Implementation',
     'content': project.fields.description.value,
     'link_target': project.permalink,
   }} %}

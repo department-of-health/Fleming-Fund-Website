@@ -65,10 +65,7 @@ function fleming_get_content()
 
     $opportunities = get_posts(array('post_type' => 'grants', 'numberposts' => -1));
     foreach ($opportunities as &$opportunity) {
-        $opportunity = get_post_data_and_fields($opportunity->ID);
-        // Compute status - qq needs to be more complicated than this!
-        $opportunity['status'] = 'Deadline ' . $opportunity['fields']['deadline']['value'];
-        // qq render date in locale-specific form?
+        $opportunity = grant_with_post_data_and_fields(get_post_data_and_fields($opportunity->ID));
     }
     $opportunities = array_filter($opportunities, function ($opportunity) {
         return is_in_future($opportunity);
