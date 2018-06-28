@@ -38,7 +38,7 @@ class MenuLinksConfig
         ],
         'grants' => [
             'title' => 'Grants & Funding',
-            'target' => '/grants/',
+            'target' => '/grants-funding/',
 
             'children' => [
                 'global' => [
