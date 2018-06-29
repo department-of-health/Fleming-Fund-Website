@@ -4,6 +4,7 @@
   <h1 style="float: left; width: 50%">{{ title }}</h1>
   <button style="float: right" onClick={{ 'window.open("https://www.example.com")' }}>Subscribe for {{ title }} updates</button>
 </div>
+{% include 'layout/link-collection.html' with {'links': in_page_links} %}
 
 <div class="country-timeline">
   {% include 'page-elements/status-box.html' with {

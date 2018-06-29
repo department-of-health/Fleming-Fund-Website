@@ -32,6 +32,8 @@ function fleming_get_content()
         "nav" => get_nav_model(),
     );
 
+    process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
+
     $fleming_content['colour_scheme'] = region_slug_to_colour_scheme_name($fleming_content["fields"]["region"]["value"]->post_name);
 
     $fleming_content["fields"]["case_study"]["value"] = get_post_data_and_fields($fleming_content["fields"]["case_study"]["value"]->ID);

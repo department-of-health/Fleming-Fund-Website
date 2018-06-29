@@ -30,6 +30,8 @@ function fleming_get_content() {
         "colour_scheme" => region_slug_to_colour_scheme_name(get_post_field( 'post_name'))
     );
 
+    process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
+
     $fleming_content['fields']['coordinator']['value'] = 
         get_post_data_and_fields($fleming_content['fields']['coordinator']['value']->ID);
     $fleming_content['fields']['case_study']['value'] = 

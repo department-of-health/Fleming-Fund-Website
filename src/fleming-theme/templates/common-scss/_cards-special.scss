@@ -186,6 +186,18 @@
   }
 }
 
+@each $configName, $colourConfig in $colourConfigs {
+  &.#{$configName} {
+    .card-container.link-collection {
+      border-color: map_get($colourConfig, intense);
+
+      .card {
+        color: map_get($colourConfig, intense);
+      }
+    }
+  }
+}
+
 .card-container.useful-links {
   .card {
     .header {

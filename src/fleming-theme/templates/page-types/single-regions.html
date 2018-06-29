@@ -1,6 +1,7 @@
 {{ include('layout/header.html') }}
 
 <h1>{{ title }}</h1>
+{% include 'layout/link-collection.html' with {'links': in_page_links} %}
 
 {% embed 'layout/full-width-container.html' %}
   {% block container %}
