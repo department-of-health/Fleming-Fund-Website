@@ -15,3 +15,6 @@ $twig->addFilter($partnerOnly);
 
 $formatCurrencyAmount = new Twig_Filter('format_currency_amount', 'format_currency_amount');
 $twig->addFilter($formatCurrencyAmount);
+
+$statisticsOnlyWithValue = new Twig_Filter('statistics_only_with_value', 'statistics_only_with_value');
+$twig->addFilter($statisticsOnlyWithValue);

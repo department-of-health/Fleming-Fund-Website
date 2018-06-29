@@ -38,7 +38,7 @@ function process_flexible_content(&$fields, &$content)
     $show_in_page_links = false;
     $added_overview_slug = false;
 
-    if (!is_null($content) && !is_null($content["value"])) {
+    if (isset($content) && !empty($content["value"])) {
         foreach ($content["value"] as &$content_block) {
             $type = $content_block['acf_fc_layout'];
             if ($type == 'overview_text' && !$added_overview_slug) {
@@ -166,6 +166,12 @@ function get_overview_text_from_flexible_content($flexibleContent) {
         }
     }
     return null;
+}
+
+function statistics_only_with_value($statistics) {
+    return array_filter($statistics, function($statistic) {
+        return !empty($statistic['value']);
+    });
 }
 
 

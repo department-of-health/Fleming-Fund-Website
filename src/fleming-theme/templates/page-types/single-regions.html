@@ -62,21 +62,20 @@
 
 <hr class="row-separator"/>
 
-{# Replicate flexible content model #}
-  {% include 'flexible-content/statistics.html' with {'content_block': {'values': [
-    {
-      'value': fields.statistics.value.projects_completed,
-      'text': 'Projects Completed'
-    },
-    {
-      'value': fields.statistics.value.projects_in_progress,
-      'text': 'Projects in Progress'
-    },
-    {
-      'value': '£'~fields.statistics.value.funds_provided,
-      'text': 'Funds Provided'
-    },
-  ]}} %}
+{% include 'page-elements/statistics.html' with {'statistics': [
+  {
+    'value': fields.statistics.value.projects_completed,
+    'text': 'Projects Completed'
+  },
+  {
+    'value': fields.statistics.value.projects_in_progress,
+    'text': 'Projects in Progress'
+  },
+  {
+    'value': fields.statistics.value.funds_provided ? '£'~fields.statistics.value.funds_provided|format_currency_amount,
+    'text': 'Funds Provided'
+  },
+]} %}
 
   {% embed 'layout/supporting-content.html' %}
     {% block content %}

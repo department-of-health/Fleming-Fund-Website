@@ -1,0 +1,18 @@
+{% if statistics %}
+
+  {# Arrange statistics as: #}
+  {# * 1,2,3 = one row, 1/3 wide; 4 = one row, 1/4 wide #}
+  {# * 5 = 3+2, 6 = 3+3, 9 = 3+3+3 #}
+  {# * otherwise row of 4, then check again #}
+  {# i.e. multiple of three or one less than a multiple of 3: 1/3 wide; otherwise: 1/4 wide #}
+  {% set numStatistics = statistics|statistics_only_with_value|length %}
+  {% if numStatistics > 0 %}
+    {% set cardLayoutClass = (numStatistics > 1 and (numStatistics - 1) is divisible by (3)) ? 'four-max' : 'three-max' %}
+    <div class="card-container statistics {{ cardLayoutClass }}">
+      {% for statistic in statistics|statistics_only_with_value %}
+        {% include 'cards/entities/statistic-small.html' %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+{% endif %}

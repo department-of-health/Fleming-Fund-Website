@@ -79,7 +79,7 @@
           <div class="content-block">
             <p>
             <span class="funds-provided-to-region">
-              {{ '£'~region.fields.statistics.value.funds_provided }}
+              {{ '£'~region.fields.statistics.value.funds_provided|format_currency_amount }}
             </span>
               <br/>
               awarded to {{ region.data.post_title }}

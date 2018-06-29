@@ -63,31 +63,6 @@ function fleming_get_content()
     // qq - sort? filter?
     $fleming_content["projects"] = array_slice($allProjects, 0, 2);
 
-    // Parse the country-specific statistics into the flexible-content statistics format
-    $statistic_values = array();
-    $fields_statistics_value = $fleming_content['fields']['statistics']['value'];
-    if (isset($fields_statistics_value['projects_completed'])) {
-        $statistic_values[] = array(
-            "text" => "Projects Completed",
-            "value" => number_format($fields_statistics_value['projects_completed'])
-        );
-    }
-    if (isset($fields_statistics_value['projects_in_progress'])) {
-        $statistic_values[] = array(
-            "text" => "Projects in Progress",
-            "value" => number_format($fields_statistics_value['projects_in_progress'])
-        );
-    }
-    if (isset($fields_statistics_value['funds_provided'])) {
-        $statistic_values[] = array(
-            "text" => "Funds Provided",
-            "value" => "£" . number_format($fields_statistics_value['funds_provided'])
-        );
-    }
-    $fleming_content["mapped_statistics"] = array(
-        "values" => $statistic_values
-    );
-
     return $fleming_content;
 }
 
