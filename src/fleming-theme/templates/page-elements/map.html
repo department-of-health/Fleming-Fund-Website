@@ -3,12 +3,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="width:0;height:0;position:absolute;overflow:hidden;">
   <defs>
     {% for region in map_config.regions %}
-        <pattern id="subtle-hatched-{{ region.colourScheme }}"
-                 x="0" y="0" width="2" height="2"
-                 patternUnits="userSpaceOnUse"
-                 patternTransform="rotate(45)">
-            <path d="M1 0 V 2" stroke="darkgrey" stroke-width="1.5" />
-        </pattern>
+      <pattern id="subtle-hatched-{{ region.colourScheme }}"
+               x="0" y="0" width="2" height="2"
+               patternUnits="userSpaceOnUse"
+               patternTransform="rotate(45)">
+        <path d="M1 0 V 2" stroke="darkgrey" stroke-width="1.5"/>
+      </pattern>
     {% endfor %}
   </defs>
 </svg>
@@ -92,7 +92,7 @@
                 }
             },
             focusOn: {
-                regions: mapConfig.regions[focusedRegion].countries
+                regions: mapConfig.regions['all'].countries
             },
             series: {
                 regions: [
@@ -136,9 +136,13 @@
 
     function refocusMap() {
         if (map !== undefined && focusedRegion !== undefined) {
+            var region = focusedRegion;
+            if (mapConfig.regions[region] === undefined) {
+                region = 'all';
+            }
             map.updateSize();
             map.setFocus({
-                regions: mapConfig.regions[focusedRegion].countries
+                regions: mapConfig.regions[region].countries
             });
         }
     }
@@ -146,6 +150,7 @@
     function focusMapOn(region) {
         focusedRegion = region;
         refocusMap();
+
     }
 
     $(window).resize(function () {
