@@ -87,6 +87,10 @@ hr.row-border {
   border-top: 1px solid $mid-turquoise;
 }
 
+ul {
+  list-style: disc inside;
+}
+
 @each $configName, $colourConfig in $colourConfigs {
   &.#{$configName} {
     hr.row-divider, hr.row-border {

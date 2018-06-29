@@ -1,9 +1,15 @@
 .region-countries-legend {
   position: relative;
+  margin-top: 0.5rem;
 
   .link-collection {
     border: none;
     margin: 0;
+    padding: 0.5rem 0;
+  }
+
+  .card {
+    font-size: 1em;
   }
 
   p {
@@ -32,6 +38,10 @@
 
 @media (#{$min-width-tablet}) {
   .region-countries-legend {
+    .card {
+      font-size: 0.6em;
+    }
+
     .fund-countries, .partner-countries {
       display: table-row;
     }
