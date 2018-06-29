@@ -157,6 +157,17 @@ function project_with_post_data_and_fields($project) {
     return $project;
 }
 
+function get_overview_text_from_flexible_content($flexibleContent) {
+    if (isset($flexibleContent) && !empty($flexibleContent["value"])) {
+        foreach ($flexibleContent["value"] as &$content_block) {
+            if ($content_block['acf_fc_layout'] === 'overview_text') {
+                return $content_block['text_block_inner'] ?? null;
+            }
+        }
+    }
+    return null;
+}
+
 
 ////////////////////////////////////////////////////////////////
 ////////                  ADMIN PORTAL                  ////////

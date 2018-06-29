@@ -68,15 +68,13 @@
           {% endif %}
 
         </div>
-        <div class="content-block">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo
-            consequat.
-          </p>
-        </div>
+        {% if region.overview %}
+          <div class="content-block">
+            <p>
+              {{ region.overview }}
+            </p>
+          </div>
+        {% endif %}
         {% if region.fields.statistics.value.funds_provided %}
           <div class="content-block">
             <p>

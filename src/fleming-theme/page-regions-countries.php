@@ -35,6 +35,7 @@ function fleming_get_content()
     foreach ($regions as &$region) {
         $region = get_post_data_and_fields($region->ID);
         $region['countries'] = get_referring_posts($region['data']->ID, 'countries', 'region');
+        $region['overview'] = get_overview_text_from_flexible_content($region['fields']['flexible_content']);
     }
     $fleming_content['regions'] = $regions;
 
