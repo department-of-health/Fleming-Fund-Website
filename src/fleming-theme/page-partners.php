@@ -24,7 +24,9 @@ function fleming_get_content() {
 
     $allOrganisations = get_posts(array('post_type'=>'organisations','numberposts'=>-1));
     foreach($allOrganisations as &$organisation) {
-        $organisation = grant_with_post_data_and_fields(get_post_data_and_fields($organisation->ID));
+        $organisation = organisation_with_post_data_and_fields(
+            get_post_data_and_fields($organisation->ID)
+        );
     }
     $fleming_content["allOrganisations"] = $allOrganisations;
 

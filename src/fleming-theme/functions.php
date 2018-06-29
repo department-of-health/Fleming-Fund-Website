@@ -168,6 +168,17 @@ function person_with_post_data_and_fields($person) {
     return $person;
 }
 
+function organisation_with_post_data_and_fields($organisation) {
+    if ($organisation['fields']['logo']['value']) {
+        $organisation['logo_small_url'] = $organisation['fields']['logo']['value']['sizes']['thumbnail'];
+        $organisation['logo_medium_url'] = $organisation['fields']['logo']['value']['sizes']['medium'];
+    }
+    if (isset($organisation['fields']['flexible_content'])) {
+        $organisation['overview'] = get_overview_text_from_flexible_content($organisation['fields']['flexible_content']);
+    }
+    return $organisation;
+}
+
 function get_overview_text_from_flexible_content($flexibleContent) {
     if (isset($flexibleContent) && !empty($flexibleContent["value"])) {
         foreach ($flexibleContent["value"] as &$content_block) {

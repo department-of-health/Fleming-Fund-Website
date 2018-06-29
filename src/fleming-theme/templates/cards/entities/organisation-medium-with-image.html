@@ -1,0 +1,11 @@
+{% if organisation %}
+  {% include 'cards/medium-with-image.html' with { 'card': {
+    'decorated': false,
+    'image_src': organisation.logo_medium_url ?? 'http://www.placekitten.com/g/10/15',
+    'title': organisation.data.post_title,
+    'content': organisation.overview,
+    'link_target': organisation.permalink,
+    'cta_title': 'Find out more',
+    'cta_not_hollow': true
+  }} %}
+{% endif %}

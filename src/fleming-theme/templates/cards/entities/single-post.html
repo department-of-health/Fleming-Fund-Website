@@ -14,7 +14,7 @@
 {% elseif post.data.post_type == 'grants' %}
     {% include('cards/entities/grant-large.html') with { 'grant' : post } %}
 {% elseif post.data.post_type == 'organisations' %}
-    {% include('cards/entities/organisation-large.html') with { 'organisation' : post } %}
+    {% include('cards/entities/organisation-medium-with-image.html') with { 'organisation' : post } %}
 {% elseif post.data.post_type == 'people' %}
     {% include('cards/entities/person-medium-with-image.html') with { 'person' : post } %}
 {% elseif post.data.post_type == 'projects' %}
