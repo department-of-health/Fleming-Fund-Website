@@ -51,18 +51,22 @@ function fleming_get_content()
         $fleming_content["fields"]["headline_publication"]["value"]->ID
     );
 
-    foreach($fleming_content['fields']['headline_projects']['value'] as &$project) {
-        $project = project_with_post_data_and_fields(
-            get_post_data_and_fields($project->ID)
-        );
+    if ($fleming_content['fields']['headline_projects']['value']) {
+        foreach($fleming_content['fields']['headline_projects']['value'] as &$project) {
+            $project = project_with_post_data_and_fields(
+                get_post_data_and_fields($project->ID)
+            );
+        }
     }
-
-    foreach($fleming_content['fields']['highlight_opportunities']['value'] as &$grant) {
-        $grant = grant_with_post_data_and_fields(
-            get_post_data_and_fields($grant->ID)
-        );
+    
+    if ($fleming_content['fields']['highlight_opportunities']['value']) {
+        foreach($fleming_content['fields']['highlight_opportunities']['value'] as &$grant) {
+            $grant = grant_with_post_data_and_fields(
+                get_post_data_and_fields($grant->ID)
+            );
+        }
     }
-
+    
     $opportunities = get_posts(array('post_type' => 'grants', 'numberposts' => -1));
     foreach ($opportunities as &$opportunity) {
         $opportunity = grant_with_post_data_and_fields(get_post_data_and_fields($opportunity->ID));
