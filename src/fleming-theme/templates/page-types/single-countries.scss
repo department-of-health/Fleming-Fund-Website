@@ -1,1 +1,177 @@
-@import 'page-elements/status-box';
+$tick-size: 25px;
+
+@mixin country_timeline_with_tick_spacing($tick-spacing) {
+  .progress-box {
+    padding-right: $tick-spacing;
+  }
+
+  .details {
+    padding-right: $tick-spacing;
+    padding-left: (2 * $tick-spacing);
+  }
+}
+
+.country-timeline {
+  @include country_timeline_with_tick_spacing(0.75em);
+
+  margin-top: 4rem;
+  font-size: 0;
+  display: flex;
+  flex-flow: row nowrap;
+
+  .progress-box {
+    display: inline-block;
+    flex: 1 0 auto;
+    vertical-align: top;
+    margin: 0.1%;
+    width: 24.8%;
+    color: white;
+    position: relative;
+    font-size: (0.8 * $base-font-size);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .future {
+    background-color: $mid-grey;
+    border-color: $mid-grey;
+  }
+
+  .details {
+    padding-top: 0.8em;
+    padding-bottom: 0.9em;
+    overflow: hidden;
+    display: block;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .date {
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .tick {
+    float: right;
+    height: 1px;
+    width: $tick-size;
+
+    svg {
+      position: absolute;
+      top: 50%;
+      fill: #fff;
+      width: $tick-size;
+      height: $tick-size;
+    }
+  }
+
+  .last-indicator {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    background: #fff;
+
+    .arrow-whitespace {
+      width: 1px;
+      height: 1px;
+      margin-top: -500px;
+      margin-left: -200px;
+      border-width: 500px 200px;
+      border-style: solid;
+      border-color: #fff #fff #fff transparent;
+    }
+  }
+}
+
+@each $configName, $colourConfig in $colourConfigs {
+  .#{$configName} {
+    .country-timeline {
+      .past {
+        background-color: map_get($colourConfig, intense);
+        border-color: map_get($colourConfig, intense);
+      }
+
+      .now {
+        background-color: map_get($colourConfig, mid);
+        border-color: map_get($colourConfig, mid);
+      }
+    }
+  }
+}
+
+@media (#{$max-width-tablet}) {
+  .country-timeline {
+    @include country_timeline_with_tick_spacing(0.5em);
+
+    .progress-box {
+      font-size: (0.7 * $base-font-size);
+    }
+
+    .details {
+      padding-top: 1.2em;
+      padding-bottom: 1.4em;
+      padding-left: 0.7em;
+    }
+  }
+}
+
+@media (#{$max-width-mobile}) {
+  .country-timeline {
+    flex-flow: column nowrap;
+
+    $proportion-of-tick-size-as-spacing: 0.2;
+    $coloured-left-border-width: ((1 + (2 * $proportion-of-tick-size-as-spacing)) * $tick-size);
+
+    .progress-box {
+      color: $dark-grey;
+      background: none !important;
+      border-left: $coloured-left-border-width solid $mid-grey;
+      padding-left: (0.5 * $tick-size);
+      display: block;
+      width: 100%;
+      margin: 1px 0;
+      overflow: visible;
+    }
+
+    .details {
+      padding-top: 0;
+      padding-bottom: 1em;
+      min-height: 6em;
+    }
+
+    .tick {
+      float: none;
+
+      svg {
+        right: auto;
+        left: -((1 + $proportion-of-tick-size-as-spacing) * $tick-size);
+        top: (0.3 * $tick-size);
+      }
+    }
+
+    .last-indicator {
+      top: auto;
+      bottom: 0;
+      right: auto;
+      left: -$coloured-left-border-width;
+      width: $coloured-left-border-width;
+      height: $coloured-left-border-width;
+      overflow: hidden;
+      background: none;
+
+      .arrow-whitespace {
+        position: relative;
+        left: (0.5 * $coloured-left-border-width);
+        top: $coloured-left-border-width;
+        margin-top: -200px;
+        margin-left: -500px;
+        border-width: 200px 500px;
+        border-color: transparent #fff #fff #fff;
+      }
+    }
+  }
+}

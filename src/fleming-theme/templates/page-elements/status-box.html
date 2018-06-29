@@ -5,12 +5,26 @@
 {% elseif level > current_status %}
 <div class="progress-box future">
 {% endif %}
-  <div style="float: left; padding: 0.5em">
-    <div><strong>{{ header }}</strong></div>
-    <div>{{ content }}</div>
-  </div>
 
   {% if level < current_status %}
-  <div class="tickbox">&#10004;</div>
+    <div class="tick">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23">
+        <path d="M 0 9 L 2 7 L 8 13 L 21 0 L 23 2 L 8 17 Z"/>
+      </svg>
+    </div>
   {% endif %}
+
+  <div class="details">
+    <p class="date">{{ date }}</p>
+    <p class="status">{{ status }}</p>
+  </div>
+
+  {% if last %}
+    <div class="last-indicator">
+      <div class="arrow-whitespace">
+        &nbsp;
+      </div>
+    </div>
+  {% endif %}
+
 </div>

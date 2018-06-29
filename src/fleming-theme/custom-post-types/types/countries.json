@@ -148,7 +148,7 @@
             },
             {
                 "key": "field_5b324b018d82e",
-                "label": "Grant Status",
+                "label": "Status",
                 "name": "grant_status",
                 "type": "select",
                 "instructions": "",
