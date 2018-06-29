@@ -157,6 +157,17 @@ function project_with_post_data_and_fields($project) {
     return $project;
 }
 
+function person_with_post_data_and_fields($person) {
+    if ($person['fields']['picture']['value']) {
+        $person['picture_small_url'] = $person['fields']['picture']['value']['sizes']['thumbnail'];
+        $person['picture_medium_url'] = $person['fields']['picture']['value']['sizes']['medium'];
+    }
+    if (isset($person['fields']['flexible_content'])) {
+        $person['overview'] = get_overview_text_from_flexible_content($person['fields']['flexible_content']);
+    }
+    return $person;
+}
+
 function get_overview_text_from_flexible_content($flexibleContent) {
     if (isset($flexibleContent) && !empty($flexibleContent["value"])) {
         foreach ($flexibleContent["value"] as &$content_block) {

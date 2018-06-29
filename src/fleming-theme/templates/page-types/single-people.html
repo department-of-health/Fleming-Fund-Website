@@ -1,17 +1,14 @@
 {{ include('layout/header.html') }}
 
 <h1>{{ title }}</h1>
+{% include 'page-elements/in-page-links.html' %}
 
-<hr class="row-underline"/>
+<aside>
+  <img src="{{ image_url ?? 'http://www.placekitten.com/g/10/10' }}" class="profile-image"/>
+  {% include 'page-elements/contact-details.html' %}
+</aside>
 
-<div class="row">
-  <div class="nine columns">
-    {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
-  </div>
-  <div class="three columns">
-    {% include 'page-elements/contact-details.html' %}
-  </div>
-</div>
+{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
 {% if fields.role.value == 'fellow' %}
   <hr class="row-separator"/>
@@ -24,10 +21,8 @@
   <hr class="row-separator"/>
   <h3 class="row-title">Current Fellows</h3>
   <div class="card-container people three-max">
-    {% for fellow in fellows %}
-      {% include 'cards/entities/person-medium-with-image.html' with {
-        'person': fellow
-      } %}
+    {% for person in fellows %}
+      {% include 'cards/entities/person-medium-with-image.html' %}
     {% endfor %}
 
   </div>

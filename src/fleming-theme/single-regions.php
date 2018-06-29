@@ -32,8 +32,9 @@ function fleming_get_content() {
 
     process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
 
-    $fleming_content['fields']['coordinator']['value'] = 
-        get_post_data_and_fields($fleming_content['fields']['coordinator']['value']->ID);
+    $fleming_content['fields']['coordinator']['value'] = person_with_post_data_and_fields(
+            get_post_data_and_fields($fleming_content['fields']['coordinator']['value']->ID)
+    );
     $fleming_content['fields']['case_study']['value'] = 
         get_post_data_and_fields($fleming_content['fields']['case_study']['value']->ID);
 
