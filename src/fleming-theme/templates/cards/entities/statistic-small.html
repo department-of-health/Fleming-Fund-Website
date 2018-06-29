@@ -1,6 +1,13 @@
 {% if statistic %}
+  {% set should_show_prepend_and_append = statistic.type == 'currency' %}
+  {% set statistic_type_is_numeric = statistic.type == 'number' or statistic.type == 'currency' %}
+  {% set statistic_value = statistic_type_is_numeric ? statistic.value|format_number : statistic.value %}
   <div class="card">
-    <p class="statistic-value">{{ statistic.value }}</p>
-    <p class="statistic-text">{{ statistic.text }}</p>
+    <p class="statistic-value">
+      {{ should_show_prepend_and_append ? statistic.prepend }}{{ statistic_value }}{{ should_show_prepend_and_append ? statistic.append }}
+    </p>
+    <p class="statistic-text">
+      {{ statistic.text }}
+    </p>
   </div>
 {% endif %}

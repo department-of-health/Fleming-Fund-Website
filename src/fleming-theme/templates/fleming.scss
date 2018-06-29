@@ -91,6 +91,14 @@ ul {
   list-style: disc inside;
 }
 
+@media (#{$min-width-tablet}) {
+  aside {
+    float: right;
+    width: grid-column-width(3);
+    margin-left: $column-margin;
+  }
+}
+
 @each $configName, $colourConfig in $colourConfigs {
   &.#{$configName} {
     hr.row-divider, hr.row-border {

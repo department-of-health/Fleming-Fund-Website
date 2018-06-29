@@ -53,6 +53,7 @@
 }
 
 .card-container.statistics {
+  @include wrapsUnderneathAside;
   @include cardsAreCentered;
 
   .card {

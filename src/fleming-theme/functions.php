@@ -95,7 +95,7 @@ function countries_partner_only_filter($countries)
     });
 }
 
-function format_currency_amount($amount) {
+function format_number($amount) {
     return number_format((float) $amount, 0, '.', ',');
 }
 

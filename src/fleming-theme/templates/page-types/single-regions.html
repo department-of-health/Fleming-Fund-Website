@@ -44,23 +44,18 @@
 
 <hr class="row-border"/>
 
-<div class="row">
-  <div class="nine columns">
-    {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
-  </div>
-  <div class="three columns people card-container cover">
-    {% include 'cards/entities/person-small-with-image.html' with {
-      'person': fields.coordinator.value,
-      'supertitle': 'Regional Coordinator',
-      'cta_override': {
-        'title': 'Contact Now',
-        'target': 'mailto:' ~ fields.coordinator.value.fields.email.value
-      }
-    } %}
-  </div>
-</div>
+<aside class="people card-container cover">
+  {% include 'cards/entities/person-small-with-image.html' with {
+    'person': fields.coordinator.value,
+    'supertitle': 'Regional Coordinator',
+    'cta_override': {
+      'title': 'Contact Now',
+      'target': 'mailto:' ~ fields.coordinator.value.fields.email.value
+    }
+  } %}
+</aside>
 
-<hr class="row-separator"/>
+{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
 {% include 'page-elements/statistics.html' with {'statistics': [
   {
@@ -72,7 +67,7 @@
     'text': 'Projects in Progress'
   },
   {
-    'value': fields.statistics.value.funds_provided ? '£'~fields.statistics.value.funds_provided|format_currency_amount,
+    'value': fields.statistics.value.funds_provided ? '£'~fields.statistics.value.funds_provided|format_number,
     'text': 'Funds Provided'
   },
 ]} %}
