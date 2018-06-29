@@ -281,6 +281,25 @@
                                 "button_label": "",
                                 "sub_fields": [
                                     {
+                                        "key": "field_5b363351021d0",
+                                        "label": "Featured?",
+                                        "name": "is_feature",
+                                        "type": "true_false",
+                                        "instructions": "If this statistic is featured, it may appear in cards on other pages.",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "message": "",
+                                        "default_value": 0,
+                                        "ui": 0,
+                                        "ui_on_text": "",
+                                        "ui_off_text": ""
+                                    },
+                                    {
                                         "key": "field_5b362ade070bb",
                                         "label": "Type",
                                         "name": "type",

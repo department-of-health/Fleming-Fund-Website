@@ -36,6 +36,10 @@ function fleming_get_content()
         $region = get_post_data_and_fields($region->ID);
         $region['countries'] = get_referring_posts($region['data']->ID, 'countries', 'region');
         $region['overview'] = get_overview_text_from_flexible_content($region['fields']['flexible_content']);
+        $region['highlightStatistic'] = get_highlight_statistic_from_flexible_content($region['fields']['flexible_content']);
+        if ($region['highlightStatistic']) {
+            $region['highlightStatistic']['text'] .= ' in '.$region['data']->post_title;
+        }
     }
     $fleming_content['regions'] = $regions;
 

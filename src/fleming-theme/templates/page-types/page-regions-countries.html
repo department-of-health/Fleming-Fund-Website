@@ -75,15 +75,9 @@
             </p>
           </div>
         {% endif %}
-        {% if region.fields.statistics.value.funds_provided %}
-          <div class="content-block">
-            <p>
-            <span class="funds-provided-to-region">
-              {{ '£'~region.fields.statistics.value.funds_provided|format_number }}
-            </span>
-              <br/>
-              awarded to {{ region.data.post_title }}
-            </p>
+        {% if region.highlightStatistic %}
+          <div class="content-block statistics card-container cover">
+            {% include 'cards/entities/statistic-small.html' with {'statistic': region.highlightStatistic} %}
           </div>
         {% endif %}
       {% endblock %}

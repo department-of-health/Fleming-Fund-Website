@@ -168,6 +168,23 @@ function get_overview_text_from_flexible_content($flexibleContent) {
     return null;
 }
 
+function get_highlight_statistic_from_flexible_content($flexibleContent) {
+    if (isset($flexibleContent) && !empty($flexibleContent["value"])) {
+        foreach ($flexibleContent["value"] as &$content_block) {
+            if ($content_block['acf_fc_layout'] === 'statistics') {
+                if(!empty($content_block['values'])) {
+                    foreach ($content_block['values'] as $statistic) {
+                        if ($statistic['is_feature']) {
+                            return $statistic;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return null;
+}
+
 function statistics_only_with_value($statistics) {
     return array_filter($statistics, function($statistic) {
         return !empty($statistic['value']);
