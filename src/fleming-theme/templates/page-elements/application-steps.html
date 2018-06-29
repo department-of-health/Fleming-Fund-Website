@@ -3,12 +3,16 @@
     <div class="row application-step">
       {% if not loop.last %}
         <div class="two columns application-label">
-          <h3 class="application-label-inner">Step {{ loop.index }}</h3>
+          <p class="application-label-inner"><strong>Step {{ loop.index }}</strong></p>
         </div>
         <div class="eight columns light-card application-card">
       {% else %}
         <div class="two columns application-label">
-          <h3 class="application-label-inner">&#10004</h3>
+          <p class="application-label-inner">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 17" class="final-label">
+              <path d="M 0 9 L 2 7 L 8 13 L 21 0 L 23 2 L 8 17 Z"/>
+            </svg>
+          </p>
         </div>
         <div class="eight columns dark-card application-card">
       {% endif %}

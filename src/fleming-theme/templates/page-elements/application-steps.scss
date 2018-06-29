@@ -10,6 +10,10 @@
       background: map-get($colourConfig, intense);
       color: white;
     }
+
+    .application-label-inner {
+      color: map-get($colourConfig, intense);
+    }
   }
 }
 
@@ -23,12 +27,15 @@
   // position: absolute;
   // left:0; top: 50%;
   // transform: translate(0,-50%)
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .application-label-inner {
   text-align: center;
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+  margin-top: 1.1em;
+  margin-bottom: 1.1em;
+  font-size: 1.2em;
 }
 
 .application-step-content {
@@ -39,6 +46,6 @@
   position: relative;
 }
 
-.application-container {
-
+.final-label {
+  max-height: 1.2em;
 }
