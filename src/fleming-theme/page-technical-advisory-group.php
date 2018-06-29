@@ -26,7 +26,7 @@ function fleming_get_content() {
 
     if (!empty($fleming_content['fields']['members']['value'])) {
         foreach ($fleming_content['fields']['members']['value'] as &$tagMember) {
-            $tagMember = get_post_data_and_fields($tagMember->ID);
+            $tagMember = person_with_post_data_and_fields(get_post_data_and_fields($tagMember->ID));
         }
         $num_members = count($fleming_content['fields']['members']['value']);
     }

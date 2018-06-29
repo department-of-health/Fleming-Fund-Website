@@ -1,0 +1,5 @@
+{% if in_page_links and in_page_links|length > 1 %}
+  {% include 'layout/link-collection.html' with {'links': in_page_links} %}
+{% else %}
+  <hr class="row-border"/>
+{% endif %}

@@ -1,8 +1,10 @@
 {% if person %}
-  {% include 'cards/base.html' with {'card': {
-    'top_html': '<img src="https://placekitten.com/512/512"/>',
+  {% include 'cards/medium-with-image.html' with {'card': {
+    'decorated': false,
+    'image_src': person.picture_medium_url ?? 'https://www.placekitten.com/g/10/10',
+    'identifier': supertitle,
     'title': person.data.post_title,
-    'content': person.fields.summary.value,
+    'content': person.overview,
     'link_target': person.permalink,
     'cta_not_hollow': true
   }} %}

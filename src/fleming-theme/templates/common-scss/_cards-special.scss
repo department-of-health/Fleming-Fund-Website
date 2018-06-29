@@ -1,12 +1,7 @@
-.card.with-left-image {
-  font-size: 0;
-  display: flex;
-  flex-flow: row wrap;
+.card.with-image {
   border: none;
 
   .image-container {
-    display: inline-block;
-    vertical-align: top;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -21,26 +16,47 @@
   .card {
     border: none;
     margin: 0;
-    display: inline-block;
-    //display: inline-flex;
-    vertical-align: top;
-    padding-top: 1rem;
     width: 100%;
 
     .header {
       border-bottom: none;
     }
   }
+
+  &.image-left {
+    font-size: 0;
+    display: flex;
+    flex-flow: row wrap;
+
+    .image-container {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .card {
+      display: inline-block;
+      vertical-align: top;
+      padding-top: 1rem;
+    }
+  }
+
+  &.image-top {
+    .image-container img {
+      margin: 0 1.5em;
+    }
+  }
 }
 
 @media (#{$min-width-desktop}) {
-  .card.with-left-image {
+  .card.with-image.image-left {
     .card {
-      width: grid-column-width(6);
+      box-sizing: border-box;
+      width: 50%;
+      padding-left: (0.5 * $column-margin);
       margin: 0;
     }
     .image-container {
-      width: grid-offset-length(6);
+      width: 50%;
       margin: 0;
 
       img {
@@ -125,6 +141,7 @@
     }
     p {
       margin-top: 0;
+      font-size: 1em;
     }
   }
 }

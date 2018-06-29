@@ -1,8 +1,7 @@
 {{ include('layout/header.html') }}
 
 <h1>{{ title }}</h1>
-{% include 'layout/link-collection.html' with {'links': in_page_links} %}
-
+{% include 'page-elements/in-page-links.html' %}
 {% embed 'layout/full-width-container.html' %}
   {% block container %}
     {% include 'page-elements/map.html' with {
@@ -45,7 +44,7 @@
 <hr class="row-border"/>
 
 <aside class="people card-container cover">
-  {% include 'cards/entities/person-small-with-image.html' with {
+  {% include 'cards/entities/person-medium-with-image.html' with {
     'person': fields.coordinator.value,
     'supertitle': 'Regional Coordinator',
     'cta_override': {
