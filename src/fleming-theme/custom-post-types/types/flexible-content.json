@@ -86,7 +86,7 @@
                                 "label": "Text block inner",
                                 "name": "text_block_inner",
                                 "type": "textarea",
-                                "instructions": "",
+                                "instructions": "Use a large text block to draw attention to a short paragraph.",
                                 "required": 0,
                                 "conditional_logic": 0,
                                 "wrapper": {
@@ -115,7 +115,7 @@
                                 "label": "Text block inner",
                                 "name": "text_block_inner",
                                 "type": "textarea",
-                                "instructions": "",
+                                "instructions": "Use a supporting text block for a longer paragraph.",
                                 "required": 0,
                                 "conditional_logic": 0,
                                 "wrapper": {
