@@ -1,17 +1,19 @@
-{% for step in fields.application_steps.value %}
-<div class="row">
-  {% if not loop.last %}
-    <div class="two columns row-title" style="align-items: center">
-      <h3 class="application-label">Step {{ loop.index }}</h3>
+<div class="application-container">
+  {% for step in fields.application_steps.value %}
+    <div class="row application-step">
+      {% if not loop.last %}
+        <div class="two columns application-label">
+          <h3 class="application-label-inner">Step {{ loop.index }}</h3>
+        </div>
+        <div class="eight columns light-card application-card">
+      {% else %}
+        <div class="two columns application-label">
+          <h3 class="application-label-inner">&#10004</h3>
+        </div>
+        <div class="eight columns dark-card application-card">
+      {% endif %}
+          <p class="application-step-content"><strong>{{ step.application_step }}</strong></p>
+        </div>
     </div>
-    <div class="eight columns card application-card">
-  {% else %}
-    <div class="two columns row-title" style="align-items: center">
-      <h3 class="application-label">&#10004</h3>
-    </div>
-    <div class="eight columns card dark-card application-card">
-  {% endif %}
-      <p>{{ step.application_step }}</p>
-    </div>
+  {% endfor %}
 </div>
-{% endfor %}
