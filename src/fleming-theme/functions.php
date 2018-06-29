@@ -42,7 +42,7 @@ function process_flexible_content(&$fields, &$content)
         foreach ($content["value"] as &$content_block) {
             $type = $content_block['acf_fc_layout'];
             if ($type == 'overview_text' && !$added_overview_slug) {
-                $content_block['slug'] = 'overview';
+                $content_block['id'] = 'overview';
                 $in_page_links[] = array(
                     "target" => "#overview",
                     "title" => "Overview"
@@ -50,7 +50,7 @@ function process_flexible_content(&$fields, &$content)
                 $added_overview_slug = true;
             } elseif ($type == 'section_title') {
                 $title = $content_block['section_title'];
-                $slug = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '_', $title));
+                $slug = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $title));
                 $content_block['id'] = $slug;
                 $in_page_links[] = array(
                     "target" => '#' . $slug,
