@@ -28,7 +28,7 @@
                                 "label": "Text block inner",
                                 "name": "text_block_inner",
                                 "type": "textarea",
-                                "instructions": "",
+                                "instructions": "Overview text will be displayed as a text block, but will be linked to in the same manner as a section title. It may also appear within cards on other pages.",
                                 "required": 0,
                                 "conditional_logic": 0,
                                 "wrapper": {
@@ -44,7 +44,7 @@
                             }
                         ],
                         "min": "",
-                        "max": ""
+                        "max": "1"
                     },
                     "5b290ed0e6368": {
                         "key": "5b290ed0e6368",
