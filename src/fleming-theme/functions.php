@@ -116,7 +116,7 @@ function grant_with_post_data_and_fields($grant) {
         if (empty($countries)) {
             if ($region) {
                 $grant['colour_scheme'] = region_slug_to_colour_scheme_name($region->post_name);
-                $identifier .= ' › '.$region->post_title;
+                $identifier .= ' : '.$region->post_title;
             } else {
                 $grant['colour_scheme'] = 'base';
             }
@@ -128,7 +128,7 @@ function grant_with_post_data_and_fields($grant) {
                 $associatedRegions[] = $country['fields']['region']['value']->post_name;
                 $countryTitles[] = $country['data']->post_title;
             }
-            $identifier .= ' › '.implode(' | ', $countryTitles);
+            $identifier .= ' : '.implode(' | ', $countryTitles);
             $associatedRegions = array_unique($associatedRegions);
             if (count($associatedRegions) == 1) {
                 $grant['colour_scheme'] = region_slug_to_colour_scheme_name($associatedRegions[0]);

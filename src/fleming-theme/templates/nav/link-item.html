@@ -3,7 +3,7 @@
   <li {{ link.active ? 'class="active"' }}>
     {% block before_link %}{% endblock %}
     {% if has_target %}
-    <a href="{{ link.target }}" target="{{ link.external ? '_blank' : '_self' }}">
+    <a href="{{ link.target }}" aria-label="{{ link.title }}" target="{{ link.external ? '_blank' : '_self' }}">
       {% endif %}
       {% block inner %}
 

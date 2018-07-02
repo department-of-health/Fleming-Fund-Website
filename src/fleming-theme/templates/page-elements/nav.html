@@ -97,7 +97,8 @@
         hideAllSubmenusBelow(menuItem);
     }
 
-    function submenuToggleButtonClicked(menuItem) {
+    function submenuToggleButtonClicked(toggleButtonClicked) {
+        var menuItem = $(toggleButtonClicked).parent();
         menuItem.find('.mobile-toggle-submenu').blur();
         if (menuItem.hasClass('mobile-submenu-showing')) {
             hideSubmenu(menuItem);
@@ -110,15 +111,7 @@
         $('.global-nav')
             .find('.mobile-submenu')
             .before(
-                $('<a class="mobile-toggle-submenu" aria-label="show submenu" tabindex="0">+</a>')
-                    .click(function () {
-                        submenuToggleButtonClicked($(this).parent());
-                    })
-                    .keypress(function (e) {
-                        if (e.which === 13) {
-                            $(this).click();
-                        }
-                    })
+                $('<a class="mobile-toggle-submenu" href="javascript:void(0);" onclick="submenuToggleButtonClicked(this);" aria-label="show submenu">+</a>')
             );
     })();
 

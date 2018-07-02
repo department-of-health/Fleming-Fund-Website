@@ -2,7 +2,7 @@
   <div class="card with-image image-left">
 
     <div class="image-container">
-      <img src="{{ card.image_src }}"/>
+      <img src="{{ card.image_src }}" title="{{ card.image_title | default(card.title) }}"/>
       {% if card.link_target %}
         {% include 'cards/common/link-overlay.html' %}
       {% endif %}
