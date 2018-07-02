@@ -5,8 +5,8 @@
     'identifier': publication.fields.type.value.post_title,
     'title': publication.data.post_title,
     'overview': 'Date: 2018-01-01',
-    'content': publication.fields.content.value,
-    'image_src': 'https://placekitten.com/640/360',
+    'content': publication.overview,
+    'image_src': publication.picture_large_url ?? 'https://www.placekitten.com/g/10/10',
     'link_target': publication.permalink
   }} %}
 {% endif %}

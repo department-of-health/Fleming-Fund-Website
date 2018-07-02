@@ -1,20 +1,23 @@
 {{ include('layout/header.html') }}
 
 <h1>{{ title }}</h1>
+{% include 'page-elements/in-page-links.html' %}
 
-<div class="row">
-  <div class="nine columns">
-    {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
-  </div>
-  <div class="three columns">
-    <hr class="row-border"/>
-    <div><strong>Author:</strong> {{ fields.authors.value }}</div><br/>
-    <div><strong>Date:</strong> {{ fields.publication_date.value }}</div><br/>
-    <div><strong>Type:</strong> {{ fields.type.value.post_title }}</div><br/>
-    <div><strong>Location:</strong> {{ fields.country_region.value }}</div><br/>
-    <hr class="row-border"/>
-  </div>
-</div>
+<aside><!-- qq responsiveness -->
+  <hr class="row-border"/>
+  {% if authors is not empty %}
+    <div><strong>Author{{ authors|length > 1 ? 's' }}:</strong> {{ authors|join(', ') }}</div><br/>
+  {% endif %}
+  <div><strong>Date:</strong> {{ fields.publication_date.value }}</div>
+  <br/>
+  <div><strong>Type:</strong> {{ fields.type.value.post_title }}</div>
+  <br/>
+  <div><strong>Location:</strong> {{ fields.country_region.value }}</div>
+  <br/>
+  <hr class="row-border"/>
+</aside>
+
+{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
 {% if fields.document.value and fields.type.value.post_title != 'news' %}
   <hr class="row-divider"/>
