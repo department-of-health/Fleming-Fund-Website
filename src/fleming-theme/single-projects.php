@@ -2,6 +2,7 @@
 
 include __DIR__ . '/php/get-css-filename.php';
 include 'query-utilities.php';
+include 'navigation/index.php';
 
 /**
  * NOTE:
@@ -18,7 +19,11 @@ function fleming_get_content() {
     $fleming_content = array(
         "css_filename" => get_css_filename(),
         "title" => get_raw_title(),
-        "fields" => get_field_objects()
+        "fields" => get_field_objects(),
+        'nav' => get_nav_builder()
+            ->withMenuRoute('regions', 'projects')
+            ->withAdditionalBreadcrumb(get_raw_title())
+            ->build()
     );
 
     $thisProject = project_with_post_data_and_fields(
