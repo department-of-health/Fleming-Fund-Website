@@ -19,7 +19,7 @@ function fleming_get_content() {
         "title" => get_raw_title(),
         "css_filename" => get_css_filename(),
         "fields" => get_field_objects(),
-        'nav' => get_nav_builder()->withMenuRoute('about', 'overview')->build()
+        'nav' => get_nav_builder()->withMenuRoute('about')->build()
     );
 
     $allPeople = get_posts(array('post_type'=>'people','numberposts'=>-1));

@@ -1,6 +1,7 @@
 <?php
 
 include __DIR__ . '/php/get-css-filename.php';
+include 'query-utilities.php';
 include 'navigation/index.php';
 
 /**
@@ -25,6 +26,9 @@ function fleming_get_content() {
     );
 
     process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
+
+    $allMembers = get_referring_posts(get_post()->ID, 'people', 'organisation');
+    $fleming_content["all_members"] = array_map('person_with_post_data_and_fields', $allMembers);
 
     return $fleming_content;
 }

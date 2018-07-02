@@ -1,8 +1,16 @@
 {{ include('layout/header.html') }}
 
 <h1>{{ title }}</h1>
-{% include 'layout/link-collection.html' with {'links': in_page_links} %}
+{% include 'page-elements/in-page-links.html' %}
 
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+
+{% if all_members is not empty %}
+  <div class="people card-container three-max">
+    {% for person in all_members %}
+      {% include 'cards/entities/person-medium-with-image.html' %}
+    {% endfor %}
+  </div>
+{% endif %}
 
 {{ include('layout/footer.html') }}

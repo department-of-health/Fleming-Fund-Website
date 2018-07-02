@@ -15,17 +15,9 @@ include 'navigation/index.php';
  */
 
 function fleming_get_content() {
-
-    // The Loop!
-    $posts = [];
-    while (have_posts()) {
-        the_post();
-        $posts[] = get_current_post_data_and_fields();
-    }
-
     $content = array(
         "title" => post_type_archive_title( '', false ),
-        "posts" => $posts,
+        "query_results" => get_query_results(),
         "css_filename" => get_css_filename(),
         "nav" => get_home_nav()
     );

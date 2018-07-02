@@ -1,8 +1,7 @@
 {% include 'layout/header.html' %}
 
 <h1>{{ title }}</h1>
-{% include 'layout/link-collection.html' with {'links': in_page_links} %}
-
+{% include 'page-elements/in-page-links.html' %}
 <p>Description: {{ fields.description.value }}</p>
 
 <p>Budget: {{ fields.budget.value }}</p>

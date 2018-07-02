@@ -38,11 +38,11 @@ function process_flexible_content(&$fields, &$content)
     $show_in_page_links = false;
     $added_overview_slug = false;
 
-    if (!is_null($content) && !is_null($content["value"])) {
+    if (isset($content) && !empty($content["value"])) {
         foreach ($content["value"] as &$content_block) {
             $type = $content_block['acf_fc_layout'];
             if ($type == 'overview_text' && !$added_overview_slug) {
-                $content_block['slug'] = 'overview';
+                $content_block['id'] = 'overview';
                 $in_page_links[] = array(
                     "target" => "#overview",
                     "title" => "Overview"
@@ -50,7 +50,7 @@ function process_flexible_content(&$fields, &$content)
                 $added_overview_slug = true;
             } elseif ($type == 'section_title') {
                 $title = $content_block['section_title'];
-                $slug = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '_', $title));
+                $slug = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $title));
                 $content_block['id'] = $slug;
                 $in_page_links[] = array(
                     "target" => '#' . $slug,
@@ -95,7 +95,7 @@ function countries_partner_only_filter($countries)
     });
 }
 
-function format_currency_amount($amount) {
+function format_number($amount) {
     return number_format((float) $amount, 0, '.', ',');
 }
 
@@ -116,7 +116,7 @@ function grant_with_post_data_and_fields($grant) {
         if (empty($countries)) {
             if ($region) {
                 $grant['colour_scheme'] = region_slug_to_colour_scheme_name($region->post_name);
-                $identifier .= ' › '.$region->post_title;
+                $identifier .= ' : '.$region->post_title;
             } else {
                 $grant['colour_scheme'] = 'base';
             }
@@ -128,7 +128,7 @@ function grant_with_post_data_and_fields($grant) {
                 $associatedRegions[] = $country['fields']['region']['value']->post_name;
                 $countryTitles[] = $country['data']->post_title;
             }
-            $identifier .= ' › '.implode(' | ', $countryTitles);
+            $identifier .= ' : '.implode(' | ', $countryTitles);
             $associatedRegions = array_unique($associatedRegions);
             if (count($associatedRegions) == 1) {
                 $grant['colour_scheme'] = region_slug_to_colour_scheme_name($associatedRegions[0]);
@@ -155,6 +155,62 @@ function project_with_post_data_and_fields($project) {
     $project['identifier'] = 'Project';
 
     return $project;
+}
+
+function person_with_post_data_and_fields($person) {
+    if ($person['fields']['picture']['value']) {
+        $person['picture_small_url'] = $person['fields']['picture']['value']['sizes']['thumbnail'];
+        $person['picture_medium_url'] = $person['fields']['picture']['value']['sizes']['medium'];
+    }
+    if (isset($person['fields']['flexible_content'])) {
+        $person['overview'] = get_overview_text_from_flexible_content($person['fields']['flexible_content']);
+    }
+    return $person;
+}
+
+function organisation_with_post_data_and_fields($organisation) {
+    if ($organisation['fields']['logo']['value']) {
+        $organisation['logo_small_url'] = $organisation['fields']['logo']['value']['sizes']['thumbnail'];
+        $organisation['logo_medium_url'] = $organisation['fields']['logo']['value']['sizes']['medium'];
+    }
+    if (isset($organisation['fields']['flexible_content'])) {
+        $organisation['overview'] = get_overview_text_from_flexible_content($organisation['fields']['flexible_content']);
+    }
+    return $organisation;
+}
+
+function get_overview_text_from_flexible_content($flexibleContent) {
+    if (isset($flexibleContent) && !empty($flexibleContent["value"])) {
+        foreach ($flexibleContent["value"] as &$content_block) {
+            if ($content_block['acf_fc_layout'] === 'overview_text') {
+                return $content_block['text_block_inner'] ?? null;
+            }
+        }
+    }
+    return null;
+}
+
+function get_highlight_statistic_from_flexible_content($flexibleContent) {
+    if (isset($flexibleContent) && !empty($flexibleContent["value"])) {
+        foreach ($flexibleContent["value"] as &$content_block) {
+            if ($content_block['acf_fc_layout'] === 'statistics') {
+                if(!empty($content_block['values'])) {
+                    foreach ($content_block['values'] as $statistic) {
+                        if ($statistic['is_feature']) {
+                            return $statistic;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return null;
+}
+
+function statistics_only_with_value($statistics) {
+    return array_filter($statistics, function($statistic) {
+        return !empty($statistic['value']);
+    });
 }
 
 
@@ -234,4 +290,3 @@ function get_raw_title(...$args)
 ////////////////////////////////////////////////////////////////
 
 include __DIR__ . '/custom-post-types/load-custom-post-types-and-acf-fields.php';
-

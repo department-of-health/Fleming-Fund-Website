@@ -9,10 +9,8 @@
 
   <div class="{{ card_class }}" id="{{ card.id }}">
 
-    {% if card.top_html or card.identifier or card.title or card.overview %}
+    {% if card.identifier or card.title or card.overview %}
       <div class="header">
-
-        {{ card.top_html|raw }}
 
         {% if card.identifier %}
           <p class="identifier">{{ card.identifier }}</p>

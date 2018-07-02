@@ -4,7 +4,7 @@
   <h1 style="float: left; width: 50%">{{ title }}</h1>
   <button style="float: right" onClick={{ 'window.open("https://www.example.com")' }}>Subscribe for {{ title }} updates</button>
 </div>
-
+{% include 'page-elements/in-page-links.html' %}
 <div class="country-timeline">
   {% include 'page-elements/status-box.html' with {
     'level': 1,
@@ -50,7 +50,7 @@
     {% endif %}
     </div>
     <div class="people card-container cover">
-    {% include 'cards/entities/person-small-with-image.html' with {
+    {% include 'cards/entities/person-medium-with-image.html' with {
       'person': coordinator,
       'supertitle': 'Regional Coordinator',
       'cta_override': {
@@ -62,8 +62,23 @@
 </div>
 </div>
 
-{# Replicate flexible content model #}
-{% include 'flexible-content/statistics.html' with {'content_block': mapped_statistics} %}
+ {#Replicate flexible content model #}
+  {% include 'page-elements/statistics.html' with {'statistics': [
+    {
+      'value': fields.statistics.value.projects_completed,
+      'text': 'Projects Completed'
+    },
+    {
+      'value': fields.statistics.value.projects_in_progress,
+      'text': 'Projects in Progress'
+    },
+    {
+      'value': fields.statistics.value.funds_provided ? '£'~fields.statistics.value.funds_provided|format_number,
+      'text': 'Funds Provided'
+    },
+  ]} %}
+ {#Replicate flexible content model #}
+{% include 'page-elements/statistics.html' with {'statistics': mapped_statistics} %}
 
 {% embed 'layout/supporting-content.html' %}
   {% block content %}

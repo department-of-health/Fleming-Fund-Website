@@ -1,0 +1,9 @@
+{% if region %}
+  {% include 'cards/base.html' with {'card': {
+    'decorated': true,
+    'identifier': 'Region',
+    'inverted_header': true,
+    'title': region.data.post_title,
+    'link_target': region.permalink
+  }} %}
+{% endif %}

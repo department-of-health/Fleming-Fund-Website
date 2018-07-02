@@ -1,0 +1,39 @@
+{{ include('layout/header.html') }}
+
+<h1>{{ title }}</h1>
+
+<div class="news-filters">
+    <span>Show me</span>
+    <select id="country" name="country">
+        {% if selected_country == NULL %}
+            <option value="" disabled selected hidden>Location</option>
+        {% else %}
+            <option value=""></option>
+        {% endif %}
+        {% for country in countries %}
+            <option value="{{ country.post_name }}" {% if selected_country.ID == country.ID %} selected {% endif %} >{{ country.post_title }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<script>
+    function updateLocation() {
+        var url = new URL(document.location);
+        var country = $("#country").val();
+        console.log(country);
+        if (country) {
+            url.searchParams.set("country", country);
+        } else {
+            url.searchParams.delete("country");
+        }
+        document.location = url.toString();
+    }
+
+    $(function() {
+        $("#country").on("change", updateLocation);
+    });
+</script>
+
+{% include 'page-elements/query-results.html' %}
+
+{{ include('layout/footer.html') }}

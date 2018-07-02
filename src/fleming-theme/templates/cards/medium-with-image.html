@@ -1,0 +1,14 @@
+{% if card %}
+  <div class="card with-image image-top">
+
+    <div class="image-container">
+      <img src="{{ card.image_src }}" title="{{ card.image_title | default(card.title) }}"/>
+      {% if card.link_target %}
+        {% include 'cards/common/link-overlay.html' %}
+      {% endif %}
+    </div>
+
+    {% include'cards/base.html' %}
+
+  </div>
+{% endif %}

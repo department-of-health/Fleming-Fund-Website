@@ -22,12 +22,9 @@ function fleming_get_content() {
         "nav" => get_nav_builder()
             ->withMenuRoute('grants', 'country')
             ->withAdditionalBreadcrumb(get_raw_title())
-            ->build()
+            ->build(),
+        "similar_events" => get_related_posts()
     );
-
-    $similar_events = get_posts(array('post_type'=>'events','numberposts'=>3)); //this is placeholder code until we know how similarity will work
-    foreach($similar_events as &$post) {$post = get_post_data_and_fields($post->ID);}
-    $fleming_content["similar_events"] = $similar_events;
 
     return $fleming_content;
 }

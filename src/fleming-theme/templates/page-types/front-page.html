@@ -48,24 +48,24 @@
 
 <hr class="row-divider"/>
 
-<div class="card-container statistics four-max">
-  {% include 'cards/entities/statistic-small.html' with {'statistic': {
+{% include 'page-elements/statistics.html' with {'statistics': [
+  {
     'value': '£'~fields.spend_statistic.value~'m',
     'text': 'Spend statistic'
-  }} %}
-  {% include 'cards/entities/statistic-small.html' with {'statistic': {
+  },
+  {
     'value': fields.grants_given.value,
     'text': 'Grants given'
-  }} %}
-  {% include 'cards/entities/statistic-small.html' with {'statistic': {
+  },
+  {
     'value': fields.performance_indicator.value,
     'text': 'Performance against any KPI'
-  }} %}
-  {% include 'cards/entities/statistic-small.html' with {'statistic': {
+  },
+  {
     'value': fields.another_statistic.value,
     'text': 'Statistical supporting copy'
-  }} %}
-</div>
+  },
+]} %}
 
 {% embed 'layout/supporting-content.html' %}
   {% block content %}

@@ -1,0 +1,9 @@
+{% if aim %}
+  {% include 'cards/base.html' with {'card': {
+    'decorated': true,
+    'identifier': 'Aim',
+    'inverted_header': true,
+    'title': aim.data.post_title,
+    'link_target': aim.permalink
+  }} %}
+{% endif %}

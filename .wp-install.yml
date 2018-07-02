@@ -7,6 +7,7 @@ plugins-to-download:
   - name: disable-comments
   - name: wp-db-backup
   - name: file-manager-advanced
+  - name: yet-another-related-posts-plugin
  
 plugins-to-copy:
   directory: dependencies/plugins

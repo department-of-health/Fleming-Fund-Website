@@ -1,0 +1,28 @@
+{#
+    NOTE: If you are adding a post type to this list, consider also adding it to the list of post types in
+    the search_filter function in functions.php
+#}
+
+{% if post.data.post_type == 'aims' %}
+    {% include('cards/entities/aim-large.html') with { 'aim' : post } %}
+{% elseif post.data.post_type == 'countries' %}
+    {% include('cards/entities/country-large.html') with { 'country' : post } %}
+{% elseif post.data.post_type == 'disciplines' %}
+    {% include('cards/entities/discipline-large.html') with { 'discipline' : post } %}
+{% elseif post.data.post_type == 'events' %}
+    {% include('cards/entities/event-medium.html') with { 'event' : post } %}
+{% elseif post.data.post_type == 'grants' %}
+    {% include('cards/entities/grant-large.html') with { 'grant' : post } %}
+{% elseif post.data.post_type == 'organisations' %}
+    {% include('cards/entities/organisation-medium-with-image.html') with { 'organisation' : post } %}
+{% elseif post.data.post_type == 'people' %}
+    {% include('cards/entities/person-medium-with-image.html') with { 'person' : post } %}
+{% elseif post.data.post_type == 'projects' %}
+    {% include('cards/entities/project-large.html') with { 'project' : post } %}
+{% elseif post.data.post_type == 'publications' %}
+    {% include('cards/entities/publication-large.html') with { 'publication' : post } %}
+{% elseif post.data.post_type == 'regions' %}
+    {% include('cards/entities/region-large.html') with { 'region' : post } %}
+{% elseif post.data.post_type == 'topics' %}
+    {% include('cards/entities/topic-large.html') with { 'topic' : post } %}
+{% endif %}

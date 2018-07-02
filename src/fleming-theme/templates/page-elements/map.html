@@ -3,12 +3,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="width:0;height:0;position:absolute;overflow:hidden;">
   <defs>
     {% for region in map_config.regions %}
-        <pattern id="subtle-hatched-{{ region.colourScheme }}"
-                 x="0" y="0" width="2" height="2"
-                 patternUnits="userSpaceOnUse"
-                 patternTransform="rotate(45)">
-            <path d="M1 0 V 2" stroke="darkgrey" stroke-width="1.5" />
-        </pattern>
+      <pattern id="subtle-hatched-{{ region.colourScheme }}"
+               x="0" y="0" width="2" height="2"
+               patternUnits="userSpaceOnUse"
+               patternTransform="rotate(45)">
+        <path d="M1 0 V 2" stroke="darkgrey" stroke-width="1.5"/>
+      </pattern>
     {% endfor %}
   </defs>
 </svg>
@@ -32,8 +32,9 @@
 <script type="text/javascript">
     //<![CDATA[
     var mapConfig = {{ map_config|json_encode|raw }};
-    var highlightedRegion = mapConfig.currentRegion;
-    var focusedRegion = mapConfig.currentRegion;
+    {% set initialRegionSlug = map_config.regions[map_config.currentRegion].countries is not empty ? map_config.currentRegion : 'all' %}
+    var highlightedRegion = '{{ initialRegionSlug }}';
+    var focusedRegion = '{{ initialRegionSlug }}';
 
     function getCountryFillMap() {
         var fillMap = {};
@@ -145,7 +146,13 @@
 
     function focusMapOn(region) {
         focusedRegion = region;
+        if (mapConfig.regions[region] === undefined || mapConfig.regions[region].countries.length === 0) {
+            focusedRegion = 'all';
+        } else {
+            focusedRegion = region;
+        }
         refocusMap();
+
     }
 
     $(window).resize(function () {

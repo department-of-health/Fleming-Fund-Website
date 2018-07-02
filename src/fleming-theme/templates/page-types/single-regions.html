@@ -1,7 +1,7 @@
 {{ include('layout/header.html') }}
 
 <h1>{{ title }}</h1>
-
+{% include 'page-elements/in-page-links.html' %}
 {% embed 'layout/full-width-container.html' %}
   {% block container %}
     {% include 'page-elements/map.html' with {
@@ -43,39 +43,33 @@
 
 <hr class="row-border"/>
 
-<div class="row">
-  <div class="nine columns">
-    {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
-  </div>
-  <div class="three columns people card-container cover">
-    {% include 'cards/entities/person-small-with-image.html' with {
-      'person': fields.coordinator.value,
-      'supertitle': 'Regional Coordinator',
-      'cta_override': {
-        'title': 'Contact Now',
-        'target': 'mailto:' ~ fields.coordinator.value.fields.email.value
-      }
-    } %}
-  </div>
-</div>
+<aside class="people card-container cover">
+  {% include 'cards/entities/person-medium-with-image.html' with {
+    'person': fields.coordinator.value,
+    'supertitle': 'Regional Coordinator',
+    'cta_override': {
+      'title': 'Contact Now',
+      'target': 'mailto:' ~ fields.coordinator.value.fields.email.value
+    }
+  } %}
+</aside>
 
-<hr class="row-separator"/>
+{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
-{# Replicate flexible content model #}
-  {% include 'flexible-content/statistics.html' with {'content_block': {'values': [
-    {
-      'value': fields.statistics.value.projects_completed,
-      'text': 'Projects Completed'
-    },
-    {
-      'value': fields.statistics.value.projects_in_progress,
-      'text': 'Projects in Progress'
-    },
-    {
-      'value': '£'~fields.statistics.value.funds_provided,
-      'text': 'Funds Provided'
-    },
-  ]}} %}
+{% include 'page-elements/statistics.html' with {'statistics': [
+  {
+    'value': fields.statistics.value.projects_completed,
+    'text': 'Projects Completed'
+  },
+  {
+    'value': fields.statistics.value.projects_in_progress,
+    'text': 'Projects in Progress'
+  },
+  {
+    'value': fields.statistics.value.funds_provided ? '£'~fields.statistics.value.funds_provided|format_number,
+    'text': 'Funds Provided'
+  },
+]} %}
 
   {% embed 'layout/supporting-content.html' %}
     {% block content %}

@@ -12,19 +12,21 @@ function get_map_config(string $currentRegion = 'all') {
     foreach ($countries as &$country) {
         $country = get_post_data_and_fields($country->ID);
         $countryCode = $country['fields']['country_code']['value'];
-        $countryName = $country['data']->post_title;
-        $regionSlug = $country['fields']['region']['value']->post_name;
+        if (!empty($countryCode)) {
+            $countryName = $country['data']->post_title;
+            $regionSlug = $country['fields']['region']['value']->post_name;
 
-        $countryCodesByRegion[$regionSlug][] = $countryCode;
+            $countryCodesByRegion[$regionSlug][] = $countryCode;
 
-        $mapConfig['countries'][$countryCode] = [
-            'name' => $countryName,
-            'region' => $regionSlug,
-            'URL' => $country['permalink'],
-            'isPartner' => $country['fields']['relationship']['value'] !== 'fund'
-        ];
+            $mapConfig['countries'][$countryCode] = [
+                'name' => $countryName,
+                'region' => $regionSlug,
+                'URL' => $country['permalink'],
+                'isPartner' => $country['fields']['relationship']['value'] !== 'fund'
+            ];
 
-        $mapConfig['regions']['all']['countries'][] = $countryCode;
+            $mapConfig['regions']['all']['countries'][] = $countryCode;
+        }
     }
 
     foreach ($countryCodesByRegion as $regionSlug => $countryCodes) {

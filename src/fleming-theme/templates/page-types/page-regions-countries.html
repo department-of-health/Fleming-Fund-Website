@@ -68,24 +68,16 @@
           {% endif %}
 
         </div>
-        <div class="content-block">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo
-            consequat.
-          </p>
-        </div>
-        {% if region.fields.statistics.value.funds_provided %}
+        {% if region.overview %}
           <div class="content-block">
             <p>
-            <span class="funds-provided-to-region">
-              {{ '£'~region.fields.statistics.value.funds_provided }}
-            </span>
-              <br/>
-              awarded to {{ region.data.post_title }}
+              {{ region.overview }}
             </p>
+          </div>
+        {% endif %}
+        {% if region.highlightStatistic %}
+          <div class="content-block statistics card-container cover">
+            {% include 'cards/entities/statistic-small.html' with {'statistic': region.highlightStatistic} %}
           </div>
         {% endif %}
       {% endblock %}
@@ -115,8 +107,9 @@
           refocusMap();
       }
 
+      var currentActiveRegionCardID = 'all';
       function setActiveRegionCard(cardID) {
-          if (focusedRegion !== cardID) {
+          if (currentActiveRegionCardID !== cardID) {
               focusMapOn(cardID);
               $('#region-cards').children('.card').each(function (i, card) {
                   card = $(card);
@@ -125,7 +118,8 @@
                   } else {
                       card.addClass('inactive');
                   }
-              })
+              });
+              currentActiveRegionCardID = cardID;
           }
       }
 
