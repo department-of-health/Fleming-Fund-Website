@@ -10,7 +10,7 @@ nav.global-nav {
     width: 100%;
 
     li {
-      font-size: 21px;
+      font-size: 19px;
       line-height: 1.4em;
       position: relative;
       vertical-align: middle;
@@ -96,7 +96,7 @@ nav.sub-global-nav {
 
   background-color: $sub-global-nav-background-color;
   color: $dark-grey;
-  min-height: 0.4em;
+  min-height: 4px;
 
   li {
     font-size: 16px;
