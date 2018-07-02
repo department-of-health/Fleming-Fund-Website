@@ -92,8 +92,8 @@ function search_filter($query) {
     global $searchable_custom_post_types;
     global $page_size;
     $page_size = 10;
-    $query->set('posts_per_page', $page_size);
     if (!is_admin() && $query->is_search) {
+        $query->set('posts_per_page', $page_size);
         $query->set('post_type', $searchable_custom_post_types);
     }
     return $query;
