@@ -229,6 +229,12 @@
     &.four-max .card {
       @include perRow(2);
     }
+
+    &.small-cards {
+      &.three-max .card {
+        @include perRow(2);
+      }
+    }
   }
 }
 
