@@ -1,10 +1,24 @@
 {{ include('layout/header.html') }}
 
 <div class="row">
-  <h1 style="float: left; width: 50%">{{ title }}</h1>
-  <button style="float: right" onClick={{ 'window.open("https://www.example.com")' }}>Subscribe for {{ title }} updates</button>
+  <div class="eight columns">
+    <h1>{{ title }}</h1>
+  </div>
+  <div class="four columns subscribe-for-updates">
+    <a class="button" href="https://www.example.com" target="_blank">
+      Subscribe for {{ title }} updates
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 0 33 33">
+        <circle cx="3.5" cy="28.5" r="4"/>
+        <path d="M 12 28 H 16 A 12 12 0 0 0 4 16 V 20 A 8  8  0 0 1 12 28"/>
+        <path d="M 20 28 H 24 A 20 20 0 0 0 4 8  V 12 A 16 16 0 0 1 20 28"/>
+        <path d="M 28 28 H 32 A 28 28 0 0 0 4 0  V 4  A 24 24 0 0 1 28 28"/>
+      </svg>
+    </a>
+  </div>
 </div>
+
 {% include 'page-elements/in-page-links.html' %}
+
 <div class="country-timeline">
   {% include 'page-elements/status-box.html' with {
     'level': 1,
@@ -33,23 +47,20 @@
   } %}
 </div>
 
-<hr class="row-divider"/>
-<div class="row">
-  <div class="nine columns">
-    {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
-  </div>
-  <div class="three columns">
-    <div class="card-container cover">
+<aside>
+
+  <div class="card-container cover">
     {% if fields.nap_doc.value %}
-    <div class="card base">
-      <div class="content">
-        <p>{{title}}'s National Action Plan is available here</p>
-        <button class="button" onClick={{ 'window.open("' ~ fields.nap_doc.value.url ~ '")' }}>Download &darr;</button>
+      <div class="card base">
+        <div class="content">
+          <p>{{ title }}'s National Action Plan is available here</p>
+          <button class="button" onClick={{ 'window.open("' ~ fields.nap_doc.value.url ~ '")' }}>Download &darr;
+          </button>
+        </div>
       </div>
-    </div>
     {% endif %}
-    </div>
-    <div class="people card-container cover">
+  </div>
+  <div class="people card-container cover">
     {% include 'cards/entities/person-medium-with-image.html' with {
       'person': coordinator,
       'supertitle': 'Regional Coordinator',
@@ -59,26 +70,9 @@
       }
     } %}
   </div>
-</div>
-</div>
+</aside>
 
- {#Replicate flexible content model #}
-  {% include 'page-elements/statistics.html' with {'statistics': [
-    {
-      'value': fields.statistics.value.projects_completed,
-      'text': 'Projects Completed'
-    },
-    {
-      'value': fields.statistics.value.projects_in_progress,
-      'text': 'Projects in Progress'
-    },
-    {
-      'value': fields.statistics.value.funds_provided ? '£'~fields.statistics.value.funds_provided|format_number,
-      'text': 'Funds Provided'
-    },
-  ]} %}
- {#Replicate flexible content model #}
-{% include 'page-elements/statistics.html' with {'statistics': mapped_statistics} %}
+{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
 {% embed 'layout/supporting-content.html' %}
   {% block content %}
