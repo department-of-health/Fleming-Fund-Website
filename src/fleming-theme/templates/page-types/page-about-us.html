@@ -10,33 +10,4 @@
   </div>
 </div>
 
-{% embed 'layout/supporting-content.html' %}
-  {% block content %}
-
-  <h2>More about Fleming</h2>
-
-  <!--four large cards-->
-  <div class="card-container two-max">
-    {% include 'cards/entities/grant-large.html' with {'grant': {
-      'identifier': 'hello world',
-      'permalink': 'www.example.com',
-      'data': {'post_title': 'test test test'},
-      'fields': {
-        'funds_available': {'value': 10000},
-        'summary': {'value': 'lorem ipsum dolor sit amet'}
-      }
-    }} %}
-    {% include 'cards/base.html' with {'card': {
-      'decorated': true,
-      'colour_scheme': 'base',
-      'inverted_header': true,
-      'title': 'Investment areas',
-      'overview': 'The five main areas the Fleming Fund targets',
-      'link_target': 'investment-areas'
-    }} %}
-  </div>
-
-  {% endblock %}
-{% endembed %}
-
 {{ include('layout/footer.html') }}

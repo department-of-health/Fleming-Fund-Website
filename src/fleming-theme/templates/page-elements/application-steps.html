@@ -5,7 +5,7 @@
         <div class="two columns application-label">
           <p class="application-label-inner"><strong>Step {{ loop.index }}</strong></p>
         </div>
-        <div class="eight columns light-card application-card">
+        <div class="eight columns light-step application-card">
       {% else %}
         <div class="two columns application-label">
           <p class="application-label-inner">
@@ -14,9 +14,9 @@
             </svg>
           </p>
         </div>
-        <div class="eight columns dark-card application-card">
+        <div class="eight columns dark-step application-content">
       {% endif %}
-          <p class="application-step-content"><strong>{{ step.application_step }}</strong></p>
+          <p class="application-content-inner"><strong>{{ step.application_step }}</strong></p>
         </div>
     </div>
   {% endfor %}

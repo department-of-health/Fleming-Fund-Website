@@ -58,7 +58,10 @@
 {% for criterion in fields.criteria.value.criteria %}
   <div class="row">
     <div class="one column">
-      <h2>&#9654</h2>
+      <!--<h2>&#9654</h2>-->
+      <svg>
+        <circle cx="35" cy="35" r="20" stroke="lightgrey" stroke-width="0" fill="lightgrey" />
+      </svg>
     </div>
     <div class="eight columns">
       {% include 'flexible-content/supporting_text_block.html' with {'content_block': criterion} %}
