@@ -32,8 +32,9 @@
 <script type="text/javascript">
     //<![CDATA[
     var mapConfig = {{ map_config|json_encode|raw }};
-    var highlightedRegion = mapConfig.currentRegion;
-    var focusedRegion = mapConfig.currentRegion;
+    {% set initialRegionSlug = map_config.regions[map_config.currentRegion].countries is not empty ? map_config.currentRegion : 'all' %}
+    var highlightedRegion = '{{ initialRegionSlug }}';
+    var focusedRegion = '{{ initialRegionSlug }}';
 
     function getCountryFillMap() {
         var fillMap = {};
@@ -92,7 +93,7 @@
                 }
             },
             focusOn: {
-                regions: mapConfig.regions['all'].countries
+                regions: mapConfig.regions[focusedRegion].countries
             },
             series: {
                 regions: [
@@ -136,19 +137,20 @@
 
     function refocusMap() {
         if (map !== undefined && focusedRegion !== undefined) {
-            var region = focusedRegion;
-            if (mapConfig.regions[region] === undefined) {
-                region = 'all';
-            }
             map.updateSize();
             map.setFocus({
-                regions: mapConfig.regions[region].countries
+                regions: mapConfig.regions[focusedRegion].countries
             });
         }
     }
 
     function focusMapOn(region) {
         focusedRegion = region;
+        if (mapConfig.regions[region] === undefined || mapConfig.regions[region].countries.length === 0) {
+            focusedRegion = 'all';
+        } else {
+            focusedRegion = region;
+        }
         refocusMap();
 
     }

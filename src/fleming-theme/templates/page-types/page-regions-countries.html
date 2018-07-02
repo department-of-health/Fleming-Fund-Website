@@ -107,8 +107,9 @@
           refocusMap();
       }
 
+      var currentActiveRegionCardID = 'all';
       function setActiveRegionCard(cardID) {
-          if (focusedRegion !== cardID) {
+          if (currentActiveRegionCardID !== cardID) {
               focusMapOn(cardID);
               $('#region-cards').children('.card').each(function (i, card) {
                   card = $(card);
@@ -117,7 +118,8 @@
                   } else {
                       card.addClass('inactive');
                   }
-              })
+              });
+              currentActiveRegionCardID = cardID;
           }
       }
 
