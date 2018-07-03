@@ -15,15 +15,20 @@ include 'navigation/index.php';
  */
 
 
-function fleming_get_content() {
-    $query_results = get_query_results();
+function fleming_get_content()
+{
+    $query_result = get_query_results();
     $fleming_content = array(
-        "title" => "Search for '" . $query_results["query"] . "'",
+        "title" => "Search results for '" . $query_result["query"] . "'",
         "css_filename" => get_css_filename(),
         "fields" => get_field_objects(),
-        "query_results" => $query_results,
-        "nav" => get_home_nav()
+        "query_result" => $query_result,
+        "nav" => get_nav_builder()->withAdditionalBreadcrumb('Search for "'.$query_result["query"].'"')->build()
     );
+
+    foreach ($fleming_content['query_result']['posts'] as &$post) {
+        $post = entity_with_post_data_and_fields($post);
+    }
 
     return $fleming_content;
 }
