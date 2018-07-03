@@ -672,6 +672,13 @@
                 {
                     "param": "post_type",
                     "operator": "==",
+                    "value": "projects"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
                     "value": "page"
                 }
             ]

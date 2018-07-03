@@ -2,13 +2,7 @@
 
 <h1>{{ title }}</h1>
 {% include 'page-elements/in-page-links.html' %}
-<p>Description: {{ fields.description.value }}</p>
-
-<p>Budget: {{ fields.budget.value }}</p>
 
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
-
-<p>Under the auspices of: <a
-      href={{ fields.org_relationship.value[0].guid }}>{{ fields.org_relationship.value[0].post_title }}</a></p>
 
 {% include 'layout/footer.html' %}

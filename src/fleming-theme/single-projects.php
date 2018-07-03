@@ -35,9 +35,6 @@ function fleming_get_content() {
         $fleming_content["fields"]["org_relationship"]["value"][0]->guid = htmlspecialchars_decode($fleming_content["fields"]["org_relationship"]["value"][0]->guid);
     }
 
-    $args = array('post_type'=>'organisations');
-    echo get_field_objects($fleming_content["fields"]["org_relationship"]["value"][0]->ID)["address"]["value"];
-
     return $fleming_content;
 }
 
