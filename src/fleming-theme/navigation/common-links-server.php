@@ -30,6 +30,11 @@ trait CommonLinksServer
         return $link;
     }
 
+    function getPublicationsLink()
+    {
+        return $this->getMenuRouteLink('knowledge');
+    }
+
     function getAllPublicationTypeLinks()
     {
         return MenuLinksConfig::configsToLinks(MenuLinksConfig::getAllPublicationTypes());

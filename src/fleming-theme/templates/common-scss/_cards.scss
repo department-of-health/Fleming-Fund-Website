@@ -98,9 +98,10 @@
     font-size: 1em;
   }
 
-  &.wide {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+  &.no-content {
+    .header {
+      flex: 1 0 auto;
+    }
   }
 
   // Map colours

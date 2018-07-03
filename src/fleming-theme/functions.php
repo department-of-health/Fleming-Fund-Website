@@ -13,6 +13,16 @@ function enforce_got_url_rewrite()
 add_filter('got_url_rewrite', 'enforce_got_url_rewrite');
 
 
+function custom_page_num_rewrite(){
+    add_rewrite_rule(
+        '(.*)/page/([0-9]+)/?$',
+        'index.php?pagename=$matches[1]&paged=$matches[2]',
+        'top'
+    );
+}
+add_action( 'init', 'custom_page_num_rewrite' );
+
+
 // Apply transforms to the flexible content
 function process_flexible_content(&$fields, &$content)
 {
@@ -148,10 +158,12 @@ function grant_with_post_data_and_fields($grant) {
 }
 
 function project_with_post_data_and_fields($project) {
-    $grant = grant_with_post_data_and_fields(
-        get_post_data_and_fields($project['fields']['grant']['value']->ID)
-    );
-    $project['colour_scheme'] = $grant['colour_scheme'];
+    if ($project['fields']['grant']['value']) {
+        $grant = grant_with_post_data_and_fields(
+            get_post_data_and_fields($project['fields']['grant']['value']->ID)
+        );
+        $project['colour_scheme'] = $grant['colour_scheme'];
+    }
     $project['identifier'] = 'Project';
 
     return $project;
@@ -185,6 +197,43 @@ function publication_with_post_data_and_fields($publication) {
         $publication['picture_large_url'] = get_primary_image_from_flexible_content($publication['fields']['flexible_content'])['sizes']['large'];
     }
     return $publication;
+}
+
+function country_with_post_data_and_fields($country) {
+    if (isset($country['fields']['flexible_content'])) {
+        $country['overview'] = get_overview_text_from_flexible_content($country['fields']['flexible_content']);
+    }
+    $region = $country['fields']['region']['value'];
+    $country['colour_scheme'] = region_slug_to_colour_scheme_name($region->post_name);
+    return $country;
+}
+
+function region_with_post_data_and_fields($region) {
+    $region['colour_scheme'] = region_slug_to_colour_scheme_name($region['data']->post_name);
+    if (isset($region['fields']['flexible_content'])) {
+        $region['overview'] = get_overview_text_from_flexible_content($region['fields']['flexible_content']);
+    }
+    return $region;
+}
+
+function entity_with_post_data_and_fields($entity) {
+    if ($entity['data']->post_type === 'grants') {
+        return grant_with_post_data_and_fields($entity);
+    } elseif ($entity['data']->post_type === 'countries') {
+        return country_with_post_data_and_fields($entity);
+    } elseif ($entity['data']->post_type === 'regions') {
+        return region_with_post_data_and_fields($entity);
+    } elseif ($entity['data']->post_type === 'organisations') {
+        return organisation_with_post_data_and_fields($entity);
+    } elseif ($entity['data']->post_type === 'people') {
+        return person_with_post_data_and_fields($entity);
+    } elseif ($entity['data']->post_type === 'projects') {
+        return project_with_post_data_and_fields($entity);
+    } elseif ($entity['data']->post_type === 'publications') {
+        return publication_with_post_data_and_fields($entity);
+    } else {
+        return $entity;
+    }
 }
 
 function get_overview_text_from_flexible_content($flexibleContent) {

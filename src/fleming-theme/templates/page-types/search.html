@@ -1,8 +1,14 @@
 {{ include('layout/header.html') }}
 
-<h1>{{ title }} - {{ query_results.summary }}</h1>
+<h1>{{ title }}</h1>
+{% include 'page-elements/in-page-links.html' %}
 
-{% include 'page-elements/query-results.html' %}
+<p>{{ query_result.summary }}</p>
+<div class="card-container three-max">
+  {% for post in query_result.posts %}
+    {% include 'cards/entities/single-post.html' %}
+  {% endfor %}
+</div>
 
 <hr class="row-divider"/>
 
