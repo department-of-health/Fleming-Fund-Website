@@ -14,6 +14,11 @@
     .application-label-inner {
       color: map-get($colourConfig, intense);
     }
+
+    .final-label {
+      stroke: map-get($colourConfig, intense);
+      fill: map-get($colourConfig, intense);
+    }
   }
 }
 

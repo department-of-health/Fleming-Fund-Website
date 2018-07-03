@@ -18,19 +18,17 @@
 ]} %}
 
 <div class="row">
-  <p>Applications Open: {{ fields.open.value }}</p>
-</div>
-<div class="row">
-  <p>RFP Publication Date: {{ fields.rfp_publication_date.value }}</p>
-</div>
-<div class="row">
-  <p>Deadline: {{ fields.deadline.value }}</p>
+  <p class="four columns" style="text-align: center"><strong>Applications Open:</strong> {{ fields.open.value }}</p>
+  <p class="four columns" style="text-align: center"><strong>RFP Publication Date:</strong> {{ fields.rfp_publication_date.value }}</p>
+  <p class="four columns" style="text-align: center"><strong>Deadline:</strong> {{ fields.deadline.value }}</p>
 </div>
 <div>
-  <h4>Other Important Dates:</h4>
-  {% for date in fields.other_important_dates.value %}
-    <p>{{ date.key_event_name }}: {{ date.date }}</p>
-  {% endfor %}
+  {% if fields.other_important_dates.value %}
+    <h4>Other Important Dates:</h4>
+    {% for date in fields.other_important_dates.value %}
+      <p>{{ date.key_event_name }}: {{ date.date }}</p>
+    {% endfor %}
+  {% endif %}
 </div>
 
 <hr class="row-separator"/>
@@ -40,10 +38,15 @@
     {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
   </div>
   <div class="three columns">
+    {% if fields.rfp_doc.value %}
     <button class="button-dark" style="width: 100%" onClick={{ 'window.open("' ~ fields.rfp_doc.value.url ~ '")' }}>
       Download RFP
     </button>
-    <p>Please note the key dates for RFP, including the need to register interest by 12th June 2018.</p>
+    {% else %}
+    <button class="button-dark" style="width: 100%" disabled="disabled"}}>
+      RFP not available
+    </button>
+    {% endif %}
   </div>
 </div>
 
@@ -58,9 +61,8 @@
 {% for criterion in fields.criteria.value.criteria %}
   <div class="row">
     <div class="one column">
-      <!--<h2>&#9654</h2>-->
-      <svg>
-        <circle cx="35" cy="35" r="20" stroke="lightgrey" stroke-width="0" fill="lightgrey" />
+      <svg viewBox="0 0 40 45" style="max-height: 3em">
+        <circle cx="20" cy="25" r="15" stroke="lightgrey" stroke-width="0" fill="lightgrey" />
       </svg>
     </div>
     <div class="eight columns">
