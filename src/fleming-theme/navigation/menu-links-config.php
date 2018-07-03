@@ -55,7 +55,7 @@ class MenuLinksConfig
                 ],
                 'fellowships' => [
                     'title' => 'Fellowships scheme',
-                    'target' => '/fellowships-scheme/',
+                    'target' => '/grant_types/fellowship/',
                 ],
                 'other' => [
                     'title' => 'Other Opportunities',

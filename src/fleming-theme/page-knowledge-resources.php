@@ -21,7 +21,12 @@ function fleming_get_content() {
         'nav' => get_nav_builder()->withMenuRoute('knowledge')->build()
     );
 
-    $query_args = array('post_type' => 'publications');
+    $current_page = get_query_var('paged') ?: 1;
+
+    $query_args = [
+        'post_type' => 'publications',
+        'paged' => $current_page,
+    ];
     $publicationType = get_page_by_path($_GET["type"], 'OBJECT', 'publication_types');
     if ($publicationType != NULL) {
         $query_args["meta_query"] = array(

@@ -4,8 +4,8 @@ include 'navigation/index.php';
 
 $nav = get_home_nav();
 
-$baseUrlForPublications = $nav->getPublicationsLink()->getTarget() . '?type=' . get_post()->post_name;
+$urlForPublicationType = $nav->getPublicationsLink()->getTarget() . '?type=' . get_post()->post_name;
 
-header("Location: $baseUrlForPublications");
+header("Location: $urlForPublicationType");
 
-echo "<a href=\"$baseUrlForPublications\">Click here to redirect</a>";
+echo "<a href=\"$urlForPublicationType\">Click here to redirect</a>";
