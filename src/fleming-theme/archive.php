@@ -17,9 +17,7 @@ include 'navigation/index.php';
 function fleming_get_content() {
     $content = array(
         "title" => post_type_archive_title( '', false ),
-        "query_results" => get_query_results(),
-        "css_filename" => get_css_filename(),
-        "nav" => get_home_nav()
+        "query_results" => get_query_results()
     );
 
     return $content;

@@ -29,7 +29,6 @@ function fleming_get_content()
 
     $query = new WP_Query($query_args);
     $fleming_content = array(
-        "css_filename" => get_css_filename(),
         "title" => get_raw_title(),
         "fields" => get_field_objects(),
         "countries" => get_posts(array('post_type' => 'countries', 'numberposts' => -1)),

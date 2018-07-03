@@ -14,7 +14,7 @@ module.exports = {
         scriptEntry,
     ],
     output: {
-        filename: 'dist/wordpress/wp-content/themes/fleming-theme/script.js',
+        filename: 'dist/wordpress/wp-content/themes/fleming-theme/fleming-[chunkhash].js',
         libraryTarget: 'var',
         library: 'Fleming',
     },
