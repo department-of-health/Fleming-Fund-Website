@@ -1,7 +1,7 @@
 <?php
 
-include __DIR__ . '/php/get-css-filename.php';
-include 'navigation/index.php';
+require_once __DIR__ . '/php/get-css-filename.php';
+require_once 'navigation/index.php';
 
 /**
  * NOTE:

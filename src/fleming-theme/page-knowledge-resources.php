@@ -1,8 +1,8 @@
 <?php
 
-include __DIR__ . '/php/get-css-filename.php';
-include 'query-utilities.php';
-include 'navigation/index.php';
+require_once __DIR__ . '/php/get-css-filename.php';
+require_once 'query-utilities.php';
+require_once 'navigation/index.php';
 
 /**
  * NOTE:
