@@ -4,7 +4,9 @@
   "description": "Fleming Fund website",
   "private": true,
   "dependencies": {
-    "css-loader": "^0.28.11"
+    "babel-loader": "^7.1.4",
+    "css-loader": "^0.28.11",
+    "uglifyjs-webpack-plugin": "^1.2.7"
   },
   "devDependencies": {
     "aws-sdk": "^2.235.1",

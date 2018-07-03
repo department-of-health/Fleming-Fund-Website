@@ -6,17 +6,31 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+const scriptEntry = path.join(__dirname, 'src/fleming-theme/templates/fleming.js');
 
 module.exports = {
-    entry: [ path.join(__dirname, 'src/fleming-theme/templates/fleming.scss') ],
+    entry: [
+        path.join(__dirname, 'src/fleming-theme/templates/fleming.scss'),
+        scriptEntry,
+    ],
     output: {
-        filename: 'dist/temp/bundle.js'
+        filename: 'dist/wordpress/wp-content/themes/fleming-theme/script.js',
+        libraryTarget: 'var',
+        library: 'Fleming',
     },
     module: {
         rules: [
             { // sass / scss loader for webpack
                 test: /\.(sass|scss)$/,
                 loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+            },
+            { // js loader for webpack
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015']
+                }
             }
         ]
     },
@@ -30,19 +44,30 @@ module.exports = {
             allChunks: true,
         }),
         new CopyWebpackPlugin([
-            {
-                from: path.join(__dirname, "src/fleming-theme"),
-                to: path.join(__dirname, "./dist/wordpress/wp-content/themes/fleming-theme"),
-                ignore: [ '*.scss' ] 
-            }
-        ],
-        { copyUnmodified: true }),
+                {
+                    from: path.join(__dirname, "src/fleming-theme"),
+                    to: path.join(__dirname, "./dist/wordpress/wp-content/themes/fleming-theme"),
+                    ignore: [ '*.scss', '*.js' ]
+                }
+            ],
+            { copyUnmodified: true }),
+        new CopyWebpackPlugin([
+                {
+                    from: path.join(__dirname, "src/fleming-theme/static"),
+                    to: path.join(__dirname, "./dist/wordpress/wp-content/themes/fleming-theme/static"),
+                }
+            ],
+            { copyUnmodified: true }),
         new CopyWebpackPlugin([
             {
                 from: path.join(__dirname, "src/wordpress"),
                 to: path.join(__dirname, "./dist/wordpress/")
             }
         ],
-        { copyUnmodified: true })
+        { copyUnmodified: true }),
+        // new UglifyJsPlugin({
+        //     include: /\.js$/,
+        //     minimize: true
+        // }),
     ],
 }
