@@ -8,7 +8,7 @@
   {% set numStatistics = statistics|statistics_only_with_value|length %}
   {% if numStatistics > 0 %}
     {% set cardLayoutClass = (numStatistics > 1 and (numStatistics - 1) is divisible by (3)) ? 'four-max' : 'three-max' %}
-    <div class="card-container statistics small-cards {{ cardLayoutClass }}">
+    <div class="card-container statistics {{ cardLayoutClass }}">
       {% for statistic in statistics|statistics_only_with_value %}
         {% include 'cards/entities/statistic-small.html' %}
       {% endfor %}
