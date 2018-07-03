@@ -65,9 +65,5 @@ module.exports = {
             }
         ],
         { copyUnmodified: true }),
-        // new UglifyJsPlugin({
-        //     include: /\.js$/,
-        //     minimize: true
-        // }),
     ],
 }
