@@ -1,6 +1,9 @@
-<p class="quote">
-    {{ content_block.quote_inner }}
-</p>
+<div class="quote">
+    <p>{{ content_block.quote_inner }}</p>
+    {% if content_block.quotee_name %}
+    <p class="quotee-name">{{ content_block.quotee_name }}</p>
+    {% endif %}
+</div>
 
 {% if content_block.quotee_image %}
     <img src="{{ content_block.quotee_image.url }}" height="200" />

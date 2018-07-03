@@ -181,6 +181,25 @@
                                 "max_height": "",
                                 "max_size": "",
                                 "mime_types": ""
+                            },
+                            {
+                                "key": "field_5b3b8a08cad0e",
+                                "label": "Quotee name",
+                                "name": "quotee_name",
+                                "type": "text",
+                                "instructions": "Name and relevant titles or information about the quotee",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
                             }
                         ],
                         "min": "",
