@@ -1,5 +1,8 @@
 <?php
 
+include __DIR__ . '/php/get-css-filename.php';
+include 'navigation/index.php';
+
 /**
  * NOTE:
  * 
@@ -14,7 +17,8 @@
 function fleming_get_content() {
     $fleming_content = array(
         "title" => get_raw_title(),
-        "fields" => get_field_objects()
+        "fields" => get_field_objects(),
+        "nav" => get_nav_builder()->withAdditionalBreadcrumb('Not Found')->build()
     );
 
     return $fleming_content;
