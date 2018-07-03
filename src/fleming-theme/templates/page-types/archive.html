@@ -2,7 +2,11 @@
 
 <h1>{{ title }} - {{ query_results.summary }}</h1>
 
-{% include 'page-elements/query-results.html' %}
+<div class="card-container three-max">
+  {% for post in query_results.posts %}
+    {% include 'cards/entities/single-post.html' %}
+  {% endfor %}
+</div>
 
 <hr class="row-divider"/>
 

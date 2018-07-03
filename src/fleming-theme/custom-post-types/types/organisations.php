@@ -8,7 +8,7 @@ register_post_type('organisations', array(
     'description'           => '',
     'exclude_from_search'   => false,
     'public'                => true,
-    'has_archive'           => true,
+    'has_archive'           => false,
     'publicly_queryable'    => true,
     'show_in_nav_menus'     => false,
     'show_ui'               => true,

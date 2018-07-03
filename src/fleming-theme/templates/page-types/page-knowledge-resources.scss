@@ -1,0 +1,27 @@
+.publications-filter {
+  margin: 1em 0;
+  position: relative;
+  top: 1em;
+
+  .show-me {
+    color: $turquoise;
+    padding-right: 0.5em;
+  }
+
+  ul {
+    display: inline-block;
+    @include pipe_horizontal_ul;
+
+    li {
+      font-size: 19px;
+
+      &:before {
+        color: $turquoise;
+      }
+
+      &.active {
+        color: $turquoise;
+      }
+    }
+  }
+}

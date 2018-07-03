@@ -1,15 +1,15 @@
 {{ include('layout/header.html') }}
 
 <h1>{{ title }}</h1>
+{% include 'page-elements/in-page-links.html' %}
 
+{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+
+<p>{{ query_result.summary }}</p>
 <div class="news-filters">
     <span>Show me</span>
     <select id="country" name="country">
-        {% if selected_country == NULL %}
-            <option value="" disabled selected hidden>Location</option>
-        {% else %}
-            <option value=""></option>
-        {% endif %}
+        <option value="" {% if selected_country.ID == NULL %} selected {% endif %}>All countries</option>
         {% for country in countries %}
             <option value="{{ country.post_name }}" {% if selected_country.ID == country.ID %} selected {% endif %} >{{ country.post_title }}</option>
         {% endfor %}
@@ -20,7 +20,6 @@
     function updateLocation() {
         var url = new URL(document.location);
         var country = $("#country").val();
-        console.log(country);
         if (country) {
             url.searchParams.set("country", country);
         } else {
@@ -34,6 +33,12 @@
     });
 </script>
 
-{% include 'page-elements/query-results.html' %}
+<div class="card-container two-max">
+  {% for event in query_result.posts %}
+    {% include 'cards/entities/event-medium.html' %}
+  {% endfor %}
+</div>
+
+{% include 'page-elements/pagination-links.html' %}
 
 {{ include('layout/footer.html') }}

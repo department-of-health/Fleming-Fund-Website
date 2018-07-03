@@ -16,7 +16,18 @@ require_once 'query-utilities.php';
 
 function fleming_get_content()
 {
-    $query_args = array('post_type' => 'events');
+    $fleming_content = array(
+        "title" => get_raw_title(),
+        "fields" => get_field_objects(),
+        "nav" => get_nav_builder()->withMenuRoute('news')->build(),
+    );
+
+    $current_page = get_query_var('paged') ?: 1;
+
+    $query_args = [
+        'post_type' => 'events',
+        'paged' => $current_page,
+    ];
     $country = get_page_by_path($_GET["country"], 'OBJECT', 'countries');
     if ($country != NULL) {
         $query_args["meta_query"] = array(
@@ -28,14 +39,12 @@ function fleming_get_content()
     }
 
     $query = new WP_Query($query_args);
-    $fleming_content = array(
-        "title" => get_raw_title(),
-        "fields" => get_field_objects(),
-        "countries" => get_posts(array('post_type' => 'countries', 'numberposts' => -1)),
-        "nav" => get_nav_builder()->withMenuRoute('news')->build(),
-        "query_results" => get_query_results($query),
-        "selected_country" => $country
-    );
+    $query_result = get_query_results($query);
+
+    $fleming_content['query_result'] = $query_result;
+    $fleming_content['countries'] = get_posts(array('post_type' => 'countries', 'numberposts' => -1));
+    $fleming_content['selected_country'] = $country;
+
 
     return $fleming_content;
 }

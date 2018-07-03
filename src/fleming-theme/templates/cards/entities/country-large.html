@@ -1,9 +1,11 @@
 {% if country %}
   {% include 'cards/base.html' with {'card': {
     'decorated': true,
+    'colour_scheme': country.colour_scheme ?? 'base',
     'identifier': 'Country',
     'inverted_header': true,
     'title': country.data.post_title,
+    'content': country.overview,
     'link_target': country.permalink
   }} %}
 {% endif %}

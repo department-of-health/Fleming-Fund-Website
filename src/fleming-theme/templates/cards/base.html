@@ -1,4 +1,6 @@
 {% if card %}
+  {% set has_content = card.content or cta_override %}
+
   {% set card_class = 'card '~(card.colour_scheme ?? 'base') %}
   {% if card.decorated %}
     {% set card_class = card_class~' decorated' %}
@@ -6,53 +8,58 @@
   {% if card.inverted_header %}
     {% set card_class = card_class~' inverted-header' %}
   {% endif %}
+  {% if not has_content %}
+    {% set card_class = card_class~' no-content' %}
+  {% endif %}
 
-  <div class="{{ card_class }}" id="{{ card.id }}">
+<div class="{{ card_class }}" id="{{ card.id }}">
 
-    {% if card.identifier or card.title or card.overview %}
-      <div class="header">
+  {% if card.identifier or card.title or card.overview %}
+    <div class="header">
 
-        {% if card.identifier %}
-          <p class="identifier">{{ card.identifier }}</p>
-        {% endif %}
-
-        {% if card.title %}
-          <{{ card.title_is_paragraph ? 'p' : 'h3' }}>
-            {% if card.link_target %}
-              <a href="{{ card.link_target }}">{{ card.title }}</a>
-            {% else %}
-              {{ card.title }}
-            {% endif %}
-          </{{ card.title_is_paragraph ? 'p' : 'h3' }}>
-        {% endif %}
-
-        {% if card.overview %}
-          <p>{{ card.overview|nl2br }}</p>
-        {% endif %}
-
-      </div>
+    {% if card.identifier %}
+      <p class="identifier">{{ card.identifier }}</p>
     {% endif %}
-    {% if card.content or cta_override %}
-      <div class="content">
 
-        {% block content %}
+    {% if card.title %}
+      <{{ card.title_is_paragraph ? 'p' : 'h3' }}>
+      {% if card.link_target %}
+        <a href="{{ card.link_target }}">{{ card.title }}</a>
+      {% else %}
+        {{ card.title }}
+      {% endif %}
+      </{{ card.title_is_paragraph ? 'p' : 'h3' }}>
+    {% endif %}
 
-          <p>{{ card.content }}</p>
-          {% if cta_override %}
-            <a class="button {{ card.cta_not_hollow ?? 'hollow' }}" href="{{ cta_override.target }}">{{ cta_override.title }}</a>
-          {% elseif card.link_target %}
-            {% if card.cta_title %}
-              <a class="button {{ card.cta_not_hollow ?? 'hollow' }}" href="{{ card.link_target }}">{{ card.cta_title }}</a>
-            {% endif %}
+    {% if card.overview %}
+      <p>{{ card.overview|nl2br }}</p>
+    {% endif %}
+
+    </div>
+  {% endif %}
+  {% if has_content %}
+    <div class="content">
+
+      {% block content %}
+
+        <p>{{ card.content }}</p>
+        {% if cta_override %}
+          <a class="button {{ card.cta_not_hollow ?? 'hollow' }}"
+             href="{{ cta_override.target }}">{{ cta_override.title }}</a>
+        {% elseif card.link_target %}
+          {% if card.cta_title %}
+            <a class="button {{ card.cta_not_hollow ?? 'hollow' }}"
+               href="{{ card.link_target }}">{{ card.cta_title }}</a>
           {% endif %}
+        {% endif %}
 
-        {% endblock %}
+      {% endblock %}
 
-      </div>
-    {% endif %}
+    </div>
+  {% endif %}
 
-    {% if card.link_target and not cta_override and not card.no_link_overlay %}
-      {% include 'cards/common/link-overlay.html' %}
-    {% endif %}
+  {% if card.link_target and not cta_override and not card.no_link_overlay %}
+    {% include 'cards/common/link-overlay.html' %}
+  {% endif %}
   </div>
 {% endif %}

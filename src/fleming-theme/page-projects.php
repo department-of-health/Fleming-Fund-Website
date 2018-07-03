@@ -6,10 +6,10 @@ require_once 'navigation/index.php';
 
 /**
  * NOTE:
- * 
+ *
  * This is a CONTROLLER file.
  * It generates an object containing content for the page.
- * 
+ *
  * You might also be interested in the VIEW.
  * VIEWs are located in the ./templates folder and have a .html file extension
  */
@@ -21,11 +21,22 @@ function fleming_get_content() {
         'nav' => get_nav_builder()->withMenuRoute('regions', 'projects')->build()
     );
 
-    $allProjects = get_posts(array('post_type'=>'projects','numberposts'=>-1));
-    foreach($allProjects as &$project) {
-        $project = project_with_post_data_and_fields(get_post_data_and_fields($project->ID));
+    $current_page = get_query_var('paged') ?: 1;
+
+    // qq query ordering, filters, etc go here:
+    $query_args = [
+        'post_type' => 'projects',
+        'paged' => $current_page,
+    ];
+    $query = new WP_Query($query_args);
+    $query_result = get_query_results($query);
+
+    foreach($query_result['posts'] as &$project) {
+        $project = project_with_post_data_and_fields($project);
+        $project['identifier'] = null; // qq should be a parameter in the above
     }
-    $fleming_content["allProjects"] = $allProjects;
+
+    $fleming_content['query_result'] = $query_result;
 
     return $fleming_content;
 }
