@@ -52,27 +52,6 @@
 
 <hr class="row-separator"/>
 
-<h3 class="row-title">Eligibility Criteria</h3>
-<div class="row">
-  <div class="nine columns">
-    {% include 'flexible-content/text_block.html' with {'content_block': fields.criteria.value} %}
-  </div>
-</div>
-{% for criterion in fields.criteria.value.criteria %}
-  <div class="row">
-    <div class="one column">
-      <svg viewBox="0 0 40 45" style="max-height: 3em">
-        <circle cx="20" cy="25" r="15" stroke="lightgrey" stroke-width="0" fill="lightgrey" />
-      </svg>
-    </div>
-    <div class="eight columns">
-      {% include 'flexible-content/supporting_text_block.html' with {'content_block': criterion} %}
-    </div>
-  </div>
-{% endfor %}
-
-<hr class="row-separator"/>
-
 <h3 class="row-title">Application Process</h3>
 {% include 'page-elements/application-steps.html' %}
 
