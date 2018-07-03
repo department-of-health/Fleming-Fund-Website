@@ -48,16 +48,6 @@ function fleming_get_content() {
     $fleming_content['publication_types'] = get_posts(array('post_type' => 'publication_types', 'numberposts' => -1));
     $fleming_content['selected_publication_type'] = $publicationType;
 
-
-
-
-
-//    $allPublications = get_posts(array('post_type'=>'publications','numberposts'=>-1));
-//    foreach($allPublications as &$publication) {
-//        $publication = get_post_data_and_fields($publication->ID);
-//    }
-//    $fleming_content["allPublications"] = $allPublications;
-
     return $fleming_content;
 }
 

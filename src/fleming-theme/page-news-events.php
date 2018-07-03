@@ -22,7 +22,12 @@ function fleming_get_content()
         "nav" => get_nav_builder()->withMenuRoute('news')->build(),
     );
 
-    $query_args = array('post_type' => 'events');
+    $current_page = get_query_var('paged') ?: 1;
+
+    $query_args = [
+        'post_type' => 'events',
+        'paged' => $current_page,
+    ];
     $country = get_page_by_path($_GET["country"], 'OBJECT', 'countries');
     if ($country != NULL) {
         $query_args["meta_query"] = array(
