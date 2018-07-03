@@ -1,7 +1,7 @@
 {% extends 'layout/full-width-container.html' %}
 
   {% block container %}
-    <div class="supporting-content">
+    <div class="supporting-content{{ tight ? ' tight' }}">
       <div class="container">
         {% block content %}{% endblock %}
       </div>

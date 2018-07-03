@@ -1,44 +1,41 @@
 {{ include('layout/header.html') }}
 
 <h1>{{ title }}</h1>
-{% include 'page-elements/in-page-links.html' %}
+{% include 'page-elements/in-page-links.html' with {'clean_if_no_links': true} %}
 
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
-<p>{{ query_result.summary }}</p>
-<div class="knowledge-filters">
-  <span>Show me</span>
-  <select id="type" name="type">
-    <option value="" {% if selected_publication_type.ID == NULL %} selected {% endif %}>All types</option>
+<div class="publications-filter">
+  <span class="show-me">Show me:</span>
+  <ul>
+    {% include 'nav/link-item-text.html' with {'link': {
+      'title': 'All',
+      'target': nav.publicationsLink.target,
+      'active': selected_publication_type.ID == null
+    }} %}
     {% for publication_type in publication_types %}
-      <option value="{{ publication_type.post_name }}" {% if selected_publication_type.ID == publication_type.ID %} selected {% endif %} >{{ publication_type.post_title }}</option>
+      {% set type_url = nav.publicationsLink.target ~ '?type=' ~ publication_type.post_name %}
+      {% include 'nav/link-item-text.html' with {'link': {
+        'title': publication_type.post_title,
+        'target': type_url,
+        'active': selected_publication_type.ID == publication_type.ID
+      }} %}
     {% endfor %}
-  </select>
+  </ul>
 </div>
 
-<script>
-    function updateType() {
-        var url = new URL(document.location);
-        var type = $("#type").val();
-        if (type) {
-            url.searchParams.set("type", type);
-        } else {
-            url.searchParams.delete("type");
-        }
-        document.location = url.toString();
-    }
+{% embed 'layout/supporting-content.html' with {'tight': true} %}
+  {% block content %}
 
-    $(function() {
-        $("#type").on("change", updateType);
-    });
-</script>
+    <div class="card-container two-max">
+      {% for publication in query_result.posts %}
+        {% include 'cards/entities/publication-large.html' %}
+      {% endfor %}
+    </div>
 
-<div class="card-container two-max">
-  {% for publication in query_result.posts %}
-    {% include 'cards/entities/publication-large.html' %}
-  {% endfor %}
-</div>
+    {% include 'page-elements/pagination-links.html' %}
 
-{% include 'page-elements/pagination-links.html' %}
+  {% endblock %}
+{% endembed %}
 
 {{ include('layout/footer.html') }}
