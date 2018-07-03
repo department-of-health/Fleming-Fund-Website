@@ -21,11 +21,21 @@ function fleming_get_content() {
         'nav' => get_nav_builder()->withMenuRoute('grants')->build()
     );
 
-    $allGrants = get_posts(array('post_type'=>'grants','numberposts'=>-1));
-    foreach($allGrants as &$grant) {
-        $grant = grant_with_post_data_and_fields(get_post_data_and_fields($grant->ID));
+    $current_page = get_query_var('paged') ?: 1;
+
+    // qq query ordering, filters, etc go here:
+    $query_args = [
+        'post_type' => 'grants',
+        'paged' => $current_page,
+    ];
+    $query = new WP_Query($query_args);
+    $query_result = get_query_results($query);
+
+    foreach($query_result['posts'] as &$grant) {
+        $grant = grant_with_post_data_and_fields($grant);
     }
-    $fleming_content["allGrants"] = $allGrants;
+
+    $fleming_content['query_result'] = $query_result;
 
     return $fleming_content;
 }

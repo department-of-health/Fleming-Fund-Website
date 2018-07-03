@@ -3,12 +3,3 @@
     {% include 'cards/entities/single-post.html' with { 'post': post } %}
   {% endfor %}
 </div>
-
-<div class="paginationLinks">
-  {% if query_results.next_link %}
-    <div class="alignRight"><a href="{{ query_results.next_link }}">Next page</a></div>
-  {% endif %}
-  {% if query_results.previous_link %}
-    <div class="alignLeft"><a href="{{ query_results.previous_link }}">Previous page</a></div>
-  {% endif %}
-</div>

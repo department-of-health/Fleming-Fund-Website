@@ -1,11 +1,17 @@
 {{ include('layout/header.html') }}
 
 <h1>{{ title }}</h1>
+{% include 'page-elements/in-page-links.html' %}
 
+{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+
+<p>{{ query_result.summary }}</p>
 <div class="card-container two-max">
-  {% for grant in allGrants %}
+  {% for grant in query_result.posts %}
     {% include 'cards/entities/grant-large.html' %}
   {% endfor %}
 </div>
+
+{% include 'page-elements/pagination-links.html' %}
 
 {{ include('layout/footer.html') }}

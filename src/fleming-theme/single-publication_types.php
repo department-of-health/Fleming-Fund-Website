@@ -1,40 +1,11 @@
 <?php
 
-include __DIR__ . '/php/get-css-filename.php';
-include 'query-utilities.php';
 include 'navigation/index.php';
 
-/**
- * NOTE:
- * 
- * This is a CONTROLLER file.
- * It generates an object containing content for the page.
- * 
- * You might also be interested in the VIEW.
- * VIEWs are located in the ./templates folder and have a .html file extension
- */
+$nav = get_home_nav();
 
+$baseUrlForPublications = $nav->getPublicationsLink()->getTarget() . '?type=' . get_post()->post_name;
 
-function fleming_get_content() {
-    $fleming_content = array(
-        "css_filename" => get_css_filename(),
-        "title" => get_raw_title(),
-        "fields" => get_field_objects(),
-        "nav" => get_nav_builder()
-            ->withMenuRoute('knowledge')
-            ->withAdditionalBreadcrumb(get_raw_title())
-            ->build()
-    );
+header("Location: $baseUrlForPublications");
 
-    $allPublications = get_referring_posts(get_post()->ID, 'publications', 'type');
-    foreach($allPublications as &$publication) {
-        $publication = get_post_data_and_fields($publication->ID);
-    }
-    $fleming_content["allPublications"] = $allPublications;
-
-    return $fleming_content;
-}
-
-
-$template_name = pathinfo(__FILE__)['filename'];
-include __DIR__ . '/use-templates.php';
+echo "<a href=\"$baseUrlForPublications\">Click here to redirect</a>";

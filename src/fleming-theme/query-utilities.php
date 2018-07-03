@@ -70,6 +70,7 @@ function get_query_results($query = NULL) {
         $query->the_post();
         $posts[] = get_current_post_data_and_fields();
     }
+    wp_reset_postdata();
 
     $total_results_summary = strval($query->found_posts) . " result" . ($query->found_posts == 1 ? "" : "s");
     $pagination_summary = $max_page > 1 ? "" . strval(($page_number - 1)*$page_size + 1) . "-" . strval(min($page_number*$page_size, $query->found_posts)) . " of " : "";

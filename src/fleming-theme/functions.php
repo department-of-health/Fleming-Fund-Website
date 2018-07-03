@@ -13,6 +13,16 @@ function enforce_got_url_rewrite()
 add_filter('got_url_rewrite', 'enforce_got_url_rewrite');
 
 
+function custom_page_num_rewrite(){
+    add_rewrite_rule(
+        '(.*)/page/([0-9]+)/?$',
+        'index.php?pagename=$matches[1]&paged=$matches[2]',
+        'top'
+    );
+}
+add_action( 'init', 'custom_page_num_rewrite' );
+
+
 // Apply transforms to the flexible content
 function process_flexible_content(&$fields, &$content)
 {
@@ -148,10 +158,12 @@ function grant_with_post_data_and_fields($grant) {
 }
 
 function project_with_post_data_and_fields($project) {
-    $grant = grant_with_post_data_and_fields(
-        get_post_data_and_fields($project['fields']['grant']['value']->ID)
-    );
-    $project['colour_scheme'] = $grant['colour_scheme'];
+    if ($project['fields']['grant']['value']) {
+        $grant = grant_with_post_data_and_fields(
+            get_post_data_and_fields($project['fields']['grant']['value']->ID)
+        );
+        $project['colour_scheme'] = $grant['colour_scheme'];
+    }
     $project['identifier'] = 'Project';
 
     return $project;
