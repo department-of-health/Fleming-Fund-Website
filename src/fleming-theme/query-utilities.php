@@ -78,6 +78,7 @@ function get_query_results($query = NULL) {
     return array(
         "posts" => $posts,
         "query" => get_search_query(),
+        "max_page" => $max_page,
         "next_link" => !is_single() && intval($page_number) < $max_page ? next_posts($max_page, false) : null,
         "previous_link" => !is_single() && $page_number > 1 ? previous_posts(false) : null,
         "summary" => $pagination_summary . $total_results_summary

@@ -5,13 +5,22 @@
 
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
-<p>{{ query_result.summary }}</p>
-<div class="card-container two-max">
-  {% for project in query_result.posts %}
-    {% include 'cards/entities/project-large.html' %}
-  {% endfor %}
-</div>
+{% embed 'layout/supporting-content.html' with {'tight': true} %}
+  {% block content %}
 
-{% include 'page-elements/pagination-links.html' %}
+    <div class="card-container two-max">
+      {% for project in query_result.posts %}
+        {% include 'cards/entities/project-large.html' %}
+      {% endfor %}
+    </div>
+
+    {% include 'page-elements/pagination-links.html' %}
+
+  {% endblock %}
+{% endembed %}
+
+<script type="text/javascript">
+    Fleming.projects.init({{ query_result.max_page }});
+</script>
 
 {{ include('layout/footer.html') }}

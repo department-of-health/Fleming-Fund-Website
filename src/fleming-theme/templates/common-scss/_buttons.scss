@@ -37,6 +37,14 @@ button, .button {
       height: ($hit-box-height - 2*$padding);
     }
   }
+
+  &.load-more {
+    background: $turquoise;
+    border-color: $turquoise;
+    display: block;
+    width: 8em;
+    margin: 0 auto;
+  }
 }
 
 @each $configName, $colourConfig in $colourConfigs {

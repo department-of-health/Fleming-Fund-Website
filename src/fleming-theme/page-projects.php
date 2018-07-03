@@ -18,7 +18,9 @@ function fleming_get_content() {
     $fleming_content = array(
         "title" => get_raw_title(),
         "fields" => get_field_objects(),
-        'nav' => get_nav_builder()->withMenuRoute('regions', 'projects')->build()
+        'nav' => get_nav_builder()
+            ->withMenuRoute('regions', 'projects')
+            ->build()
     );
 
     $current_page = get_query_var('paged') ?: 1;
@@ -43,4 +45,7 @@ function fleming_get_content() {
 
 
 $template_name = pathinfo(__FILE__)['filename'];
+if (isset($_GET['ajaxLoadPage'])) {
+    $template_name = 'ajax-'.$template_name;
+}
 include __DIR__ . '/use-templates.php';
