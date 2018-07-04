@@ -99,8 +99,9 @@ trait CommonLinksServer
         $homeLink->setTarget('https://twitter.com/FlemingFund');
         $homeLink->setExternal(true);
         return $homeLink;
-
     }
+
+    // Can't find Facebook, LinkedIn or YouTube yet!
 
     private function getMenuRouteLink(string ...$menuRouteKeys)
     {
