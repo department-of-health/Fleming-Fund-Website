@@ -216,21 +216,30 @@ function region_with_post_data_and_fields($region) {
     return $region;
 }
 
+function page_with_post_data_and_fields($page) {
+    if (isset($page['fields']['flexible_content'])) {
+        $page['overview'] = get_overview_text_from_flexible_content($page['fields']['flexible_content']);
+    }
+    return $page;
+}
+
 function entity_with_post_data_and_fields($entity) {
-    if ($entity['data']->post_type === 'grants') {
-        return grant_with_post_data_and_fields($entity);
-    } elseif ($entity['data']->post_type === 'countries') {
+    if ($entity['data']->post_type === 'countries') {
         return country_with_post_data_and_fields($entity);
-    } elseif ($entity['data']->post_type === 'regions') {
-        return region_with_post_data_and_fields($entity);
+    } elseif ($entity['data']->post_type === 'grants') {
+        return grant_with_post_data_and_fields($entity);
     } elseif ($entity['data']->post_type === 'organisations') {
         return organisation_with_post_data_and_fields($entity);
+    } elseif ($entity['data']->post_type === 'page') {
+        return page_with_post_data_and_fields($entity);
     } elseif ($entity['data']->post_type === 'people') {
         return person_with_post_data_and_fields($entity);
     } elseif ($entity['data']->post_type === 'projects') {
         return project_with_post_data_and_fields($entity);
     } elseif ($entity['data']->post_type === 'publications') {
         return publication_with_post_data_and_fields($entity);
+    } elseif ($entity['data']->post_type === 'regions') {
+        return region_with_post_data_and_fields($entity);
     } else {
         return $entity;
     }

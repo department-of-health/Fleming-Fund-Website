@@ -7,6 +7,7 @@ $searchable_custom_post_types = [
     'events',
     'grants',
     'organisations',
+    'page',
     'people',
     'projects',
     'publications',
@@ -47,7 +48,6 @@ function init_acf_fields() {
 
     $allPageAcfFieldDefinitionFiles = [
         __DIR__ . '/types/page-investment-areas.json',
-        __DIR__ . '/types/page-partners.json',
         __DIR__ . '/types/page-regions-countries.json',
         __DIR__ . '/types/page-technical-advisory-group.json',
     ];

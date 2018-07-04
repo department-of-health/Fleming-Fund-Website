@@ -23,7 +23,9 @@ function fleming_get_content()
         "css_filename" => get_css_filename(),
         "fields" => get_field_objects(),
         "query_result" => $query_result,
-        "nav" => get_nav_builder()->withAdditionalBreadcrumb('Search for "'.$query_result["query"].'"')->build()
+        "nav" => get_nav_builder()
+            ->withAdditionalBreadcrumb('Search for "'.$query_result["query"].'"')
+            ->build()
     );
 
     foreach ($fleming_content['query_result']['posts'] as &$post) {
