@@ -154,6 +154,10 @@ function grant_with_post_data_and_fields($grant) {
     $grant['status'] = 'Deadline ' . $grant['fields']['deadline']['value'];
     // qq render date in locale-specific form?
 
+    if (isset($grant['fields']['flexible_content'])) {
+        $grant['overview'] = get_overview_text_from_flexible_content($grant['fields']['flexible_content']);
+    }
+
     return $grant;
 }
 
@@ -361,6 +365,18 @@ function get_raw_title(...$args)
     return get_post_field('post_title', ...$args);
 }
 
+
+////////////////////////////////////////////////////////////////
+////////                   RSS FEEDS                    ////////
+////////////////////////////////////////////////////////////////
+
+function country_rss_feed(){
+    get_template_part('rss', 'country');
+}
+function add_rss_feeds(){
+    add_feed('country', 'country_rss_feed');
+}
+add_action('init', 'add_rss_feeds');
 
 ////////////////////////////////////////////////////////////////
 ////////   CUSTOM POST TYPES + ADVANCED CUSTOM FIELDS   ////////

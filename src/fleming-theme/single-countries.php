@@ -32,6 +32,8 @@ function fleming_get_content()
         "nav" => get_nav_model(),
     );
 
+    $this_country = get_current_post_data_and_fields();
+
     process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
 
     $fleming_content['colour_scheme'] = region_slug_to_colour_scheme_name($fleming_content["fields"]["region"]["value"]->post_name);
@@ -62,6 +64,8 @@ function fleming_get_content()
     }
     // qq - sort? filter?
     $fleming_content["projects"] = array_slice($allProjects, 0, 2);
+
+    $fleming_content['rss_link_target'] = '/feed/country/?channel=' . $this_country['data']->post_name;
 
     return $fleming_content;
 }

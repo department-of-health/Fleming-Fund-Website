@@ -5,15 +5,11 @@
 {% include 'layout/link-collection.html' with {'links': [
   {
     'title': 'Overview',
-    'target': '#'
-  },
-  {
-    'title': 'Eligibility Criteria',
-    'target': '#'
+    'target': '#grant-overview'
   },
   {
     'title': 'Application Process',
-    'target': '#'
+    'target': '#application-process'
   },
 ]} %}
 
@@ -34,7 +30,7 @@
 <hr class="row-separator"/>
 
 <div class="row">
-  <div class="nine columns">
+  <div class="nine columns" id="grant-overview">
     {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
   </div>
   <div class="three columns">
@@ -52,7 +48,7 @@
 
 <hr class="row-separator"/>
 
-<h3 class="row-title">Application Process</h3>
+<h3 class="row-title" id="application-process">Application Process</h3>
 {% include 'page-elements/application-steps.html' %}
 
 {% embed 'layout/supporting-content.html' %}

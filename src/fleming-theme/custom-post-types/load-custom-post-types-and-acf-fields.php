@@ -129,9 +129,14 @@ function add_extra_content_to_index_of_post($content, $post) {
         'post_type' => $searchable_custom_post_types,
         'posts_per_page' => '-1',
         'meta_query' => array(
+            'relation' => 'OR',
             array(
                 'value' => $post->ID,
                 'compare' => '='
+            ),
+            array(
+                'value' => serialize(strval($post->ID)),
+                'compare' => 'LIKE'
             )
         )
     ];
