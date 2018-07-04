@@ -4,23 +4,20 @@ require_once 'rss/populate_feed.php';
 
 function fleming_get_content()
 {
-    $fleming_content = array(
-        "charset" => get_option('blog_charset'),
-    );
+    $fleming_content = [];
 
-    $country = get_page_by_path($_GET["channel"], 'OBJECT', 'countries');
-    if (empty($country)) {
+    $region = get_page_by_path($_GET["channel"], 'OBJECT', 'regions');
+    if (empty($region)) {
         die(); // should be 404
     }
-    $country = get_post_data_and_fields($country->ID);
+    $region = get_post_data_and_fields($region->ID);
 
     $fleming_content['feed'] = populate_feed_for_entity(
-        $country,
+        $region,
         [
             'post_type' => ['grants', 'publications', 'events']
         ]
     );
-
     return $fleming_content;
 }
 

@@ -373,8 +373,12 @@ function get_raw_title(...$args)
 function country_rss_feed(){
     get_template_part('rss', 'country');
 }
+function region_rss_feed(){
+    get_template_part('rss', 'region');
+}
 function add_rss_feeds(){
     add_feed('country', 'country_rss_feed');
+    add_feed('region', 'region_rss_feed');
 }
 add_action('init', 'add_rss_feeds');
 
