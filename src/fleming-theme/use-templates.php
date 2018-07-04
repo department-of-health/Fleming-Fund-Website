@@ -10,10 +10,8 @@ $content['css_filename'] = $content['css_filename'] ?? get_css_filename();
 $content['js_bundle_filename'] = $content['js_bundle_filename'] ?? get_js_bundle_filename();
 $content["nav"] = $content["nav"] ?? get_home_nav();
 $content["fields"] = $content["fields"] ?? get_field_objects();
-
-if(isset($_COOKIE['weight'])) {
-    $content['weight'] = $_COOKIE['weight'];
-}
+$content['weight'] = isset($_COOKIE['low-bandwidth']) ? 'light' : 'heavy';
+$content['current_uri'] = $_SERVER['REQUEST_URI'];
 
 if (isset($_GET["json"])) {
     header('Content-Type: application/json');

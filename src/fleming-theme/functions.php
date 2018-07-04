@@ -382,6 +382,43 @@ function add_rss_feeds(){
 }
 add_action('init', 'add_rss_feeds');
 
+
+////////////////////////////////////////////////////////////////
+////////                LIGHTWEIGHT SITE                ////////
+////////////////////////////////////////////////////////////////
+
+if (isset($_GET['toggle-bandwidth-option'])) {
+    $lightweightFlagCookieName = 'low-bandwidth';
+
+    // check
+    $is_lightweight = false;
+    if (isset($_COOKIE[$lightweightFlagCookieName])) {
+        $is_lightweight = true;
+    }
+
+    $should_now_be_lightweight = !$is_lightweight;
+
+    // toggle cookie
+    setcookie (
+        $lightweightFlagCookieName,
+        $should_now_be_lightweight ? 'yes' : '',
+        $should_now_be_lightweight ? strtotime('+1 year') : strtotime( '-1 year' ),
+        '/'
+    );
+
+    // redirect
+    $returnTo = '/';
+    if (
+        isset($_GET['return'])
+        && substr($_GET['return'], 0, 1) === '/'
+    ) {
+        $returnTo = $_GET['return'];
+    }
+    header('Location: ' . $returnTo);
+    die();
+}
+
+
 ////////////////////////////////////////////////////////////////
 ////////   CUSTOM POST TYPES + ADVANCED CUSTOM FIELDS   ////////
 ////////////////////////////////////////////////////////////////
