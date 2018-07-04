@@ -33,7 +33,17 @@ function init() {
     $('.search-container').addClass('mobile-hidden');
 }
 
+function setLightweightCookie() {
+    document.cookie = "weight=light; path=/";
+}
+
+function setHeavyweightCookie() {
+    document.cookie = "weight=heavy; path=/";
+}
+
 module.exports = {
     init,
-    searchToggleButtonClicked
+    searchToggleButtonClicked,
+    setLightweightCookie,
+    setHeavyweightCookie
 };

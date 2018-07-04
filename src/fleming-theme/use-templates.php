@@ -11,6 +11,10 @@ $content['js_bundle_filename'] = $content['js_bundle_filename'] ?? get_js_bundle
 $content["nav"] = $content["nav"] ?? get_home_nav();
 $content["fields"] = $content["fields"] ?? get_field_objects();
 
+if(isset($_COOKIE['weight'])) {
+    $content['weight'] = $_COOKIE['weight'];
+}
+
 if (isset($_GET["json"])) {
     header('Content-Type: application/json');
     echo(json_encode($content));

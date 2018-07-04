@@ -4,11 +4,11 @@ header {
   .logo-container, .search-container {
     display: inline-block;
     width: 50%;
-    vertical-align: middle;
   }
 
   .logo-container {
     margin: 15px 0;
+    vertical-align: middle;
   }
 
   .logo {
@@ -27,6 +27,8 @@ header {
   .search-container {
     text-align: right;
     font-size: initial;
+    vertical-align: bottom;
+    margin-bottom: 10px;
   }
 
   .search {
@@ -63,6 +65,10 @@ header {
     svg {
       fill: #fff;
     }
+  }
+
+  .lightweight-site-link {
+    margin-top: 5px;
   }
 }
 
