@@ -19,7 +19,7 @@ function fleming_get_content()
 {
     $query_result = get_query_results();
     $fleming_content = array(
-        "title" => "Search results for '" . $query_result["query"] . "'",
+        "title" => 'Search results for "' . $query_result["query"] . '"',
         "css_filename" => get_css_filename(),
         "fields" => get_field_objects(),
         "query_result" => $query_result,

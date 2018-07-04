@@ -99,3 +99,47 @@ function search_filter($query) {
     return $query;
 }
 add_filter('pre_get_posts', 'search_filter');
+
+function add_extra_content_to_index_of_post($content, $post) {
+    if ($post->post_type === 'page') {
+        return $content;
+    }
+
+    global $searchable_custom_post_types;
+    $extraSearchTerms = [];
+
+    // searches for referred posts will include this one
+    $postFields = get_field_objects($post->ID);
+    foreach ($postFields as $postField) {
+        $value = $postField['value'];
+        if (!empty($value)) {
+            if (!is_array($value)) {
+                $value = array($value);
+            }
+            foreach ($value as $fieldPost) {
+                if (isset($fieldPost->post_title)) {
+                    $extraSearchTerms[] = $fieldPost->post_title;
+                }
+            }
+        }
+    }
+
+    // searches for this post will include referred ones
+    $query_args = [
+        'post_type' => $searchable_custom_post_types,
+        'posts_per_page' => '-1',
+        'meta_query' => array(
+            array(
+                'value' => $post->ID,
+                'compare' => '='
+            )
+        )
+    ];
+    $query = new WP_Query($query_args);
+    foreach ($query->get_posts() as $referringPost) {
+        $extraSearchTerms[] = $referringPost->post_title;
+    }
+
+    return $content . ' ' . implode(' ', $extraSearchTerms);
+}
+add_filter('relevanssi_content_to_index', 'add_extra_content_to_index_of_post', 10, 2);
