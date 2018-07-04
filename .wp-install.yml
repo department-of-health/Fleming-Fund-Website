@@ -8,6 +8,7 @@ plugins-to-download:
   - name: wp-db-backup
   - name: file-manager-advanced
   - name: yet-another-related-posts-plugin
+  - name: relevanssi
  
 plugins-to-copy:
   directory: dependencies/plugins

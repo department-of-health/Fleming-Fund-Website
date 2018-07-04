@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="{{ feed.charset }}"?>
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+     xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
+  <channel>
+    <title>
+      {{ feed.title }} - Feed - Fleming Fund
+    </title>
+    <link>
+    {{ feed.permalink }}
+    </link>
+    {% for item in feed.items %}
+      <item>
+        <title>
+          {{ item.data.post_title }}
+        </title>
+        <link>
+        {{ item.permalink }}
+        </link>
+        <pubDate>
+          {{ item.date }}
+        </pubDate>
+        <description>
+          {{ item.overview }}
+        </description>
+      </item>
+    {% endfor %}
+  </channel>
+</rss>

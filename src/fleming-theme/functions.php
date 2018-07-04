@@ -154,6 +154,10 @@ function grant_with_post_data_and_fields($grant) {
     $grant['status'] = 'Deadline ' . $grant['fields']['deadline']['value'];
     // qq render date in locale-specific form?
 
+    if (isset($grant['fields']['flexible_content'])) {
+        $grant['overview'] = get_overview_text_from_flexible_content($grant['fields']['flexible_content']);
+    }
+
     return $grant;
 }
 
@@ -216,21 +220,30 @@ function region_with_post_data_and_fields($region) {
     return $region;
 }
 
+function page_with_post_data_and_fields($page) {
+    if (isset($page['fields']['flexible_content'])) {
+        $page['overview'] = get_overview_text_from_flexible_content($page['fields']['flexible_content']);
+    }
+    return $page;
+}
+
 function entity_with_post_data_and_fields($entity) {
-    if ($entity['data']->post_type === 'grants') {
-        return grant_with_post_data_and_fields($entity);
-    } elseif ($entity['data']->post_type === 'countries') {
+    if ($entity['data']->post_type === 'countries') {
         return country_with_post_data_and_fields($entity);
-    } elseif ($entity['data']->post_type === 'regions') {
-        return region_with_post_data_and_fields($entity);
+    } elseif ($entity['data']->post_type === 'grants') {
+        return grant_with_post_data_and_fields($entity);
     } elseif ($entity['data']->post_type === 'organisations') {
         return organisation_with_post_data_and_fields($entity);
+    } elseif ($entity['data']->post_type === 'page') {
+        return page_with_post_data_and_fields($entity);
     } elseif ($entity['data']->post_type === 'people') {
         return person_with_post_data_and_fields($entity);
     } elseif ($entity['data']->post_type === 'projects') {
         return project_with_post_data_and_fields($entity);
     } elseif ($entity['data']->post_type === 'publications') {
         return publication_with_post_data_and_fields($entity);
+    } elseif ($entity['data']->post_type === 'regions') {
+        return region_with_post_data_and_fields($entity);
     } else {
         return $entity;
     }
@@ -352,6 +365,22 @@ function get_raw_title(...$args)
     return get_post_field('post_title', ...$args);
 }
 
+
+////////////////////////////////////////////////////////////////
+////////                   RSS FEEDS                    ////////
+////////////////////////////////////////////////////////////////
+
+function country_rss_feed(){
+    get_template_part('rss', 'country');
+}
+function region_rss_feed(){
+    get_template_part('rss', 'region');
+}
+function add_rss_feeds(){
+    add_feed('country', 'country_rss_feed');
+    add_feed('region', 'region_rss_feed');
+}
+add_action('init', 'add_rss_feeds');
 
 ////////////////////////////////////////////////////////////////
 ////////   CUSTOM POST TYPES + ADVANCED CUSTOM FIELDS   ////////

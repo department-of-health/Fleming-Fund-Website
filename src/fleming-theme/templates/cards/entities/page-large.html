@@ -1,0 +1,11 @@
+{% if page %}
+  {% include 'cards/base.html' with {'card': {
+    'decorated': true,
+    'colour_scheme': 'base',
+    'identifier': 'Page',
+    'inverted_header': true,
+    'title': page.data.post_title,
+    'content': page.overview,
+    'link_target': page.permalink
+  }} %}
+{% endif %}

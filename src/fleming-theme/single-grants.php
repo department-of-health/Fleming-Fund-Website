@@ -25,6 +25,8 @@ function fleming_get_content() {
             ->build()
     );
 
+    process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
+
     $thisGrant = grant_with_post_data_and_fields(get_current_post_data_and_fields());
     $fleming_content['colour_scheme'] = $thisGrant['colour_scheme'];
 

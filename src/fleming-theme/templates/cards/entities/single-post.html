@@ -15,8 +15,10 @@
     {% include('cards/entities/grant-large.html') with { 'grant' : post } %}
 {% elseif post.data.post_type == 'organisations' %}
     {% include('cards/entities/organisation-medium-with-image.html') with { 'organisation' : post } %}
+{% elseif post.data.post_type == 'page' %}
+  {% include('cards/entities/page-large.html') with { 'page' : post } %}
 {% elseif post.data.post_type == 'people' %}
-    {% include('cards/entities/person-medium-with-image.html') with { 'person' : post } %}
+  {% include('cards/entities/person-medium-with-image.html') with { 'person' : post } %}
 {% elseif post.data.post_type == 'projects' %}
     {% include('cards/entities/project-large.html') with { 'project' : post } %}
 {% elseif post.data.post_type == 'publications' %}

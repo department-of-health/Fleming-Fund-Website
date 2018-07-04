@@ -4,12 +4,12 @@
 {% include 'page-elements/in-page-links.html' %}
 
 <p>{{ query_result.summary }}</p>
-<div class="card-container three-max">
+<div class="card-container two-max">
   {% for post in query_result.posts %}
     {% include 'cards/entities/single-post.html' %}
   {% endfor %}
 </div>
 
-<hr class="row-divider"/>
+{% include 'page-elements/pagination-links.html' %}
 
 {{ include('layout/footer.html') }}
