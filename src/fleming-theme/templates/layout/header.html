@@ -5,9 +5,11 @@
   <link rel="stylesheet" type="text/css" href="/wp-content/themes/fleming-theme/{{ css_filename }}">
   <link rel="stylesheet" href="/wp-content/themes/fleming-theme/static/jquery-jvectormap-2.0.3.css" type="text/css"
         media="screen"/>
+  {% if weight == 'heavy' %}
   <script src="/wp-content/themes/fleming-theme/static/jquery-3.3.1.min.js"></script>
   <script src="/wp-content/themes/fleming-theme/static/jquery-jvectormap-2.0.3.min.js"></script>
   <script src="/wp-content/themes/fleming-theme/static/jquery-jvectormap-world-mill.js"></script>
+  {% endif %}
   <script src="/wp-content/themes/fleming-theme/{{ js_bundle_filename }}"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% if rss_link_target %}
@@ -45,9 +47,11 @@
   </div>
 </header>
 
+{% if weight == 'heavy' %}
 <script type="text/javascript">
     Fleming.header.init();
 </script>
+{% endif %}
 
 {% include 'page-elements/nav.html' %}
 
