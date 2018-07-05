@@ -44,6 +44,7 @@
     .image-container img {
       padding: 0 1.5em;
       box-sizing: border-box;
+      max-width: 200px;
     }
   }
 }
@@ -125,7 +126,7 @@
   }
 }
 
-.card-container.people {
+.card-container.people, .card-container.organisations {
   .card {
     .header {
       padding-bottom: 0;
@@ -134,8 +135,6 @@
       font-size: 1.3em;
     }
     img {
-      border-radius: 50%;
-      max-width: 150px;
       width: 100%;
     }
     .identifier {
@@ -144,6 +143,14 @@
     p {
       margin-top: 0;
       font-size: 1em;
+    }
+  }
+}
+
+.card-container.people {
+  .card {
+    img {
+      border-radius: 50%;
     }
   }
 }
