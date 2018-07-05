@@ -5,7 +5,6 @@
 
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
-<p>{{ query_result.summary }}</p>
 <div class="news-filters">
     <span>Show me</span>
     <select id="country" name="country">
@@ -33,12 +32,16 @@
     });
 </script>
 
-<div class="card-container two-max">
-  {% for event in query_result.posts %}
-    {% include 'cards/entities/event-medium.html' %}
-  {% endfor %}
-</div>
+{% embed 'layout/supporting-content.html' with {'tight': true} %}
+  {% block content %}
+      <div class="card-container two-max">
+        {% for event in query_result.posts %}
+          {% include 'cards/entities/event-medium.html' %}
+        {% endfor %}
+      </div>
 
-{% include 'page-elements/pagination-links.html' %}
+    {% include 'page-elements/pagination-links.html' %}
+  {% endblock %}
+{% endembed %}
 
 {{ include('layout/footer.html') }}
