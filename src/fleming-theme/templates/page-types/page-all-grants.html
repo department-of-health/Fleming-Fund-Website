@@ -6,19 +6,23 @@
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
 <div class="grant-filters">
-  <span>Show me</span>
-  <select id="type" name="type">
-    <option value="" {% if selected_grant_type.ID == NULL %} selected {% endif %}>All types</option>
-    {% for grant_type in grant_types %}
-      <option value="{{ grant_type.post_name }}" {% if selected_grant_type.ID == grant_type.ID %} selected {% endif %} >{{ grant_type.post_title }}</option>
-    {% endfor %}
-  </select>
+  <form action="" method="get">
+    <span>Show me</span>
+    <select name="type">
+      <option value="" {% if selected_grant_type.ID == NULL %} selected {% endif %}>All types</option>
+      {% for grant_type in grant_types %}
+        <option
+            value="{{ grant_type.post_name }}" {% if selected_grant_type.ID == grant_type.ID %} selected {% endif %} >{{ grant_type.post_title }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="Apply"/>
+  </form>
 </div>
 
 <script>
     function updateType() {
         var url = new URL(document.location);
-        var type = $("#type").val();
+        var type = $(".grant-filters select[name='type']").val();
         if (type) {
             url.searchParams.set("type", type);
         } else {
@@ -27,8 +31,9 @@
         document.location = url.toString();
     }
 
-    $(function() {
-        $("#type").on("change", updateType);
+    $(function () {
+        $(".grant-filters input[type='submit']").hide();
+        $(".grant-filters select").on("change", updateType);
     });
 </script>
 
