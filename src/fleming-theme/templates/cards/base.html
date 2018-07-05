@@ -1,5 +1,9 @@
 {% if card %}
-  {% set has_content = content_override or card.content or cta_override %}
+  {% set has_content =
+    content_override
+    or card.content
+    or cta_override
+    or (card.link_target and card.cta_title) %}
 
   {% set card_class = 'card '~(card.colour_scheme ?? 'base') %}
   {% if card.decorated %}
