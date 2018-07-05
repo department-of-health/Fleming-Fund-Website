@@ -4,7 +4,7 @@
 {% include 'page-elements/in-page-links.html' %}
 
 <aside>
-  <img src="{{ image_url ?? 'http://www.placekitten.com/g/10/10' }}" class="profile-image"/>
+  <img src="{{ (weight == 'light' ? picture_small_url : picture_medium_url) }}" class="profile-image"/>
   {% include 'page-elements/contact-details.html' %}
 </aside>
 
