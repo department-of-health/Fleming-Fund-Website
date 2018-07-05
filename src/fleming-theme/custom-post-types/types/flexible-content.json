@@ -630,6 +630,15 @@
                         "sub_fields": [],
                         "min": "",
                         "max": ""
+                    },
+                    "5b3df33759c49": {
+                        "key": "5b3df33759c49",
+                        "name": "start_of_supporting_content",
+                        "label": "Start of supporting content",
+                        "display": "block",
+                        "sub_fields": [],
+                        "min": "",
+                        "max": ""
                     }
                 },
                 "button_label": "Add Row",
