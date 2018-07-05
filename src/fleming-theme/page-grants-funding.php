@@ -20,6 +20,8 @@ function fleming_get_content() {
         "fields" => get_field_objects(),
         'nav' => get_nav_builder()->withMenuRoute('grants')->build()
     );
+    
+    process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
 
     $current_page = get_query_var('paged') ?: 1;
 
