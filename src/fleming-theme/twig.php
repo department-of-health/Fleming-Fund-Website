@@ -9,6 +9,7 @@ $twigFilters = [
     new Twig_Filter('partner_only', 'countries_partner_only_filter'),
     new Twig_Filter('format_number', 'format_number'),
     new Twig_Filter('statistics_only_with_value', 'statistics_only_with_value'),
+    new Twig_Filter('truncated_for_card_overview', 'truncated_for_card_overview'),
 ];
 
 foreach ($twigFilters as $twigFilter) {

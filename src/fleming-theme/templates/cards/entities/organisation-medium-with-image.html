@@ -1,7 +1,7 @@
 {% if organisation %}
   {% include 'cards/medium-with-image.html' with { 'card': {
     'decorated': false,
-    'image_src': (weight == 'light' ? person.picture_small_url : person.picture_medium_url),
+    'image_src': (weight == 'light' ? organisation.logo_small_url : organisation.logo_medium_url),
     'title': organisation.data.post_title,
     'content': organisation.overview,
     'link_target': organisation.permalink,

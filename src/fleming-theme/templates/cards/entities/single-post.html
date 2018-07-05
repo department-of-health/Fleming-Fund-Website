@@ -22,7 +22,7 @@
 {% elseif post.data.post_type == 'projects' %}
     {% include('cards/entities/project-large.html') with { 'project' : post } %}
 {% elseif post.data.post_type == 'publications' %}
-    {% include('cards/entities/publication-large.html') with { 'publication' : post } %}
+    {% include(is_prominent ? 'cards/entities/publication-large-with-image.html' : 'cards/entities/publication-large.html') with { 'publication' : post } %}
 {% elseif post.data.post_type == 'regions' %}
     {% include('cards/entities/region-large.html') with { 'region' : post } %}
 {% elseif post.data.post_type == 'topics' %}

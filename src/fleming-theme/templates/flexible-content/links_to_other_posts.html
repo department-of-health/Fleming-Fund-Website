@@ -1,0 +1,22 @@
+{% if content_block.links %}
+  {% if content_block.heading %}
+    <h3>{{ content_block.heading }}</h3>
+  {% endif %}
+  <div class="card-container two-max">
+  {% for post_link in content_block.links %}
+    {% if post_link.is_prominent %}
+      </div>
+      <div class="card-container cover">
+    {% endif %}
+    {% include 'cards/entities/single-post.html' with {
+      'post': post_link.post,
+      'is_prominent': post_link.is_prominent,
+      'content_override': post_link.description_override
+    } %}
+    {% if post_link.is_prominent %}
+      </div>
+      <div class="card-container two-max">
+    {% endif %}
+  {% endfor %}
+  </div>
+{% endif %}

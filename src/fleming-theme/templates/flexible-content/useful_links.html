@@ -7,10 +7,10 @@
       {% include 'cards/base.html' with {'card': {
         'decorated': true,
         'inverted_header': true,
-        'title': useful_link.title_override | default(useful_link.link.title) | default(useful_link.link.url),
+        'title': useful_link.title_override,
         'overview': useful_link.description,
         'inverted_header': true,
-        'link_target': useful_link.link.url,
+        'link_target': useful_link.link,
       }} %}
     {% endfor %}
   </div>

@@ -67,6 +67,12 @@ function process_flexible_content(&$fields, &$content)
                     "title" => $title
                 );
                 $show_in_page_links = true;
+            } elseif ($type == 'links_to_other_posts') {
+                foreach($content_block['links'] as &$postLink) {
+                    $postLink['post'] = entity_with_post_data_and_fields(
+                        get_post_data_and_fields($postLink['post']->ID)
+                    );
+                }
             }
         }
     }
@@ -294,6 +300,14 @@ function statistics_only_with_value($statistics) {
     return array_filter($statistics, function($statistic) {
         return !empty($statistic['value']);
     });
+}
+
+function truncated_for_card_overview($overview_text) {
+    if (mb_strlen($overview_text) > 100) {
+        return mb_substr($overview_text, 0, 100) . '...';
+    } else {
+        return $overview_text;
+    }
 }
 
 

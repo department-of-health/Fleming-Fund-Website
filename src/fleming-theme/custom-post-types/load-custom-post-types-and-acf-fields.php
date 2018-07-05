@@ -44,7 +44,6 @@ function init_acf_fields() {
     }
 
     load_acf_fields(__DIR__ . '/types/flexible-content.json');
-    load_acf_fields(__DIR__ . '/types/front-page.json');
 
     $allPageAcfFieldDefinitionFiles = [
         __DIR__ . '/types/page-investment-areas.json',
