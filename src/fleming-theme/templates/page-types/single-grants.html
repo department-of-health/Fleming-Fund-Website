@@ -2,16 +2,12 @@
 
 <h1>{{ title }}</h1>
 
-{% include 'layout/link-collection.html' with {'links': [
-  {
-    'title': 'Overview',
-    'target': '#grant-overview'
-  },
+{% include 'layout/link-collection.html' with {'links': (in_page_links??[])|merge([
   {
     'title': 'Application Process',
     'target': '#application-process'
   },
-]} %}
+])} %}
 
 <div class="row">
   <p class="four columns" style="text-align: center"><strong>Applications Open:</strong> {{ fields.open.value }}</p>
@@ -29,22 +25,19 @@
 
 <hr class="row-separator"/>
 
-<div class="row">
-  <div class="nine columns" id="grant-overview">
-    {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
-  </div>
-  <div class="three columns">
-    {% if fields.rfp_doc.value %}
+<aside>
+  {% if fields.rfp_doc.value %}
     <button class="button-dark" style="width: 100%" onClick={{ 'window.open("' ~ fields.rfp_doc.value.url ~ '")' }}>
       Download RFP
     </button>
-    {% else %}
+  {% else %}
     <button class="button-dark" style="width: 100%" disabled="disabled"}}>
       RFP not available
     </button>
-    {% endif %}
-  </div>
-</div>
+  {% endif %}
+</aside>
+
+{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
 <hr class="row-separator"/>
 

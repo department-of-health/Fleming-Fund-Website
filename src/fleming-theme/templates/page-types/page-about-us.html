@@ -4,10 +4,6 @@
 
 {% include 'page-elements/in-page-links.html' %}
 
-<div class="row">
-  <div class="nine columns">
-    {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
-  </div>
-</div>
+{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
 {{ include('layout/footer.html') }}
