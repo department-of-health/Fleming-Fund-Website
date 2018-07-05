@@ -1,1 +1,7 @@
-Fleming page
+{{ include('layout/header.html') }}
+
+<h1>{{ title }}</h1>
+{% include 'page-elements/in-page-links.html' %}
+{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+
+{{ include('layout/footer.html') }}
