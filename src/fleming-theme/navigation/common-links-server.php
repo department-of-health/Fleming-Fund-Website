@@ -48,6 +48,14 @@ trait CommonLinksServer
         return $link;
     }
 
+    function getAllGrantsPageLink()
+    {
+        $link = new Link();
+        $link->setTitle('All Grants');
+        $link->setTarget('/all-grants/');
+        return $link;
+    }
+
     function getGrantsPageLink()
     {
         return $this->getMenuRouteLink('grants');

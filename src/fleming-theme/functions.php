@@ -199,6 +199,8 @@ function publication_with_post_data_and_fields($publication) {
     if (isset($publication['fields']['flexible_content'])) {
         $publication['overview'] = get_overview_text_from_flexible_content($publication['fields']['flexible_content']);
         $publication['picture_large_url'] = get_primary_image_from_flexible_content($publication['fields']['flexible_content'])['sizes']['large'];
+        $publication['picture_medium_url'] = get_primary_image_from_flexible_content($publication['fields']['flexible_content'])['sizes']['medium'];
+        $publication['picture_small_url'] = get_primary_image_from_flexible_content($publication['fields']['flexible_content'])['sizes']['thumbnail'];
     }
     return $publication;
 }

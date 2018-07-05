@@ -29,10 +29,10 @@ function fleming_get_content()
         'paged' => $current_page,
     ];
     $country = get_page_by_path($_GET["country"], 'OBJECT', 'countries');
-    if ($country != NULL) {
+    if ($country != null) {
         $query_args["meta_query"] = array(
             array(
-                'key'   => 'country',
+                'key' => 'country',
                 'value' => $country->ID
             )
         );
@@ -42,7 +42,13 @@ function fleming_get_content()
     $query_result = get_query_results($query);
 
     $fleming_content['query_result'] = $query_result;
-    $fleming_content['countries'] = get_posts(array('post_type' => 'countries', 'numberposts' => -1));
+    $fleming_content['countries'] = get_posts(array(
+        'post_type' => 'countries',
+        'numberposts' => -1,
+        'ignore_custom_sort' => true,
+        'orderby' => 'name',
+        'order' => 'ASC',
+    ));
     $fleming_content['selected_country'] = $country;
 
 

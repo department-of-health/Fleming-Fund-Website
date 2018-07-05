@@ -126,8 +126,6 @@
 }
 
 .card-container.people {
-  @include cardsAreCentered;
-
   .card {
     .header {
       padding-bottom: 0;

@@ -1,5 +1,20 @@
-{% for content_block in flexible_content %}
-
-  {% include 'flexible-content/'~content_block.acf_fc_layout~'.html' %}
-
+{% set supporting_content_starts_at_index = false %}
+{% for content_block in flexible_content if not supporting_content_starts_at_index %}
+  {% if content_block.acf_fc_layout == 'start_of_supporting_content' %}
+    {% set supporting_content_starts_at_index = loop.index + 1 %}
+  {% else %}
+    {% include 'flexible-content/content-block.html' %}
+  {% endif %}
 {% endfor %}
+
+{% if supporting_content_starts_at_index and supporting_content_starts_at_index <= flexible_content|length %}
+  {% embed 'layout/supporting-content.html' %}
+    {% block content %}
+      {% for content_block in flexible_content %}
+        {% if loop.index >= supporting_content_starts_at_index %}
+          {% include 'flexible-content/content-block.html' %}
+        {% endif %}
+      {% endfor %}
+    {% endblock %}
+  {% endembed %}
+{% endif %}

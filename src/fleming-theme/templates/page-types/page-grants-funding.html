@@ -5,40 +5,4 @@
 
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
-<p>{{ query_result.summary }}</p>
-<div class="knowledge-filters">
-  <span>Show me</span>
-  <select id="type" name="type">
-    <option value="" {% if selected_grant_type.ID == NULL %} selected {% endif %}>All types</option>
-    {% for grant_type in grant_types %}
-      <option value="{{ grant_type.post_name }}" {% if selected_grant_type.ID == grant_type.ID %} selected {% endif %} >{{ grant_type.post_title }}</option>
-    {% endfor %}
-  </select>
-</div>
-
-<script>
-    function updateType() {
-        var url = new URL(document.location);
-        var type = $("#type").val();
-        if (type) {
-            url.searchParams.set("type", type);
-        } else {
-            url.searchParams.delete("type");
-        }
-        document.location = url.toString();
-    }
-
-    $(function() {
-        $("#type").on("change", updateType);
-    });
-</script>
-
-<div class="card-container two-max">
-  {% for grant in query_result.posts %}
-    {% include 'cards/entities/grant-large.html' %}
-  {% endfor %}
-</div>
-
-{% include 'page-elements/pagination-links.html' %}
-
 {{ include('layout/footer.html') }}
