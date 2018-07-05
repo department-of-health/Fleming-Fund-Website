@@ -133,6 +133,40 @@
                         "min": "",
                         "max": ""
                     },
+                    "5b2936a0c746e": {
+                        "key": "5b2936a0c746e",
+                        "name": "image",
+                        "label": "Full-width image",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5b2b7f8c486b0",
+                                "label": "image",
+                                "name": "image",
+                                "type": "image",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "return_format": "array",
+                                "preview_size": "medium_large",
+                                "library": "all",
+                                "min_width": "",
+                                "min_height": "",
+                                "min_size": "",
+                                "max_width": "",
+                                "max_height": "",
+                                "max_size": "",
+                                "mime_types": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
                     "5aead2160cb81": {
                         "key": "5aead2160cb81",
                         "name": "quote",
@@ -441,17 +475,17 @@
                         "min": "",
                         "max": ""
                     },
-                    "5b2936a0c746e": {
-                        "key": "5b2936a0c746e",
-                        "name": "image",
-                        "label": "Full-width image",
+                    "5b290f10e636d": {
+                        "key": "5b290f10e636d",
+                        "name": "link_button",
+                        "label": "Prominent link button",
                         "display": "block",
                         "sub_fields": [
                             {
-                                "key": "field_5b2b7f8c486b0",
-                                "label": "image",
-                                "name": "image",
-                                "type": "image",
+                                "key": "field_5b2b7f8c48a93",
+                                "label": "Link",
+                                "name": "link",
+                                "type": "link",
                                 "instructions": "",
                                 "required": 0,
                                 "conditional_logic": 0,
@@ -460,16 +494,26 @@
                                     "class": "",
                                     "id": ""
                                 },
-                                "return_format": "array",
-                                "preview_size": "medium_large",
-                                "library": "all",
-                                "min_width": "",
-                                "min_height": "",
-                                "min_size": "",
-                                "max_width": "",
-                                "max_height": "",
-                                "max_size": "",
-                                "mime_types": ""
+                                "return_format": "array"
+                            },
+                            {
+                                "key": "field_5b2b7f8c48e74",
+                                "label": "Button text override",
+                                "name": "button_text",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
                             }
                         ],
                         "min": "",
@@ -578,63 +622,19 @@
                         "min": "",
                         "max": ""
                     },
-                    "5b290f10e636d": {
-                        "key": "5b290f10e636d",
-                        "name": "link_button",
-                        "label": "Link button",
+                    "5b3df33759c49": {
+                        "key": "5b3df33759c49",
+                        "name": "start_of_supporting_content",
+                        "label": "Start of supporting content",
                         "display": "block",
-                        "sub_fields": [
-                            {
-                                "key": "field_5b2b7f8c48a93",
-                                "label": "Link",
-                                "name": "link",
-                                "type": "link",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "return_format": "array"
-                            },
-                            {
-                                "key": "field_5b2b7f8c48e74",
-                                "label": "Button text override",
-                                "name": "button_text",
-                                "type": "text",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "default_value": "",
-                                "placeholder": "",
-                                "prepend": "",
-                                "append": "",
-                                "maxlength": ""
-                            }
-                        ],
+                        "sub_fields": [],
                         "min": "",
-                        "max": ""
+                        "max": "1"
                     },
                     "5b34b1c47d80c": {
                         "key": "5b34b1c47d80c",
                         "name": "horizontal_line",
                         "label": "Horizontal Line",
-                        "display": "block",
-                        "sub_fields": [],
-                        "min": "",
-                        "max": ""
-                    },
-                    "5b3df33759c49": {
-                        "key": "5b3df33759c49",
-                        "name": "start_of_supporting_content",
-                        "label": "Start of supporting content",
                         "display": "block",
                         "sub_fields": [],
                         "min": "",
