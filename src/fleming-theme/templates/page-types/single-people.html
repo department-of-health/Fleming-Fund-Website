@@ -14,15 +14,15 @@
   <hr class="row-separator"/>
   <h3 class="row-title">Fellow Projects</h3>
   <div class="card-container two-max">
-    {% include 'cards/entities/project-large.html' with {'project': fields.projects.value[0]} %}
-    {% include 'cards/entities/project-large.html' with {'project': fields.projects.value[1]} %}
+    {% include 'cards/entities/project.html' with {'project': fields.projects.value[0]} %}
+    {% include 'cards/entities/project.html' with {'project': fields.projects.value[1]} %}
   </div>
 
   <hr class="row-separator"/>
   <h3 class="row-title">Current Fellows</h3>
   <div class="card-container people three-max">
     {% for person in fellows %}
-      {% include 'cards/entities/person-medium-with-image.html' %}
+      {% include 'cards/entities/person-with-image.html' %}
     {% endfor %}
 
   </div>

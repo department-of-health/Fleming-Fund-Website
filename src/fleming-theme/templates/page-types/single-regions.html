@@ -62,7 +62,7 @@
 {% endif %}
 
 <aside class="people card-container cover">
-  {% include 'cards/entities/person-medium-with-image.html' with {
+  {% include 'cards/entities/person-with-image.html' with {
     'person': fields.coordinator.value,
     'supertitle': 'Regional Coordinator',
     'cta_override': {
@@ -80,7 +80,7 @@
     {% if fields.case_study.value %}
       <h3>Featured Case Study</h3>
       <div class="card-container cover">
-        {% include 'cards/entities/publication-large-with-image.html' with {'publication': fields.case_study.value} %}
+        {% include 'cards/entities/publication-with-image.html' with {'publication': fields.case_study.value} %}
       </div>
     {% endif %}
 

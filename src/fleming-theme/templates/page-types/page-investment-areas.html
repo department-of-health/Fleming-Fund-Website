@@ -11,7 +11,7 @@
       <h3>Related Content</h3>
       <div class="card-container three-max">
         {% for publication in fields.related_content.value %}
-          {% include 'cards/entities/publication-large.html' %}
+          {% include 'cards/entities/publication.html' %}
         {% endfor %}
       </div>
     {% endblock %}
