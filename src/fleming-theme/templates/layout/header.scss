@@ -83,7 +83,9 @@ header {
     .search-container {
       text-align: center;
       width: 100%;
+    }
 
+    .search {
       &.mobile-hidden {
         display: none;
       }

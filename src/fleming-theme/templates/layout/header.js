@@ -11,12 +11,13 @@ function searchToggleButtonClicked() {
             .attr('aria-label', 'hide search')
             .html(closeIcon);
         $('.search-container')
-            .removeClass('mobile-hidden')
             .find('input')
             .focus();
+        $('.search')
+            .removeClass('mobile-hidden');
     } else {
         $('.mobile-toggle-search button').attr('aria-label', 'show search').html(searchIcon);
-        $('.search-container').addClass('mobile-hidden');
+        $('.search').addClass('mobile-hidden');
     }
     searchHidden = !searchHidden;
 }
@@ -30,7 +31,7 @@ function init() {
         '</button>' +
         '</div>'
     ));
-    $('.search-container').addClass('mobile-hidden');
+    $('.search').addClass('mobile-hidden');
 }
 
 function setLightweightCookie() {
