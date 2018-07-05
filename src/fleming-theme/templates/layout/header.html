@@ -12,6 +12,9 @@
   {% endif %}
   <script src="/wp-content/themes/fleming-theme/{{ js_bundle_filename }}"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if rss_link_target %}
+    <link rel="alternate" type="application/rss+xml" href="{{ rss_link_target }}" />
+  {% endif %}
 </head>
 <body>
 <header>
@@ -33,11 +36,13 @@
           <input name="s" placeholder="Search" type="text" value="{{query_result.query}}"/>
         </div>
       </form>
-      {% if weight == 'light' %}
-      <div class="lightweight-site-link" onclick ="Fleming.header.setHeavyweightCookie(); location.reload()">Click here for heavyweight site</div>
-      {% else %}
-      <div class="lightweight-site-link" onclick ="Fleming.header.setLightweightCookie(); location.reload()">Click here for lightweight site</div>
-      {% endif %}
+      <a href="?toggle-bandwidth-option&amp;return={{ current_uri|url_encode }}" class="lightweight-site-link">
+        {% if weight == 'light' %}
+          Switch to high-bandwidth site
+        {% else %}
+          Switch to low-bandwidth site
+        {% endif %}
+      </a>
     </div>
   </div>
 </header>

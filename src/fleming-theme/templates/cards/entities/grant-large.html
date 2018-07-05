@@ -6,7 +6,7 @@
     'identifier': grant.identifier,
     'title': grant.data.post_title,
     'overview': 'Budget: £'~grant.fields.funds_available.value|format_number~'\nStatus: Implementation',
-    'content': grant.fields.summary.value,
+    'content': grant.overview,
     'cta_title': 'Apply Now',
     'link_target': grant.permalink
   }} %}
