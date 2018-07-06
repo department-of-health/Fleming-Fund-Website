@@ -167,6 +167,79 @@
             "min": "",
             "max": ""
           },
+          "5b3f3e93ce919": {
+            "key": "5b3f3e93ce919",
+            "name": "youtube_embed",
+            "label": "YouTube embed",
+            "display": "block",
+            "sub_fields": [
+              {
+                "key": "field_5b3f3e9ace91a",
+                "label": "Video",
+                "name": "video",
+                "type": "youtubepicker",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "multiple": 0,
+                "yp_advanced_options": 1,
+                "api_key": "AIzaSyBhrxfvF9IazVvTdX3LMo87qQDQYU99B08",
+                "answerOptions": [
+                  "title",
+                  "vid",
+                  "url",
+                  "thumbs",
+                  "duration",
+                  "iframe"
+                ],
+                "channelId": "",
+                "channelType": "",
+                "eventType": "",
+                "order": "relevance",
+                "safeSearch": "none",
+                "videoCaption": "any",
+                "videoDefinition": "any",
+                "videoDimension": "any",
+                "videoDuration": "any",
+                "videoEmbeddable": "true",
+                "videoLicense": "any",
+                "videoSyndicated": "any",
+                "videoType": "any",
+                "videoCategoryId": "",
+                "relatedVideoId": "",
+                "topicId": "",
+                "regionCode": "",
+                "relevanceLanguage": "",
+                "maxResults": ""
+              },
+              {
+                "key": "field_5b3f45377f34e",
+                "label": "Caption",
+                "name": "caption",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+              }
+            ],
+            "min": "",
+            "max": ""
+          },
           "5aead2160cb81": {
             "key": "5aead2160cb81",
             "name": "quote",
@@ -260,7 +333,7 @@
                 },
                 "choices": {
                   "bullet": "Bullet",
-                  "numbered": "Numbered"
+                  "numbers": "Numbered"
                 },
                 "default_value": [
                   "bullet"
