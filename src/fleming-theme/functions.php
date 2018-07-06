@@ -436,6 +436,26 @@ if (isset($_GET['toggle-bandwidth-option'])) {
 
 
 ////////////////////////////////////////////////////////////////
+////////                  ADMIN STYLES                  ////////
+////////////////////////////////////////////////////////////////
+
+
+function admin_css()
+{
+    ?>
+    <style type="text/css">
+        .acf-flexible-content .layout[data-layout="start_of_supporting_content"] {
+            background: #eee;
+            border: 1px solid #444;
+        }
+    </style>
+    <?php
+}
+
+add_action('admin_head', 'admin_css');
+
+
+////////////////////////////////////////////////////////////////
 ////////   CUSTOM POST TYPES + ADVANCED CUSTOM FIELDS   ////////
 ////////////////////////////////////////////////////////////////
 
