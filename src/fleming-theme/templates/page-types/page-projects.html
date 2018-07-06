@@ -5,19 +5,8 @@
 
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
-<p>{{ query_result.summary }}</p>
-<div class="card-container two-max">
-  {% for project in query_result.posts %}
-    {% include 'cards/entities/project.html' %}
-  {% endfor %}
-</div>
+{% include 'page-elements/list-query-result.html' %}
 
-{% include 'page-elements/pagination-links.html' %}
-
-{% if weight == 'heavy' %}
-  <script type="text/javascript">
-      Fleming.projects.init({{ query_result.max_page }});
-  </script>
-{% endif %}
+{% include 'page-elements/pagination-links.html' with {'ajax': true} %}
 
 {{ include('layout/footer.html') }}

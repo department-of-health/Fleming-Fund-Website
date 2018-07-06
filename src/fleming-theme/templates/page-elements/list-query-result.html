@@ -1,0 +1,8 @@
+{% if query_result %}
+  <p>{{ query_result.summary }}</p>
+  <div class="card-container two-max">
+    {% for post in query_result.posts %}
+      {% include 'cards/entities/single-post.html' %}
+    {% endfor %}
+  </div>
+{% endif %}

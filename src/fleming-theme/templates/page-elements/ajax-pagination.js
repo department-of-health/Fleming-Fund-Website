@@ -10,7 +10,7 @@ function loadMore(loadMoreButton) {
     $.ajax({
         url: "?ajaxLoadPage&paged=" + pageToLoad
     }).done(function (data) {
-        loadMoreButton.parent().parent().children('.card-container').append(data);
+        loadMoreButton.parent().parent().children('.card-container').last().after(data);
         lastLoadedPage = pageToLoad;
         if (lastLoadedPage >= maxPages) {
             loadMoreButton.hide();
@@ -27,8 +27,9 @@ function init(pageLimit) {
     if (maxPages > 1) {
         $('.pagination-links')
             .html('')
+            .css('border-top', 'none')
             .append(
-                $('<button class="load-more" onclick="Fleming.projects.loadMore(this)">Load more</button>')
+                $('<button class="load-more" onclick="Fleming.ajaxPagination.loadMore(this)">Load more</button>')
             );
     }
 }
