@@ -239,3 +239,18 @@
     }
   }
 }
+
+.card-container.youtube {
+  .card {
+    box-sizing: content-box;
+    max-width: 560px;
+
+    .content {
+      padding-top: 1.5em;
+    }
+
+    iframe {
+      max-width: 100%;
+    }
+  }
+}
