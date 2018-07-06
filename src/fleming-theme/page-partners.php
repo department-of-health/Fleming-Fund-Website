@@ -21,6 +21,8 @@ function fleming_get_content() {
         'nav' => get_nav_builder()->withMenuRoute('about', 'partners')->build()
     );
 
+    process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
+
     $allOrganisations = get_posts(array('post_type'=>'organisations','numberposts'=>-1));
     foreach($allOrganisations as &$organisation) {
         $organisation = organisation_with_post_data_and_fields(
