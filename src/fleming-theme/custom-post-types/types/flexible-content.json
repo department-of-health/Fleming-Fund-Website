@@ -242,9 +242,36 @@
           "5b326a1c72010": {
             "key": "5b326a1c72010",
             "name": "bullet_points",
-            "label": "Bullet points",
+            "label": "Bullet\/numbered list",
             "display": "block",
             "sub_fields": [
+              {
+                "key": "field_5b3f3a7f77e04",
+                "label": "style",
+                "name": "style",
+                "type": "select",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "choices": {
+                  "bullet": "Bullet",
+                  "numbered": "Numbered"
+                },
+                "default_value": [
+                  "bullet"
+                ],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "ajax": 0,
+                "return_format": "value",
+                "placeholder": ""
+              },
               {
                 "key": "field_5b336410721e3",
                 "label": "Heading",
@@ -280,7 +307,7 @@
                 "collapsed": "",
                 "min": 0,
                 "max": 0,
-                "layout": "",
+                "layout": "table",
                 "button_label": "Add Point",
                 "sub_fields": [
                   {
@@ -289,7 +316,7 @@
                     "name": "item",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
+                    "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
                       "width": "",
