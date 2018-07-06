@@ -81,7 +81,9 @@ function get_query_results($query = NULL) {
         "max_page" => $max_page,
         "pagination_links" => paginate_links([
             'show_all' => true,
-            'prev_next' => true
+            'prev_next' => true,
+            'total' => $max_page,
+            'current' => $page_number
         ]),
         "summary" => $pagination_summary . $total_results_summary
     );
