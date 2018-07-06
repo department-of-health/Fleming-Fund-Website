@@ -12,6 +12,7 @@ $content["nav"] = $content["nav"] ?? get_home_nav();
 $content["fields"] = $content["fields"] ?? get_field_objects();
 $content['weight'] = isset($_COOKIE['low-bandwidth']) ? 'light' : 'heavy';
 $content['current_uri'] = $_SERVER['REQUEST_URI'];
+$content['footer_organisations'] = get_footer_organisations();
 
 if (isset($_GET["json"])) {
     header('Content-Type: application/json');

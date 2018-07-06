@@ -310,6 +310,28 @@ function truncated_for_card_overview($overview_text) {
     }
 }
 
+function get_footer_organisations() {
+    $query_args = [
+        'post_type' => 'organisations',
+        'posts_per_page' => '-1',
+        'meta_query' => array(
+            array(
+                'key' => 'is_featured_in_footer',
+                'value' => true,
+                'compare' => '='
+            )
+        )
+    ];
+    $query = new WP_Query($query_args);
+    $organisations = $query->get_posts();
+    foreach ($organisations as &$organisation) {
+        $organisation = organisation_with_post_data_and_fields(
+                get_post_data_and_fields($organisation->ID)
+        );
+    }
+    return $organisations;
+}
+
 
 ////////////////////////////////////////////////////////////////
 ////////                  ADMIN PORTAL                  ////////

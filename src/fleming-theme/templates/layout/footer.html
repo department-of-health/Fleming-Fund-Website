@@ -6,16 +6,31 @@
 
       <p>Fleming Fund is a government aid programme</p>
       <div class="footer-content">
-        <img src="/wp-content/themes/fleming-theme/images/DHSC-130.png" width="130" height="110" alt="DHSC" style="vertical-align: top; margin-right: 70px;"/>
-        <img src="/wp-content/themes/fleming-theme/images/UKaid-107.png" width="107" height="119" alt="UK aid" style="vertical-align: top"/>
+        <p>
+          <a href="https://www.gov.uk/government/organisations/department-of-health-and-social-care"
+             target="_blank">
+            <img src="/wp-content/themes/fleming-theme/images/DHSC-130.png" alt="Department of Health and Social Care"/>
+          </a>
+          <a href="/organisations/uk-aid/">
+            <img src="/wp-content/themes/fleming-theme/images/UKaid-107.png" alt="UK Aid"/>
+          </a>
+        </p>
       </div>
 
-      <p>Supported by</p>
-      <div class="footer-content">
-        <img src="/wp-content/themes/fleming-theme/images/GatesFoundation-147.png" width="147" height="29" alt="Gates Foundation" style="vertical-align: middle; margin-right: 53px"/>
-        <img src="/wp-content/themes/fleming-theme/images/Wellcome-56.png" width="55" height="55" alt="Wellcome Trust" style="vertical-align: middle; margin-right: 89px"/>
-        <img src="/wp-content/themes/fleming-theme/images/UKCDS-114.png" width="114" height="60" alt="UKCDS" style="vertical-align: middle;"/>
-      </div>
+      {% if footer_organisations is not empty %}
+        <p>Supported by</p>
+        <div class="footer-content">
+          <p>
+            {% for organisation in footer_organisations %}
+              <a href="{{ organisation.permalink }}">
+                {# the logo resolution used here should match that used in organisation cards #}
+                <img src="{{ (weight == 'light' ? organisation.logo_small_url : organisation.logo_medium_url) }}"
+                     alt="{{ organisation.data.page_title }}"/>
+              </a>
+            {% endfor %}
+          </p>
+        </div>
+      {% endif %}
 
     </div>
     <div class="right">

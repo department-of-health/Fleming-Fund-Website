@@ -1,4 +1,5 @@
 {% if organisation %}
+  {# the logo resolution used here should match that used in the footer #}
   {% include 'cards/medium-with-image.html' with { 'card': {
     'decorated': false,
     'image_src': (weight == 'light' ? organisation.logo_small_url : organisation.logo_medium_url),

@@ -72,8 +72,18 @@ footer {
 
   .left {
     .footer-content {
+      p {
+        font-size: 0;
+      }
+
+      a {
+        display: inline-block;
+        vertical-align: middle;
+        max-width: 20%;
+        margin-right: 5%;
+      }
+
       img {
-        max-width: 33.3%;
         max-height: 128px;
         width: auto;
         height: auto;
