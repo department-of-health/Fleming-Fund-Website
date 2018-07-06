@@ -7,8 +7,11 @@ function loadMore(loadMoreButton) {
 
     loadMoreButton.prop('disabled', true);
 
+    var currentQueryString = window.location.href.indexOf('?') > -1
+    ? '&' + window.location.href.slice(window.location.href.indexOf('?') + 1) : '';
+
     $.ajax({
-        url: "?ajaxLoadPage&paged=" + pageToLoad
+        url: "page/" + pageToLoad + "?ajax" + currentQueryString
     }).done(function (data) {
         loadMoreButton.parent().parent().children('.card-container').last().after(data);
         lastLoadedPage = pageToLoad;

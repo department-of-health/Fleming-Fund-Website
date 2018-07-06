@@ -45,7 +45,7 @@ function fleming_get_content() {
 
 
 $template_name = pathinfo(__FILE__)['filename'];
-if (isset($_GET['ajaxLoadPage'])) {
+if (isset($_GET['ajax'])) {
     $template_name = 'ajax-'.$template_name;
 }
 include __DIR__ . '/use-templates.php';

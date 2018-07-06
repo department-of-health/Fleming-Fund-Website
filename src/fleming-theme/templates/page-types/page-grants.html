@@ -39,13 +39,9 @@
 
 {% embed 'layout/supporting-content.html' with {'tight': true} %}
   {% block content %}
-    <div class="card-container two-max">
-      {% for grant in query_result.posts %}
-        {% include 'cards/entities/grant.html' %}
-      {% endfor %}
-    </div>
 
-    {% include 'page-elements/pagination-links.html' %}
+    {% include 'page-elements/list-query-result.html' %}
+    {% include 'page-elements/pagination-links.html' with {'ajax': true} %}
 
   {% endblock %}
 {% endembed %}
