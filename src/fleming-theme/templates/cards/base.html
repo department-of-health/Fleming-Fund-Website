@@ -36,7 +36,7 @@
     {% endif %}
 
     {% if card.overview %}
-      <p>{{ card.overview|truncated_for_card_overview|nl2br }}</p>
+      <p>{{ card.overview|nl2br }}</p>
     {% endif %}
 
     </div>
@@ -46,7 +46,7 @@
 
       {% block content %}
 
-        <p>{{ content_override | default(card.content) }}</p>
+        <p>{{ content_override | default(truncate_content_if_no_override ? card.content|truncated_for_card_overview : card.content) }}</p>
         {% if cta_override %}
           <a class="button {{ card.cta_not_hollow ?? 'hollow' }}"
              href="{{ cta_override.target }}">{{ cta_override.title }}</a>

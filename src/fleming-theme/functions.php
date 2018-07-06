@@ -303,8 +303,11 @@ function statistics_only_with_value($statistics) {
 }
 
 function truncated_for_card_overview($overview_text) {
-    if (mb_strlen($overview_text) > 100) {
-        return mb_substr($overview_text, 0, 100) . '...';
+    $maxLengthOfOverview = 140;
+    if (mb_strlen($overview_text) > $maxLengthOfOverview) {
+        $upperLimitOfOverview = mb_substr($overview_text, 0, $maxLengthOfOverview);
+        $indexOfLastWordBoundary = mb_strrpos($upperLimitOfOverview, ' ');
+        return substr($upperLimitOfOverview, 0, $indexOfLastWordBoundary) . '…';
     } else {
         return $overview_text;
     }
