@@ -5,22 +5,19 @@
 
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
-{% embed 'layout/supporting-content.html' with {'tight': true} %}
-  {% block content %}
+<p>{{ query_result.summary }}</p>
+<div class="card-container two-max">
+  {% for project in query_result.posts %}
+    {% include 'cards/entities/project.html' %}
+  {% endfor %}
+</div>
 
-    <div class="card-container two-max">
-      {% for project in query_result.posts %}
-        {% include 'cards/entities/project-large.html' %}
-      {% endfor %}
-    </div>
+{% include 'page-elements/pagination-links.html' %}
 
-    {% include 'page-elements/pagination-links.html' %}
-
-  {% endblock %}
-{% endembed %}
-
-<script type="text/javascript">
-    Fleming.projects.init({{ query_result.max_page }});
-</script>
+{% if weight == 'heavy' %}
+  <script type="text/javascript">
+      Fleming.projects.init({{ query_result.max_page }});
+  </script>
+{% endif %}
 
 {{ include('layout/footer.html') }}

@@ -1,8 +1,8 @@
 <?php
 
-include __DIR__ . '/php/get-css-filename.php';
-include 'navigation/index.php';
-include 'map/config.php';
+require_once __DIR__ . '/php/get-css-filename.php';
+require_once 'navigation/index.php';
+require_once 'map/config.php';
 
 /**
  * NOTE:
@@ -30,6 +30,8 @@ function fleming_get_content() {
         "colour_scheme" => region_slug_to_colour_scheme_name(get_post_field( 'post_name'))
     );
 
+    $this_region = get_current_post_data_and_fields();
+
     process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
 
     $fleming_content['fields']['coordinator']['value'] = person_with_post_data_and_fields(
@@ -42,6 +44,8 @@ function fleming_get_content() {
         $fleming_content['nav']->getFundCountryLinksWithinRegion(get_post_field( 'post_name'));
     $fleming_content['partnerCountryLinks'] =
         $fleming_content['nav']->getPartnerCountryLinksWithinRegion(get_post_field( 'post_name'));
+
+    $fleming_content['rss_link_target'] = '/feed/region/?channel=' . $this_region['data']->post_name;
 
     return $fleming_content;
 }

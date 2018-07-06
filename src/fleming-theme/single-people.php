@@ -1,8 +1,8 @@
 <?php
 
-include __DIR__ . '/php/get-css-filename.php';
-include 'query-utilities.php';
-include 'navigation/index.php';
+require_once __DIR__ . '/php/get-css-filename.php';
+require_once 'query-utilities.php';
+require_once 'navigation/index.php';
 
 /**
  * NOTE:
@@ -28,7 +28,8 @@ function fleming_get_content() {
     process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
 
     $thisPerson = person_with_post_data_and_fields(get_current_post_data_and_fields());
-    $fleming_content['image_url'] = $thisPerson['picture_medium_url'];
+    $fleming_content['picture_medium_url'] = $thisPerson['picture_medium_url'];
+    $fleming_content['picture_small_url'] = $thisPerson['picture_small_url'];
 
     if($fleming_content["fields"]["role"]["value"] == 'fellow') {
         foreach($fleming_content["fields"]["projects"]["value"] as &$project) {

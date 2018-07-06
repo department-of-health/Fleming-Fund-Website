@@ -2,20 +2,12 @@
 
 <h1>{{ title }}</h1>
 
-{% include 'layout/link-collection.html' with {'links': [
-  {
-    'title': 'Overview',
-    'target': '#'
-  },
-  {
-    'title': 'Eligibility Criteria',
-    'target': '#'
-  },
+{% include 'layout/link-collection.html' with {'links': (in_page_links??[])|merge([
   {
     'title': 'Application Process',
-    'target': '#'
+    'target': '#application-process'
   },
-]} %}
+])} %}
 
 <div class="row">
   <p class="four columns" style="text-align: center"><strong>Applications Open:</strong> {{ fields.open.value }}</p>
@@ -33,47 +25,23 @@
 
 <hr class="row-separator"/>
 
-<div class="row">
-  <div class="nine columns">
-    {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
-  </div>
-  <div class="three columns">
-    {% if fields.rfp_doc.value %}
+<aside>
+  {% if fields.rfp_doc.value %}
     <button class="button-dark" style="width: 100%" onClick={{ 'window.open("' ~ fields.rfp_doc.value.url ~ '")' }}>
       Download RFP
     </button>
-    {% else %}
+  {% else %}
     <button class="button-dark" style="width: 100%" disabled="disabled"}}>
       RFP not available
     </button>
-    {% endif %}
-  </div>
-</div>
+  {% endif %}
+</aside>
+
+{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
 <hr class="row-separator"/>
 
-<h3 class="row-title">Eligibility Criteria</h3>
-<div class="row">
-  <div class="nine columns">
-    {% include 'flexible-content/text_block.html' with {'content_block': fields.criteria.value} %}
-  </div>
-</div>
-{% for criterion in fields.criteria.value.criteria %}
-  <div class="row">
-    <div class="one column">
-      <svg viewBox="0 0 40 45" style="max-height: 3em">
-        <circle cx="20" cy="25" r="15" stroke="lightgrey" stroke-width="0" fill="lightgrey" />
-      </svg>
-    </div>
-    <div class="eight columns">
-      {% include 'flexible-content/supporting_text_block.html' with {'content_block': criterion} %}
-    </div>
-  </div>
-{% endfor %}
-
-<hr class="row-separator"/>
-
-<h3 class="row-title">Application Process</h3>
+<h3 class="row-title" id="application-process">Application Process</h3>
 {% include 'page-elements/application-steps.html' %}
 
 {% embed 'layout/supporting-content.html' %}
@@ -81,8 +49,8 @@
 
     <h3>Similar Proposals</h3>
     <div class="card-container two-max">
-      {% include 'cards/entities/grant-large.html' with {'grant': similar_proposals[0]} %}
-      {% include 'cards/entities/grant-large.html' with {'grant': similar_proposals[1]} %}
+      {% include 'cards/entities/grant.html' with {'grant': similar_proposals[0]} %}
+      {% include 'cards/entities/grant.html' with {'grant': similar_proposals[1]} %}
     </div>
 
   {% endblock %}

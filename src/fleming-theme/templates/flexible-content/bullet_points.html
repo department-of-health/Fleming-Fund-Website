@@ -2,9 +2,9 @@
   {% if content_block.heading %}
     <p><b>{{ content_block.heading }}</b></p>
   {% endif %}
-  <ul>
+  <{{ content_block.style == 'numbered' ? 'ol' : 'ul' }}>
     {% for item in content_block.items %}
       <li>{{ item.item }}</li>
     {% endfor %}
-  </ul>
+  </{{ content_block.style == 'numbered' ? 'ol' : 'ul' }}>
 {% endif %}

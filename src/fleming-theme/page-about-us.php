@@ -1,8 +1,8 @@
 <?php
 
-include __DIR__ . '/php/get-css-filename.php';
-include 'query-utilities.php';
-include 'navigation/index.php';
+require_once __DIR__ . '/php/get-css-filename.php';
+require_once 'query-utilities.php';
+require_once 'navigation/index.php';
 
 /**
  * NOTE:
@@ -22,10 +22,6 @@ function fleming_get_content() {
     );
 
     process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
-
-    $allPeople = get_posts(array('post_type'=>'people','numberposts'=>-1));
-    $tagHighlightPerson = get_post_data_and_fields($allPeople[0]->ID);
-    $fleming_content['tagHighlightPerson'] = $tagHighlightPerson;
 
     return $fleming_content;
 }

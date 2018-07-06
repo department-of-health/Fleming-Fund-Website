@@ -1,8 +1,8 @@
 <?php
 
-include __DIR__ . '/php/get-css-filename.php';
-include 'query-utilities.php';
-include 'navigation/index.php';
+require_once __DIR__ . '/php/get-css-filename.php';
+require_once 'query-utilities.php';
+require_once 'navigation/index.php';
 
 /**
  * NOTE:
@@ -46,27 +46,7 @@ function fleming_get_content()
         "nav" => get_home_nav()
     );
 
-    $fleming_content["fields"]["headline_publication"] = publication_with_post_data_and_fields(
-        get_post_data_and_fields(
-            $fleming_content["fields"]["headline_publication"]["value"]->ID
-        )
-    );
-
-    if ($fleming_content['fields']['headline_projects']['value']) {
-        foreach ($fleming_content['fields']['headline_projects']['value'] as &$project) {
-            $project = project_with_post_data_and_fields(
-                get_post_data_and_fields($project->ID)
-            );
-        }
-    }
-
-    if ($fleming_content['fields']['highlight_opportunities']['value']) {
-        foreach ($fleming_content['fields']['highlight_opportunities']['value'] as &$grant) {
-            $grant = grant_with_post_data_and_fields(
-                get_post_data_and_fields($grant->ID)
-            );
-        }
-    }
+    process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
 
     $opportunities = get_posts(array('post_type' => 'grants', 'numberposts' => -1));
     foreach ($opportunities as &$opportunity) {

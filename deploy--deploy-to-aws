@@ -37,7 +37,7 @@ async function start() {
     console.log('uploading');
     await upload(zipFileName, s3bucket, s3fileName);
 
-    console.log('creatiung version');
+    console.log('creating version');
     await createVersion(ebAppName, ebVersionLabel, s3bucket, s3fileName);
 
     console.log('deploying version');

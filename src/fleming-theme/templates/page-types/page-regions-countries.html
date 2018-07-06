@@ -4,6 +4,7 @@
 
 {% include 'layout/link-collection.html' with {'links': nav.allRegionLinks} %}
 
+{% if weight == 'heavy' %}
 {% embed 'layout/full-width-container.html' %}
   {% block container %}
     <div id="map-element">
@@ -13,6 +14,7 @@
     </div>
   {% endblock %}
 {% endembed %}
+{% endif %}
 
 <div class="card-container two-max" id="region-cards">
   {% if fields.overview.value %}
@@ -77,7 +79,7 @@
         {% endif %}
         {% if region.highlightStatistic %}
           <div class="content-block statistics card-container cover">
-            {% include 'cards/entities/statistic-small.html' with {'statistic': region.highlightStatistic} %}
+            {% include 'cards/entities/statistic.html' with {'statistic': region.highlightStatistic} %}
           </div>
         {% endif %}
       {% endblock %}
@@ -85,9 +87,11 @@
 
   {% endfor %}
 
+  {% if weight == 'heavy' %}
   <script type="text/javascript">
-      Fleming.regionsAndCountries.init();
+    Fleming.regionsAndCountries.init();
   </script>
+  {% endif %}
 </div>
 
 

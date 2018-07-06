@@ -48,6 +48,14 @@ trait CommonLinksServer
         return $link;
     }
 
+    function getAllGrantsPageLink()
+    {
+        $link = new Link();
+        $link->setTitle('Grants');
+        $link->setTarget('/grants/');
+        return $link;
+    }
+
     function getGrantsPageLink()
     {
         return $this->getMenuRouteLink('grants');
@@ -99,8 +107,9 @@ trait CommonLinksServer
         $homeLink->setTarget('https://twitter.com/FlemingFund');
         $homeLink->setExternal(true);
         return $homeLink;
-
     }
+
+    // Can't find Facebook, LinkedIn or YouTube yet!
 
     private function getMenuRouteLink(string ...$menuRouteKeys)
     {

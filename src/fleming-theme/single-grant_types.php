@@ -4,7 +4,7 @@ include 'navigation/index.php';
 
 $nav = get_home_nav();
 
-$urlForGrantType = $nav->getGrantsPageLink()->getTarget() . '?type=' . get_post()->post_name;
+$urlForGrantType = $nav->getAllGrantsPageLink()->getTarget() . '?type=' . get_post()->post_name;
 
 header("Location: $urlForGrantType");
 

@@ -1,6 +1,6 @@
 <?php
 
-include 'navigation/index.php';
+require_once 'navigation/index.php';
 
 $nav = get_home_nav();
 

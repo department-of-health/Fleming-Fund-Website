@@ -1,0 +1,9 @@
+{% if event %}
+  {% include 'cards/base.html' with {'card': {
+    'decorated': true,
+    'identifier': 'Event',
+    'title': event.data.post_title,
+    'content': event.fields.summary.value,
+    'link_target': event.permalink
+  }} %}
+{% endif %}

@@ -1,8 +1,8 @@
 <?php
 
-include __DIR__ . '/php/get-css-filename.php';
-include 'navigation/index.php';
-include 'query-utilities.php';
+require_once __DIR__ . '/php/get-css-filename.php';
+require_once 'navigation/index.php';
+require_once 'query-utilities.php';
 
 /**
  * NOTE:
@@ -24,6 +24,8 @@ function fleming_get_content() {
             ->withAdditionalBreadcrumb(get_raw_title())
             ->build()
     );
+
+    process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
 
     $thisGrant = grant_with_post_data_and_fields(get_current_post_data_and_fields());
     $fleming_content['colour_scheme'] = $thisGrant['colour_scheme'];

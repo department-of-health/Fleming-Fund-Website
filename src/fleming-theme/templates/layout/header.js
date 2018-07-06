@@ -35,5 +35,5 @@ function init() {
 
 module.exports = {
     init,
-    searchToggleButtonClicked
+    searchToggleButtonClicked,
 };

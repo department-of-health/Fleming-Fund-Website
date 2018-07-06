@@ -4,25 +4,27 @@
 #}
 
 {% if post.data.post_type == 'aims' %}
-    {% include('cards/entities/aim-large.html') with { 'aim' : post } %}
+    {% include('cards/entities/aim.html') with { 'aim' : post } %}
 {% elseif post.data.post_type == 'countries' %}
-    {% include('cards/entities/country-large.html') with { 'country' : post } %}
+    {% include('cards/entities/country.html') with { 'country' : post } %}
 {% elseif post.data.post_type == 'disciplines' %}
-    {% include('cards/entities/discipline-large.html') with { 'discipline' : post } %}
+    {% include('cards/entities/discipline.html') with { 'discipline' : post } %}
 {% elseif post.data.post_type == 'events' %}
-    {% include('cards/entities/event-medium.html') with { 'event' : post } %}
+    {% include('cards/entities/event.html') with { 'event' : post } %}
 {% elseif post.data.post_type == 'grants' %}
-    {% include('cards/entities/grant-large.html') with { 'grant' : post } %}
+    {% include('cards/entities/grant.html') with { 'grant' : post } %}
 {% elseif post.data.post_type == 'organisations' %}
-    {% include('cards/entities/organisation-medium-with-image.html') with { 'organisation' : post } %}
+    {% include('cards/entities/organisation-with-image.html') with { 'organisation' : post } %}
+{% elseif post.data.post_type == 'page' %}
+  {% include('cards/entities/page.html') with { 'page' : post } %}
 {% elseif post.data.post_type == 'people' %}
-    {% include('cards/entities/person-medium-with-image.html') with { 'person' : post } %}
+  {% include('cards/entities/person-with-image.html') with { 'person' : post } %}
 {% elseif post.data.post_type == 'projects' %}
-    {% include('cards/entities/project-large.html') with { 'project' : post } %}
+    {% include('cards/entities/project.html') with { 'project' : post } %}
 {% elseif post.data.post_type == 'publications' %}
-    {% include('cards/entities/publication-large.html') with { 'publication' : post } %}
+    {% include(is_prominent ? 'cards/entities/publication-with-image.html' : 'cards/entities/publication.html') with { 'publication' : post } %}
 {% elseif post.data.post_type == 'regions' %}
-    {% include('cards/entities/region-large.html') with { 'region' : post } %}
+    {% include('cards/entities/region.html') with { 'region' : post } %}
 {% elseif post.data.post_type == 'topics' %}
-    {% include('cards/entities/topic-large.html') with { 'topic' : post } %}
+    {% include('cards/entities/topic.html') with { 'topic' : post } %}
 {% endif %}

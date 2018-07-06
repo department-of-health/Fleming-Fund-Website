@@ -1,14 +1,5 @@
-{% if query_result.previous_link or query_result.next_link %}
+{% if query_result.pagination_links %}
   <div class="row pagination-links">
-    {% if query_result.previous_link %}
-      <div class="previous-link">
-        <a href="{{ query_result.previous_link }}">Previous page</a>
-      </div>
-    {% endif %}
-    {% if query_result.next_link %}
-      <div class="next-link">
-        <a href="{{ query_result.next_link }}">Next page</a>
-      </div>
-    {% endif %}
+    {{ query_result.pagination_links|raw }}
   </div>
 {% endif %}

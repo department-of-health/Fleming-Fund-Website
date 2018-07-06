@@ -1,8 +1,8 @@
 <?php
 
-include __DIR__ . '/php/get-css-filename.php';
-include 'navigation/index.php';
-include 'query-utilities.php';
+require_once __DIR__ . '/php/get-css-filename.php';
+require_once 'navigation/index.php';
+require_once 'query-utilities.php';
 
 /**
  * NOTE:
@@ -31,6 +31,8 @@ function fleming_get_content()
         "fields" => get_field_objects(),
         "nav" => get_nav_model(),
     );
+
+    $this_country = get_current_post_data_and_fields();
 
     process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
 
@@ -62,6 +64,8 @@ function fleming_get_content()
     }
     // qq - sort? filter?
     $fleming_content["projects"] = array_slice($allProjects, 0, 2);
+
+    $fleming_content['rss_link_target'] = '/feed/country/?channel=' . $this_country['data']->post_name;
 
     return $fleming_content;
 }

@@ -5,7 +5,7 @@
     <h1>{{ title }}</h1>
   </div>
   <div class="four columns subscribe-for-updates">
-    <a class="button" href="https://www.example.com" target="_blank">
+    <a class="button" href="{{ rss_link_target }}" target="_blank">
       Subscribe for {{ title }} updates
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 0 33 33">
         <circle cx="3.5" cy="28.5" r="4"/>
@@ -62,7 +62,7 @@
 {% endif %}
 
 <aside class="people card-container cover">
-  {% include 'cards/entities/person-medium-with-image.html' with {
+  {% include 'cards/entities/person-with-image.html' with {
     'person': fields.coordinator.value,
     'supertitle': 'Regional Coordinator',
     'cta_override': {
@@ -80,7 +80,7 @@
     {% if fields.case_study.value %}
       <h3>Featured Case Study</h3>
       <div class="card-container cover">
-        {% include 'cards/entities/publication-large-with-image.html' with {'publication': fields.case_study.value} %}
+        {% include 'cards/entities/publication-with-image.html' with {'publication': fields.case_study.value} %}
       </div>
     {% endif %}
 

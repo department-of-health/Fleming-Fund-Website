@@ -10,7 +10,7 @@
     {% set cardLayoutClass = (numStatistics > 1 and (numStatistics - 1) is divisible by (3)) ? 'four-max' : 'three-max' %}
     <div class="card-container statistics {{ cardLayoutClass }}">
       {% for statistic in statistics|statistics_only_with_value %}
-        {% include 'cards/entities/statistic-small.html' %}
+        {% include 'cards/entities/statistic.html' %}
       {% endfor %}
     </div>
   {% endif %}
