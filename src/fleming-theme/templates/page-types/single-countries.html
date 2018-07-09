@@ -61,7 +61,7 @@
     {% endif %}
   </div>
   <div class="people card-container cover">
-    {% include 'cards/entities/person-medium-with-image.html' with {
+    {% include 'cards/entities/person-with-image.html' with {
       'person': coordinator,
       'supertitle': 'Regional Coordinator',
       'cta_override': {
@@ -80,7 +80,7 @@
     {% if fields.case_study.value %}
       <h3>Feature Case Study</h3>
       <div class="card-container cover">
-        {% include 'cards/entities/publication-large-with-image.html' with {'publication': fields.case_study.value} %}
+        {% include 'cards/entities/publication-with-image.html' with {'publication': fields.case_study.value} %}
       </div>
     {% endif %}
 
@@ -88,7 +88,7 @@
       <h3>Current and Upcoming Opportunities</h3>
       <div class="card-container two-max">
         {% for grant in opportunities %}
-          {% include 'cards/entities/grant-large.html' with {'grant': grant} %}
+          {% include 'cards/entities/grant.html' with {'grant': grant} %}
         {% endfor %}
       </div>
     {% endif %}
@@ -97,7 +97,7 @@
       <h3>Current Projects</h3>
       <div class="card-container two-max">
         {% for project in projects %}
-          {% include 'cards/entities/project-large.html' with {'project': project} %}
+          {% include 'cards/entities/project.html' with {'project': project} %}
         {% endfor %}
       </div>
     {% endif %}

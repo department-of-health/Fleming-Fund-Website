@@ -44,6 +44,11 @@
     .image-container img {
       padding: 0 1.5em;
       box-sizing: border-box;
+      max-width: 200px;
+    }
+
+    & > .card {
+      flex: 1 0 auto;
     }
   }
 }
@@ -125,7 +130,7 @@
   }
 }
 
-.card-container.people {
+.card-container.people, .card-container.organisations {
   .card {
     .header {
       padding-bottom: 0;
@@ -133,10 +138,18 @@
     h3 {
       font-size: 1.3em;
     }
+    .image-container {
+      height: 150px;
+      position: relative;
+    }
     img {
-      border-radius: 50%;
-      max-width: 150px;
-      width: 100%;
+      max-width: 100%;
+      max-height: 120px;
+      width: auto;
+      height: auto;
+      position: absolute;
+      left: 0;
+      bottom: 10px;
     }
     .identifier {
       margin-top: 0.5ex;
@@ -144,6 +157,14 @@
     p {
       margin-top: 0;
       font-size: 1em;
+    }
+  }
+}
+
+.card-container.people {
+  .card {
+    img {
+      border-radius: 50%;
     }
   }
 }
@@ -229,6 +250,21 @@
     h3 {
       margin-top: 0.8em;
       margin-bottom: 0.8em;
+    }
+  }
+}
+
+.card-container.youtube {
+  .card {
+    box-sizing: content-box;
+    max-width: 560px;
+
+    .content {
+      padding-top: 1.5em;
+    }
+
+    iframe {
+      max-width: 100%;
     }
   }
 }

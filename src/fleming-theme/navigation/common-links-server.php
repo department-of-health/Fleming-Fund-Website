@@ -51,8 +51,8 @@ trait CommonLinksServer
     function getAllGrantsPageLink()
     {
         $link = new Link();
-        $link->setTitle('All Grants');
-        $link->setTarget('/all-grants/');
+        $link->setTitle('Grants');
+        $link->setTarget('/grants/');
         return $link;
     }
 

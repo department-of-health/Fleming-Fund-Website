@@ -1,5 +1,9 @@
 {% if card %}
-  {% set has_content = card.content or cta_override %}
+  {% set has_content =
+    content_override
+    or card.content
+    or cta_override
+    or (card.link_target and card.cta_title) %}
 
   {% set card_class = 'card '~(card.colour_scheme ?? 'base') %}
   {% if card.decorated %}
@@ -42,7 +46,7 @@
 
       {% block content %}
 
-        <p>{{ card.content }}</p>
+        <p>{{ content_override | default(truncate_content_if_no_override ? card.content|truncated_for_card_overview : card.content) }}</p>
         {% if cta_override %}
           <a class="button {{ card.cta_not_hollow ?? 'hollow' }}"
              href="{{ cta_override.target }}">{{ cta_override.title }}</a>

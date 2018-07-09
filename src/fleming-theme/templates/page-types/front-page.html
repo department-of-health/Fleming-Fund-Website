@@ -25,65 +25,6 @@
   {% endblock %}
 {% endembed %}
 
-{% if fields.headline_publication %}
-  <div class="card-container cover">
-    {% include 'cards/entities/publication-large-with-image.html' with {
-      'publication': fields.headline_publication,
-      'cta_hollow': true,
-      'cta_override': {
-        'title': 'See all Case Studies',
-        'target': nav.caseStudiesLink.target
-      }
-    } %}
-  </div>
-{% endif %}
-
-{% if fields.headline_projects.value is not empty %}
-  <div class="card-container two-max">
-    {% for project in fields.headline_projects.value %}
-      {% include 'cards/entities/project-large.html' %}
-    {% endfor %}
-  </div>
-{% endif %}
-
-<hr class="row-divider"/>
-
-{% include 'page-elements/statistics.html' with {'statistics': [
-  {
-    'value': '£'~fields.spend_statistic.value~'m',
-    'text': 'Spend statistic'
-  },
-  {
-    'value': fields.grants_given.value,
-    'text': 'Grants given'
-  },
-  {
-    'value': fields.performance_indicator.value,
-    'text': 'Performance against any KPI'
-  },
-  {
-    'value': fields.another_statistic.value,
-    'text': 'Statistical supporting copy'
-  },
-]} %}
-
-{% embed 'layout/supporting-content.html' %}
-  {% block content %}
-
-    {% if fields.highlight_opportunities.value is not empty %}
-      <h3>Current and Upcoming Opportunities</h3>
-      <div class="card-container two-max">
-        {% for grant in fields.highlight_opportunities.value %}
-          {% include 'cards/entities/grant-large.html' %}
-        {% endfor %}
-      </div>
-
-      <hr class="row-divider"/>
-    {% endif %}
-
-    {{ include('page-elements/useful-links.html') }}
-
-  {% endblock %}
-{% endembed %}
+{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
 {{ include('layout/footer.html') }}

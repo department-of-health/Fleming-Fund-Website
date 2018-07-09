@@ -2,17 +2,13 @@
 
 <h1>{{ title }}</h1>
 
-<hr class="row-divider"/>
+{% include 'page-elements/in-page-links.html' %}
 
-{% if fields.overview.value %}
-<p class="large-text">
-  {{ fields.overview.value }}
-</p>
-{% endif %}
+{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
-<div class="people card-container three-max">
+<div class="organisations card-container three-max">
   {% for organisation in allOrganisations %}
-    {% include 'cards/entities/organisation-medium-with-image.html' %}
+    {% include 'cards/entities/organisation-with-image.html' %}
   {% endfor %}
 </div>
 

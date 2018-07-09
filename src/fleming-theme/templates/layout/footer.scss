@@ -2,7 +2,7 @@ footer {
   font-size: 0;
   width: 100%;
   overflow: hidden;
-  margin-top: 12rem;
+  margin: 6rem 0 10rem;
 
   p, li {
     font-size: 16px;
@@ -32,8 +32,10 @@ footer {
     vertical-align: middle;
 
     li {
-      img {
-        height: 24px;
+      a {
+        img {
+          height: 20px;
+        }
       }
     }
   }
@@ -70,9 +72,19 @@ footer {
 
   .left {
     .footer-content {
+      p {
+        font-size: 0;
+      }
+
+      a {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 25px 50px 0 0;
+      }
+
       img {
-        max-width: 33.3%;
-        max-height: 128px;
+        max-width: 160px;
+        max-height: 90px;
         width: auto;
         height: auto;
       }

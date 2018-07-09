@@ -23,10 +23,6 @@ function fleming_get_content() {
 
     process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
 
-    $allPeople = get_posts(array('post_type'=>'people','numberposts'=>-1));
-    $tagHighlightPerson = get_post_data_and_fields($allPeople[0]->ID);
-    $fleming_content['tagHighlightPerson'] = $tagHighlightPerson;
-
     return $fleming_content;
 }
 

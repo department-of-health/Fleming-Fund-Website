@@ -5,13 +5,7 @@
 
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
-<p>{{ query_result.summary }}</p>
-<div class="card-container two-max">
-  {% for project in query_result.posts %}
-    {% include 'cards/entities/project-large.html' %}
-  {% endfor %}
-</div>
-
-{% include 'page-elements/pagination-links.html' %}
+{% include 'page-elements/list-query-result.html' %}
+{% include 'page-elements/pagination-links.html' with {'ajax': true} %}
 
 {{ include('layout/footer.html') }}

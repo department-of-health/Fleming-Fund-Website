@@ -67,6 +67,12 @@ function process_flexible_content(&$fields, &$content)
                     "title" => $title
                 );
                 $show_in_page_links = true;
+            } elseif ($type == 'links_to_other_posts') {
+                foreach($content_block['links'] as &$postLink) {
+                    $postLink['post'] = entity_with_post_data_and_fields(
+                        get_post_data_and_fields($postLink['post']->ID)
+                    );
+                }
             }
         }
     }
@@ -296,6 +302,39 @@ function statistics_only_with_value($statistics) {
     });
 }
 
+function truncated_for_card_overview($overview_text) {
+    $maxLengthOfOverview = 140;
+    if (mb_strlen($overview_text) > $maxLengthOfOverview) {
+        $upperLimitOfOverview = mb_substr($overview_text, 0, $maxLengthOfOverview);
+        $indexOfLastWordBoundary = mb_strrpos($upperLimitOfOverview, ' ');
+        return substr($upperLimitOfOverview, 0, $indexOfLastWordBoundary) . '…';
+    } else {
+        return $overview_text;
+    }
+}
+
+function get_footer_organisations() {
+    $query_args = [
+        'post_type' => 'organisations',
+        'posts_per_page' => '-1',
+        'meta_query' => array(
+            array(
+                'key' => 'is_featured_in_footer',
+                'value' => true,
+                'compare' => '='
+            )
+        )
+    ];
+    $query = new WP_Query($query_args);
+    $organisations = $query->get_posts();
+    foreach ($organisations as &$organisation) {
+        $organisation = organisation_with_post_data_and_fields(
+                get_post_data_and_fields($organisation->ID)
+        );
+    }
+    return $organisations;
+}
+
 
 ////////////////////////////////////////////////////////////////
 ////////                  ADMIN PORTAL                  ////////
@@ -419,6 +458,26 @@ if (isset($_GET['toggle-bandwidth-option'])) {
     header('Location: ' . $returnTo);
     die();
 }
+
+
+////////////////////////////////////////////////////////////////
+////////                  ADMIN STYLES                  ////////
+////////////////////////////////////////////////////////////////
+
+
+function admin_css()
+{
+    ?>
+    <style type="text/css">
+        .acf-flexible-content .layout[data-layout="start_of_supporting_content"] {
+            background: #eee;
+            border: 1px solid #444;
+        }
+    </style>
+    <?php
+}
+
+add_action('admin_head', 'admin_css');
 
 
 ////////////////////////////////////////////////////////////////

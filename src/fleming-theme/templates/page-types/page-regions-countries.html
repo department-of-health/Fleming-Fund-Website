@@ -79,7 +79,7 @@
         {% endif %}
         {% if region.highlightStatistic %}
           <div class="content-block statistics card-container cover">
-            {% include 'cards/entities/statistic-small.html' with {'statistic': region.highlightStatistic} %}
+            {% include 'cards/entities/statistic.html' with {'statistic': region.highlightStatistic} %}
           </div>
         {% endif %}
       {% endblock %}

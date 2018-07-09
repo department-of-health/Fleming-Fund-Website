@@ -1,5 +1,11 @@
-{% if query_result.pagination_links %}
+{% if query_result %}
   <div class="row pagination-links">
     {{ query_result.pagination_links|raw }}
   </div>
+
+  {% if ajax and weight == 'heavy' %}
+    <script type="text/javascript">
+        Fleming.ajaxPagination.init({{ query_result.max_page }});
+    </script>
+  {% endif %}
 {% endif %}
