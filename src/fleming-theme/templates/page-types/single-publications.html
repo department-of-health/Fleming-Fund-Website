@@ -19,7 +19,7 @@
 
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
-{% if fields.document.value and fields.type.value.post_title != 'news' %}
+{% if fields.document.value.file and fields.type.value.post_title != 'news' %}
   <hr class="row-divider"/>
   <h4>The full {{ fields.document.value.page_count }} page document is available here</h4>
   <button class="button-dark" onClick={{ 'window.open("' ~ fields.document.value.file.url ~ '")' }}>View PDF</button>
