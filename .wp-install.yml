@@ -10,6 +10,7 @@ plugins-to-download:
   - name: yet-another-related-posts-plugin
   - name: relevanssi
   - name: acf-youtube-picker
+  - name: force-regenerate-thumbnails
   - name: wp-ses
 
 plugins-to-copy:
