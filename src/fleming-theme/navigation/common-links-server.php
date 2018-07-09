@@ -111,6 +111,14 @@ trait CommonLinksServer
 
     // Can't find Facebook, LinkedIn or YouTube yet!
 
+    function getHowToApplyLink()
+    {
+        $link = new Link();
+        $link->setTitle('How to Apply');
+        $link->setTarget('/application-process/');
+        return $link;
+    }
+
     private function getMenuRouteLink(string ...$menuRouteKeys)
     {
         return MenuLinksConfig::configToLink(MenuLinksConfig::getUnderRoute(...$menuRouteKeys));
