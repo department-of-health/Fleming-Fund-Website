@@ -25,7 +25,7 @@ footer {
   }
 
   .social-links {
-    @include pipe_horizontal_ul(30px, middle);
+    @include pipe_horizontal_ul(34px, top);
 
     margin-bottom: 2em;
     display: inline-block;

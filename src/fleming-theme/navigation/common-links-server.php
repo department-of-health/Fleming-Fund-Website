@@ -102,14 +102,22 @@ trait CommonLinksServer
 
     function getTwitterLink()
     {
-        $homeLink = new Link();
-        $homeLink->setTitle('Twitter');
-        $homeLink->setTarget('https://twitter.com/FlemingFund');
-        $homeLink->setExternal(true);
-        return $homeLink;
+        $twitterLink = new Link();
+        $twitterLink->setTitle('Twitter');
+        $twitterLink->setTarget('https://twitter.com/FlemingFund');
+        $twitterLink->setExternal(true);
+        return $twitterLink;
     }
 
-    // Can't find Facebook, LinkedIn or YouTube yet!
+    function getYouTubeLink()
+    {
+        // This is the DHSC YouTube channel: I can't find a specific Fleming Fund one.
+        $youtubeLink = new Link();
+        $youtubeLink->setTitle('YouTube');
+        $youtubeLink->setTarget('https://www.youtube.com/channel/UCXmtnbNO7_no7RekfUIqVcw');
+        $youtubeLink->setExternal(true);
+        return $youtubeLink;
+    }
 
     function getHowToApplyLink()
     {
