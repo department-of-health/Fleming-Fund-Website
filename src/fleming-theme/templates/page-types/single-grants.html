@@ -11,6 +11,8 @@
       'target': '#application-process'
     },
   ])} %}
+{% else %}
+  {% include 'layout/link-collection.html' with {'links': (in_page_links??[])} %}
 {% endif %}
 
 {% if fields.type.value.post_name != 'global-grant' %}
