@@ -2,13 +2,18 @@
 
 <h1>{{ title }}</h1>
 
-{% include 'layout/link-collection.html' with {'links': (in_page_links??[])|merge([
-  {
-    'title': 'Application Process',
-    'target': '#application-process'
-  },
-])} %}
+<h2>{{ fields.type.value.post_name }}</h2>
 
+{% if fields.application_steps.value %}
+  {% include 'layout/link-collection.html' with {'links': (in_page_links??[])|merge([
+    {
+      'title': 'Application Process',
+      'target': '#application-process'
+    },
+  ])} %}
+{% endif %}
+
+{% if fields.type.value.post_name != 'global-grant' %}
 <div class="row">
   <p class="four columns" style="text-align: center"><strong>Applications Open:</strong> {{ fields.open.value }}</p>
   <p class="four columns" style="text-align: center"><strong>RFP Publication Date:</strong> {{ fields.rfp_publication_date.value }}</p>
@@ -22,6 +27,7 @@
     {% endfor %}
   {% endif %}
 </div>
+{% endif %}
 
 <hr class="row-separator"/>
 
@@ -41,8 +47,10 @@
 
 <hr class="row-separator"/>
 
+{% if fields.application_steps.value %}
 <h3 class="row-title" id="application-process">Application Process</h3>
 {% include 'page-elements/application-steps.html' %}
+{% endif %}
 
 {% embed 'layout/supporting-content.html' %}
   {% block content %}
