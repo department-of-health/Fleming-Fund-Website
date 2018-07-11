@@ -17,6 +17,7 @@ function fleming_get_content() {
     $fleming_content = array(
         "title" => get_raw_title(),
         "fields" => get_field_objects(),
+        "colour_scheme" => "base",
         "nav" => get_nav_builder()
             ->build()
     );

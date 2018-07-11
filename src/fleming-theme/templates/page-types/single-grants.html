@@ -48,7 +48,9 @@
 
 {% if fields.application_steps.value %}
 <h3 class="row-title" id="application-process">Application Process</h3>
-{% include 'page-elements/application-steps.html' %}
+{% include 'flexible-content/application_steps.html' with {
+       'content_block': { 'steps' : fields.application_steps.value }
+   } %}
 {% endif %}
 
 {% embed 'layout/supporting-content.html' %}

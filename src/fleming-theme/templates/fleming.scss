@@ -29,6 +29,7 @@
 @import "page-elements/nav";
 @import "page-elements/pagination-links";
 @import "layout/footer";
+@import "flexible-content/application_steps";
 
 h1, h2, h3, h4, h5 {
   display: block;
@@ -112,7 +113,6 @@ ul {
 @import 'page-types/front-page';
 @import 'page-types/single-countries';
 @import 'page-types/single-events';
-@import 'page-types/single-grants';
 @import 'page-types/single-organisation';
 @import 'page-types/page-knowledge-resources';
 @import 'page-types/page-our-aims';
