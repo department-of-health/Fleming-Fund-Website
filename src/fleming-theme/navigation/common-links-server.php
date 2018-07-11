@@ -18,16 +18,16 @@ trait CommonLinksServer
         return $this->getMenuRouteLink('about');
     }
 
-    function getOurAimsLink()
+    function getImportanceOfDataLink()
     {
-        return $this->getMenuRouteLink('about', 'overview');
+        $link = $this->getMenuRouteLink('about', 'importance_of_data');
+        $link->setTitle('The Importance of Data');
+        return $link;
     }
 
     function getWhatIsAMRLink()
     {
-        $link = $this->getMenuRouteLink('about');
-        $link->setTitle('What is AMR');
-        return $link;
+        return $this->getMenuRouteLink('about', 'about_amr');
     }
 
     function getPublicationsLink()

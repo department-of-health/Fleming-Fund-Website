@@ -10,9 +10,13 @@ class MenuLinksConfig
             'target' => '/about-us/',
 
             'children' => [
-                'overview' => [
-                    'title' => 'Overview',
-                    'target' => '/about-us/'
+                'about_amr' => [
+                    'title' => 'About AMR',
+                    'target' => '/about-us/about-amr/'
+                ],
+                'importance_of_data' => [
+                    'title' => 'Importance of Data',
+                    'target' => '/about-us/the-importance-of-data/'
                 ],
                 'works' => [
                     'title' => 'How the Fleming Fund works',
