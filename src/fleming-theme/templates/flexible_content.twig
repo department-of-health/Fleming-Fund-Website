@@ -1,9 +1,12 @@
 {% set supporting_content_starts_at_index = false %}
+{% set in_collapsible = false %}
 {% for content_block in flexible_content if not supporting_content_starts_at_index %}
   {% if content_block.acf_fc_layout == 'start_of_supporting_content' %}
     {% set supporting_content_starts_at_index = loop.index + 1 %}
   {% else %}
-    {% include 'flexible-content/content-block.html' %}
+    {% block collapse_controller %}
+      {% include 'flexible-content/content-block.html' %}
+    {% endblock %}
   {% endif %}
 {% endfor %}
 
@@ -12,6 +15,15 @@
     {% block content %}
       {% for content_block in flexible_content %}
         {% if loop.index >= supporting_content_starts_at_index %}
+          {% if content_block.acf_fc_layout == 'section_title' %}
+            {% if in_collapsible %}
+              {% include 'flexible-content/collapsible-terminator.html' %}
+              {% set in_collapsible = false %}
+            {% endif %}
+            {% if content_block.collapsible %}
+              {% set in_collapsible = true %}
+            {% endif %}
+          {% endif %}
           {% include 'flexible-content/content-block.html' %}
         {% endif %}
       {% endfor %}

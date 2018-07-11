@@ -1,0 +1,14 @@
+{% extends 'flexible_content.twig' %}
+
+{% block collapse_controller %}
+  {% if content_block.acf_fc_layout == 'section_title' %}
+    {% if in_collapsible %}
+      {% include 'flexible-content/collapsible-terminator.html' %}
+      {% set in_collapsible = false %}
+    {% endif %}
+    {% if content_block.collapsible %}
+      {% set in_collapsible = true %}
+    {% endif %}
+  {% endif %}
+  {% include 'flexible-content/content-block.html' %}
+{% endblock %}

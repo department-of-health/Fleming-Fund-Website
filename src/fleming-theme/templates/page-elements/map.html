@@ -29,6 +29,8 @@
   <div class="map" id="{{ map_id }}"></div>
 </div>
 
+{% if weight == 'heavy' %}
 <script type="text/javascript">
     Fleming.map.init({{ map_config|json_encode|raw }}, '{{ map_id }}');
 </script>
+{% endif %}
