@@ -2,8 +2,6 @@
 
 <h1>{{ title }}</h1>
 
-<h2>{{ fields.type.value.post_name }}</h2>
-
 {% if fields.application_steps.value %}
   {% include 'layout/link-collection.html' with {'links': (in_page_links??[])|merge([
     {
@@ -29,9 +27,8 @@
     {% endfor %}
   {% endif %}
 </div>
-{% endif %}
-
 <hr class="row-separator"/>
+{% endif %}
 
 <aside>
   {% if fields.rfp_doc.value %}

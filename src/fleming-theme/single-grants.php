@@ -20,7 +20,7 @@ function fleming_get_content() {
         "title" => get_raw_title(),
         "fields" => get_field_objects(),
         "nav" => get_nav_builder()
-            ->withMenuRoute('grants')
+            ->withMenuRoute('grants', get_type())
             ->withAdditionalBreadcrumb(get_raw_title())
             ->build()
     );

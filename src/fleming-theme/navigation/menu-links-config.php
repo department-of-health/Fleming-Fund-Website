@@ -41,19 +41,19 @@ class MenuLinksConfig
             'target' => '/grants-funding/',
 
             'children' => [
-                'global' => [
+                'global-grant' => [
                     'title' => 'Global grants',
                     'target' => '/grant_types/global-grant/',
                 ],
-                'regional' => [
+                'regional-grant' => [
                     'title' => 'Regional grants',
                     'target' => '/grant_types/regional-grant/',
                 ],
-                'country' => [
+                'country-grant' => [
                     'title' => 'Country grants',
                     'target' => '/grant_types/country-grant/',
                 ],
-                'fellowships' => [
+                'fellowship' => [
                     'title' => 'Fellowships scheme',
                     'target' => '/grant_types/fellowship/',
                 ],

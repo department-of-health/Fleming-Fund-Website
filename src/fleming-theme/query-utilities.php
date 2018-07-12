@@ -96,3 +96,7 @@ function get_related_posts() {
     }
     return $posts;
 }
+
+function get_type() {
+    return get_field_objects()['type']['value']->post_name;
+}
