@@ -32,9 +32,9 @@
 
 <aside>
   {% if fields.rfp_doc.value %}
-    <button class="button-dark" style="width: 100%" onClick={{ 'window.open("' ~ fields.rfp_doc.value.url ~ '")' }}>
-      Download RFP
-    </button>
+    <a href={{fields.rfp_doc.value.url}}>
+      <button class="button-dark" style="width: 100%"}}>Download RFP</button>
+    </a>
   {% else %}
     <button class="button-dark" style="width: 100%" disabled="disabled"}}>
       RFP not available

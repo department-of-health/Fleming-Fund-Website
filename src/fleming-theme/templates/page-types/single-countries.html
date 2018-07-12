@@ -54,8 +54,9 @@
       <div class="card base">
         <div class="content">
           <p>{{ title }}'s National Action Plan is available here</p>
-          <button class="button" onClick={{ 'window.open("' ~ fields.nap_doc.value.url ~ '")' }}>Download &darr;
-          </button>
+          <a href={{ fields.nap_doc.value.url }}>
+            <button class="button">Download &darr;</button>
+          </a>
         </div>
       </div>
     {% endif %}
