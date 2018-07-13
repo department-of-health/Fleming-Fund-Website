@@ -5,7 +5,7 @@
     'image_src': (weight == 'light' ? organisation.logo_small_url : organisation.logo_medium_url),
     'title': organisation.data.post_title,
     'content': organisation.overview,
-    'link_target': organisation.permalink,
+    'link_target': organisation.fields.website_link.value,
     'cta_title': 'Find out more',
     'cta_not_hollow': true
   }} %}
