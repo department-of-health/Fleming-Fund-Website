@@ -2,10 +2,21 @@
 
 include 'navigation/index.php';
 
-$nav = get_home_nav();
+$fields = get_field_objects();
+$overview_page = $fields['overview_page'];
+$target = '/';
+if ($overview_page && $overview_page['value']) {
+    $target = $overview_page['value'];
+} else {
+    $target = '/grants/?type=' . get_post()->post_name;
+}
 
-$urlForGrantType = $nav->getAllGrantsPageLink()->getTarget() . '?type=' . get_post()->post_name;
-
-header("Location: $urlForGrantType");
-
-echo "<a href=\"$urlForGrantType\">Click here to redirect</a>";
+if (isset($_GET["json"])) {
+    header('Content-Type: application/json');
+    echo(json_encode(array(
+        "fields" => $fields,
+        "target" => $target)));
+} else {
+    header("Location: $target");
+    echo "<a href=\"$target\">Click here to redirect</a>";
+}

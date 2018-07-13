@@ -860,6 +860,56 @@
             "sub_fields": [],
             "min": "",
             "max": ""
+          },
+          "5b461497c5436": {
+            "key": "5b461497c5436",
+            "name": "application_steps",
+            "label": "Application Steps",
+            "display": "block",
+            "sub_fields": [
+              {
+                "key": "field_5b46189ab31cc",
+                "label": "Steps",
+                "name": "steps",
+                "type": "repeater",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "collapsed": "",
+                "min": 0,
+                "max": 0,
+                "layout": "table",
+                "button_label": "",
+                "sub_fields": [
+                  {
+                    "key": "field_5b461cd1b31cd",
+                    "label": "Step",
+                    "name": "application_step",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                      "width": "",
+                      "class": "",
+                      "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 4,
+                    "new_lines": ""
+                  }
+                ]
+              }
+            ],
+            "min": "",
+            "max": ""
           }
         },
         "button_label": "Add Row",

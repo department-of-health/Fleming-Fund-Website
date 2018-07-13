@@ -1,5 +1,5 @@
 <div class="application-container">
-  {% for step in fields.application_steps.value %}
+  {% for step in content_block.steps %}
     <div class="row application-step">
       {% if not loop.last %}
         <div class="two columns application-label">
