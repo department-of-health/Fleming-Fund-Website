@@ -6,10 +6,10 @@
 {% if authors is not empty or fields.publication_date.value or fields.type.value or fields.country_region.value %}
 <aside><!-- qq responsiveness -->
   <hr class="row-border"/>
-  {% if authors is not empty %}<div><strong>Author{{ authors|length > 1 ? 's' }}:</strong> {{ authors|join(', ') }}</div><br/>{% endif %}
-  {% if fields.publication_date.value %}<div><strong>Date:</strong> {{ fields.publication_date.value }}</div><br/>{% endif %}
-  {% if fields.type.value %}<div><strong>Type:</strong> {{ fields.type.value.post_title }}</div><br/>{% endif %}
-  {% if fields.country_region.value %}<div><strong>Location:</strong> {{ fields.country_region.value }}</div><br/>{% endif %}
+  {% if authors is not empty %}<p><strong>Author{{ authors|length > 1 ? 's' }}:</strong> {{ authors|join(', ') }}</p>{% endif %}
+  {% if fields.publication_date.value %}<p><strong>Date:</strong> {{ fields.publication_date.value }}</p>{% endif %}
+  {% if fields.type.value %}<p><strong>Type:</strong> {{ fields.type.value.post_title }}</p>{% endif %}
+  {% if fields.country_region.value %}<p><strong>Location:</strong> {{ fields.country_region.value }}</p>{% endif %}
   <hr class="row-border"/>
 </aside>
 {% endif %}
@@ -19,7 +19,7 @@
 {% if fields.document.value.file and fields.type.value.post_title != 'news' %}
   <hr class="row-divider"/>
   <h4>The full {% if fields.document.value.page_count %}{{ fields.document.value.page_count }} page {% endif %}document is available here</h4>
-  <button class="button-dark" onClick={{ 'window.open("' ~ fields.document.value.file.url ~ '")' }}>View PDF</button>
+  <a href={{fields.document.value.file.url}}><button class="button-dark">View PDF</button></a>
 {% endif %}
 
 {% embed 'layout/supporting-content.html' %}
