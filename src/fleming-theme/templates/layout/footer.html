@@ -58,6 +58,19 @@
       </div>
     </div>
   </div>
+
+  {% if weight == 'heavy' %}
+  <script>
+    let exp = document.getElementsByClassName("collapse-control");
+    for (let i = 0; i < exp.length; i++) {
+      exp[i].onclick = function() {
+        content = exp[i].nextElementSibling;
+        if (content.style.display === "block") content.style.display = "none";
+        else content.style.display = "block";
+      }
+    }
+  </script>
+  {% endif %}
 </footer>
 </body>
 </html>

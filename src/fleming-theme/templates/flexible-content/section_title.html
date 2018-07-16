@@ -1,6 +1,6 @@
 {% if in_collapsible %}
-<h2 id="{{ content_block.id }}" class="row-title collapse-control" onmouseover="Click to expand or contract content.">{{ content_block.section_title }} &#9660</h2>
-<div class="collapsible" style="display: none" id={{ 'collapsible'~loop.index }}>
+<h2 id="{{ content_block.id }}" class="row-title collapse-control">{{ content_block.section_title }} &#9660</h2>
+<div class="collapsible" style="display: block">
 {% else %}
 <h2 id="{{ content_block.id }}" class="row-title">{{ content_block.section_title }}</h2>
 {% endif %}
