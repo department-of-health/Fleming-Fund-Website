@@ -12,6 +12,7 @@ plugins-to-download:
   - name: acf-youtube-picker
   - name: force-regenerate-thumbnails
   - name: wp-ses
+  - name: safe-svg
 
 plugins-to-copy:
   directory: dependencies/plugins
