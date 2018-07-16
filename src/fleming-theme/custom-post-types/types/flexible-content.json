@@ -52,25 +52,44 @@
             "label": "Section title",
             "display": "block",
             "sub_fields": [
-              {
-                "key": "field_5b2b7f8c47ef1",
-                "label": "Section title",
-                "name": "section_title",
-                "type": "text",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                  "width": "",
-                  "class": "",
-                  "id": ""
+                {
+                    "key": "field_5b2b7f8c47ef1",
+                    "label": "Section title",
+                    "name": "section_title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
-              }
+                {
+                    "key": "field_5b3f4bc0a1075",
+                    "label": "Collapsible",
+                    "name": "collapsible",
+                    "type": "true_false",
+                    "instructions": "The collapsible section will end at the next section header, the start of supporting content, or the end of the flexible content.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                }
             ],
             "min": "",
             "max": ""
