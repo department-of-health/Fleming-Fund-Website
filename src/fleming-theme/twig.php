@@ -10,6 +10,8 @@ $twigFilters = [
     new Twig_Filter('format_number', 'format_number'),
     new Twig_Filter('statistics_only_with_value', 'statistics_only_with_value'),
     new Twig_Filter('truncated_for_card_overview', 'truncated_for_card_overview'),
+    new Twig_Filter('markdown', 'markdown_filter', array('is_safe' => array('html'))),
+    new Twig_Filter('markdown_line', 'markdown_line_filter', array('is_safe' => array('html'))),
 ];
 
 foreach ($twigFilters as $twigFilter) {

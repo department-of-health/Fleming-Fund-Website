@@ -4,7 +4,7 @@
   {% endif %}
   <{{ content_block.style == 'numbered' ? 'ol' : 'ul' }}>
     {% for item in content_block.items %}
-      <li>{{ item.item }}</li>
+      <li>{{ item.item | markdown_line }}</li>
     {% endfor %}
   </{{ content_block.style == 'numbered' ? 'ol' : 'ul' }}>
 {% endif %}

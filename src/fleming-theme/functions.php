@@ -336,6 +336,27 @@ function get_footer_organisations() {
 }
 
 
+// Stripped-down Markdown support
+require_once 'markdown/Parsedown.php';
+
+$parsedownInstance = NULL;
+
+function get_parsedown() {
+    global $parsedownInstance;
+    if (is_null($parsedownInstance)) {
+        $parsedownInstance = new Parsedown();
+    }
+    return $parsedownInstance;
+}
+
+function markdown_filter($text) {
+    return get_parsedown()->text($text);
+}
+
+function markdown_line_filter($text) {
+    return get_parsedown()->line($text);
+}
+
 ////////////////////////////////////////////////////////////////
 ////////                  ADMIN PORTAL                  ////////
 ////////////////////////////////////////////////////////////////
