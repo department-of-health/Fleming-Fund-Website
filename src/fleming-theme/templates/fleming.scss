@@ -90,7 +90,13 @@ hr.row-border {
 }
 
 ul {
-  list-style: disc inside;
+  list-style: disc outside;
+  padding-left: 1em;
+}
+
+ol {
+  list-style-position: outside;
+  padding-left: 1em;
 }
 
 @media (#{$min-width-tablet}) {
