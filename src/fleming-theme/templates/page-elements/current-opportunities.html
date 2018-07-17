@@ -1,7 +1,7 @@
 {% if opportunities %}
   <p style="margin: 0; color: #009898;">
     <span style="font-weight: bold; margin-right: 1em;">Current &amp; Upcoming Opportunities</span>
-    <span style="font-size: 0.9em;"><a href="{{ nav.grantsPageLink.url }}">More</a></span>
+    <span style="font-size: 0.9em;"><a href="{{ nav.allGrantsPageLink.target }}">More</a></span>
   </p>
   <div class="card-container four-max opportunities">
 
@@ -18,7 +18,7 @@
     {% endfor %}
 
     <div class="card base">
-      <a class="hollow button" href={{ nav.howToApplyPageLink.url }}>How to Apply</a>
+      <a class="hollow button" href={{ nav.howToApplyLink.target }}>How to Apply</a>
     </div>
 
   </div>
