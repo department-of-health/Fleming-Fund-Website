@@ -53,6 +53,7 @@
 
 {% include 'page-elements/nav.html' %}
 
+{% set colour_scheme = (colour_scheme ?? 'base') %}
 <main class="{{ colour_scheme }}">
   <div class="container">
 {% include 'page-elements/breadcrumbs.html' %}
