@@ -80,12 +80,12 @@
                     "id": ""
                 },
                 "choices": [
-                    "Not Active",
-                    "Approach To Country",
-                    "Needs and Capability Assessment",
-                    "Grant Application",
-                    "Application Review",
-                    "Complete"
+                    "Not active",
+                    "Scoping activities",
+                    "Request For Proposal published",
+                    "Grants under review",
+                    "Grant approved",
+                    "Grant active"
                 ],
                 "default_value": [],
                 "allow_null": 0,
