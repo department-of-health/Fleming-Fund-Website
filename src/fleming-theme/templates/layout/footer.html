@@ -63,6 +63,7 @@
   <script>
     let exp = document.getElementsByClassName("collapse-control");
     for (let i = 0; i < exp.length; i++) {
+      exp[i].nextElementSibling.style.display = "none";
       exp[i].onclick = function() {
         content = exp[i].nextElementSibling;
         if (content.style.display === "block") content.style.display = "none";
