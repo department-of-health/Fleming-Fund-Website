@@ -23,26 +23,27 @@
   {% include 'page-elements/status-box.html' with {
     'level': 1,
     'current_status': fields.grant_status.value,
-    'date': 'Start',
-    'status': 'Approach to Country'
+    'status': 'Scoping Activities'
   } %}
   {% include 'page-elements/status-box.html' with {
     'level': 2,
     'current_status': fields.grant_status.value,
-    'date': '1-2 months',
-    'status': 'Scoping Visit'
+    'status': 'Request For Proposal Published'
   } %}
   {% include 'page-elements/status-box.html' with {
     'level': 3,
     'current_status': fields.grant_status.value,
-    'date': '3-8 months',
-    'status': 'Positioning Activities'
+    'status': 'Grants Under Review'
   } %}
   {% include 'page-elements/status-box.html' with {
     'level': 4,
     'current_status': fields.grant_status.value,
-    'date': '9+ months',
-    'status': 'Grant-making',
+    'status': 'Grant Approved'
+  } %}
+  {% include 'page-elements/status-box.html' with {
+    'level': 5,
+    'current_status': fields.grant_status.value,
+    'status': 'Grant Active',
     'last': true
   } %}
 </div>
