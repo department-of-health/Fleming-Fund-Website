@@ -349,7 +349,7 @@ class Parsedown
 
     # ~
 
-    protected $inlineMarkerList = '!*_&[:<`~\\';
+    protected $inlineMarkerList = '*_&[:<~\\';
 
     #
     # ~
