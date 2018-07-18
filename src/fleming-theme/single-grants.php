@@ -36,6 +36,12 @@ function fleming_get_content() {
     }
     $fleming_content["similar_proposals"] = $similar_proposals;
 
+    usort($fleming_content["fields"]["dates"]["value"], function($date1, $date2) {
+        $timestamp1 = strtotime(str_replace("/","-",$date1["date"]));
+        $timestamp2 = strtotime(str_replace("/","-",$date2["date"]));
+        return $timestamp1 - $timestamp2;
+    });
+
     return $fleming_content;
 }
 

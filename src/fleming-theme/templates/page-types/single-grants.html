@@ -13,21 +13,18 @@
   {% include 'layout/link-collection.html' with {'links': (in_page_links??[])} %}
 {% endif %}
 
-{% if fields.type.value.post_name != 'global-grant' %}
-<div class="row">
-  <p class="four columns" style="text-align: center"><strong>Applications Open:</strong> {{ fields.open.value }}</p>
-  <p class="four columns" style="text-align: center"><strong>RFP Publication Date:</strong> {{ fields.rfp_publication_date.value }}</p>
-  <p class="four columns" style="text-align: center"><strong>Deadline:</strong> {{ fields.deadline.value }}</p>
+{% if fields.dates.value is not empty %}
+<div class="country-timeline">
+  {% for date in fields.dates.value %}
+    {% include 'page-elements/status-box.html' with {
+      'level': 0,
+      'current_status': 0,
+      'status': date.event_name,
+      'date': date.date,
+      'last': loop.last
+    } %}
+  {% endfor %}
 </div>
-<div>
-  {% if fields.other_important_dates.value %}
-    <h4>Other Important Dates:</h4>
-    {% for date in fields.other_important_dates.value %}
-      <p>{{ date.key_event_name }}: {{ date.date }}</p>
-    {% endfor %}
-  {% endif %}
-</div>
-<hr class="row-separator"/>
 {% endif %}
 
 <aside>
