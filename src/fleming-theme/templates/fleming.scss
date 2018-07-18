@@ -99,6 +99,28 @@ ol {
   padding-left: 1em;
 }
 
+.collapse-control {
+  position: relative;
+}
+
+.collapse-control .tooltip {
+  visibility: hidden;
+  background-color: white;
+  color: black;
+  font-size: 0.4em;
+  font-weight: normal;
+  left: 5%;
+  bottom: 75%;
+  border: thin solid black;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+}
+
+.collapse-control:hover .tooltip {
+  visibility: visible;
+}
+
 @media (#{$min-width-tablet}) {
   aside {
     float: right;

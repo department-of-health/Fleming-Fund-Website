@@ -66,8 +66,15 @@
       exp[i].nextElementSibling.style.display = "none";
       exp[i].onclick = function() {
         content = exp[i].nextElementSibling;
-        if (content.style.display === "block") content.style.display = "none";
-        else content.style.display = "block";
+        tooltip = exp[i].firstElementChild;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+          tooltip.innerHTML = "click here to expand this section";
+        }
+        else {
+          content.style.display = "block";
+          tooltip.innerHTML = "click here to collapse this section";
+        }
       }
     }
   </script>
