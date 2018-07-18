@@ -14,12 +14,15 @@ require_once 'navigation/index.php';
  */
 
 function fleming_get_content() {
+    $title = get_raw_title();
+
     $fleming_content = array(
-        "title" => get_raw_title(),
+        "title" => $title,
         "fields" => get_field_objects(),
         "colour_scheme" => "base",
         "nav" => get_nav_builder()
             ->withRouteFromPermalink()
+            ->withDefaultRoute(array("about"), $title)
             ->build()
     );
 

@@ -29,6 +29,15 @@ class NavigationModelBuilder
         return $this;
     }
 
+    function withDefaultRoute(array $defaultRoute, string $pageTitle)
+    {
+        if (!$this->selectedRouteKeys) {
+            $this->selectedRouteKeys = $defaultRoute;
+            $this->additionalBreadcrumb = $pageTitle;
+        }
+        return $this;
+    }
+
     function withAdditionalBreadcrumb(string $pageTitle)
     {
         $this->additionalBreadcrumb = $pageTitle;
