@@ -20,7 +20,7 @@ class MenuLinksConfig
                 ],
                 'works' => [
                     'title' => 'How the Fleming Fund works',
-                    'target' => '/how-the-fleming-fund-works/',
+                    'target' => '/about-us/how-the-fleming-fund-works/',
                 ],
                 'investment' => [
                     'title' => 'Investment Areas',
@@ -47,24 +47,25 @@ class MenuLinksConfig
             'children' => [
                 'global-grant' => [
                     'title' => 'Global grants',
-                    'target' => '/grant_types/global-grant/',
+                    'target' => '/grants-funding/global-grants/',
                 ],
                 'regional-grant' => [
                     'title' => 'Regional grants',
-                    'target' => '/grant_types/regional-grant/',
+                    'target' => '/grants-funding/regional-grants/',
                 ],
                 'country-grant' => [
                     'title' => 'Country grants',
-                    'target' => '/grant_types/country-grant/',
+                    'target' => '/grants-funding/country-grants/',
                 ],
                 'fellowship' => [
                     'title' => 'Fellowships scheme',
-                    'target' => '/grant_types/fellowship/',
+                    'target' => '/grants-funding/fellowships/',
                 ],
-                'other' => [
-                    'title' => 'Other Opportunities',
-                    'target' => '/other-opportunities/',
-                ],
+                // We don't have any of these at time of writing.
+                // 'other' => [
+                //     'title' => 'Other Opportunities',
+                //     'target' => '/other-opportunities/',
+                // ],
                 'apply' => [
                     'title' => 'How to Apply',
                     'target' => '/application-process/',
@@ -180,6 +181,28 @@ class MenuLinksConfig
     public static function configsToLinks(array $configs)
     {
         return array_map('self::configToLink', $configs);
+    }
+
+    // Returns either an array of config path keys to the URL specified, or null if not found
+    public static function findLink(string $url) {
+        $configs = self::getAll();
+        return self::findLinkRecurse($configs, $url);
+    }
+
+    private static function findLinkRecurse(array $configs, string $url) {
+        foreach ($configs as $key => $value) {
+            if ($value['target'] == $url) {
+                return array($key);
+            }
+            if ($value['children']) {
+                $path = self::findLinkRecurse($value['children'], $url);
+                if ($path) {
+                    array_unshift($path, $key);
+                    return $path;
+                }
+            }
+        }
+        return null;
     }
 
     private static function initialiseAllMenuLinks()

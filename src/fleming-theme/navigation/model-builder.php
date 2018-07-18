@@ -19,6 +19,16 @@ class NavigationModelBuilder
         return $this;
     }
 
+    function withRouteFromPermalink()
+    {
+        $permalink = wp_make_link_relative(get_permalink());
+        $path = MenuLinksConfig::findLink($permalink);
+        if ($path) {
+            $this->selectedRouteKeys = $path;
+        }
+        return $this;
+    }
+
     function withAdditionalBreadcrumb(string $pageTitle)
     {
         $this->additionalBreadcrumb = $pageTitle;

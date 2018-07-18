@@ -19,9 +19,9 @@ function fleming_get_content() {
         "fields" => get_field_objects(),
         "colour_scheme" => "base",
         "nav" => get_nav_builder()
+            ->withRouteFromPermalink()
             ->build()
     );
-    // need ->withMenuRoute(...) based on the current URL
 
     process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
 
