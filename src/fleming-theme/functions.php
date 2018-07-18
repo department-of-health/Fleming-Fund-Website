@@ -26,7 +26,6 @@ add_action( 'init', 'custom_page_num_rewrite' );
 // Apply transforms to the flexible content
 function process_flexible_content(&$fields, &$content)
 {
-
     // The data returned from get_field_objects() contains
     //  - value - an array of content blocks, each with
     //      - acf_fc_layout - the block type key, e.g. 'text_block', 'quote'
@@ -51,7 +50,8 @@ function process_flexible_content(&$fields, &$content)
     if (isset($content) && !empty($content["value"])) {
         foreach ($content["value"] as &$content_block) {
             $type = $content_block['acf_fc_layout'];
-            if ($type == 'overview_text' && !$added_overview_slug) {
+            if ($type == 'overview_text' && !$added_overview_slug
+                    && $content_block['in_page_link']) {
                 $content_block['id'] = 'overview';
                 $in_page_links[] = array(
                     "target" => "#overview",
@@ -59,14 +59,16 @@ function process_flexible_content(&$fields, &$content)
                 );
                 $added_overview_slug = true;
             } elseif ($type == 'section_title') {
-                $title = $content_block['section_title'];
-                $slug = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $title));
-                $content_block['id'] = $slug;
-                $in_page_links[] = array(
-                    "target" => '#' . $slug,
-                    "title" => $title
-                );
-                $show_in_page_links = true;
+                $title = $content_block['in_page_link_text'];
+                if ($title) {
+                    $slug = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $title));
+                    $content_block['id'] = $slug;
+                    $in_page_links[] = array(
+                        "target" => '#' . $slug,
+                        "title" => $title
+                    );
+                    $show_in_page_links = true;
+                }
             } elseif ($type == 'links_to_other_posts') {
                 foreach($content_block['links'] as &$postLink) {
                     $postLink['post'] = entity_with_post_data_and_fields(

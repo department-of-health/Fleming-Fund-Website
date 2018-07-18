@@ -99,6 +99,7 @@ class Parsedown
     protected $safeLinksWhitelist = array(
         'http://',
         'https://',
+        'mailto:'
     );
 
     #
@@ -349,7 +350,7 @@ class Parsedown
 
     # ~
 
-    protected $inlineMarkerList = '!*_&[:<`~\\';
+    protected $inlineMarkerList = '*_&[:<~\\';
 
     #
     # ~

@@ -14,6 +14,11 @@
     color: #fff;
     margin-bottom: 0;
     font-size: 1.5em;
+
+    // More-specific a: this is getting overridden by '.base card a'
+    a {
+      color: #fff;
+    }
   }
 }
 

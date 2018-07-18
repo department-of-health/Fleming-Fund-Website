@@ -41,6 +41,25 @@
                 "maxlength": "",
                 "rows": "",
                 "new_lines": ""
+              },
+              {
+                "key": "field_5b4dfca87b1eb",
+                "label": "Include in in-page links",
+                "name": "in_page_link",
+                "type": "true_false",
+                "instructions": "(where present)",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": ""
               }
             ],
             "min": "",
@@ -52,44 +71,92 @@
             "label": "Section title",
             "display": "block",
             "sub_fields": [
-                {
-                    "key": "field_5b2b7f8c47ef1",
-                    "label": "Section title",
-                    "name": "section_title",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+              {
+                "key": "field_5b2b7f8c47ef1",
+                "label": "Section title",
+                "name": "section_title",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
                 },
-                {
-                    "key": "field_5b3f4bc0a1075",
-                    "label": "Collapsible",
-                    "name": "collapsible",
-                    "type": "true_false",
-                    "instructions": "The collapsible section will end at the next section header, the start of supporting content, or the end of the flexible content.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "",
-                    "default_value": 0,
-                    "ui": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": ""
-                }
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+              },
+              {
+                "key": "field_5b3f4bc0a1075",
+                "label": "Collapsible",
+                "name": "collapsible",
+                "type": "true_false",
+                "instructions": "The collapsible section will end at the next section header, the start of supporting content, or the end of the flexible content.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": ""
+              },
+              {
+                "key": "field_5b4dfcff7b1ec",
+                "label": "In-page link text",
+                "name": "in_page_link_text",
+                "type": "text",
+                "instructions": "If blank, not shown in in-page links (where present)",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+              }
+            ],
+            "min": "",
+            "max": ""
+          },
+          "layout_5b4dff897b1ee": {
+            "key": "layout_5b4dff897b1ee",
+            "name": "sub_section_title",
+            "label": "Sub-section title",
+            "display": "block",
+            "sub_fields": [
+              {
+                "key": "field_5b4dff897b1ef",
+                "label": "Section title",
+                "name": "section_title",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+              }
             ],
             "min": "",
             "max": ""
@@ -334,7 +401,7 @@
           "5b326a1c72010": {
             "key": "5b326a1c72010",
             "name": "bullet_points",
-            "label": "Bullet\/numbered list",
+            "label": "Bullet/numbered list",
             "display": "block",
             "sub_fields": [
               {
@@ -876,7 +943,35 @@
             "name": "horizontal_line",
             "label": "Horizontal Line",
             "display": "block",
-            "sub_fields": [],
+            "sub_fields": [
+              {
+                "key": "field_5b4dff357b1ed",
+                "label": "Additional whitespace",
+                "name": "additional_whitespace",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "choices": {
+                  "none": "none",
+                  "above": "above",
+                  "below": "below",
+                  "both": "above & below"
+                },
+                "default_value": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "return_format": "value",
+                "ajax": 0,
+                "placeholder": ""
+              }
+            ],
             "min": "",
             "max": ""
           },
