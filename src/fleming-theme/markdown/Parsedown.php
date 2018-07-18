@@ -99,6 +99,7 @@ class Parsedown
     protected $safeLinksWhitelist = array(
         'http://',
         'https://',
+        'mailto:'
     );
 
     #
