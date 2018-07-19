@@ -1,0 +1,118 @@
+// Taken from stylesheet at https://design-system.service.gov.uk/components/phase-banner/
+
+.govuk-tag{
+  font-family:"nta",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-weight:700;
+  font-size:14px;
+  line-height:1.25;
+  display:inline-block;
+  padding:5px 8px 2px; // third component was 0
+  outline:2px solid transparent;
+  outline-offset:-2px;
+  color:#fff;
+  background-color:#005ea5;
+  letter-spacing:1px;
+  text-decoration:none;
+  text-transform:uppercase;
+}
+@media print{
+  .govuk-tag{
+    font-family:sans-serif;
+  }
+}
+@media (min-width: 40.0625em){
+  .govuk-tag{
+    font-size:16px;
+    line-height:1.25;
+  }
+}
+@media print{
+  .govuk-tag{
+    font-size:14pt;
+    line-height:1.25;
+  }
+}
+.govuk-phase-banner{
+  padding-top:10px;
+  padding-bottom:10px;
+  border-bottom:1px solid #bfc1c3;
+}
+.govuk-phase-banner__content{
+  font-family:"nta",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-weight:400;
+  font-size:14px;
+  line-height:1.14286;
+  color:#0b0c0c;
+  display:table;
+  margin:0;
+}
+@media print{
+  .govuk-phase-banner__content{
+    font-family:sans-serif;
+  }
+}
+@media (min-width: 40.0625em){
+  .govuk-phase-banner__content{
+    font-size:16px;
+    line-height:1.25;
+  }
+}
+@media print{
+  .govuk-phase-banner__content{
+    font-size:14pt;
+    line-height:1.2;
+  }
+}
+@media print{
+  .govuk-phase-banner__content{
+    color:#000;
+  }
+}
+.govuk-phase-banner__content__tag{
+  margin-right:10px;
+}
+.govuk-phase-banner__text{
+  display:table-cell;
+  vertical-align:baseline;
+}
+.govuk-link,.app-prose-scope a{
+  font-family:"nta",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a.govuk-link {
+  text-decoration: underline; // to restore the style we've removed
+}
+@media print{
+  .govuk-link,.app-prose-scope a{
+    font-family:sans-serif;
+  }
+}
+.govuk-link:focus,.app-prose-scope a:focus{
+  outline:3px solid #ffbf47;
+  outline-offset:0;
+  background-color:#ffbf47;
+}
+.govuk-link:link,.app-prose-scope a:link{
+  color:#005ea5;
+}
+.govuk-link:visited,.app-prose-scope a:visited{
+  color:#4c2c92;
+}
+.govuk-link:hover,.app-prose-scope a:hover{
+  color:#2b8cc4;
+}
+.govuk-link:active,.app-prose-scope a:active{
+  color:#2b8cc4;
+}
+@media print{
+  [href^="/"].govuk-link::after,.app-prose-scope a[href^="/"]::after,[href^="http://"].govuk-link::after,.app-prose-scope a[href^="http://"]::after,[href^="https://"].govuk-link::after,.app-prose-scope a[href^="https://"]::after{
+    content:" (" attr(href) ")";
+    font-size:90%;
+    word-wrap:break-word;
+  }
+}
