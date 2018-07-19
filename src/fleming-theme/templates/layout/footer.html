@@ -61,23 +61,18 @@
 
   {% if weight == 'heavy' %}
   <script>
-    let exp = document.getElementsByClassName("collapse-control");
-    for (let i = 0; i < exp.length; i++) {
-      exp[i].nextElementSibling.style.display = "none";
-      exp[i].onclick = function() {
-        content = exp[i].nextElementSibling;
-        arrow = exp[i].firstElementChild;
-        tooltip = arrow.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-          tooltip.innerHTML = "click to expand this section";
-        }
-        else {
-          content.style.display = "block";
-          tooltip.innerHTML = "click to collapse this section";
-        }
+    $('.collapse-control').prop('title', 'click to expand section');
+    $('.collapse-control').next().css('display', 'none');
+    $('.collapse-control').click(function() {
+      content = $(this).next();
+      if (content.css('display') === 'block') {
+        $(this).prop('title', 'click to expand section');
+        content.css('display', 'none');
+      } else {
+        $(this).prop('title', 'click to collapse section');
+        content.css('display', 'block');
       }
-    }
+    });
   </script>
   {% endif %}
 </footer>
