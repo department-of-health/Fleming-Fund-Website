@@ -102,13 +102,27 @@ ol {
 
 .collapse-control {
   position: relative;
+  padding: 20px;
+  color: white;
+  background-color: $mid-turquoise;
+  margin-bottom: 0px;
+  box-sizing: border-box;
+}
+
+.collapse-control .collapse-header {
+  background-color: $mid-turquoise;
+  float: left
+}
+
+.collapse-control .collapse-arrow {
+  float: right
 }
 
 .collapse-control .tooltip {
   visibility: hidden;
   background-color: white;
   color: black;
-  font-size: 0.4em;
+  font-size: 0.5em;
   font-weight: normal;
   left: 5%;
   bottom: 75%;
@@ -120,6 +134,12 @@ ol {
 
 .collapse-control:hover .tooltip {
   visibility: visible;
+}
+
+.collapsible {
+  background-color: $light-grey;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 @media (#{$min-width-tablet}) {

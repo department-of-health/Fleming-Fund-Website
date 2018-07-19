@@ -66,14 +66,15 @@
       exp[i].nextElementSibling.style.display = "none";
       exp[i].onclick = function() {
         content = exp[i].nextElementSibling;
-        tooltip = exp[i].firstElementChild;
+        arrow = exp[i].firstElementChild;
+        tooltip = arrow.nextElementSibling;
         if (content.style.display === "block") {
           content.style.display = "none";
-          tooltip.innerHTML = "click here to expand this section";
+          tooltip.innerHTML = "click to expand this section";
         }
         else {
           content.style.display = "block";
-          tooltip.innerHTML = "click here to collapse this section";
+          tooltip.innerHTML = "click to collapse this section";
         }
       }
     }
