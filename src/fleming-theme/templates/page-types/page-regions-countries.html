@@ -41,8 +41,12 @@
         <div class="content-block">
 
           {% set fund_countries = region.countries|fund_only %}
+          {% set partner_countries = region.countries|partner_only %}
+
           {% if fund_countries is not empty %}
+            {% if partner_countries is not empty %}
             <p class="legend-label"><span class="fund-color"></span> Fleming Fund</p>
+            {% endif %}
             <p class="legend-items">
               {% for country in fund_countries %}
                 <a href="{{ country.permalink }}">{{ country.data.post_title }}</a>
@@ -50,7 +54,6 @@
             </p>
           {% endif %}
 
-          {% set partner_countries = region.countries|partner_only %}
           {% if partner_countries is not empty %}
             <p class="legend-label">
               <span class="partner-color">
