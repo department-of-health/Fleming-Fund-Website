@@ -6,7 +6,7 @@ class MenuLinksConfig
 {
     private const BASE = [
         'about' => [
-            'title' => 'About us',
+            'title' => 'About Us',
             'target' => '/about-us/',
 
             'children' => [
@@ -19,7 +19,7 @@ class MenuLinksConfig
                     'target' => '/about-us/the-importance-of-data/'
                 ],
                 'works' => [
-                    'title' => 'How the Fleming Fund works',
+                    'title' => 'How the Fleming Fund Works',
                     'target' => '/about-us/how-the-fleming-fund-works/',
                 ],
                 'investment' => [
@@ -46,19 +46,19 @@ class MenuLinksConfig
 
             'children' => [
                 'global-grant' => [
-                    'title' => 'Global grants',
+                    'title' => 'Global Grants',
                     'target' => '/grants-funding/global-grants/',
                 ],
                 'regional-grant' => [
-                    'title' => 'Regional grants',
+                    'title' => 'Regional Grants',
                     'target' => '/grants-funding/regional-grants/',
                 ],
                 'country-grant' => [
-                    'title' => 'Country grants',
+                    'title' => 'Country Grants',
                     'target' => '/grants-funding/country-grants/',
                 ],
                 'fellowship' => [
-                    'title' => 'Fellowships scheme',
+                    'title' => 'Fellowships Scheme',
                     'target' => '/grants-funding/fellowships/',
                 ],
                 // We don't have any of these at time of writing.
