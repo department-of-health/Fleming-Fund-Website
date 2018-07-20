@@ -22,10 +22,19 @@
   }
 }
 
+.heavy .home-splash {
+  background-image: url(/wp-content/themes/fleming-theme/images/home-header-image.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
 @media (#{$max-width-mobile}) {
   .home-splash {
     p.large-text {
       font-size: 1em;
     }
+  }
+  .heavy .home-splash {
+    background-image: url(/wp-content/themes/fleming-theme/images/home-header-image-half.jpg);
   }
 }
