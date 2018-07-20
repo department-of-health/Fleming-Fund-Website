@@ -4,7 +4,7 @@
     'colour_scheme': null,
     'identifier': publication.fields.type.value.post_title,
     'title': publication.data.post_title,
-    'overview': 'Date: 2018-01-01',
+    'overview': 'Date: '~publication.fields.publication_date.value,
     'content': publication.overview,
     'image_src': publication.picture_large_url,
     'link_target': publication.permalink
