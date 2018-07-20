@@ -104,14 +104,8 @@ ol {
   position: relative;
   padding: 20px;
   color: white;
-  background-color: $mid-turquoise;
   margin-bottom: 0px;
   box-sizing: border-box;
-}
-
-.collapse-control .collapse-header {
-  background-color: $mid-turquoise;
-  float: left
 }
 
 .collapse-control .collapse-arrow {
@@ -154,6 +148,9 @@ ol {
   &.#{$configName} {
     hr.row-divider, hr.row-border {
       border-top-color: map_get($colourConfig, intense);
+    }
+    .collapse-control {
+      background-color: map_get($colourConfig, intense);
     }
   }
 }
