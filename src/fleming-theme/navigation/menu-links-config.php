@@ -77,10 +77,11 @@ class MenuLinksConfig
             'target' => '/regions-countries/',
 
             'children' => [
-                'projects' => [
-                    'title' => 'Projects',
-                    'target' => '/projects/',
-                ],
+                // Ditto we don't have any of these at time of writing.
+                // 'projects' => [
+                //     'title' => 'Projects',
+                //     'target' => '/projects/',
+                // ],
             ],
         ],
         'knowledge' => [
