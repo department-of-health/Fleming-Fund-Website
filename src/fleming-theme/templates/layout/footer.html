@@ -61,18 +61,21 @@
 
   {% if weight == 'heavy' %}
   <script>
-    $('.collapse-control').prop('title', 'click to expand section');
-    $('.collapse-control').next().css('display', 'none');
-    $('.collapse-control').click(function() {
-      content = $(this).next();
+    function toggleCollapsible(collapseControl) {
+      content = $(collapseControl).next();
       if (content.css('display') === 'block') {
-        $(this).prop('title', 'click to expand section');
+        $(collapseControl).prop('title', 'click to expand section');
         content.css('display', 'none');
       } else {
-        $(this).prop('title', 'click to collapse section');
+        $(collapseControl).prop('title', 'click to collapse section');
         content.css('display', 'block');
       }
-    });
+    }
+    collapsers = $('.collapse-control');
+    collapsers.prop('title', 'click to expand section');
+    collapsers.next().css('display', 'none');
+    collapsers.click(function() {toggleCollapsible(this);});
+    collapsers.keypress(function(event) {if (event.which == 13) toggleCollapsible(this);})
   </script>
   {% endif %}
 </footer>
