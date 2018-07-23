@@ -13,9 +13,9 @@ class NavigationModelBuilder
         $this->selectedRouteKeys = [];
     }
 
-    function withMenuRoute(string ...$menuRouteKeys)
+    function withMenuRoute(...$menuRouteKeys)
     {
-        $this->selectedRouteKeys = $menuRouteKeys;
+        $this->selectedRouteKeys = array_filter($menuRouteKeys, "is_string");
         return $this;
     }
 
