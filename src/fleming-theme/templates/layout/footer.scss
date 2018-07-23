@@ -32,6 +32,12 @@ footer {
     vertical-align: middle;
 
     li {
+      color: $dark-grey;
+      
+      &::before {
+        background: $mid-grey !important;
+      }
+
       a {
         img {
           height: 20px;
