@@ -4,4 +4,14 @@
 {% include 'page-elements/in-page-links.html' %}
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
+{% if fields.supporting_content.value %}
+{% embed 'layout/supporting-content.html' %}
+  {% block content %}
+
+    {% include 'flexible_content.twig' with { 'flexible_content': fields.supporting_content.value } %}
+
+  {% endblock %}
+{% endembed %}
+{% endif %}
+
 {{ include('layout/footer.html') }}
