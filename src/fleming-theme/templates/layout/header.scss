@@ -34,6 +34,9 @@ header {
   .search {
     display: block;
     margin: 0;
+    padding-right: $hit-box-height;
+    position: relative;
+    box-sizing: border-box;
   }
 
   .input-container {
@@ -58,9 +61,11 @@ header {
 
   button {
     display: block;
-    float: right;
     background: $turquoise;
     margin: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
 
     svg {
       fill: #fff;
@@ -69,6 +74,7 @@ header {
 
   .lightweight-site-link {
     margin-top: 5px;
+    white-space: nowrap;
   }
 }
 
