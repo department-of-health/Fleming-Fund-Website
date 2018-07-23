@@ -5,9 +5,10 @@
 
   p.large-text {
     color: #fff;
-    font-size: 1.3em;
+    font-size: 1.5 * $base-font-size;
     font-weight: bold;
     font-family: $font-family-headings;
+    margin: 0.5em 0;
   }
 
   .link-collection {
