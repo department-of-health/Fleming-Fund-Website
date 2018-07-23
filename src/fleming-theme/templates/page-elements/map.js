@@ -97,6 +97,8 @@ function init(config, mapElementID) {
             },
             zoomOnScroll: false,
             panOnDrag: config.interactive,
+            bindTouchEvents: config.interactive,
+            zoomButtons: false, // we implement our own
             zoomMax: 10,
             onRegionTipShow: function (e, tip, code) {
                 var country = mapConfig.countries[code];
