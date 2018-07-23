@@ -69,3 +69,12 @@ button, .button {
     }
   }
 }
+
+button, .button {
+  &:disabled, &.disabled {
+    background: $mid-grey;
+    border-color: $mid-grey;
+    color: #fff;
+    cursor: pointer;
+  }
+}
