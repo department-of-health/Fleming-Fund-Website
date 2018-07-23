@@ -1,11 +1,3 @@
-function updateMapDimensions() {
-    var mapElement = $('#map-element');
-    mapElement.css({
-        'width': mapElement.parent().width() + 'px'
-    });
-    Fleming.map.refocusMap();
-}
-
 var currentActiveRegionCardID = 'all';
 function setActiveRegionCard(cardID) {
     if (currentActiveRegionCardID !== cardID) {
@@ -31,12 +23,12 @@ function handleScrollForMap() {
         var newMapElementClass = '';
 
         var topOfViewport = $(window).scrollTop();
-        var topOfMapElementContainer = mapElement.parent().parent().offset().top;
+        var topOfMapElementContainer = mapElement.parent().offset().top;
 
         if (topOfMapElementContainer - topOfViewport > 0) {
             newMapElementClass = 'top';
         } else {
-            var mapElementContainerHeight = mapElement.parent().parent().height();
+            var mapElementContainerHeight = mapElement.parent().height();
             var spaceAvailableForMapElement =
                 topOfMapElementContainer + mapElementContainerHeight - topOfViewport;
             if (spaceAvailableForMapElement > mapElement.height()) {
@@ -62,32 +54,28 @@ function handleScrollForMap() {
     }
 }
 
-function handleResizeForMap() {
-    updateMapDimensions();
-    handleScrollForMap();
-}
-
 function init() {
     $('#map-element')
-        .wrap('<div class="container"></div>')
-        .wrap('<div class="eight columns"></div>')
         .show()
-        .parent()
-        .append('&nbsp;')
         .after(
             $('#region-cards')
                 .removeClass('two-max')
                 .addClass('cover four columns')
+                .wrap('<div class="container" style="height: 1px; overflow: visible;"></div>')
+                .before(
+                    $('<div class="eight columns">&nbsp;</div>')
+                )
+                .parent()
         );
 
     $(window).scroll(handleScrollForMap);
     var updateMapAfterResizeTimeout;
     $(window).resize(function () {
         clearTimeout(updateMapAfterResizeTimeout);
-        updateMapAfterResizeTimeout = setTimeout(handleResizeForMap, 50);
+        updateMapAfterResizeTimeout = setTimeout(handleScrollForMap, 50);
     });
 
-    handleResizeForMap();
+    handleScrollForMap();
 }
 
 module.exports = {
