@@ -1,5 +1,5 @@
 <?php
-include __DIR__.'/../query-utilities.php';
+require_once __DIR__.'/../query-utilities.php';
 
 function get_map_config(string $currentRegion = 'all') {
     $mapConfig = [
