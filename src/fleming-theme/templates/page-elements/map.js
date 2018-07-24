@@ -61,7 +61,6 @@ function refocusMap() {
             var country = $(this);
             var countryCode = country.data('code');
             if ($.inArray(countryCode, focusedCountryCodes) > -1) {
-                console.log('focused country has code', countryCode);
                 country.removeClass('not-highlighted');
             } else {
                 country.addClass('not-highlighted');
