@@ -26,11 +26,17 @@ function handleScrollForMap() {
         var newMapElementClass = '';
 
         var topOfViewport = $(window).scrollTop();
+        var heightOfViewport = $(window).height();
         var topOfMapElementContainer = mapElement.parent().offset().top;
 
         if (topOfMapElementContainer - topOfViewport > 0) {
             newMapElementClass = 'top';
+            var mapHeightToFillSpace = topOfViewport + heightOfViewport - topOfMapElementContainer;
+            if (mapHeightToFillSpace > 0) {
+                mapElement.height(mapHeightToFillSpace);
+            }
         } else {
+            mapElement.height('');
             var mapElementContainerHeight = mapElement.parent().height();
             var spaceAvailableForMapElement =
                 topOfMapElementContainer + mapElementContainerHeight - topOfViewport;
@@ -47,7 +53,7 @@ function handleScrollForMap() {
         regionCardsContainer.children('.card').each(function (i, card) {
             card = $(card);
             var positionInViewport = card.offset().top - topOfViewport;
-            if (positionInViewport - $(window).height() / 2 < 0) {
+            if (positionInViewport - heightOfViewport / 2 < 0) {
                 activeCardID = card.attr('id');
             }
         });
