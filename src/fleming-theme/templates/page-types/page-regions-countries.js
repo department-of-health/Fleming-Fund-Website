@@ -68,6 +68,21 @@ function init() {
                 .parent()
         );
 
+    $('h1').siblings('.card-container.link-collection').first().click(function(e) {
+        e.preventDefault();
+        var cardIdToJumpTo = e.target.href.split('#')[1];
+        if (cardIdToJumpTo) {
+            var cardToJumpTo = $('#' + cardIdToJumpTo);
+            if (cardToJumpTo) {
+                var positionOfCardWithinDocument = cardToJumpTo.offset().top;
+                var heightOfViewport = $(window).height();
+                var heightOfCard = cardToJumpTo.outerHeight(false);
+                var topOfViewportShouldBeAt = positionOfCardWithinDocument - heightOfViewport/2 + heightOfCard/2;
+                window.scrollTo(0, topOfViewportShouldBeAt);
+            }
+        }
+    });
+
     $(window).scroll(handleScrollForMap);
     var updateMapAfterResizeTimeout;
     $(window).resize(function () {
