@@ -79,9 +79,9 @@ function process_flexible_content(&$fields, &$content)
                 }
             }
         }
+        $fields["fields"]["supporting_content"]["value"] = split_supporting_content($content['value']);
     }
 
-    $fields["fields"]["supporting_content"]["value"] = split_supporting_content($content['value']);
 
     if ($show_in_page_links) {
         $fields['in_page_links'] = $in_page_links;
