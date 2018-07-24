@@ -152,7 +152,7 @@ function init(config, mapElementID) {
             },
             onViewportChange: function() {
                 $('.map').css('opacity', '1');
-                setTimeout(function(){$('.map').css('opacity', '0.999');}, 300);
+                setTimeout(function(){$('.map').css('opacity', '0.999');}, 600);
             }
         }).vectorMap('get', 'mapObject');
 
