@@ -5,15 +5,20 @@
 
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
-{% if fields.related_content.value is not empty %}
+{% if fields.related_content.value is not empty or fields.supporting_content.value is not empty %}
   {% embed 'layout/supporting-content.html' %}
     {% block content %}
+
+      {% include 'flexible_content.twig' with { 'flexible_content': fields.supporting_content.value } %}
+
+      {% if fields.related_content.value is not empty %}
       <h3>Related Content</h3>
       <div class="card-container three-max">
         {% for publication in fields.related_content.value %}
           {% include 'cards/entities/publication.html' %}
         {% endfor %}
       </div>
+      {% endif %}
     {% endblock %}
   {% endembed %}
 {% endif %}

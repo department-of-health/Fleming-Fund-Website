@@ -14,15 +14,19 @@
 
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
-{% if similar_events is not empty %}
+{% if similar_events is not empty or fields.supporting_content.value is not empty %}
   {% embed 'layout/supporting-content.html' %}
     {% block content %}
 
+      {% include 'flexible_content.twig' with { 'flexible_content': fields.supporting_content.value } %}
+
+      {% if similar_events is not empty %}
       <h3 class="row-title">More Like This</h3>
       <div class="card-container two-max">
         {% include 'cards/entities/single-post.html' with {'post': similar_events[0]} %}
         {% include 'cards/entities/single-post.html' with {'post': similar_events[1]} %}
       </div>
+      {% endif %}
 
     {% endblock %}
   {% endembed %}

@@ -4,7 +4,7 @@
 {% include 'page-elements/in-page-links.html' %}
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
-{% if fields.supporting_content.value %}
+{% if fields.supporting_content.value is not empty %}
 {% embed 'layout/supporting-content.html' %}
   {% block content %}
 

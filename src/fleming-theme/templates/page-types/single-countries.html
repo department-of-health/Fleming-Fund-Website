@@ -49,7 +49,6 @@
 </div>
 
 <aside>
-
   <div class="card-container cover">
     {% if fields.nap_doc.value %}
       <div class="card base">
@@ -78,6 +77,8 @@
 
 {% embed 'layout/supporting-content.html' %}
   {% block content %}
+
+    {% include 'flexible_content.twig' with { 'flexible_content': fields.supporting_content.value } %}
 
     {% if fields.case_study.value %}
       <h3>Feature Case Study</h3>

@@ -53,6 +53,8 @@
 {% embed 'layout/supporting-content.html' %}
   {% block content %}
 
+    {% include 'flexible_content.twig' with { 'flexible_content': fields.supporting_content.value } %}
+
     <h3>Similar Proposals</h3>
     <div class="card-container two-max">
       {% include 'cards/entities/grant.html' with {'grant': similar_proposals[0]} %}

@@ -24,8 +24,12 @@
   </ul>
 </div>
 
+
+
 {% embed 'layout/supporting-content.html' with {'tight': true} %}
   {% block content %}
+
+    {% include 'flexible_content.twig' with { 'flexible_content': fields.supporting_content.value } %}
 
     {% include 'page-elements/list-query-result.html' %}
 
