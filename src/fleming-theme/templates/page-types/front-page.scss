@@ -15,6 +15,7 @@
     color: #fff;
     margin-bottom: 0;
     font-size: 1.5em;
+    border: none;
 
     // More-specific a: this is getting overridden by '.base card a'
     a {
@@ -27,6 +28,7 @@
   background-image: url(/wp-content/themes/fleming-theme/images/home-header-image.jpg);
   background-repeat: no-repeat;
   background-position: center center;
+  background-size: cover;
 }
 
 @media (#{$max-width-mobile}) {
@@ -34,8 +36,5 @@
     p.large-text {
       font-size: 1em;
     }
-  }
-  .heavy .home-splash {
-    background-image: url(/wp-content/themes/fleming-theme/images/home-header-image-half.jpg);
   }
 }
