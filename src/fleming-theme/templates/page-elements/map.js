@@ -135,6 +135,9 @@ function init(config, mapElementID) {
                 if (country) {
                     window.location.href = country.URL;
                 }
+            },
+            onViewportChange: function() {
+                var redrawTrigger = $('#' + mapElementID).offsetHeight;
             }
         }).vectorMap('get', 'mapObject');
 
