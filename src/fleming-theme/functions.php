@@ -91,11 +91,13 @@ function process_flexible_content(&$fields, &$content)
 function split_supporting_content(&$flexible_content)
 {
     $supporting_content = [];
-    foreach ($flexible_content as $key => $val) {
-        if ($val["acf_fc_layout"] == "start_of_supporting_content") {
-            $supporting_content = array_slice($flexible_content, $key+1);
-            $flexible_content = array_slice($flexible_content, 0, $key);
-            break;
+    if ($flexible_content) {
+        foreach ($flexible_content as $key => $val) {
+            if ($val["acf_fc_layout"] == "start_of_supporting_content") {
+                $supporting_content = array_slice($flexible_content, $key+1);
+                $flexible_content = array_slice($flexible_content, 0, $key);
+                break;
+            }
         }
     }
     return $supporting_content;
