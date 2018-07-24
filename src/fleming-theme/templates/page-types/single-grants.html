@@ -10,7 +10,7 @@
     },
   ])} %}
 {% else %}
-  {% include 'layout/link-collection.html' with {'links': (in_page_links??[])} %}
+  {% include 'page-elements/in-page-links.html' %}
 {% endif %}
 
 {% if fields.dates.value is not empty %}
@@ -41,13 +41,12 @@
 
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
-<hr class="row-separator"/>
-
 {% if fields.application_steps.value %}
-<h3 class="row-title" id="application-process">Application Process</h3>
-{% include 'flexible-content/application_steps.html' with {
-       'content_block': { 'steps' : fields.application_steps.value }
-   } %}
+  <hr class="row-separator"/>
+  <h3 class="row-title" id="application-process">Application Process</h3>
+  {% include 'flexible-content/application_steps.html' with {
+    'content_block': { 'steps' : fields.application_steps.value }
+  } %}
 {% endif %}
 
 {% embed 'layout/supporting-content.html' %}
