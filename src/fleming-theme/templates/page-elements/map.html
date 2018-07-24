@@ -32,7 +32,7 @@
 {% if weight == 'heavy' %}
 <script type="text/javascript">
     Fleming.map.init(
-        {{ map_config|merge({'interactive': map_is_interactive})|json_encode|raw }},
+        {{ map_config|merge(additional_map_config??[])|json_encode|raw }},
         '{{ map_id }}'
     );
 </script>

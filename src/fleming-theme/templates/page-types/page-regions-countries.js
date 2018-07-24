@@ -19,6 +19,8 @@ function handleScrollForMap() {
     var mapElement = $('#map-element');
     var regionCardsContainer = $('#region-cards');
 
+    Fleming.map.setRightBound(regionCardsContainer.offset().left);
+
     if (mapElement.offset().left < regionCardsContainer.offset().left) {
 
         var newMapElementClass = '';

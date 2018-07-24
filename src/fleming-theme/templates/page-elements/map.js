@@ -48,6 +48,14 @@ function refocusMap() {
         map.setFocus({
             regions: mapConfig.regions[focusedRegion].countries
         });
+        if (mapConfig.zoomAwayFromFocus > 1) {
+            map.setScale(map.scale / mapConfig.zoomAwayFromFocus, map.width / 2, map.height / 2, !1, false);
+        }
+        if (mapConfig.rightBound) {
+            var shift =  (map.width - mapConfig.rightBound) / 2;
+            map.transX -= shift / map.scale;
+            map.applyTransform();
+        }
     }
 }
 
@@ -59,7 +67,11 @@ function focusMapOn(region) {
         focusedRegion = region;
     }
     refocusMap();
+}
 
+function setRightBound(bound) {
+    mapConfig.rightBound = bound;
+    refocusMap();
 }
 
 function init(config, mapElementID) {
@@ -135,11 +147,12 @@ function init(config, mapElementID) {
             refocusMap();
         });
 
+        refocusMap();
     });
 }
 
 module.exports = {
     focusMapOn,
     init,
-    refocusMap,
+    setRightBound,
 };
