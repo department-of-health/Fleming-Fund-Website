@@ -22,7 +22,10 @@
 {% embed 'layout/full-width-container.html' %}
   {% block container %}
     {% include 'page-elements/map.html' with {
-      'map_is_interactive': true
+      'additional_map_config': {
+        'interactive': true,
+        'zoomAwayFromFocus': 1.2
+      }
     } %}
   {% endblock %}
 {% endembed %}

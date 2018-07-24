@@ -1,4 +1,5 @@
 {% set map_id = 'map-'~random() %}
+{% set map_config = map_config|merge(additional_map_config??[]) %}
 
 <svg xmlns="http://www.w3.org/2000/svg" style="width:0;height:0;position:absolute;overflow:hidden;">
   <defs>
@@ -13,7 +14,7 @@
   </defs>
 </svg>
 
-<div class="map-container {{ map_is_interactive ? 'interactive' }}" aria-hidden="true">
+<div class="map-container {{ map_config.interactive ? 'interactive' }}" aria-hidden="true">
   <div class="container alignment-helper buttons">
     <button id="{{ map_id }}-zoom-in" class="zoom-in square-icon">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="6 6 20 20">
@@ -30,10 +31,12 @@
 </div>
 
 {% if weight == 'heavy' %}
-<script type="text/javascript">
-    Fleming.map.init(
-        {{ map_config|merge({'interactive': map_is_interactive})|json_encode|raw }},
-        '{{ map_id }}'
-    );
-</script>
+  <script type="text/javascript">
+      //<![CDATA[
+      Fleming.map.init(
+          {{ map_config|json_encode|raw }},
+          '{{ map_id }}'
+      );
+      //]]>
+  </script>
 {% endif %}

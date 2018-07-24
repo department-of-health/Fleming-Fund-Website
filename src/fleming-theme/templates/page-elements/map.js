@@ -44,9 +44,27 @@ function getCountryClassMap() {
 
 function refocusMap() {
     if (map !== undefined && focusedRegion !== undefined) {
+        var focusedCountryCodes = mapConfig.regions[focusedRegion].countries;
         map.updateSize();
         map.setFocus({
-            regions: mapConfig.regions[focusedRegion].countries
+            regions: focusedCountryCodes
+        });
+        if (mapConfig.zoomAwayFromFocus > 1) {
+            map.setScale(map.scale / mapConfig.zoomAwayFromFocus, map.width / 2, map.height / 2, !1, false);
+        }
+        if (mapConfig.rightBound) {
+            var shift =  (map.width - mapConfig.rightBound) / 2;
+            map.transX -= shift / map.scale;
+            map.applyTransform();
+        }
+        $('.jvectormap-region').each(function() {
+            var country = $(this);
+            var countryCode = country.data('code');
+            if ($.inArray(countryCode, focusedCountryCodes) > -1) {
+                country.removeClass('not-highlighted');
+            } else {
+                country.addClass('not-highlighted');
+            }
         });
     }
 }
@@ -59,7 +77,11 @@ function focusMapOn(region) {
         focusedRegion = region;
     }
     refocusMap();
+}
 
+function setRightBound(bound) {
+    mapConfig.rightBound = bound;
+    refocusMap();
 }
 
 function init(config, mapElementID) {
@@ -127,15 +149,23 @@ function init(config, mapElementID) {
             }
         );
 
+        function hideTip() {
+            $('.jvectormap-tip').hide();
+        }
+
+        $(document).scroll(hideTip);
+        $('.jvectormap-tip').bind('mouseover', hideTip);
+
         $(window).resize(function () {
             refocusMap();
         });
 
+        refocusMap();
     });
 }
 
 module.exports = {
     focusMapOn,
     init,
-    refocusMap,
+    setRightBound,
 };

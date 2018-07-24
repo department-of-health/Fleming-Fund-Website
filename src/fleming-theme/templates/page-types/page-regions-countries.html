@@ -8,7 +8,10 @@
   {% block container %}
     <div id="map-element">
       {% include 'page-elements/map.html' with {
-        'map_is_interactive': false
+        'additional_map_config': {
+          'interactive': false,
+          'zoomAwayFromFocus': 1.5
+        }
       } %}
    </div>
   {% endblock %}
