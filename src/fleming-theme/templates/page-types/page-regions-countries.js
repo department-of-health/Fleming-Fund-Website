@@ -18,10 +18,13 @@ function setActiveRegionCard(cardID) {
 function handleScrollForMap() {
     var mapElement = $('#map-element');
     var regionCardsContainer = $('#region-cards');
+    var regionCardsDistanceFromLeft = regionCardsContainer.offset().left;
 
-    Fleming.map.setRightBound(regionCardsContainer.offset().left);
+    if (regionCardsDistanceFromLeft > 300) {
+        Fleming.map.setRightBound(regionCardsDistanceFromLeft);
+    }
 
-    if (mapElement.offset().left < regionCardsContainer.offset().left) {
+    if (mapElement.offset().left < regionCardsDistanceFromLeft) {
 
         var newMapElementClass = '';
 
