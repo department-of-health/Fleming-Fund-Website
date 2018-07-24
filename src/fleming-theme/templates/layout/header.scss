@@ -14,8 +14,10 @@ header {
   .logo {
     font-size: 0;
     display: inline-block;
+    max-width: 100%;
 
-    img {
+    svg {
+      width: 225px;
       max-width: 100%;
     }
   }
