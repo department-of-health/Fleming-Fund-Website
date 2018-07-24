@@ -6,6 +6,7 @@ function setActiveRegionCard(cardID) {
             card = $(card);
             if (card.attr('id') === cardID) {
                 card.removeClass('inactive');
+                card.focus();
             } else {
                 card.addClass('inactive');
             }
