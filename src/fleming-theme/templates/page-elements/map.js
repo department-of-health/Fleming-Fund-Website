@@ -98,9 +98,11 @@ function init(config, mapElementID) {
                 initial: {
                     fill: 'white',
                     "fill-opacity": 1,
-                    stroke: 'none',
-                    "stroke-width": 0,
-                    "stroke-opacity": 1
+                    stroke: 'white',
+                    "stroke-width": '0.5px',
+                    "stroke-opacity": 1,
+                    "stroke-linecap": 'round',
+                    "stroke-linejoin": 'round'
                 },
                 hover: {
                     cursor: 'normal'
@@ -113,6 +115,7 @@ function init(config, mapElementID) {
                 regions: [
                     {attribute: 'class', values: getCountryClassMap()},
                     {attribute: 'fill', values: getCountryFillMap()},
+                    {attribute: 'stroke', values: getCountryFillMap()},
                     {attribute: 'fill-opacity', values: getCountryFillOpacityMap()},
                     {attribute: 'style', values: getCountryStyleMap()},
                 ]
