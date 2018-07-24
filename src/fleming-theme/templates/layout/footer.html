@@ -65,10 +65,12 @@
       content = $(collapseControl).next();
       if (content.css('display') === 'block') {
         $(collapseControl).prop('title', 'click to expand section');
+        $(collapseControl).children('.screen-reader-only').text('click to show section content');
         $(collapseControl).css('margin-bottom', '2.5rem');
         content.css('display', 'none');
       } else {
         $(collapseControl).prop('title', 'click to collapse section');
+        $(collapseControl).children('.screen-reader-only').text('click to hide section content');
         $(collapseControl).css('margin-bottom', '0');
         content.css('display', 'block');
       }
@@ -77,6 +79,7 @@
     collapsers.prop('title', 'click to expand section');
     collapsers.css('margin-bottom', '2.5rem');
     collapsers.next().css('display', 'none');
+    collapsers.children('.screen-reader-only').text('click to show section content');
     collapsers.click(function() {toggleCollapsible(this);});
     collapsers.keypress(function(event) {if (event.which == 13) toggleCollapsible(this);})
   </script>
