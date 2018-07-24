@@ -149,9 +149,12 @@ function init(config, mapElementID) {
             }
         );
 
-        $(document).scroll(function() {
+        function hideTip() {
             $('.jvectormap-tip').hide();
-        });
+        }
+
+        $(document).scroll(hideTip);
+        $('.jvectormap-tip').bind('mouseover', hideTip);
 
         $(window).resize(function () {
             refocusMap();

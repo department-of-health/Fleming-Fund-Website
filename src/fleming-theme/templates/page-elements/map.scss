@@ -4,6 +4,20 @@
   }
 }
 
+body .jvectormap-tip {
+  background: #fff;
+  color: $dark-grey;
+  font-family: $font-family-headings;
+  font-size: $base-font-size * 1.2;
+  font-weight: bold;
+  border-radius: 0;
+  box-shadow: 0 0 7px rgba(0,0,0,0.2);
+  border: none;
+  padding: 0.5ex 1em;
+  margin-top: -20px;
+  cursor: pointer;
+}
+
 .map-container {
   display: none;
   min-height: 200px;
