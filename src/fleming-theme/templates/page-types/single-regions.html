@@ -72,7 +72,9 @@
   } %}
 </aside>
 
-{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+<div class="flexible-container-with-sidebar">
+  {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+</div>
 
 {% if fields.supporting_content.value is not empty or fields.case_study.value %}
 {% embed 'layout/supporting-content.html' %}

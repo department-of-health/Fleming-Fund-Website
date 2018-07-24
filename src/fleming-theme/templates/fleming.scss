@@ -122,6 +122,10 @@ ol {
   box-sizing: border-box;
 }
 
+.flexible-container-with-sidebar {
+  margin-right: grid-offset-length(3);
+}
+
 @media (#{$min-width-tablet}) {
   aside {
     float: right;

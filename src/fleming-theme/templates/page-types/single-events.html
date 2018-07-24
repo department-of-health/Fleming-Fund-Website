@@ -12,7 +12,9 @@
   <hr class="row-border"/>
 </aside>
 
-{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+<div class="flexible-container-with-sidebar">
+  {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+</div>
 
 {% if similar_events is not empty or fields.supporting_content.value is not empty %}
   {% embed 'layout/supporting-content.html' %}

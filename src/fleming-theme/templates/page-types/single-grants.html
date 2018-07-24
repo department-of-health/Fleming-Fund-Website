@@ -39,7 +39,9 @@
   {% endif %}
 </aside>
 
-{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+<div class="flexible-container-with-sidebar">
+  {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+</div>
 
 <hr class="row-separator"/>
 

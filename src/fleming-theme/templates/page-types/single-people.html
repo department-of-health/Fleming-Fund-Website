@@ -8,7 +8,9 @@
   {% include 'page-elements/contact-details.html' %}
 </aside>
 
-{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+<div class="flexible-container-with-sidebar">
+  {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+</div>
 
 {% if fields.role.value == 'fellow' %}
   <hr class="row-separator"/>
