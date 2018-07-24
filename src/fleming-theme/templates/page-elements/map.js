@@ -151,7 +151,8 @@ function init(config, mapElementID) {
                 }
             },
             onViewportChange: function() {
-                var redrawTrigger = $('#' + mapElementID).offsetHeight;
+                $('.map').css('opacity', '0.99999');
+                setTimeout(function(){$('.map').css('opacity', '1');}, 10);
             }
         }).vectorMap('get', 'mapObject');
 
