@@ -27,7 +27,8 @@ function fleming_get_content()
         "title" => get_raw_title(),
         "fields" => get_field_objects(),
         "nav" => get_nav_model(),
-        "map_config" => get_map_config()
+        "map_config" => get_map_config(),
+        "in_page_links" => []
     );
 
     $regions = get_posts(array('post_type' => 'regions', 'numberposts' => -1));
@@ -39,6 +40,11 @@ function fleming_get_content()
         if ($region['highlightStatistic']) {
             $region['highlightStatistic']['text'] .= ' in '.$region['data']->post_title;
         }
+
+        $fleming_content['in_page_links'][] = [
+            'title' => $region['data']->post_title,
+            'target' => '#' . $region['data']->post_name
+        ];
     }
     $fleming_content['regions'] = $regions;
 
