@@ -5,7 +5,7 @@
 
   p.large-text {
     color: #fff;
-    font-size: 1.5 * $base-font-size;
+    font-size: 35px;
     font-weight: bold;
     font-family: $font-family-headings;
     margin: 0.5em 0;
@@ -31,10 +31,26 @@
   background-size: cover;
 }
 
+@media  (#{$max-width-desktop}) {
+  .home-splash {
+    p.large-text {
+      font-size: 30px;
+    }
+  }
+}
+
+@media  (#{$max-width-tablet}) {
+  .home-splash {
+    p.large-text {
+      font-size: 25px;
+    }
+  }
+}
+
 @media (#{$max-width-mobile}) {
   .home-splash {
     p.large-text {
-      font-size: 1em;
+      font-size: 20px;
     }
   }
 }
