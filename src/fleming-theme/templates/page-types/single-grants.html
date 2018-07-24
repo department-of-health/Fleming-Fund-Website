@@ -39,7 +39,9 @@
   {% endif %}
 </aside>
 
-{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+<div class="flexible-container-with-sidebar">
+  {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+</div>
 
 {% if fields.application_steps.value %}
   <hr class="row-separator"/>
@@ -51,6 +53,8 @@
 
 {% embed 'layout/supporting-content.html' %}
   {% block content %}
+
+    {% include 'flexible_content.twig' with { 'flexible_content': fields.supporting_content.value } %}
 
     <h3>Similar Proposals</h3>
     <div class="card-container two-max">

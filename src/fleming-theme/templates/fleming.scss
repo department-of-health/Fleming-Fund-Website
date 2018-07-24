@@ -113,34 +113,22 @@ ol {
   color: white;
   margin-bottom: 0px;
   box-sizing: border-box;
+  cursor: pointer;
+  margin-top: 2.5rem;
 }
 
 .collapse-control .collapse-arrow {
   float: right
 }
 
-.collapse-control .tooltip {
-  visibility: hidden;
-  background-color: white;
-  color: black;
-  font-size: 0.5em;
-  font-weight: normal;
-  left: 5%;
-  bottom: 75%;
-  border: thin solid black;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
-}
-
-.collapse-control:hover .tooltip {
-  visibility: visible;
-}
-
 .collapsible {
   background-color: $light-grey;
   padding: 20px;
   box-sizing: border-box;
+}
+
+.flexible-container-with-sidebar {
+  margin-right: grid-offset-length(3);
 }
 
 @media (#{$min-width-tablet}) {

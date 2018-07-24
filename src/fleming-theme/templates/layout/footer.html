@@ -62,14 +62,17 @@
       content = $(collapseControl).next();
       if (content.css('display') === 'block') {
         $(collapseControl).prop('title', 'click to expand section');
+        $(collapseControl).css('margin-bottom', '2.5rem');
         content.css('display', 'none');
       } else {
         $(collapseControl).prop('title', 'click to collapse section');
+        $(collapseControl).css('margin-bottom', '0');
         content.css('display', 'block');
       }
     }
     collapsers = $('.collapse-control');
     collapsers.prop('title', 'click to expand section');
+    collapsers.css('margin-bottom', '2.5rem');
     collapsers.next().css('display', 'none');
     collapsers.click(function() {toggleCollapsible(this);});
     collapsers.keypress(function(event) {if (event.which == 13) toggleCollapsible(this);})

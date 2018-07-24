@@ -77,10 +77,15 @@
   } %}
 </aside>
 
-{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+<div class="flexible-container-with-sidebar">
+  {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+</div>
 
+{% if fields.supporting_content.value is not empty or fields.case_study.value %}
 {% embed 'layout/supporting-content.html' %}
   {% block content %}
+
+  {% include 'flexible_content.twig' with { 'flexible_content': fields.supporting_content.value } %}
 
     {% if fields.case_study.value %}
       <h3>Featured Case Study</h3>
@@ -91,5 +96,6 @@
 
   {% endblock %}
 {% endembed %}
+{% endif %}
 
 {{ include('layout/footer.html') }}

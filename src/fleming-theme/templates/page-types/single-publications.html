@@ -12,9 +12,13 @@
   {% if fields.country_region.value %}<p><strong>Location:</strong> {{ fields.country_region.value }}</p>{% endif %}
   <hr class="row-border"/>
 </aside>
-{% endif %}
 
+<div class="flexible-container-with-sidebar">
+{% endif %}
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+{% if authors is not empty or fields.publication_date.value or fields.type.value or fields.country_region.value %}
+  </div>
+{% endif %}
 
 {% if fields.document.value.file and fields.type.value.post_title != 'news' %}
   <hr class="row-divider"/>
@@ -24,6 +28,8 @@
 
 {% embed 'layout/supporting-content.html' %}
   {% block content %}
+
+    {% include 'flexible_content.twig' with { 'flexible_content': fields.supporting_content.value } %}
 
     <h3 class="row-title">More Like This</h3>
     <div class="card-container two-max">
