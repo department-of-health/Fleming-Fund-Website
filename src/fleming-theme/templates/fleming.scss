@@ -115,6 +115,17 @@ ol {
   box-sizing: border-box;
   cursor: pointer;
   margin-top: 2.5rem;
+  font-size: 24px;
+}
+@media (#{$max-width-tablet}) {
+  .collapse-control {
+    font-size: 20px;
+  }
+}
+@media (#{$max-width-mobile}) {
+  .collapse-control {
+    font-size: 18px;
+  }
 }
 
 .collapse-control .collapse-arrow {
@@ -129,6 +140,15 @@ ol {
 
 .flexible-container-with-sidebar {
   margin-right: grid-offset-length(3);
+}
+
+.screen-reader-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 @media (#{$min-width-tablet}) {
