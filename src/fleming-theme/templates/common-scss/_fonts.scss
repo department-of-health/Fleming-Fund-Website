@@ -1,7 +1,6 @@
 // Fallbacks from https://graphicdesign.stackexchange.com/a/17598/5490
-$font-family-headings: "Proxima Nova Bold", "Open Sans", "Gill Sans MT", "Gill Sans", Corbel, Arial, sans-serif;
-// Fallbacks from https://www.cssfontstack.com/Helvetica
-$font-family: "Helvetica Neue Regular", Helvetica Neue, "Segoe UI", Helvetica, Arial, sans-serif;
+$font-family-headings: "proxima-nova", sans-serif;
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
 $base-font-size: 18px;
 

@@ -2,6 +2,9 @@
 <html>
 <head>
   <title>{{ title ? title~' | ' }}Fleming Fund</title>
+  {% if weight == 'heavy' %}
+    <link rel="stylesheet" href="https://use.typekit.net/xez6xhc.css">
+  {% endif %}
   <link rel="stylesheet" type="text/css" href="/wp-content/themes/fleming-theme/{{ css_filename }}">
   <link rel="stylesheet" href="/wp-content/themes/fleming-theme/static/jquery-jvectormap-2.0.3.css" type="text/css"
         media="screen"/>
