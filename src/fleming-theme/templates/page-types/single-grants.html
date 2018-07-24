@@ -17,8 +17,8 @@
 <div class="country-timeline">
   {% for date in fields.dates.value %}
     {% include 'page-elements/status-box.html' with {
-      'level': 0,
-      'current_status': 0,
+      'level': loop.index,
+      'current_status': timeline_level,
       'status': date.event_name,
       'date': date.date,
       'last': loop.last

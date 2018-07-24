@@ -14,6 +14,15 @@ require_once 'query-utilities.php';
  * VIEWs are located in the ./templates folder and have a .html file extension
  */
 
+function compare_date_strings($string1, $string2) {
+    $date1 = explode("/", $string1["date"]);
+    $date2 = explode("/", $string2["date"]);
+    if ($date2[2] != $date1[2]) return $date1[2] - $date2[2];
+    if ($date2[1] != $date1[1]) return $date1[1] - $date2[1];
+    if ($date2[0] != $date1[0]) return $date1[0] - $date2[0];
+    return 0;
+}
+
 function fleming_get_content() {
     $fleming_content = array(
         "css_filename" => get_css_filename(),
@@ -37,12 +46,20 @@ function fleming_get_content() {
     $fleming_content["similar_proposals"] = $similar_proposals;
 
     if (!empty($fleming_content["fields"]["dates"]["value"])) {
-        usort($fleming_content["fields"]["dates"]["value"], function ($date1, $date2) {
-            $timestamp1 = strtotime(str_replace("/", "-", $date1["date"]));
-            $timestamp2 = strtotime(str_replace("/", "-", $date2["date"]));
-            return $timestamp1 - $timestamp2;
-        });
+        usort($fleming_content["fields"]["dates"]["value"], "compare_date_strings");
     }
+
+    if (!empty($fleming_content["fields"]["dates"]["value"])) {
+        $today["date"] = date('d/m/Y', time());
+        $timeline_level = 255;
+        for ($i = 0; $i < count($fleming_content["fields"]["dates"]["value"]); $i++) {
+            $date = $fleming_content["fields"]["dates"]["value"][$i];
+            if (compare_date_strings($today, $date) == 0) {$timeline_level = $i+1; break;}
+            elseif (compare_date_strings($today, $date) < 0) {$timeline_level = $i+0.5; break;};
+        }
+    }
+
+    $fleming_content["timeline_level"] = $timeline_level;
 
     return $fleming_content;
 }
