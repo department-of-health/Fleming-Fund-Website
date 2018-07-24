@@ -21,10 +21,27 @@
     white-space: nowrap;
   }
 
+  & > div {
+    margin-bottom: 2em;
+  }
+
+  & > div:last-of-type {
+    margin-bottom: 0.5em;
+  }
+
   $fractionOfColorWidthAsPadding: 0.25;
 
   .links {
     padding-left: ((1 + $fractionOfColorWidthAsPadding) * $hit-box-height);
+    letter-spacing: 0.3ex;
+
+    a {
+      letter-spacing: initial;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .color {
@@ -53,6 +70,10 @@
     .links {
       padding-left: 0;
     }
+
+    & > div {
+      margin-bottom: 0.5em;
+    }
   }
 }
 
@@ -69,6 +90,10 @@
         .color {
           background: map_get($colourConfig, subtle);
         }
+      }
+
+      .links {
+        color: map_get($colourConfig, intense);
       }
     }
   }

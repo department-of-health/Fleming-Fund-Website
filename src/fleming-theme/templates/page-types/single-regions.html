@@ -35,7 +35,10 @@
           <p class="label"><span class="color"></span>Fleming Fund</p>
         </div>
         <div class="links">
-          {% include 'layout/link-collection.html' with {'links': fundCountryLinks} %}
+          {% for countryLink in fundCountryLinks %}
+            <a href="{{ countryLink.target }}">{{ countryLink.title }}</a>
+            {{ not loop.last ? ' | ' }}
+          {% endfor %}
         </div>
       </div>
     {% endif %}
@@ -53,8 +56,10 @@
           </p>
         </div>
         <div class="links">
-          {% include 'layout/link-collection.html' with {'links': partnerCountryLinks} %}
-        </div>
+          {% for countryLink in partnerCountryLinks %}
+            <a href="{{ countryLink.target }}">{{ countryLink.title }}</a>
+            {{ not loop.last ? ' | ' }}
+          {% endfor %}        </div>
       </div>
     {% endif %}
   </div>
