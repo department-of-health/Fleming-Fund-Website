@@ -45,6 +45,15 @@ function fleming_get_content() {
     $fleming_content['partnerCountryLinks'] =
         $fleming_content['nav']->getPartnerCountryLinksWithinRegion(get_post_field( 'post_name'));
 
+    $fleming_content["opportunities"] = array_map(
+        'grant_with_post_data_and_fields',
+        array_slice(
+            get_referring_posts(get_the_ID(), 'grants', 'region'),
+            0,
+            2
+        )
+    );
+
     $fleming_content['rss_link_target'] = '/feed/region/?channel=' . $this_region['data']->post_name;
 
     return $fleming_content;
