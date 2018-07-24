@@ -24,6 +24,12 @@ function compare_date_strings($string1, $string2) {
 }
 
 function fleming_get_content() {
+    $fields = get_field_objects();
+
+    $have_eligibility = $fields["criteria"]["value"]
+        && ($fields["criteria"]["value"]["text_block_inner"] || $fields["criteria"]["value"]["criteria"]);
+    $have_application_steps = $fields["application_steps"]["value"];
+
     $fleming_content = array(
         "css_filename" => get_css_filename(),
         "title" => get_raw_title(),
@@ -31,10 +37,23 @@ function fleming_get_content() {
         "nav" => get_nav_builder()
             ->withMenuRoute('grants', get_type())
             ->withAdditionalBreadcrumb(get_raw_title())
-            ->build()
+            ->build(),
+        "have_eligibility" => $have_eligibility,
+        "have_application_steps" => $have_application_steps
     );
 
-    process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
+    process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content'],
+        $have_eligibility || $have_application_steps);
+
+    if (($have_eligibility || $have_application_steps) && !$fleming_content["in_page_links"]) {
+        $fleming_content["in_page_links"] = array();
+    }
+    if ($have_eligibility) {
+        $fleming_content["in_page_links"][] = array("target" => "#eligibility", "title" => "Eligibility");
+    }
+    if ($have_application_steps) {
+        $fleming_content["in_page_links"][] = array("target" => "#how-to-apply", "title" => "How to apply");
+    }
 
     $thisGrant = grant_with_post_data_and_fields(get_current_post_data_and_fields());
     $fleming_content['colour_scheme'] = $thisGrant['colour_scheme'];

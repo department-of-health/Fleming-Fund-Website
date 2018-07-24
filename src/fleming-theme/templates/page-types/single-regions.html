@@ -22,7 +22,10 @@
 {% embed 'layout/full-width-container.html' %}
   {% block container %}
     {% include 'page-elements/map.html' with {
-      'map_is_interactive': true
+      'additional_map_config': {
+        'interactive': true,
+        'zoomAwayFromFocus': 1.2
+      }
     } %}
   {% endblock %}
 {% endembed %}
@@ -81,18 +84,28 @@
   {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 </div>
 
-{% if fields.supporting_content.value is not empty or fields.case_study.value %}
+{% if fields.supporting_content.value is not empty or fields.case_study.value or opportunities is not empty %}
 {% embed 'layout/supporting-content.html' %}
   {% block content %}
 
   {% include 'flexible_content.twig' with { 'flexible_content': fields.supporting_content.value } %}
 
-    {% if fields.case_study.value %}
-      <h3>Featured Case Study</h3>
-      <div class="card-container cover">
-        {% include 'cards/entities/publication-with-image.html' with {'publication': fields.case_study.value} %}
-      </div>
-    {% endif %}
+  {% if fields.case_study.value %}
+    <h3>Featured Case Study</h3>
+    <div class="card-container cover">
+      {% include 'cards/entities/publication-with-image.html' with {'publication': fields.case_study.value} %}
+    </div>
+  {% endif %}
+
+
+  {% if opportunities is not empty %}
+    <h3>Current and Upcoming Opportunities</h3>
+    <div class="card-container two-max">
+      {% for grant in opportunities %}
+      {% include 'cards/entities/grant.html' with {'grant': grant} %}
+      {% endfor %}
+    </div>
+  {% endif %}
 
   {% endblock %}
 {% endembed %}

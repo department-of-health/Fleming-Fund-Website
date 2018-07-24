@@ -2,16 +2,7 @@
 
 <h1>{{ title }}</h1>
 
-{% if fields.application_steps.value %}
-  {% include 'layout/link-collection.html' with {'links': (in_page_links??[])|merge([
-    {
-      'title': 'Application Process',
-      'target': '#application-process'
-    },
-  ])} %}
-{% else %}
-  {% include 'page-elements/in-page-links.html' %}
-{% endif %}
+{% include 'page-elements/in-page-links.html' %}
 
 {% if fields.dates.value is not empty %}
 <div class="country-timeline">
@@ -41,15 +32,37 @@
 
 <div class="flexible-container-with-sidebar">
   {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
-</div>
 
-{% if fields.application_steps.value %}
+  {% if have_eligibility %}
   <hr class="row-separator"/>
-  <h3 class="row-title" id="application-process">Application Process</h3>
+  <h2 class="row-title" id="eligibility">Eligibility Criteria</h2>
+  <div class="row">
+    <div class="nine columns">
+      {% include 'flexible-content/text_block.html' with {'content_block': fields.criteria.value} %}
+    </div>
+  </div>
+  {% for criterion in fields.criteria.value.criteria %}
+  <div class="row">
+    <div class="one column">
+      <svg viewBox="0 0 40 45" style="max-height: 3em">
+        <circle cx="20" cy="25" r="15" stroke="lightgrey" stroke-width="0" fill="lightgrey" />
+      </svg>
+    </div>
+    <div class="eight columns">
+      {% include 'flexible-content/supporting_text_block.html' with {'content_block': criterion} %}
+    </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  {% if have_application_steps %}
+  <hr class="row-separator"/>
+  <h2 class="row-title" id="how-to-apply">How to apply</h2>
   {% include 'flexible-content/application_steps.html' with {
     'content_block': { 'steps' : fields.application_steps.value }
   } %}
-{% endif %}
+  {% endif %}
+</div>
 
 {% embed 'layout/supporting-content.html' %}
   {% block content %}

@@ -26,7 +26,7 @@ add_action( 'init', 'custom_page_num_rewrite' );
 
 
 // Apply transforms to the flexible content
-function process_flexible_content(&$fields, &$content)
+function process_flexible_content(&$fields, &$content, $force_in_page_links = false)
 {
     // The data returned from get_field_objects() contains
     //  - value - an array of content blocks, each with
@@ -46,7 +46,7 @@ function process_flexible_content(&$fields, &$content)
     //   a more appropriate size from wp_get_attachment_image.
 
     $in_page_links = [];
-    $show_in_page_links = false;
+    $show_in_page_links = $force_in_page_links || false;
     $added_overview_slug = false;
 
     if (isset($content) && !empty($content["value"])) {
@@ -79,9 +79,9 @@ function process_flexible_content(&$fields, &$content)
                 }
             }
         }
+        $fields["fields"]["supporting_content"]["value"] = split_supporting_content($content['value']);
     }
 
-    $fields["fields"]["supporting_content"]["value"] = split_supporting_content($content['value']);
 
     if ($show_in_page_links) {
         $fields['in_page_links'] = $in_page_links;

@@ -108,6 +108,8 @@
 @media (#{$max-width-tablet}) {
   #map-element {
     position: relative !important;
+    height: 200px !important;
+    height: 30vh !important;
   }
 }
 
@@ -115,6 +117,8 @@
   #region-cards {
     padding-bottom: 200px;
     padding-bottom: 25vh;
+    margin-top: 100px;
+    margin-top: 20vh;
 
     .card {
       min-height: 33vh;

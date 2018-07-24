@@ -138,6 +138,12 @@ ol {
   box-sizing: border-box;
 }
 
+.supporting-content {
+  .collapsible {
+    background-color: #fff;
+  }
+}
+
 .flexible-container-with-sidebar {
   margin-right: grid-offset-length(3);
 }

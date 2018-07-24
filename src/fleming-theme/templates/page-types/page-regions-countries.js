@@ -6,6 +6,7 @@ function setActiveRegionCard(cardID) {
             card = $(card);
             if (card.attr('id') === cardID) {
                 card.removeClass('inactive');
+                card.focus();
             } else {
                 card.addClass('inactive');
             }
@@ -17,16 +18,26 @@ function setActiveRegionCard(cardID) {
 function handleScrollForMap() {
     var mapElement = $('#map-element');
     var regionCardsContainer = $('#region-cards');
+    var regionCardsDistanceFromLeft = regionCardsContainer.offset().left;
 
-    if (mapElement.offset().left < regionCardsContainer.offset().left) {
+    if (regionCardsDistanceFromLeft > 300) {
+        Fleming.map.setRightBound(regionCardsDistanceFromLeft);
+    }
+
+    if (mapElement.offset().left < regionCardsDistanceFromLeft) {
 
         var newMapElementClass = '';
 
         var topOfViewport = $(window).scrollTop();
+        var heightOfViewport = $(window).height();
         var topOfMapElementContainer = mapElement.parent().offset().top;
 
         if (topOfMapElementContainer - topOfViewport > 0) {
             newMapElementClass = 'top';
+            var mapHeightToFillSpace = topOfViewport + heightOfViewport - topOfMapElementContainer;
+            if (mapHeightToFillSpace < heightOfViewport) {
+                Fleming.map.setBottomBound(mapHeightToFillSpace);
+            }
         } else {
             var mapElementContainerHeight = mapElement.parent().height();
             var spaceAvailableForMapElement =
@@ -44,7 +55,7 @@ function handleScrollForMap() {
         regionCardsContainer.children('.card').each(function (i, card) {
             card = $(card);
             var positionInViewport = card.offset().top - topOfViewport;
-            if (positionInViewport - $(window).height() / 2 < 0) {
+            if (positionInViewport - heightOfViewport / 2 < 0) {
                 activeCardID = card.attr('id');
             }
         });

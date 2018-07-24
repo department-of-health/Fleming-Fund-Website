@@ -4,6 +4,20 @@
   }
 }
 
+body .jvectormap-tip {
+  background: #fff;
+  color: $dark-grey;
+  font-family: $font-family-headings;
+  font-size: $base-font-size * 1.2;
+  font-weight: bold;
+  border-radius: 0;
+  box-shadow: 0 0 7px rgba(0,0,0,0.2);
+  border: none;
+  padding: 0.5ex 1em;
+  margin-top: -20px;
+  cursor: pointer;
+}
+
 .map-container {
   display: none;
   min-height: 200px;
@@ -70,21 +84,24 @@
 
   .jvectormap-region {
     fill-opacity: 1;
-
-    &.not-highlighted {
-      fill-opacity: 0.2;
-    }
+    transition: opacity 0.1s linear;
 
     @each $configName, $colourConfig in $colourConfigs {
       &.#{$configName} {
         fill: map-get($colourConfig, intense);
+        stroke: map-get($colourConfig, intense);
+
+        &.not-highlighted {
+          opacity: 0.2;
+        }
 
         &.partner {
           fill: url(#subtle-hatched- + $configName) map-get($colourConfig, subtle);
+          stroke: url(#subtle-hatched- + $configName) map-get($colourConfig, subtle);
         }
 
         &:hover {
-          fill-opacity: 0.6;
+          opacity: 0.6;
         }
       }
     }
