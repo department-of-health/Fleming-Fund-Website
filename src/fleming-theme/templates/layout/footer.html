@@ -63,10 +63,12 @@
       if (content.css('display') === 'block') {
         $(collapseControl).prop('title', 'click to expand section');
         $(collapseControl).css('margin-bottom', '2.5rem');
+        $(collapseControl).find('.collapse-arrow').html('&#9662;');
         content.css('display', 'none');
       } else {
         $(collapseControl).prop('title', 'click to collapse section');
         $(collapseControl).css('margin-bottom', '0');
+        $(collapseControl).find('.collapse-arrow').html('&#9652;');
         content.css('display', 'block');
       }
     }
