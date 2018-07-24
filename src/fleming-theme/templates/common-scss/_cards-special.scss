@@ -258,6 +258,8 @@
   .card {
     box-sizing: content-box;
     max-width: 560px;
+    margin-left: auto;
+    margin-right: auto !important;
 
     .content {
       padding-top: 1.5em;
