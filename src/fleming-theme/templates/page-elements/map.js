@@ -127,6 +127,10 @@ function init(config, mapElementID) {
             }
         );
 
+        $(document).scroll(function() {
+            $('.jvectormap-tip').hide();
+        });
+
         $(window).resize(function () {
             refocusMap();
         });
