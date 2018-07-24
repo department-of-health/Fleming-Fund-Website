@@ -16,7 +16,7 @@
         </div>
         <div class="eight columns dark-step application-content">
       {% endif %}
-          <p class="application-content-inner"><strong>{{ step.application_step }}</strong></p>
+          <div class="application-content-inner">{{ step.application_step | markdown }}</div>
         </div>
     </div>
   {% endfor %}
