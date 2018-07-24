@@ -52,11 +52,17 @@ function refocusMap() {
         if (mapConfig.zoomAwayFromFocus > 1) {
             map.setScale(map.scale / mapConfig.zoomAwayFromFocus, map.width / 2, map.height / 2, !1, false);
         }
+
         if (mapConfig.rightBound) {
-            var shift =  (map.width - mapConfig.rightBound) / 2;
-            map.transX -= shift / map.scale;
-            map.applyTransform();
+            var shiftX =  (map.width - mapConfig.rightBound) / 2;
+            map.transX -= shiftX / map.scale;
         }
+        if (mapConfig.bottomBound) {
+            var shiftY =  (map.height - mapConfig.bottomBound) / 2;
+            map.transY -= shiftY / map.scale;
+        }
+        map.applyTransform();
+
         $('.jvectormap-region').each(function() {
             var country = $(this);
             var countryCode = country.data('code');
@@ -81,6 +87,11 @@ function focusMapOn(region) {
 
 function setRightBound(bound) {
     mapConfig.rightBound = bound;
+    refocusMap();
+}
+
+function setBottomBound(bound) {
+    mapConfig.bottomBound = bound;
     refocusMap();
 }
 
@@ -174,4 +185,5 @@ module.exports = {
     focusMapOn,
     init,
     setRightBound,
+    setBottomBound
 };
