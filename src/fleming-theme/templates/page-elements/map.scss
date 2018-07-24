@@ -71,13 +71,14 @@
   .jvectormap-region {
     fill-opacity: 1;
 
-    &.not-highlighted {
-      fill-opacity: 0.2;
-    }
-
     @each $configName, $colourConfig in $colourConfigs {
       &.#{$configName} {
         fill: map-get($colourConfig, intense);
+        transition: fill-opacity 0.2s linear;
+
+        &.not-highlighted {
+          fill-opacity: 0.2;
+        }
 
         &.partner {
           fill: url(#subtle-hatched- + $configName) map-get($colourConfig, subtle);

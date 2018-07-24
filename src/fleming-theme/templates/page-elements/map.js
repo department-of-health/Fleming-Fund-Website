@@ -44,9 +44,10 @@ function getCountryClassMap() {
 
 function refocusMap() {
     if (map !== undefined && focusedRegion !== undefined) {
+        var focusedCountryCodes = mapConfig.regions[focusedRegion].countries;
         map.updateSize();
         map.setFocus({
-            regions: mapConfig.regions[focusedRegion].countries
+            regions: focusedCountryCodes
         });
         if (mapConfig.zoomAwayFromFocus > 1) {
             map.setScale(map.scale / mapConfig.zoomAwayFromFocus, map.width / 2, map.height / 2, !1, false);
@@ -56,6 +57,16 @@ function refocusMap() {
             map.transX -= shift / map.scale;
             map.applyTransform();
         }
+        $('.jvectormap-region').each(function() {
+            var country = $(this);
+            var countryCode = country.data('code');
+            if ($.inArray(countryCode, focusedCountryCodes) > -1) {
+                console.log('focused country has code', countryCode);
+                country.removeClass('not-highlighted');
+            } else {
+                country.addClass('not-highlighted');
+            }
+        });
     }
 }
 
