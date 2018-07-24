@@ -1,8 +1,7 @@
 {{ include('layout/header.html') }}
 
 <h1>{{ title }}</h1>
-
-{% include 'layout/link-collection.html' with {'links': nav.allRegionLinks} %}
+{% include 'page-elements/in-page-links.html' %}
 
 {% if weight == 'heavy' %}
 {% embed 'layout/full-width-container.html' %}
