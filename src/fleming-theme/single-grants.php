@@ -17,9 +17,9 @@ require_once 'query-utilities.php';
 function compare_date_strings($string1, $string2) {
     $date1 = explode("/", $string1["date"]);
     $date2 = explode("/", $string2["date"]);
-    if ($date2[2] != $date1[2]) return $date1[2] - $date2[2];
-    if ($date2[1] != $date1[1]) return $date1[1] - $date2[1];
-    if ($date2[0] != $date1[0]) return $date1[0] - $date2[0];
+    if ($date2[2] != $date1[2]) return (int) $date1[2] - (int) $date2[2];
+    if ($date2[1] != $date1[1]) return (int) $date1[1] - (int) $date2[1];
+    if ($date2[0] != $date1[0]) return (int) $date1[0] - (int) $date2[0];
     return 0;
 }
 
