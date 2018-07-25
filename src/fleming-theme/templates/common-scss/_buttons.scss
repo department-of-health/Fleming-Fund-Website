@@ -48,8 +48,12 @@ button, .button {
 }
 
 @each $configName, $colourConfig in $colourConfigs {
-  &.#{$configName} {
-    button, .button {
+  &.#{$configName},
+  .card.#{$configName} // cards should override
+  {
+    button,
+    .button
+    {
       border-color: map-get($colourConfig, intense);
       background: map-get($colourConfig, intense);
 
