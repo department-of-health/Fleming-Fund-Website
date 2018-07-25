@@ -313,57 +313,6 @@
                 ]
             },
             {
-                "key": "field_5b23bb6c2afa7",
-                "label": "Open",
-                "name": "open",
-                "type": "date_picker",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "display_format": "d\/m\/Y",
-                "return_format": "d\/m\/Y",
-                "first_day": 1
-            },
-            {
-                "key": "field_5b0698146ae22",
-                "label": "Deadline",
-                "name": "deadline",
-                "type": "date_picker",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "display_format": "d\/m\/Y",
-                "return_format": "d\/m\/Y",
-                "first_day": 1
-            },
-            {
-                "key": "field_5b06982c6ae23",
-                "label": "RFP Publication Date",
-                "name": "rfp_publication_date",
-                "type": "date_picker",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "display_format": "d\/m\/Y",
-                "return_format": "d\/m\/Y",
-                "first_day": 1
-            },
-            {
                 "key": "field_5b0698416ae24",
                 "label": "Information Day",
                 "name": "information_day",
@@ -384,63 +333,6 @@
                 "multiple": 0,
                 "return_format": "object",
                 "ui": 1
-            },
-            {
-                "key": "field_5b23de112010d",
-                "label": "Other Important Dates",
-                "name": "other_important_dates",
-                "type": "repeater",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "collapsed": "",
-                "min": 0,
-                "max": 0,
-                "layout": "table",
-                "button_label": "Add date",
-                "sub_fields": [
-                    {
-                        "key": "field_5b23de232010e",
-                        "label": "Date",
-                        "name": "date",
-                        "type": "date_picker",
-                        "instructions": "",
-                        "required": 0,
-                        "conditional_logic": 0,
-                        "wrapper": {
-                            "width": "",
-                            "class": "",
-                            "id": ""
-                        },
-                        "display_format": "d\/m\/Y",
-                        "return_format": "d\/m\/Y",
-                        "first_day": 1
-                    },
-                    {
-                        "key": "field_5b23deacc895e",
-                        "label": "Key Event Name",
-                        "name": "key_event_name",
-                        "type": "text",
-                        "instructions": "",
-                        "required": 0,
-                        "conditional_logic": 0,
-                        "wrapper": {
-                            "width": "",
-                            "class": "",
-                            "id": ""
-                        },
-                        "default_value": "",
-                        "placeholder": "",
-                        "prepend": "",
-                        "append": "",
-                        "maxlength": ""
-                    }
-                ]
             },
             {
                 "key": "field_6c34ef223121e",
