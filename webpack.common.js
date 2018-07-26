@@ -12,6 +12,7 @@ module.exports = {
     entry: [
         path.join(__dirname, 'src/fleming-theme/templates/fleming.scss'),
         scriptEntry,
+        path.join(__dirname, 'src/fallback-site'),
     ],
     output: {
         filename: 'dist/wordpress/wp-content/themes/fleming-theme/fleming-[chunkhash].js',
@@ -36,7 +37,7 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(
-            ['dist/wordpress/wp-content/themes/fleming-theme'],
+            ['dist/wordpress/wp-content/themes/fleming-theme', 'dist/fallback-site'],
             { watch: true } // This "watch" is not activated unless the global "watch" is also activated (i.e. only in webpack.dev.js)
         ),
         new ExtractTextPlugin({
@@ -65,5 +66,12 @@ module.exports = {
             }
         ],
         { copyUnmodified: true }),
+        new CopyWebpackPlugin([
+                {
+                    from: path.join(__dirname, "src/fallback-site"),
+                    to: path.join(__dirname, "./dist/fallback-site")
+                }
+            ],
+            { copyUnmodified: true }),
     ],
 }
