@@ -20,11 +20,19 @@ function fleming_get_content() {
         "title" => get_raw_title(),
         "fields" => get_field_objects(),
         "nav" => get_nav_builder()
-            ->withMenuRoute('grants', 'country')
+            ->withMenuRoute('news')
             ->withAdditionalBreadcrumb(get_raw_title())
             ->build(),
-        "similar_events" => get_related_posts()
+        "similar_events" => get_related_posts(
+            get_current_post_data_and_fields(),
+            2,
+            true
+        )
     );
+
+    foreach ($fleming_content['similar_events'] as &$post) {
+        $post = entity_with_post_data_and_fields($post);
+    }
 
     return $fleming_content;
 }

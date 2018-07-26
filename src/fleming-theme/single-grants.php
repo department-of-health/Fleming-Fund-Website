@@ -39,7 +39,12 @@ function fleming_get_content() {
             ->withAdditionalBreadcrumb(get_raw_title())
             ->build(),
         "have_eligibility" => $have_eligibility,
-        "have_application_steps" => $have_application_steps
+        "have_application_steps" => $have_application_steps,
+        "similar_proposals" => get_related_posts(
+            get_current_post_data_and_fields(),
+            2,
+            true
+        )
     );
 
     process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content'],
@@ -58,12 +63,6 @@ function fleming_get_content() {
     $thisGrant = grant_with_post_data_and_fields(get_current_post_data_and_fields());
     $fleming_content['colour_scheme'] = $thisGrant['colour_scheme'];
 
-    $similar_proposals = get_posts(array('post_type'=>'grants','numberposts'=>2)); //this is placeholder code until we know how 'similar proposals' will work
-    foreach($similar_proposals as &$grant) {
-        $grant = grant_with_post_data_and_fields(get_post_data_and_fields($grant->ID));
-    }
-    $fleming_content["similar_proposals"] = $similar_proposals;
-
     if (!empty($fleming_content["fields"]["dates"]["value"])) {
         usort($fleming_content["fields"]["dates"]["value"], "compare_date_strings");
     }
@@ -78,6 +77,10 @@ function fleming_get_content() {
     }
 
     $fleming_content["timeline_level"] = $timeline_level;
+
+    foreach ($fleming_content['similar_proposals'] as &$post) {
+        $post = entity_with_post_data_and_fields($post);
+    }
 
     return $fleming_content;
 }

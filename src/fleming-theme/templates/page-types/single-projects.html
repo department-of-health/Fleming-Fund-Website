@@ -5,11 +5,19 @@
 
 {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
 
-{% if fields.supporting_content.value is not empty %}
+{% if fields.supporting_content.value is not empty or similar_projects is not empty %}
 {% embed 'layout/supporting-content.html' %}
   {% block content %}
 
     {% include 'flexible_content.twig' with { 'flexible_content': fields.supporting_content.value } %}
+
+    {% if similar_projects is not empty %}
+      <h3>Similar Projects</h3>
+      <div class="card-container two-max">
+        {% include 'cards/entities/project.html' with {'project': similar_projects[0]} %}
+        {% include 'cards/entities/project.html' with {'project': similar_projects[1]} %}
+      </div>
+    {% endif %}
 
   {% endblock %}
 {% endembed %}
