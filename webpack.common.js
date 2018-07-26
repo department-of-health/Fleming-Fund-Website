@@ -12,7 +12,6 @@ module.exports = {
     entry: [
         path.join(__dirname, 'src/fleming-theme/templates/fleming.scss'),
         scriptEntry,
-        path.join(__dirname, 'src/fallback-site'),
     ],
     output: {
         filename: 'dist/wordpress/wp-content/themes/fleming-theme/fleming-[chunkhash].js',
