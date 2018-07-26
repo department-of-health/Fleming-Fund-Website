@@ -73,8 +73,7 @@ function fleming_get_content() {
         $timeline_level = 255;
         for ($i = 0; $i < count($fleming_content["fields"]["dates"]["value"]); $i++) {
             $date = $fleming_content["fields"]["dates"]["value"][$i];
-            if (compare_date_strings($today, $date) == 0) {$timeline_level = $i+1; break;}
-            elseif (compare_date_strings($today, $date) < 0) {$timeline_level = $i+0.5; break;};
+            if (compare_date_strings($today, $date) < 0) {$timeline_level = $i+1; break;};
         }
     }
 
