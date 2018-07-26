@@ -30,31 +30,24 @@ function get_current_post_data_and_fields() {
 }
 
 function get_referring_posts($postID, $post_type, $reference_type) {
-    $posts = get_posts(array('post_type'=>$post_type,'numberposts'=>-1));
+    $posts = get_posts(
+        array('post_type'=>$post_type, 'numberposts'=>-1, 'meta_query'=>array(
+                array(
+                    'key'=>$reference_type,
+                    'value'=>$postID,
+                    'compare'=>'IN'
+                )
+            )
+        )
+    );
     foreach($posts as &$post) {
         $post = get_post_data_and_fields($post->ID);
-    }
-    if (is_array($posts[0]['fields'][$reference_type]['value'])) {
-        $posts = array_filter($posts, function($post) use($postID, $reference_type) {
-            $refers_to_post = false;
-            if ($post['fields'][$reference_type]['value']) {
-                foreach($post['fields'][$reference_type]['value'] as $reference) {
-                    if ($reference->ID == $postID) $refers_to_post = true;
-                }
-            }
-            return $refers_to_post;
-        });
-    } else {
-        $posts = array_filter($posts, function($post) use($postID, $reference_type) {
-            return $post['fields'][$reference_type]['value']->ID == $postID;
-        });
     }
     foreach($posts as &$post) {
         unset($post);
     }
     return array_values($posts); // reset array indices to 0, 1, 2, ...
 }
-
 
 function get_query_results($query = NULL) {
     if ($query == null) {
@@ -99,4 +92,13 @@ function get_related_posts() {
 
 function get_type() {
     return get_field_objects()['type']['value']->post_name;
+}
+
+function compare_date_strings($string1, $string2) {
+    $date1 = explode("/", $string1["date"]);
+    $date2 = explode("/", $string2["date"]);
+    if ($date2[2] != $date1[2]) return (int) $date1[2] - (int) $date2[2];
+    if ($date2[1] != $date1[1]) return (int) $date1[1] - (int) $date2[1];
+    if ($date2[0] != $date1[0]) return (int) $date1[0] - (int) $date2[0];
+    return 0;
 }
