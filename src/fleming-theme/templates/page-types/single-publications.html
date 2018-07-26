@@ -22,7 +22,7 @@
 
 {% if fields.document.value.file and fields.type.value.post_title != 'news' %}
   <hr class="row-divider"/>
-  {% if fields.type.value.post_title = 'infographic' %}
+  {% if fields.type.value.post_title == 'infographic' %}
     <h4>The full {% if fields.document.value.page_count %}{{ fields.document.value.page_count }} page {% endif %}infographic is available here</h4>
     <a href={{fields.document.value.file.url}}><button class="button-dark">View Infographic</button></a>
   {% else %}
