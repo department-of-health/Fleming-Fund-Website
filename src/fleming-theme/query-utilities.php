@@ -82,12 +82,33 @@ function get_query_results($query = NULL) {
     );
 }
 
-function get_related_posts() {
-    $posts = yarpp_get_related();
-    foreach($posts as &$post) {
-        $post = get_post_data_and_fields($post->ID);
+function get_related_posts($post, $limit=2, $same_post_type_only) {
+    $dependent_arguments = [ // the (string-ified) arguments on which the results may depend
+        $post['data']->ID,
+        $limit,
+        (int) $same_post_type_only
+    ];
+    $cache_id = 'relevanssi_similar_' . implode('_', $dependent_arguments);
+    $related_posts = get_transient($cache_id);
+    if (empty($related_posts)) {
+        $query_args = [
+            's' => $post['data']->post_title,
+            'posts_per_page' => 1, // irrelevant but necessary
+            'operator' => 'or'
+        ];
+        $query = new WP_Query($query_args);
+        relevanssi_do_query($query);
+        $related_posts = [];
+        foreach ($query->posts as $r_post) {
+            if ($r_post->ID == $post['data']->ID) continue;
+            if ($same_post_type_only && $r_post->post_type != $post['data']->post_type) continue;
+            $related_posts[] = get_post_data_and_fields($r_post->ID);
+            if (count($related_posts) >= $limit) break;
+        }
+        $one_day_in_seconds = 86400;
+        set_transient($cache_id, $related_posts, $one_day_in_seconds);
     }
-    return $posts;
+    return $related_posts;
 }
 
 function get_type() {

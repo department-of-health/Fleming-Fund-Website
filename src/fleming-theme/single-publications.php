@@ -23,14 +23,13 @@ function fleming_get_content()
         "nav" => get_nav_builder()
             ->withMenuRoute('knowledge')
             ->withAdditionalBreadcrumb(get_raw_title())
-            ->build()
+            ->build(),
+        "similar_publications" => get_related_posts(
+            get_current_post_data_and_fields(),
+            2,
+            true
+        )
     );
-
-    $dummy = get_posts(array('post_type' => 'publications', 'numberposts' => 2));
-    foreach ($dummy as &$post) {
-        $post = get_post_data_and_fields($post->ID);
-    }
-    $fleming_content["more_like_this"] = $dummy;
 
     $authorNames = [];
     if (!empty($fleming_content["fields"]["authors"]["value"])) {
@@ -47,6 +46,10 @@ function fleming_get_content()
         }
         $fleming_content["fields"]["country_region"]["value"] = implode(", ",
             $fleming_content["fields"]["country_region"]["value"]);
+    }
+
+    foreach ($fleming_content['similar_publications'] as &$post) {
+        $post = entity_with_post_data_and_fields($post);
     }
 
     return $fleming_content;

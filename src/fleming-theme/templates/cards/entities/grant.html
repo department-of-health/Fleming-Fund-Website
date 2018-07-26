@@ -6,7 +6,7 @@
     'identifier': grant.identifier,
     'title': grant.data.post_title,
     'content': grant.overview,
-    'cta_title': 'Apply Now',
+    'cta_title': (grant.identifier == 'Global Grant') ? 'Read More' : 'Apply Now',
     'link_target': grant.permalink
   }} %}
 {% endif %}
