@@ -24,6 +24,10 @@ function fleming_get_content()
 
     $current_page = get_query_var('paged') ?: 1;
 
+    if ($current_page == 1) {
+        process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
+    }
+
     $query_args = [
         'post_type' => 'events',
         'paged' => $current_page,

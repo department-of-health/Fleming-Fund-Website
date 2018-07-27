@@ -17,6 +17,5 @@ if (isset($_GET["json"])) {
         "fields" => $fields,
         "target" => $target)));
 } else {
-    header("Location: $target");
-    echo "<a href=\"$target\">Click here to redirect</a>";
+    redirect_and_die($target);
 }
