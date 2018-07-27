@@ -14,6 +14,8 @@ mv ./.temp/uploads-wp-install/uploads ./dist/wordpress/wp-content
 
 npx webpack --config ./webpack.prod.js
 
+# Post webpack changes to dist
+node build-extra-steps.js
 
 cd dist/wordpress
 DATE=`date '+%Y-%m-%d_%H-%M-%S'`
