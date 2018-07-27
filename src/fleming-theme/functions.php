@@ -6,6 +6,12 @@ require_once 'query-utilities.php';
 ////////                    GENERAL                     ////////
 ////////////////////////////////////////////////////////////////
 
+function redirect_and_die($target='/') {
+    header('Location: ' . $target);
+    echo '<a href="',$target,'">Click here to continue</a>';
+    die();
+}
+
 // Allow URL re-writing - so URLs can be "/page-name" rather than "/index.php/page-name"
 function enforce_got_url_rewrite()
 {
@@ -497,8 +503,7 @@ if (isset($_GET['toggle-bandwidth-option'])) {
     ) {
         $returnTo = $_GET['return'];
     }
-    header('Location: ' . $returnTo);
-    die();
+    redirect_and_die($returnTo);
 }
 
 

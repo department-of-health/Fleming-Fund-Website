@@ -35,6 +35,25 @@
                 "layout": "block",
                 "sub_fields": [
                     {
+                        "key": "field_5b5ae8c6f123a",
+                        "label": "Take users directly to the document",
+                        "name": "go_straight_to_document",
+                        "type": "true_false",
+                        "instructions": "If selected, users are taken directly to the uploaded document, bypassing the publication's page. The flexible content's overview will still be included within cards elsewhere on the site.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "message": "",
+                        "default_value": 0,
+                        "ui": 0,
+                        "ui_on_text": "",
+                        "ui_off_text": ""
+                    },
+                    {
                         "key": "field_5b2cd31e3d8e5",
                         "label": "File",
                         "name": "file",

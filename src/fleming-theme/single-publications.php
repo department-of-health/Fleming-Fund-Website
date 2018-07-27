@@ -31,6 +31,11 @@ function fleming_get_content()
         )
     );
 
+    if (!empty($fleming_content['fields']['document']['value']['file']['url'])
+        && $fleming_content['fields']['document']['value']['go_straight_to_document']) {
+        redirect_and_die($fleming_content['fields']['document']['value']['file']['url']);
+    }
+
     $authorNames = [];
     if (!empty($fleming_content["fields"]["authors"]["value"])) {
         foreach ($fleming_content["fields"]["authors"]["value"] as &$single_author) {

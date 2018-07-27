@@ -3,13 +3,20 @@
 <h1>{{ title }}</h1>
 {% include 'page-elements/in-page-links.html' %}
 
-{% if authors is not empty or fields.publication_date.value or fields.type.value or fields.country_region.value %}
+{% set has_document = fields.document.value.file and fields.type.value.post_title != 'news' %}
+
+{% if authors is not empty
+  or fields.publication_date.value
+  or fields.type.value
+  or fields.country_region.value
+  or has_document %}
 <aside><!-- qq responsiveness -->
   <hr class="row-border"/>
   {% if authors is not empty %}<p><strong>Author{{ authors|length > 1 ? 's' }}:</strong> {{ authors|join(', ') }}</p>{% endif %}
   {% if fields.publication_date.value %}<p><strong>Date:</strong> {{ fields.publication_date.value }}</p>{% endif %}
   {% if fields.type.value %}<p><strong>Type:</strong> {{ fields.type.value.post_title }}</p>{% endif %}
   {% if fields.country_region.value %}<p><strong>Location:</strong> {{ fields.country_region.value }}</p>{% endif %}
+  {% if has_document %}<p><a href="{{ fields.document.value.file.url }}" class="button">View PDF</a></p>{% endif %}
   <hr class="row-border"/>
 </aside>
 
@@ -20,7 +27,7 @@
   </div>
 {% endif %}
 
-{% if fields.document.value.file and fields.type.value.post_title != 'news' %}
+{% if has_document %}
   <hr class="row-divider"/>
   {% if fields.type.value.post_title == 'infographic' %}
     <h4>The full {% if fields.document.value.page_count %}{{ fields.document.value.page_count }} page {% endif %}infographic is available here</h4>
