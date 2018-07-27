@@ -23,6 +23,8 @@
 }
 
 #region-cards {
+  clear: none;
+
   .card {
     background: #fff;
     box-shadow: 0 0 7px rgba(0,0,0,0.2);
@@ -117,8 +119,8 @@
   #region-cards {
     padding-bottom: 200px;
     padding-bottom: 25vh;
-    margin-top: 100px;
-    margin-top: 20vh;
+    margin-top: 20px;
+    margin-top: 3vh;
 
     .card {
       min-height: 33vh;
