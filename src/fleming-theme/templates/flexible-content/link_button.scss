@@ -1,0 +1,13 @@
+.prominent-button {
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+  &.centred {
+    text-align: center;
+  }
+
+  button, .button {
+    white-space: normal;
+    height: auto;
+  }
+}

@@ -1,4 +1,4 @@
-<div class="row" style="margin-top: 1em; margin-bottom: 1em;{{ content_block.centred ? ' text-align: center;' }}">
+<div class="row prominent-button {{ content_block.centred ? 'centred' }}">
   <a class="button" href="{{ content_block.link.url }}">
     {{ content_block.button_text | default(content_block.link.title) | default(content_block.link.url) }}
   </a>
