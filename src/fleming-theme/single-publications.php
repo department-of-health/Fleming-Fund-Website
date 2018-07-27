@@ -31,6 +31,8 @@ function fleming_get_content()
         )
     );
 
+    process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
+
     if (!empty($fleming_content['fields']['document']['value']['file']['url'])
         && $fleming_content['fields']['document']['value']['go_straight_to_document']) {
         redirect_and_die($fleming_content['fields']['document']['value']['file']['url']);

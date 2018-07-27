@@ -165,6 +165,7 @@
 .card-container {
   display: flex;
   flex-flow: row wrap;
+  @include wrapsUnderneathAside;
 
   &:after {
     content: "";

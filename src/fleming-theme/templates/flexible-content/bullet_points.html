@@ -2,7 +2,7 @@
   {% if content_block.heading %}
     <p><b>{{ content_block.heading }}</b></p>
   {% endif %}
-  <{{ content_block.style == 'numbers' ? 'ol' : 'ul' }}>
+  <{{ content_block.style == 'numbers' ? 'ol' : 'ul' }} class="supporting">
     {% for item in content_block.items %}
       <li>{{ item.item | markdown_line }}</li>
     {% endfor %}

@@ -30,6 +30,8 @@ function fleming_get_content() {
         )
     );
 
+    process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
+
     foreach ($fleming_content['similar_events'] as &$post) {
         $post = entity_with_post_data_and_fields($post);
     }
