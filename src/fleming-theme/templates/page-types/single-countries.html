@@ -65,6 +65,7 @@
     {% include 'cards/entities/person-with-image.html' with {
       'person': coordinator,
       'supertitle': 'Regional Coordinator',
+      'person_colour_scheme': colour_scheme,
       'cta_override': {
         'title': 'Contact Now',
         'target': 'mailto:' ~ coordinator.fields.email.value

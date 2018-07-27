@@ -1,6 +1,7 @@
 {% if person %}
   {% include 'cards/medium-with-image.html' with {'card': {
     'decorated': false,
+    'colour_scheme': person_colour_scheme,
     'image_src': (weight == 'light' ? person.picture_small_url : person.picture_medium_url),
     'identifier': supertitle,
     'title': person.data.post_title,
