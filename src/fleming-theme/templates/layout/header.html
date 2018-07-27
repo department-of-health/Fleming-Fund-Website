@@ -10,11 +10,14 @@
         media="screen"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% if rss_link_target %}
-    <link rel="alternate" type="application/rss+xml" href="{{ rss_link_target }}" />
+    <link rel="alternate" type="application/rss+xml" href="{{ rss_link_target }}"/>
   {% endif %}
-  <link rel="apple-touch-icon" sizes="180x180" href="/wp-content/themes/fleming-theme/static/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/wp-content/themes/fleming-theme/static/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/wp-content/themes/fleming-theme/static/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180"
+        href="/wp-content/themes/fleming-theme/static/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32"
+        href="/wp-content/themes/fleming-theme/static/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16"
+        href="/wp-content/themes/fleming-theme/static/favicon/favicon-16x16.png">
   <link rel="manifest" href="/wp-content/themes/fleming-theme/static/favicon/site.webmanifest">
   <link rel="mask-icon" href="/wp-content/themes/fleming-theme/static/favicon/logo_icon.svg" color="#009898">
   <link rel="shortcut icon" href="/wp-content/themes/fleming-theme/static/favicon/favicon.ico">
@@ -24,20 +27,24 @@
   <meta name="msapplication-config" content="/wp-content/themes/fleming-theme/static/favicon/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
 </head>
-<body class="{{weight}}">
+<body class="{{ weight }}">
 <header>
   <div class="container">
     <div class="govuk-phase-banner">
       <p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag ">Beta</strong>
         <span class="govuk-phase-banner__text">
-          This is a new service – your <a class="govuk-link" href="mailto:FlemingFund@dh.gsi.gov.uk?subject=Fleming%20Fund%20website%20feedback">feedback</a> will help us to improve it.
+          This is a new service – your <a class="govuk-link"
+                                          href="mailto:FlemingFund@dh.gsi.gov.uk?subject=Fleming%20Fund%20website%20feedback">feedback</a> will help us to improve it.
         </span>
       </p>
     </div>
     <div class="logo-container">
       <a href="/" class="logo">
         <svg viewBox="0 0 225 84"
-             preserveAspectRatio="xMidYMid meet">
+             preserveAspectRatio="xMidYMid meet"
+             role="img"
+             aria-labelledby="logo-description">
+          <title id="logo-description">Home - The Fleming Fund</title>
           <image xlink:href="/wp-content/themes/fleming-theme/images/fleming_logo.svg"
                  src="/wp-content/themes/fleming-theme/images/fleming_logo.png"
                  width="225"
@@ -48,7 +55,7 @@
     <div class="search-container">
       <form class="search" action="/" method="get">
         <div class="input-container">
-          <input name="s" placeholder="Search" type="text" value="{{query_result.query}}"/>
+          <input name="s" placeholder="Search" type="text" value="{{ query_result.query }}"/>
         </div>
         <button class="square-icon perform-search" type="submit">
           <svg xmlns="http://www.w3.org/2000/svg" aria-label="perform search" viewBox="0 0 512 512">
@@ -69,13 +76,13 @@
 </header>
 
 {% if weight == 'heavy' %}
-<script src="/wp-content/themes/fleming-theme/static/jquery-3.3.1.min.js"></script>
-<script src="/wp-content/themes/fleming-theme/static/jquery-jvectormap-2.0.3.min.js"></script>
-<script src="/wp-content/themes/fleming-theme/static/jquery-jvectormap-world-mill.js"></script>
-<script src="/wp-content/themes/fleming-theme/{{ js_bundle_filename }}"></script>
-<script type="text/javascript">
-    Fleming.header.init();
-</script>
+  <script src="/wp-content/themes/fleming-theme/static/jquery-3.3.1.min.js"></script>
+  <script src="/wp-content/themes/fleming-theme/static/jquery-jvectormap-2.0.3.min.js"></script>
+  <script src="/wp-content/themes/fleming-theme/static/jquery-jvectormap-world-mill.js"></script>
+  <script src="/wp-content/themes/fleming-theme/{{ js_bundle_filename }}"></script>
+  <script type="text/javascript">
+      Fleming.header.init();
+  </script>
 {% endif %}
 
 {% include 'page-elements/nav.html' %}
