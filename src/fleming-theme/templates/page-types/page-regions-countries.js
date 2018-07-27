@@ -42,7 +42,7 @@ function handleScrollForMap() {
             var mapElementContainerHeight = mapElement.parent().height();
             var spaceAvailableForMapElement =
                 topOfMapElementContainer + mapElementContainerHeight - topOfViewport;
-            if (spaceAvailableForMapElement > mapElement.height()) {
+            if (spaceAvailableForMapElement >= mapElement.height()) {
                 newMapElementClass = 'fixed';
             } else {
                 newMapElementClass = 'bottom';
