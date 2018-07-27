@@ -1,7 +1,7 @@
 .home-splash {
   background: $turquoise;
   padding: 5rem 0;
-  margin: 0 0 3rem;
+  margin: 4rem 0 1rem;
 
   p.large-text {
     color: #fff;
@@ -22,6 +22,11 @@
       color: #fff;
     }
   }
+}
+
+.home-splash.without-opportunities {
+  // An extra rem's padding
+  margin-bottom: 2rem;
 }
 
 .heavy .home-splash {
