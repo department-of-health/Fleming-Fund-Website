@@ -95,6 +95,13 @@ function setBottomBound(bound) {
     refocusMap();
 }
 
+function forceRedrawMap() {
+    $('.map').css('opacity', '0.999');
+    setTimeout(function () {
+        $('.map').css('opacity', '1');
+    }, 10);
+}
+
 function init(config, mapElementID) {
     mapConfig = config;
     highlightedRegion = config.currentRegion;
@@ -151,8 +158,7 @@ function init(config, mapElementID) {
                 }
             },
             onViewportChange: function() {
-                $('.map').css('opacity', '1');
-                setTimeout(function(){$('.map').css('opacity', '0.999');}, 600);
+                setTimeout(forceRedrawMap, 700);
             }
         }).vectorMap('get', 'mapObject');
 
