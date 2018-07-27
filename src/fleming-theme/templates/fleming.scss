@@ -70,8 +70,12 @@ input, button, .button {
 }
 
 a {
-  color: inherit;
+  color: $turquoise;
   text-decoration: none;
+
+  &:hover {
+    color: $mid-turquoise;
+  }
 }
 
 p.solid-left-indent {
