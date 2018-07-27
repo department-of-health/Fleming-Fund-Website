@@ -13,12 +13,20 @@
   padding: 3em 0;
   margin: 3em 0 0;
 
-  .card {
-    background: #fff;
+  .card, .collapsible {
+    background-color: #fff;
   }
 
   &.tight {
     padding: 1em 0;
     margin: 1em 0;
+  }
+
+  & > .container > :first-child {
+    margin-top: 0;
+  }
+
+  & > .container > :last-child {
+    margin-bottom: 0;
   }
 }
