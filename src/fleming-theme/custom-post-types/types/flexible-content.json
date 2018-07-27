@@ -401,7 +401,7 @@
           "5b326a1c72010": {
             "key": "5b326a1c72010",
             "name": "bullet_points",
-            "label": "Bullet/numbered list",
+            "label": "Bullet\/numbered list",
             "display": "block",
             "sub_fields": [
               {
@@ -820,6 +820,25 @@
                 "prepend": "",
                 "append": "",
                 "maxlength": ""
+              },
+              {
+                "key": "field_5b5afb4bdc6d6",
+                "label": "Centred?",
+                "name": "centred",
+                "type": "true_false",
+                "instructions": "Leave unchecked if button is following on from text. Check if following on from a group of cards.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": ""
               }
             ],
             "min": "",
