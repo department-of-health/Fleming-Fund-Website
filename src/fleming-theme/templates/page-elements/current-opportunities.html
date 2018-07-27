@@ -11,7 +11,7 @@
         {% if opportunity %}
           <a href={{ opportunity.permalink }}>
             {{ opportunity.data.post_title }}<br/>
-            <span class="status"><b>Status:</b> {{ opportunity.status }}</span>
+            <span class="status">{{ opportunity.status }}</span>
           </a>
         {% endif %}
       </div>

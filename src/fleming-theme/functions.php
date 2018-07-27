@@ -142,6 +142,11 @@ function format_number($amount) {
     return number_format((float) $amount, 0, '.', ',');
 }
 
+function to_timestamp($date)
+{
+    return DateTime::createFromFormat('!d/m/Y', $date)->getTimestamp();
+}
+
 function grant_with_post_data_and_fields($grant) {
     if (!isset($grant)) return null;
 
@@ -183,9 +188,36 @@ function grant_with_post_data_and_fields($grant) {
 
     $grant['identifier'] = $identifier;
 
-    // Compute status - qq needs to be more complicated than this!
-    $grant['status'] = 'Deadline ' . $grant['fields']['deadline']['value'];
-    // qq render date in locale-specific form?
+    // Find the next event in the dates list
+    // We'll also use this for the 'status' if present, else we'll use the final event.
+    $dates = $grant['fields']['dates']['value'];
+    $nextEvent = null;
+    $finalEvent = null;
+    if ($dates) {
+        $today = mktime(0, 0, 0); // midnight on today's date
+        foreach ($dates as &$event) {
+            $date = $event['date'];
+            if ($date) {
+                $timestamp = to_timestamp($date);
+                $event['timestamp'] = $timestamp;
+                if (($timestamp >= $today) &&
+                    ((!$nextEvent) || ($timestamp < $nextEvent['timestamp']))) {
+                    $nextEvent = $event;
+                }
+                if ((!$finalEvent) || ($timestamp > $finalEvent['timestamp'])) {
+                    $finalEvent = $event;
+                }
+            }
+        }
+    }
+    $grant['nextEvent'] = $nextEvent;
+
+    $status = null;
+    $statusEvent = $nextEvent ?? $finalEvent;
+    if ($statusEvent) {
+        $status = $statusEvent['event_name'] . ' ' . $statusEvent['date'];
+    }
+    $grant['status'] = $status;
 
     if (isset($grant['fields']['flexible_content'])) {
         $grant['overview'] = get_overview_text_from_flexible_content($grant['fields']['flexible_content']);

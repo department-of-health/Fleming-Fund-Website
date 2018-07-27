@@ -14,28 +14,14 @@ require_once 'navigation/index.php';
  * VIEWs are located in the ./templates folder and have a .html file extension
  */
 
-function toTimestamp($date)
-{
-    return DateTime::createFromFormat('!d/m/Y', $date)->getTimestamp();
-}
-
 function sort_opportunities($opportunities)
 {
     usort($opportunities, function ($a, $b) {
-        $aDate = $a['fields']['deadline']['value'];
-        $bDate = $b['fields']['deadline']['value'];
-        return toTimestamp($aDate) - toTimestamp($bDate);
+        $aTimestamp = $a['nextEvent']['timestamp'];
+        $bTimestamp = $b['nextEvent']['timestamp'];
+        return $aTimestamp - $bTimestamp;
     });
     return $opportunities;
-}
-
-function is_in_future($opportunity)
-{
-    $date = $opportunity['fields']['deadline']['value'];
-    if ($date == '') {
-        return false;
-    }
-    return (toTimestamp($date) - time()) >= 0;
 }
 
 function fleming_get_content()
@@ -53,7 +39,8 @@ function fleming_get_content()
         $opportunity = grant_with_post_data_and_fields(get_post_data_and_fields($opportunity->ID));
     }
     $opportunities = array_filter($opportunities, function ($opportunity) {
-        return is_in_future($opportunity);
+        // If it has a 'nextEvent' then it is in the future
+        return $opportunity['nextEvent'];
     });
     $opportunities = array_slice(sort_opportunities($opportunities), 0, 3);
     $fleming_content["opportunities"] = $opportunities;
