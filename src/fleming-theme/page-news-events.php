@@ -28,13 +28,28 @@ function fleming_get_content()
         process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
     }
 
+    $newsType = get_page_by_path('news', 'OBJECT', 'publication_types');
     $query_args = [
-        'post_type' => 'events',
+        'post_type' => ['events', 'publications'],
         'paged' => $current_page,
+        'meta_query' => array(
+            'relation' => 'or',
+            array(
+                'key' => 'type',
+                'compare' => 'NOT EXISTS'
+            ),
+            array(
+                'key' => 'type',
+                'value' => $newsType->ID,
+                'compare' => '='
+            )
+        )
     ];
     $country = get_page_by_path($_GET["country"], 'OBJECT', 'countries');
     if ($country != null) {
         $query_args["meta_query"] = array(
+            'relation' => 'and',
+            $query_args["meta_query"],
             array(
                 'key' => 'country',
                 'value' => $country->ID

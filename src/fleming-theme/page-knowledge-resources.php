@@ -27,13 +27,25 @@ function fleming_get_content() {
         process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
     }
 
+    $newsType = get_page_by_path('news', 'OBJECT', 'publication_types');
     $query_args = [
         'post_type' => 'publications',
         'paged' => $current_page,
+        'meta_query' => array(
+            array(
+                'key' => 'type',
+                'value' => $newsType->ID,
+                'compare' => '!='
+            )
+        )
     ];
+
+    // filter
     $publicationType = get_page_by_path($_GET["type"], 'OBJECT', 'publication_types');
     if ($publicationType != NULL) {
         $query_args["meta_query"] = array(
+            'relation' => 'AND',
+            $query_args["meta_query"],
             array(
                 'key'   => 'type',
                 'value' => $publicationType->ID
@@ -49,7 +61,14 @@ function fleming_get_content() {
     }
 
     $fleming_content['query_result'] = $query_result;
+
     $fleming_content['publication_types'] = get_posts(array('post_type' => 'publication_types', 'numberposts' => -1));
+    foreach($fleming_content['publication_types'] as $index => $publication_type) {
+        if ($publication_type->ID == $newsType->ID) {
+            unset($fleming_content['publication_types'][$index]);
+        }
+    }
+
     $fleming_content['selected_publication_type'] = $publicationType;
 
     return $fleming_content;

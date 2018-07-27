@@ -35,17 +35,17 @@ trait CommonLinksServer
         return $this->getMenuRouteLink('knowledge');
     }
 
-    function getAllPublicationTypeLinks()
-    {
-        return MenuLinksConfig::configsToLinks(MenuLinksConfig::getAllPublicationTypes());
-    }
-
     function getCaseStudiesLink()
     {
         $link = new Link();
         $link->setTitle('Case Studies');
         $link->setTarget('/publication_types/case-study/');
         return $link;
+    }
+
+    function getNewsAndEventsLink()
+    {
+        return $this->getMenuRouteLink('news');
     }
 
     function getAllGrantsPageLink()
