@@ -35,9 +35,7 @@ function handleScrollForMap() {
         if (topOfMapElementContainer - topOfViewport > 0) {
             newMapElementClass = 'top';
             var mapHeightToFillSpace = topOfViewport + heightOfViewport - topOfMapElementContainer;
-            if (mapHeightToFillSpace < heightOfViewport) {
-                Fleming.map.setBottomBound(mapHeightToFillSpace);
-            }
+            Fleming.map.setBottomBound(mapHeightToFillSpace < heightOfViewport ? mapHeightToFillSpace : false);
         } else {
             var mapElementContainerHeight = mapElement.parent().height();
             var spaceAvailableForMapElement =
