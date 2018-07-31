@@ -261,12 +261,37 @@ function organisation_with_post_data_and_fields($organisation) {
 }
 
 function publication_with_post_data_and_fields($publication) {
+    $primary_image = null;
+
+    if (isset($publication['fields']['override_preview_image'])
+        && $publication['fields']['override_preview_image']['value']
+        && $publication['fields']['override_preview_image']['value']['sizes']) {
+        $primary_image = $publication['fields']['override_preview_image']['value'];
+    }
+
     if (isset($publication['fields']['flexible_content'])) {
         $publication['overview'] = get_overview_text_from_flexible_content($publication['fields']['flexible_content']);
-        $publication['picture_large_url'] = get_primary_image_from_flexible_content($publication['fields']['flexible_content'])['sizes']['large'];
-        $publication['picture_medium_url'] = get_primary_image_from_flexible_content($publication['fields']['flexible_content'])['sizes']['medium'];
-        $publication['picture_small_url'] = get_primary_image_from_flexible_content($publication['fields']['flexible_content'])['sizes']['thumbnail'];
+
+        if (!$primary_image) {
+          $primary_image = get_primary_image_from_flexible_content($publication['fields']['flexible_content']);
+        }
     }
+
+    if (!$primary_image && isset($publication['fields']['document'])
+        && $publication['document']['value']['file'] && $publication['document']['value']['file']['id']) {
+        // We have an uploaded document ID.
+        // wp_get_attachment_image requires we specify a size, so go straight to the metadata instead.
+        $metadata = wp_get_attachment_metadata($publication['document']['value']['file']['id']);
+        if ($metadata && isset($metadata['sizes'])) {
+            // We have a preview image from metadata.
+            $primary_image = $metadata;
+        }
+    }
+
+    $publication['picture_large_url']  = $primary_image ? $primary_image['sizes']['large'] : null;
+    $publication['picture_medium_url'] = $primary_image ? $primary_image['sizes']['medium'] : null;
+    $publication['picture_small_url']  = $primary_image ? $primary_image['sizes']['thumbnail'] : null;
+
     return $publication;
 }
 

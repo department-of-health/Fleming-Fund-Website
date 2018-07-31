@@ -262,6 +262,30 @@
                         "maxlength": ""
                     }
                 ]
+            },
+            {
+                "key": "field_5b60589400e88",
+                "label": "Override preview image",
+                "name": "override_preview_image",
+                "type": "image",
+                "instructions": "Used in place of the first flexible content image for a promoted card preview image",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "medium",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
             }
         ],
         "location": [
