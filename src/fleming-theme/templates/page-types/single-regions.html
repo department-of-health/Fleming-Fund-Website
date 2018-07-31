@@ -34,9 +34,11 @@
   <div class="region-countries-legend">
     {% if fundCountryLinks is not empty %}
       <div class="fund-countries">
+        {% if partnerCountryLinks is not empty %}
         <div class="legend">
           <p class="label"><span class="color"></span>Fleming Fund</p>
         </div>
+        {% endif %}
         <div class="links">
           {% for countryLink in fundCountryLinks %}
             <a href="{{ countryLink.target }}">{{ countryLink.title }}</a>
