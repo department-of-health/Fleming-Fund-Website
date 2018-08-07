@@ -4,29 +4,21 @@
   <div class="container">
     <div class="left">
 
-      <p>Fleming Fund is a UK government aid programme</p>
+      <p>Fleming Fund is a UK aid programme</p>
       <div class="footer-content">
         <p>
-          <a href="https://www.gov.uk/government/organisations/department-of-health-and-social-care"
-             target="_blank">
-            <img src="/wp-content/themes/fleming-theme/images/DHSC-130.png" alt="Department of Health and Social Care"/>
-          </a>
-          <a href="/organisations/uk-aid/">
-            <img src="/wp-content/themes/fleming-theme/images/UKaid-107.png" alt="UK Aid"/>
-          </a>
+          <div><img src="/wp-content/themes/fleming-theme/images/DHSC-130.png" alt="Department of Health and Social Care"/></div>
+          <div><img src="/wp-content/themes/fleming-theme/images/UKaid-107.png" alt="UK Aid"/></div>
         </p>
       </div>
 
       {% if footer_organisations is not empty %}
         <p>Supported by</p>
         <div class="footer-content">
-          <p>
+          <p>{# We have to use logo_medium as the small versions are clipped to squares :-/ #}
             {% for organisation in footer_organisations %}
-              <a href="{{ organisation.permalink }}">
-                {# the logo resolution used here should match that used in organisation cards #}
-                <img src="{{ (weight == 'light' ? organisation.logo_small_url : organisation.logo_medium_url) }}"
-                     alt="{{ organisation.data.page_title }}"/>
-              </a>
+            <div><img src="{{ organisation.logo_medium_url }}"
+                 alt="{{ organisation.data.page_title }}"/></div>
             {% endfor %}
           </p>
         </div>
