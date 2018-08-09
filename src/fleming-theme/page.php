@@ -21,7 +21,7 @@ function fleming_get_content() {
         "fields" => get_field_objects(),
         "colour_scheme" => "base",
         "nav" => get_nav_builder()
-            ->withRouteFromPermalink()
+            ->withRouteFromPermalink($title)
             ->withDefaultRoute(array("about"), $title)
             ->build()
     );

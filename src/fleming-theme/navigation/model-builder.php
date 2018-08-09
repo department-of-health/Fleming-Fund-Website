@@ -19,12 +19,30 @@ class NavigationModelBuilder
         return $this;
     }
 
-    function withRouteFromPermalink()
+    private function getPathForPost($postId = 0) {
+        $permalink = get_permalink($postId);
+        if ($permalink) {
+            return MenuLinksConfig::findLink(wp_make_link_relative($permalink));
+        }
+        return false;
+    }
+
+    function withRouteFromPermalink($pageTitle)
     {
-        $permalink = wp_make_link_relative(get_permalink());
-        $path = MenuLinksConfig::findLink($permalink);
+        $path = $this->getPathForPost();
         if ($path) {
             $this->selectedRouteKeys = $path;
+        } else {
+            // We didn't find this page on the menu. Try the parent page
+            $parentId = wp_get_post_parent_id(null);
+            if ($parentId) {
+                $path = $this->getPathForPost($parentId);
+                if ($path) {
+                    // Found the parent; use that plus this page's title
+                    $this->selectedRouteKeys = $path;
+                    $this->additionalBreadcrumb = $pageTitle;
+                }
+            }
         }
         return $this;
     }
