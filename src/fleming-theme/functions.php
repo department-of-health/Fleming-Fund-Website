@@ -591,6 +591,55 @@ function admin_css()
 
 add_action('admin_head', 'admin_css');
 
+function ff_admin_menu_separators() {
+    global $menu;
+
+    // We want to add three more separators to the menu.
+    // The normal custom post range is 25-58. It looks like we can actually use fraction indices, but we'll stick
+    // to integers for now.
+    //
+    // Common items 30-38
+    //
+    //   30 Countries
+    //   31 Grants
+    //   32 Publications
+    //   33 Events
+    //   34 Projects
+    //
+    //   39 <separator>
+    //
+    // Less-common 40-48
+    //
+    //   40 Organisations
+    //   41 People
+    //   42 Regions
+    //
+    //   49 <separator>
+    //
+    // Schema 50-58 in two groups
+    //
+    //   50 Aims
+    //   51 Disciplines
+    //   52 Topics
+    //   53 <separator>
+    //   54 Grant Types
+    //   55 Publication Types
+    //   56 Organisation Types
+    //
+    // then WordPress's own separator at 59.
+
+    $new_separator_ids = array(39, 49, 53);
+    foreach($new_separator_ids as $new_separator_id) {
+      $id = $new_separator_id;
+      if (isset($menu[$id])) {
+        $id += 0.1;
+      }
+      $menu[$id] = array( '', 'read', 'separator-ff-' . $new_separator_id, '', 'wp-menu-separator' );
+    }
+}
+
+add_action('admin_menu', 'ff_admin_menu_separators');
+
 
 ////////////////////////////////////////////////////////////////
 ////////   CUSTOM POST TYPES + ADVANCED CUSTOM FIELDS   ////////

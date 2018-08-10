@@ -14,6 +14,6 @@ register_post_type('grant_types', array(
     'show_in_menu'          => true,
     'show_in_rest'          => true,
     'menu_icon'             => 'dashicons-money',
-    'menu_position'         => 40,
+    'menu_position'         => 54,
     'supports'              => array('title', 'revisions')
 ));

@@ -14,6 +14,6 @@ register_post_type('disciplines', array(
     'show_in_menu'          => true,
     'show_in_rest'          => true,
     'menu_icon'             => 'dashicons-filter',
-    'menu_position'         => 44,
+    'menu_position'         => 51,
     'supports'              => array('title', 'revisions')
 ));

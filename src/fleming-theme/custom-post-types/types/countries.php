@@ -15,6 +15,6 @@ register_post_type('countries', array(
     'show_in_menu'          => true,
     'show_in_rest'          => true,
     'menu_icon'             => 'dashicons-location-alt',
-    'menu_position'         => 31,
+    'menu_position'         => 30,
     'supports'              => array('title', 'revisions')
 ));

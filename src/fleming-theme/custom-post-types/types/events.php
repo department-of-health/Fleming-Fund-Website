@@ -15,7 +15,7 @@ register_post_type('events', array(
     'show_in_menu'          => true,
     'show_in_rest'          => true,
     'menu_icon'             => 'dashicons-calendar-alt',
-    'menu_position'         => 34,
+    'menu_position'         => 33,
     'supports'              => array('title', 'revisions'),
     'yarpp_support'         => true
 ));

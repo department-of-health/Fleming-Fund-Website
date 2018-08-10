@@ -15,6 +15,6 @@ register_post_type('people', array(
     'show_in_menu'          => true,
     'show_in_rest'          => true,
     'menu_icon'             => 'dashicons-admin-users',
-    'menu_position'         => 36,
+    'menu_position'         => 41,
     'supports'              => array('title', 'revisions')
 ));

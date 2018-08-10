@@ -15,6 +15,6 @@ register_post_type('publications', array(
     'show_in_menu'          => true,
     'show_in_rest'          => true,
     'menu_icon'             => 'dashicons-admin-page',
-    'menu_position'         => 35,
+    'menu_position'         => 32,
     'supports'              => array('title', 'revisions')
 ));

@@ -15,6 +15,6 @@ register_post_type('grants', array(
     'show_in_menu'          => true,
     'show_in_rest'          => true,
     'menu_icon'             => 'dashicons-chart-pie',
-    'menu_position'         => 33,
+    'menu_position'         => 31,
     'supports'              => array('title', 'revisions')
 ));

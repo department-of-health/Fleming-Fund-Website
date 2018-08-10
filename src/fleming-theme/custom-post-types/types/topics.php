@@ -14,6 +14,6 @@ register_post_type('topics', array(
     'show_in_menu'          => true,
     'show_in_rest'          => true,
     'menu_icon'             => 'dashicons-format-chat',
-    'menu_position'         => 41,
+    'menu_position'         => 52,
     'supports'              => array('title', 'revisions')
 ));

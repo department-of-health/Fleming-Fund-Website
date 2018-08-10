@@ -14,6 +14,6 @@ register_post_type('aims', array(
     'show_in_menu'          => true,
     'show_in_rest'          => true,
     'menu_icon'             => 'dashicons-clipboard',
-    'menu_position'         => 45,
+    'menu_position'         => 50,
     'supports'              => array('title', 'revisions')
 ));

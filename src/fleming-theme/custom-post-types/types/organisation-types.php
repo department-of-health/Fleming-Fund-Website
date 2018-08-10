@@ -14,6 +14,6 @@ register_post_type('organisation_types', array(
     'show_in_menu'          => true,
     'show_in_rest'          => true,
     'menu_icon'             => 'dashicons-building',
-    'menu_position'         => 43,
+    'menu_position'         => 56,
     'supports'              => array('title', 'revisions')
 ));

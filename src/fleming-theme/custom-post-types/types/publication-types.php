@@ -14,6 +14,6 @@ register_post_type('publication_types', array(
     'show_in_menu'          => true,
     'show_in_rest'          => true,
     'menu_icon'             => 'dashicons-clipboard',
-    'menu_position'         => 42,
+    'menu_position'         => 55,
     'supports'              => array('title', 'revisions')
 ));
