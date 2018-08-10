@@ -14,16 +14,6 @@ require_once 'navigation/index.php';
  * VIEWs are located in the ./templates folder and have a .html file extension
  */
 
-function sort_opportunities($opportunities)
-{
-    usort($opportunities, function ($a, $b) {
-        $aTimestamp = $a['nextEvent']['timestamp'];
-        $bTimestamp = $b['nextEvent']['timestamp'];
-        return $aTimestamp - $bTimestamp;
-    });
-    return $opportunities;
-}
-
 function fleming_get_content()
 {
     $fleming_content = array(
@@ -45,7 +35,7 @@ function fleming_get_content()
             // If it has a 'nextEvent' then it is in the future
             return $opportunity['nextEvent'];
         });
-        $opportunities = array_slice(sort_opportunities($opportunities), 0, 3);
+        $opportunities = array_slice(sort_future_grants($opportunities), 0, 3);
         set_transient($opportunities_cache_id, $opportunities, 30 * 60); // cache for half hour
     }
     $fleming_content["opportunities"] = $opportunities;

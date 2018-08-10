@@ -123,3 +123,130 @@ function compare_date_strings($string1, $string2) {
     if ($date2[0] != $date1[0]) return (int) $date1[0] - (int) $date2[0];
     return 0;
 }
+
+// For a grant type page (Global Grants, Country Grants, Regional Grants, Fellowships)
+// show two example grants of this type. The examples are cached for half an hour.
+function show_grants_for_page(&$fleming_content) {
+    $post_id = get_post()->ID;
+    if ($post_id) {
+        // Look up cached example grants for this page
+        $cache_id = 'current_grants_' . $post_id;
+        $current_grants = get_transient($cache_id);
+
+        if (!is_array($current_grants)) {
+            // No cached data.
+            // First look up which grant type has this page configured as its overview page.
+            $grant_types_query_args = [
+                'post_type' => 'grant_types',
+                'posts_per_page' => 1,
+                'meta_query' => array(
+                    array(
+                        'key' => 'overview_page',
+                        'value' => $post_id,
+                        'compare' => '='
+                    )
+                )
+            ];
+            $grant_types = get_posts($grant_types_query_args);
+
+            if ($grant_types && sizeof($grant_types) >= 1 && isset($grant_types[0])) {
+                // Found the grant type ID
+                $grant_type_id = $grant_types[0]->ID;
+                $grant_type_name = $grant_types[0]->post_name;
+
+                // Look up all grants of this type. We only want two but we can't currently order this
+                // in the query :-( so we'll read them all in and filter / sort in code
+                $all_grants_of_type_query_args = [
+                    'post_type' => 'grants',
+                    'posts_per_page' => -1,
+                    'meta_query' => array(
+                        array(
+                            'key' => 'type',
+                            'value' => $grant_type_id,
+                            'compare' => '='
+                        )
+                    )
+                ];
+                $grants = get_posts($all_grants_of_type_query_args);
+
+                // Read extra fields and process dates etc.
+                $full_grants = array();
+                foreach ($grants as $grant) {
+                    $full_grants[] = grant_with_post_data_and_fields(get_post_data_and_fields($grant->ID));
+                }
+
+                // Filter out future grants, if any
+                $future_grants = array_filter($full_grants, function ($grant) {
+                    // If it has a 'nextEvent' then it is in the future
+                    return $grant['nextEvent'];
+                });
+                $showing_future_grants = false;
+                if ($future_grants && sizeof($future_grants) >= 1) {
+                    // We have future grants. Sort them earliest deadline first.
+                    sort_future_grants($future_grants);
+                    $full_grants = $future_grants;
+                    $showing_future_grants = true;
+                } else {
+                    // We don't have future grants. Show the most recent previous grants instead.
+                    sort_past_grants($full_grants);
+                }
+
+                $current_grants = [
+                    'grant_type' => $grant_type_name,
+                    'grants' => array_slice($full_grants, 0, 2),
+                    'is_future' => $showing_future_grants
+                ];
+            } else {
+                // We couldn't read the grant type. Cache something as a failure.
+                $current_grants = [
+                    'grant_type' => 'error',
+                    'grants' => []
+                ];
+            }
+            set_transient($cache_id, $current_grants, 30 * 60);
+        }
+
+        if ($current_grants && is_array($current_grants['grants']) && sizeof($current_grants['grants']) > 0) {
+            // Look at the first grant and read the grant type and future/past
+            $first_grant = $current_grants['grants'][0];
+            $showing_future_grants = $current_grants['is_future'];
+            $grant_type_name = $current_grants['grant_type'];
+
+            // Build a links-to-other-posts section
+            $links = array();
+            foreach ($current_grants['grants'] as $grant) {
+                $links[] = [
+                    'is_prominent' => false,
+                    'post' => $grant,
+                    'description_override' => null
+                ];
+            }
+            $content = [
+                'acf_fc_layout' => 'links_to_other_posts',
+                'heading' => $showing_future_grants ? 'Current and upcoming opportunities' : 'Recent opportunities',
+                'links' => $links
+            ];
+
+            $button = [
+                'acf_fc_layout' => 'link_button',
+                'link' => [
+                    'title' => null,
+                    'url' => '/grants/?type=' . $grant_type_name,
+                    'target' => null
+                ],
+                'button_text' => 'View more',
+                'centred' => true
+            ];
+
+            // Append the links and button to the page's supported content, if any
+            if (!isset($fleming_content['fields']['supporting_content'])) {
+                $fleming_content['fields']['supporting_content'] = array();
+            }
+            if (!isset($fleming_content['fields']['supporting_content']['value'])) {
+                $fleming_content['fields']['supporting_content']['value'] = array();
+            }
+            $fleming_content['fields']['supporting_content']['value'][] = $content;
+            $fleming_content['fields']['supporting_content']['value'][] = $button;
+        }
+    }
+}

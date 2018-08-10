@@ -213,17 +213,42 @@ function grant_with_post_data_and_fields($grant) {
     $grant['nextEvent'] = $nextEvent;
 
     $status = null;
+    $statusEventDate = null;
     $statusEvent = $nextEvent ?? $finalEvent;
     if ($statusEvent) {
         $status = $statusEvent['event_name'] . ' ' . $statusEvent['date'];
+        $statusEventDate = $statusEvent['date'];
     }
     $grant['status'] = $status;
+    $grant['statusEventDate'] = $statusEventDate;
 
     if (isset($grant['fields']['flexible_content'])) {
         $grant['overview'] = get_overview_text_from_flexible_content($grant['fields']['flexible_content']);
     }
 
     return $grant;
+}
+
+// Sort grant records by nextEvent ascending
+function sort_future_grants($opportunities)
+{
+    usort($opportunities, function ($a, $b) {
+        $aTimestamp = $a['nextEvent']['timestamp'];
+        $bTimestamp = $b['nextEvent']['timestamp'];
+        return $aTimestamp - $bTimestamp;
+    });
+    return $opportunities;
+}
+
+// Sort grant records by statusEvent descending
+function sort_past_grants($opportunities)
+{
+    usort($opportunities, function ($a, $b) {
+        $aTimestamp = $a['statusEvent']['timestamp'];
+        $bTimestamp = $b['statusEvent']['timestamp'];
+        return $bTimestamp - $aTimestamp;
+    });
+    return $opportunities;
 }
 
 function project_with_post_data_and_fields($project) {
