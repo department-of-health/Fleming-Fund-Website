@@ -34,15 +34,20 @@ function fleming_get_content()
 
     process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
 
-    $opportunities = get_posts(array('post_type' => 'grants', 'numberposts' => -1));
-    foreach ($opportunities as &$opportunity) {
-        $opportunity = grant_with_post_data_and_fields(get_post_data_and_fields($opportunity->ID));
+    $opportunities_cache_id = 'front_page_opportunities';
+    $opportunities = get_transient($opportunities_cache_id);
+    if (!is_array($opportunities)) {
+        $opportunities = get_posts(array('post_type' => 'grants', 'numberposts' => -1));
+        foreach ($opportunities as &$opportunity) {
+            $opportunity = grant_with_post_data_and_fields(get_post_data_and_fields($opportunity->ID));
+        }
+        $opportunities = array_filter($opportunities, function ($opportunity) {
+            // If it has a 'nextEvent' then it is in the future
+            return $opportunity['nextEvent'];
+        });
+        $opportunities = array_slice(sort_opportunities($opportunities), 0, 3);
+        set_transient($opportunities_cache_id, $opportunities, 30 * 60); // cache for half hour
     }
-    $opportunities = array_filter($opportunities, function ($opportunity) {
-        // If it has a 'nextEvent' then it is in the future
-        return $opportunity['nextEvent'];
-    });
-    $opportunities = array_slice(sort_opportunities($opportunities), 0, 3);
     $fleming_content["opportunities"] = $opportunities;
 
     return $fleming_content;
