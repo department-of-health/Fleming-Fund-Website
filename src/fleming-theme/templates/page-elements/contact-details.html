@@ -4,6 +4,6 @@
 {% if fields.telephone.value %}
 <p>Telephone: {{ fields.telephone.value }}</p>
 {% endif %}
-{% if fields.telephone.value %}{% if fields.telephone.value %}
-<p>Website: <a href={{ fields.link.value }}>{{ fields.link.value }}</a></p>
+{% if fields.link.value %}
+<p>Website: <a href={{ fields.link.value }} target="_blank">{{ fields.link.value }}</a></p>
 {% endif %}
