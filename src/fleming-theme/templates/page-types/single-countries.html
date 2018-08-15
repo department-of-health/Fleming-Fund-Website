@@ -51,10 +51,20 @@
 <aside>
   <div class="card-container cover">
     {% if fields.nap_doc.value %}
-      <div class="card base">
+      <div class="card {{ colour_scheme }}">
         <div class="content">
           <p>{{ title }}'s National Action Plan is available here</p>
           <a href={{ fields.nap_doc.value.url }}>
+            <button class="button">Download &darr;</button>
+          </a>
+        </div>
+      </div>
+    {% endif %}
+    {% if fields.rfp_doc.value %}
+      <div class="card {{ colour_scheme }}">
+        <div class="content">
+          <p>{{ title }}'s Request For Proposal is available here</p>
+          <a href={{ fields.rfp_doc.value.url }}>
             <button class="button">Download &darr;</button>
           </a>
         </div>
