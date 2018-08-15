@@ -36,7 +36,7 @@ function fleming_get_content()
             'relation' => 'or',
             array(
                 'key' => 'type',
-                'compare' => 'NOT EXISTS'
+                'compare' => 'NOT EXISTS' // assuming that events don't have a field named 'type'
             ),
             array(
                 'key' => 'type',
@@ -52,8 +52,16 @@ function fleming_get_content()
             'relation' => 'and',
             $query_args["meta_query"],
             array(
-                'key' => 'country',
-                'value' => $country->ID
+                'relation' => 'or',
+                array(
+                    'key' => 'country',
+                    'value' => $country->ID
+                ),
+                array(
+                    'key' => 'country_region',
+                    'value' => serialize(strval($country->ID)),
+                    'compare' => 'LIKE'
+                )
             )
         );
     }
