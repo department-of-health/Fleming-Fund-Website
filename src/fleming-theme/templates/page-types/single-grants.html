@@ -18,17 +18,19 @@
 </div>
 {% endif %}
 
-<aside>
-  {% if fields.rfp_doc.value %}
-    <a href={{fields.rfp_doc.value.url}}>
-      <button class="button" style="width: 100%; height: auto; box-sizing: border-box;">Download RFP</button>
-    </a>
-  {% else %}
-    <button class="button" style="width: 100%; height: auto; box-sizing: border-box;" disabled="disabled">
-      RFP not available
-    </button>
-  {% endif %}
-</aside>
+{% if not fields.rfp_not_applicable %}
+  <aside>
+    {% if fields.rfp_doc.value %}
+      <a href={{ fields.rfp_doc.value.url }}>
+        <button class="button" style="width: 100%; height: auto; box-sizing: border-box;">Download RFP</button>
+      </a>
+    {% else %}
+      <button class="button" style="width: 100%; height: auto; box-sizing: border-box;" disabled="disabled">
+        RFP not available
+      </button>
+    {% endif %}
+  </aside>
+{% endif %}
 
 <div class="flexible-container-with-sidebar">
   {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
