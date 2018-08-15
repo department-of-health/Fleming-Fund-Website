@@ -20,16 +20,23 @@ function fleming_get_content()
         "css_filename" => get_css_filename(),
         "title" => get_raw_title(),
         "fields" => get_field_objects(),
-        "nav" => get_nav_builder()
-            ->withMenuRoute('knowledge')
-            ->withAdditionalBreadcrumb(get_raw_title())
-            ->build(),
         "similar_publications" => get_related_posts(
             get_current_post_data_and_fields(),
             2,
             true
         )
     );
+
+    $thisPublication = get_current_post_data_and_fields();
+    $newsType = get_page_by_path('news', 'OBJECT', 'publication_types');
+
+    $fleming_content['nav'] = get_nav_builder()
+        ->withMenuRoute(
+            $thisPublication['fields']['type']['value']->ID == $newsType->ID
+                ? 'news'
+                : 'knowledge')
+        ->withAdditionalBreadcrumb(get_raw_title())
+        ->build();
 
     process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
 
