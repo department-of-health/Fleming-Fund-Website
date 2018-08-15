@@ -71,21 +71,21 @@
   <hr class="row-border"/>
 {% endif %}
 
-<aside class="people card-container cover">
-  {% include 'cards/entities/person-with-image.html' with {
-    'person': fields.coordinator.value,
-    'supertitle': 'Regional Coordinator',
-    'person_colour_scheme': colour_scheme,
-    'cta_override': {
-      'title': 'Contact Now',
-      'target': 'mailto:' ~ fields.coordinator.value.fields.email.value
-    }
-  } %}
-</aside>
-
-<div class="flexible-container-with-sidebar">
-  {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
-</div>
+{% embed 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+  {% block aside %}
+    <div class="people card-container cover">
+      {% include 'cards/entities/person-with-image.html' with {
+        'person': fields.coordinator.value,
+        'supertitle': 'Regional Coordinator',
+        'person_colour_scheme': colour_scheme,
+        'cta_override': {
+          'title': 'Contact Now',
+          'target': 'mailto:' ~ fields.coordinator.value.fields.email.value
+        }
+      } %}
+    </div>
+  {% endblock %}
+{% endembed %}
 
 {% if fields.supporting_content.value is not empty or fields.case_study.value or opportunities is not empty %}
 {% embed 'layout/supporting-content.html' %}

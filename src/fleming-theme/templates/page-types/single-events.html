@@ -3,22 +3,22 @@
 <h1>{{ title }}</h1>
 {% include 'page-elements/in-page-links.html' %}
 
-<aside>
-  <hr class="row-border"/>
-  <p class="colour-text">{{ fields.date.value }}</p>
-  {% if fields.time.value.time is not empty %}
-    <p class="colour-text">
-      {{ fields.time.value.time }}
-      {{ fields.time.value.timezone_label }}
-      (UTC {{ fields.time.value.timezone>=0 ? '+' }}{{ fields.time.value.timezone }})
-    </p>
-  {% endif %}
-  {% if fields.location.value %}<p><strong>Location:</strong> {{ fields.location.value }}</p>{% endif %}
-  {% if fields.country.value %}<p><strong>Country:</strong> {{ fields.country.value.post_title }}</p>{% endif %}
-  <hr class="row-border"/>
-</aside>
-
-{% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+{% embed 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+  {% block aside %}
+    <hr class="row-border"/>
+    <p class="colour-text">{{ fields.date.value }}</p>
+    {% if fields.time.value.time is not empty %}
+      <p class="colour-text">
+        {{ fields.time.value.time }}
+        {{ fields.time.value.timezone_label }}
+        (UTC {{ fields.time.value.timezone>=0 ? '+' }}{{ fields.time.value.timezone }})
+      </p>
+    {% endif %}
+    {% if fields.location.value %}<p><strong>Location:</strong> {{ fields.location.value }}</p>{% endif %}
+    {% if fields.country.value %}<p><strong>Country:</strong> {{ fields.country.value.post_title }}</p>{% endif %}
+    <hr class="row-border"/>
+  {% endblock %}
+{% endembed %}
 
 {% if similar_events is not empty or fields.supporting_content.value is not empty %}
   {% embed 'layout/supporting-content.html' %}

@@ -3,14 +3,12 @@
 <h1>{{ title }}</h1>
 {% include 'page-elements/in-page-links.html' %}
 
-<aside>
-  <img src="{{ (weight == 'light' ? picture_small_url : picture_medium_url) }}" class="profile-image"/>
-  {% include 'page-elements/contact-details.html' %}
-</aside>
-
-<div class="flexible-container-with-sidebar">
-  {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
-</div>
+{% embed 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+  {% block aside %}
+    <img src="{{ (weight == 'light' ? picture_small_url : picture_medium_url) }}" class="profile-image"/>
+    {% include 'page-elements/contact-details.html' %}
+  {% endblock %}
+{% endembed %}
 
 {% if fields.role.value == 'fellow' %}
   <hr class="row-separator"/>

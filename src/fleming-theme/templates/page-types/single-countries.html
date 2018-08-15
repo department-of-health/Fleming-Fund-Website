@@ -48,45 +48,43 @@
   } %}
 </div>
 
-<aside>
-  <div class="card-container cover">
-    {% if fields.nap_doc.value %}
-      <div class="card {{ colour_scheme }}">
-        <div class="content">
-          <p>{{ title }}'s National Action Plan is available here</p>
-          <a href={{ fields.nap_doc.value.url }}>
-            <button class="button">Download &darr;</button>
-          </a>
+{% embed 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
+  {% block aside %}
+    <div class="card-container cover">
+      {% if fields.nap_doc.value %}
+        <div class="card {{ colour_scheme }}">
+          <div class="content">
+            <p>{{ title }}'s National Action Plan is available here</p>
+            <a href={{ fields.nap_doc.value.url }}>
+              <button class="button">Download &darr;</button>
+            </a>
+          </div>
         </div>
-      </div>
-    {% endif %}
-    {% if fields.rfp_doc.value %}
-      <div class="card {{ colour_scheme }}">
-        <div class="content">
-          <p>{{ title }}'s Request for Proposals is available here</p>
-          <a href={{ fields.rfp_doc.value.url }}>
-            <button class="button">Download &darr;</button>
-          </a>
+      {% endif %}
+      {% if fields.rfp_doc.value %}
+        <div class="card {{ colour_scheme }}">
+          <div class="content">
+            <p>{{ title }}'s Request for Proposals is available here</p>
+            <a href={{ fields.rfp_doc.value.url }}>
+              <button class="button">Download &darr;</button>
+            </a>
+          </div>
         </div>
-      </div>
-    {% endif %}
-  </div>
-  <div class="people card-container cover">
-    {% include 'cards/entities/person-with-image.html' with {
-      'person': coordinator,
-      'supertitle': 'Regional Coordinator',
-      'person_colour_scheme': colour_scheme,
-      'cta_override': {
-        'title': 'Contact Now',
-        'target': 'mailto:' ~ coordinator.fields.email.value
-      }
-    } %}
-  </div>
-</aside>
-
-<div class="flexible-container-with-sidebar">
-  {% include 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
-</div>
+      {% endif %}
+    </div>
+    <div class="people card-container cover">
+      {% include 'cards/entities/person-with-image.html' with {
+        'person': coordinator,
+        'supertitle': 'Regional Coordinator',
+        'person_colour_scheme': colour_scheme,
+        'cta_override': {
+          'title': 'Contact Now',
+          'target': 'mailto:' ~ coordinator.fields.email.value
+        }
+      } %}
+    </div>
+  {% endblock %}
+{% endembed %}
 
 {% embed 'layout/supporting-content.html' %}
   {% block content %}

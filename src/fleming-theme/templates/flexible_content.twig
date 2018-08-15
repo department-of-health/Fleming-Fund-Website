@@ -1,6 +1,14 @@
 {% set supporting_content_starts_at_index = false %}
 {% set in_collapsible = false %}
 {% for content_block in flexible_content %}
+  {% if (flexible_content|first.acf_fc_layout == 'overview_text' and loop.index == 2)
+    or (flexible_content|first.acf_fc_layout != 'overview_text' and loop.index == 1) %}
+    {% if block('aside') is not empty %}
+      <aside>
+        {% block aside %}{% endblock %}
+      </aside>
+    {% endif %}
+  {% endif %}
   {% if content_block.acf_fc_layout == 'section_title' %}
     {% if in_collapsible %}
       {% include 'flexible-content/collapsible-terminator.html' %}
