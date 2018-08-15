@@ -3,6 +3,7 @@
     'decorated': true,
     'identifier': 'Event',
     'title': event.data.post_title,
+    'overview': event.fields.date.value ? 'Date: '~event.fields.date.value,
     'content': event.fields.summary.value,
     'link_target': event.permalink
   }} %}
