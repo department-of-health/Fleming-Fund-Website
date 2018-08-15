@@ -24,10 +24,6 @@ function fleming_get_content()
 
     $current_page = get_query_var('paged') ?: 1;
 
-    if ($current_page == 1) {
-        process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
-    }
-
     $newsType = get_page_by_path('news', 'OBJECT', 'publication_types');
     $query_args = [
         'post_type' => ['events', 'publications'],
@@ -64,6 +60,10 @@ function fleming_get_content()
                 )
             )
         );
+    }
+
+    if ($current_page == 1 && empty($fleming_content['selected_country'])) {
+        process_flexible_content($fleming_content, $fleming_content['fields']['flexible_content']);
     }
 
     $query = new WP_Query($query_args);
