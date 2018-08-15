@@ -6,7 +6,11 @@
 <aside>
   <hr class="row-border"/>
   <p class="colour-text">{{ fields.date.value }}</p>
-  <p class="colour-text">{{ fields.time.value.time }} {{ fields.time.value.timezone_label }} (UCT + {{ fields.time.value.timezone }})</p>
+  <p class="colour-text">
+    {{ fields.time.value.time }}
+    {{ fields.time.value.timezone_label }}
+    (UTC {{ fields.time.value.timezone>=0 ? '+' }}{{ fields.time.value.timezone }})
+  </p>
   {% if fields.location.value %}<p><strong>Location:</strong> {{ fields.location.value }}</p>{% endif %}
   {% if fields.country.value %}<p><strong>Country:</strong> {{ fields.country.value.post_title }}</p>{% endif %}
   <hr class="row-border"/>
