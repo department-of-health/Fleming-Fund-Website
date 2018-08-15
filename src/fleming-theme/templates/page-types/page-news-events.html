@@ -21,14 +21,12 @@
 
 <script>
     function updateLocation() {
-        var url = new URL(document.location);
+        var url = '/news-events/';
         var country = $(".news-filters select[name='country']").val();
         if (country) {
-            url.searchParams.set("country", country);
-        } else {
-            url.searchParams.delete("country");
+            url += '?country=' + country
         }
-        document.location = url.toString();
+        document.location = url;
     }
 
     $(function () {
