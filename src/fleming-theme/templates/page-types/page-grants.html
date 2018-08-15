@@ -21,14 +21,12 @@
 
 <script>
     function updateType() {
-        var url = new URL(document.location);
+        var url = '/grants/';
         var type = $(".grant-filters select[name='type']").val();
         if (type) {
-            url.searchParams.set("type", type);
-        } else {
-            url.searchParams.delete("type");
+            url += '?type=' + type
         }
-        document.location = url.toString();
+        document.location = url;
     }
 
     $(function () {
