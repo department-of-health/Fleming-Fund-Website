@@ -178,6 +178,10 @@ ul, ol {
     .collapse-control {
       background-color: map_get($colourConfig, intense);
     }
+
+    .quote {
+      border-color: map_get($colourConfig, intense);
+    }
   }
 }
 
