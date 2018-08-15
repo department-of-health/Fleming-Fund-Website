@@ -1,14 +1,16 @@
 {% if card %}
   <div class="card with-image image-top">
 
-    <div class="image-container">
-      {% if card.image_src %}
-      <img src="{{ card.image_src }}" title="{{ card.image_title | default(card.title) }}"/>
-      {% endif %}
-      {% if card.link_target %}
-        {% include 'cards/common/link-overlay.html' %}
-      {% endif %}
-    </div>
+    {% if not card.remove_image_for_low_bandwidth == true %}
+        <div class="image-container">
+            {% if card.image_src %}
+                <img src="{{ card.image_src }}" title="{{ card.image_title | default(card.title) }}"/>
+            {% endif %}
+            {% if card.link_target %}
+                {% include 'cards/common/link-overlay.html' %}
+            {% endif %}
+        </div>
+    {% endif %}
 
     {% include 'cards/base.html' %}
 

@@ -2,7 +2,8 @@
   {# the logo resolution used here should match that used in the footer #}
   {% include 'cards/medium-with-image.html' with { 'card': {
     'decorated': false,
-    'image_src': (weight == 'light' ? organisation.logo_small_url : organisation.logo_medium_url),
+    'remove_image_for_low_bandwidth': (weight == 'light'),
+    'image_src': organisation.logo_medium_url,
     'title': organisation.data.post_title,
     'content': organisation.overview,
     'link_target': organisation.fields.website_link.value,
