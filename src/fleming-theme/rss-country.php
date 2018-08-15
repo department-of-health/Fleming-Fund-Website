@@ -9,7 +9,7 @@ function fleming_get_content()
     );
 
     $country = get_page_by_path($_GET["channel"], 'OBJECT', 'countries');
-    if (empty($country)) {
+    if (empty($country) || $country->post_status != 'publish') {
         die(); // should be 404
     }
     $country = get_post_data_and_fields($country->ID);

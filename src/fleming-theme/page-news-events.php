@@ -46,7 +46,8 @@ function fleming_get_content()
         )
     ];
     $country = get_page_by_path($_GET["country"], 'OBJECT', 'countries');
-    if ($country != null) {
+    if ($country != null && $country->post_status == 'publish') {
+        $fleming_content['selected_country'] = $country;
         $query_args["meta_query"] = array(
             'relation' => 'and',
             $query_args["meta_query"],
@@ -68,7 +69,6 @@ function fleming_get_content()
         'orderby' => 'name',
         'order' => 'ASC',
     ));
-    $fleming_content['selected_country'] = $country;
 
 
     return $fleming_content;

@@ -37,7 +37,8 @@ function fleming_get_content() {
         'paged' => $current_page,
     ];
     $grantType = get_page_by_path($_GET["type"], 'OBJECT', 'grant_types');
-    if ($grantType != NULL) {
+    if ($grantType != NULL && $grantType->post_status == 'publish') {
+        $fleming_content['selected_grant_type'] = $grantType;
         $query_args["meta_query"] = array(
             array(
                 'key'   => 'type',
@@ -55,7 +56,6 @@ function fleming_get_content() {
 
     $fleming_content['query_result'] = $query_result;
     $fleming_content['grant_types'] = get_posts(array('post_type' => 'grant_types', 'numberposts' => -1));
-    $fleming_content['selected_grant_type'] = $grantType;
 
     return $fleming_content;
 }

@@ -7,7 +7,7 @@ function fleming_get_content()
     $fleming_content = [];
 
     $region = get_page_by_path($_GET["channel"], 'OBJECT', 'regions');
-    if (empty($region)) {
+    if (empty($region) || $region->post_status != 'publish') {
         die(); // should be 404
     }
     $region = get_post_data_and_fields($region->ID);
