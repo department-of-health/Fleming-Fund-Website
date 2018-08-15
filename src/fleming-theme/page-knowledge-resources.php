@@ -42,7 +42,9 @@ function fleming_get_content() {
 
     // filter
     $publicationType = get_page_by_path($_GET["type"], 'OBJECT', 'publication_types');
-    if ($publicationType != NULL) {
+    if ($publicationType != NULL && $publicationType->post_status == 'publish') {
+        $fleming_content['selected_publication_type'] = $publicationType;
+
         $query_args["meta_query"] = array(
             'relation' => 'AND',
             $query_args["meta_query"],
@@ -68,8 +70,6 @@ function fleming_get_content() {
             unset($fleming_content['publication_types'][$index]);
         }
     }
-
-    $fleming_content['selected_publication_type'] = $publicationType;
 
     return $fleming_content;
 }
