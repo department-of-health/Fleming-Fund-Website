@@ -4,7 +4,12 @@
   <div class="eight columns">
     <h1>{{ title }}</h1>
   </div>
-  <div class="four columns subscribe-for-updates">
+  <!-- RSS link disabled for the launch of the website.
+       The way RSS is displayed (particularly in Chrome) is quite ugly.
+       We might change this "subscribe" button to do something else later
+       e.g. could be an email subscription, or instructions on how to use RSS, before you click the RSS button
+  -->
+  <!-- <div class="four columns subscribe-for-updates">
     <a class="button" href="{{ rss_link_target }}" target="_blank">
       Subscribe for {{ title }} updates
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 0 33 33">
@@ -14,7 +19,7 @@
         <path d="M 28 28 H 32 A 28 28 0 0 0 4 0  V 4  A 24 24 0 0 1 28 28"/>
       </svg>
     </a>
-  </div>
+  </div> -->
 </div>
 
 {% include 'page-elements/in-page-links.html' %}

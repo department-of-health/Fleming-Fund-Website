@@ -9,9 +9,16 @@
   <link rel="stylesheet" href="/wp-content/themes/fleming-theme/static/jquery-jvectormap-2.0.3.css" type="text/css"
         media="screen"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% if rss_link_target %}
-    <link rel="alternate" type="application/rss+xml" href="{{ rss_link_target }}"/>
+
+  {% if rss_link_target and false %}
+    <!-- RSS link disabled for the launch of the website.
+         The way RSS is displayed (particularly in Chrome) is quite ugly.
+         We might change this "subscribe" button to do something else later
+         e.g. could be an email subscription, or instructions on how to use RSS, before you click the RSS button
+    -->
+    <!-- <link rel="alternate" type="application/rss+xml" href="{{ rss_link_target }}"/> -->
   {% endif %}
+
   <link rel="apple-touch-icon" sizes="180x180"
         href="/wp-content/themes/fleming-theme/static/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32"
