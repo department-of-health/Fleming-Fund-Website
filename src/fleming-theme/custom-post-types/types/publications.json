@@ -286,6 +286,61 @@
                 "max_height": "",
                 "max_size": "",
                 "mime_types": ""
+            },
+            {
+                "key": "field_5b7582a0a5215",
+                "label": "Call-to-action button",
+                "name": "call_to_action_button",
+                "type": "group",
+                "instructions": "When this publication appears on the \"Knowledge and Resources\" page, or on the homepage, do you want a call-to-action button? and what text do you want on the button?",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "row",
+                "sub_fields": [
+                    {
+                        "key": "field_5b7582e8a5216",
+                        "label": "Show call-to-action button",
+                        "name": "show_call_to_action_button",
+                        "type": "true_false",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "message": "",
+                        "default_value": 0,
+                        "ui": 0,
+                        "ui_on_text": "",
+                        "ui_off_text": ""
+                    },
+                    {
+                        "key": "field_5b7586dca5217",
+                        "label": "Text on button (optional)",
+                        "name": "button_text",
+                        "type": "text",
+                        "instructions": "If this is blank, the button text will be \"View [publication type]\" (e.g. \"View infographic\" or \"View case study\")",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    }
+                ]
             }
         ],
         "location": [

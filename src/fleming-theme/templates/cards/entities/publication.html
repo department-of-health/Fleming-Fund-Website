@@ -6,7 +6,15 @@
     'title': publication.data.post_title,
     'overview': publication.fields.publication_date.value ? 'Date: '~publication.fields.publication_date.value,
     'content': publication.overview,
-    'cta_title': (publication.fields.type.value.post_title == 'Infographic') ? 'View infographic' : null,
+    'cta_title':
+        (publication.fields.call_to_action_button
+        and publication.fields.call_to_action_button.value
+        and (publication.fields.call_to_action_button.value.show_call_to_action_button == true))
+        ?
+            (publication.fields.call_to_action_button.value.button_text
+            ? publication.fields.call_to_action_button.value.button_text
+            : 'View '~publication.fields.type.value.post_title)
+        : null,
     'link_target': publication.permalink
   }} %}
 {% endif %}
