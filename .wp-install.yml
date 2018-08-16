@@ -12,6 +12,7 @@ plugins-to-download:
   - name: force-regenerate-thumbnails
   - name: wp-ses
   - name: safe-svg
+  - name: two-factor-authentication
 
 plugins-to-copy:
   directory: dependencies/plugins
