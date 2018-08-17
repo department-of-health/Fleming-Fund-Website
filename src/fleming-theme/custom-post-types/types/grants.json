@@ -212,25 +212,6 @@
                 "ui": 1
             },
             {
-                "key": "field_5b7424181000c",
-                "label": "RFP not applicable",
-                "name": "rfp_not_applicable",
-                "type": "true_false",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "message": "",
-                "default_value": 0,
-                "ui": 0,
-                "ui_on_text": "",
-                "ui_off_text": ""
-            },
-            {
                 "key": "field_5b06976a6ae1e",
                 "label": "RFP doc",
                 "name": "rfp_doc",

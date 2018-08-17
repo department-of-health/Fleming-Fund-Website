@@ -20,16 +20,10 @@
 
 {% embed 'flexible_content.twig' with { 'flexible_content': fields.flexible_content.value } %}
   {% block aside %}
-    {% if not fields.rfp_not_applicable %}
-        {% if fields.rfp_doc.value %}
-          <a href={{ fields.rfp_doc.value.url }}>
-            <button class="button" style="width: 100%; height: auto; box-sizing: border-box;">Download RFP</button>
-          </a>
-        {% else %}
-          <button class="button" style="width: 100%; height: auto; box-sizing: border-box;" disabled="disabled">
-            RFP not available
-          </button>
-        {% endif %}
+    {% if fields.rfp_doc.value %}
+      <a href={{ fields.rfp_doc.value.url }}>
+        <button class="button" style="width: 100%; height: auto; box-sizing: border-box;">Download RFP</button>
+      </a>
     {% endif %}
   {% endblock %}
 {% endembed %}
