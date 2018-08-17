@@ -29,7 +29,11 @@ function get_current_post_data_and_fields() {
     return $result;
 }
 
-function get_referring_posts($postID, $post_type, $reference_type) {
+// Use this function to query posts that refer back to a given post ID where we're sure that the
+// referring posts' field containing this ID is single-valued only, i.e. we can test by equality.
+// If it is multi-valued it will be stored as a serialized PHP array and you will need to use the
+// more complex get_referring_posts below.
+function get_referring_posts_single_valued($postID, $post_type, $reference_type) {
     $posts = get_posts(
         array('post_type'=>$post_type, 'numberposts'=>-1, 'meta_query'=>array(
                 array(
@@ -47,6 +51,61 @@ function get_referring_posts($postID, $post_type, $reference_type) {
         unset($post);
     }
     return array_values($posts); // reset array indices to 0, 1, 2, ...
+}
+
+// This looks for posts that refer back to a given post ID, supporting multi-valued ID fields that are
+// stored in PHP's serialization format.
+// This may involve reading two much data then filtering down, so results are cached for five minutes.
+function get_referring_posts($postID, $post_type, $reference_type) {
+    $dependent_arguments = [ $post_type, $reference_type, $postID ];
+    $cache_id = 'referring_posts_' . implode('_', $dependent_arguments);
+    $referring_posts = get_transient($cache_id);
+
+    if (false === $referring_posts)
+    {
+        // Start with a 'LIKE' meta query. This will return any
+        // N.B. this might not match any value we're searching in an array-type field where the value contains a quote.
+        // However we're almost always searching for integers so this should be fine.
+        $posts = get_posts(
+            array('post_type' => $post_type, 'numberposts' => -1, 'meta_query' => array(
+                array(
+                    'key' => $reference_type,
+                    'value' => $postID,
+                    'compare' => 'LIKE'
+                )
+            )
+            )
+        );
+
+        // Load all fields
+        foreach ($posts as &$post) {
+            $post = get_post_data_and_fields($post->ID);
+        }
+
+        // Filter down to the correct subset we want by checking exact matches in the fields this time.
+        if (is_array($posts[0]['fields'][$reference_type]['value'])) {
+            $posts = array_filter($posts, function($post) use($postID, $reference_type) {
+                $refers_to_post = false;
+                if ($post['fields'][$reference_type]['value']) {
+                    foreach($post['fields'][$reference_type]['value'] as $reference) {
+                        if ($reference->ID == $postID) $refers_to_post = true;
+                    }
+                }
+                return $refers_to_post;
+            });
+        } else {
+            $posts = array_filter($posts, function($post) use($postID, $reference_type) {
+                return $post['fields'][$reference_type]['value']->ID == $postID;
+            });
+        }
+
+        foreach ($posts as &$post) {
+            unset($post);
+        }
+        $referring_posts = array_values($posts); // reset array indices to 0, 1, 2, ...
+    }
+
+    return $referring_posts;
 }
 
 function get_query_results($query = NULL) {
