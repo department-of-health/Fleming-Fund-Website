@@ -303,10 +303,10 @@ function publication_with_post_data_and_fields($publication) {
     }
 
     if (!$primary_image && isset($publication['fields']['document'])
-        && $publication['document']['value']['file'] && $publication['document']['value']['file']['id']) {
+        && $publication['fields']['document']['value']['file'] && $publication['fields']['document']['value']['file']['id']) {
         // We have an uploaded document ID.
         // wp_get_attachment_image requires we specify a size, so go straight to the metadata instead.
-        $metadata = wp_get_attachment_metadata($publication['document']['value']['file']['id']);
+        $metadata = wp_get_attachment_metadata($publication['fields']['document']['value']['file']['id']);
         if ($metadata && isset($metadata['sizes'])) {
             // We have a preview image from metadata.
             $primary_image = $metadata;
