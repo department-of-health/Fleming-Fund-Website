@@ -12,16 +12,16 @@ RewriteRule . /index.php [L]
 # BEGIN Expire headers
 <ifModule mod_expires.c>
     ExpiresActive On
-    ExpiresDefault "access plus 5 seconds"
-    # ExpiresByType image/x-icon "access plus 2592000 seconds"
+    ExpiresDefault "access plus 5 minutes"
+    ExpiresByType image/x-icon "access plus 2592000 seconds"
     ExpiresByType image/jpeg "access plus 31536000 seconds"
     ExpiresByType image/png "access plus 31536000 seconds"
     ExpiresByType image/gif "access plus 31536000 seconds"
     ExpiresByType text/css "access plus 31536000 seconds"
-    # ExpiresByType text/javascript "access plus 216000 seconds"
-    # ExpiresByType application/javascript "access plus 216000 seconds"
-    # ExpiresByType application/x-javascript "access plus 216000 seconds"
-    # ExpiresByType text/html "access plus 600 seconds"
+    ExpiresByType text/javascript "access plus 216000 seconds"
+    ExpiresByType application/javascript "access plus 216000 seconds"
+    ExpiresByType application/x-javascript "access plus 216000 seconds"
+    ExpiresByType text/html "access plus 1 second"
     # ExpiresByType application/xhtml+xml "access plus 600 seconds"
 </ifModule>
 # END Expire headers
