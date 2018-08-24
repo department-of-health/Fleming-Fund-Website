@@ -35,7 +35,7 @@ define('NONCE_SALT',       $_ENV['NONCE_SALT']);
 
 if (isset($_SERVER["HTTP_X_AMZ_CF_ID"])) {
   # From CloudFront
-  $_SERVER["HTTP_HOST"] = 'dev.flemingfund.org';
+  $_SERVER["HTTP_HOST"] = 'www.flemingfund.org';
 } elseif (isset($_SERVER["HTTP_HOST"]) && ("origin.flemingfund.org" == $_SERVER["HTTP_HOST"])) {
   # Direct access to origin
   define('WP_HOME', 'https://origin.flemingfund.org/');
