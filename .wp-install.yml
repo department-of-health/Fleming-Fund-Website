@@ -5,7 +5,7 @@ plugins-to-download:
   - name: custom-post-type-permalinks
   - name: post-types-order
   - name: disable-comments
-  - name: wp-db-backup
+  - name: updraftplus
   - name: file-manager-advanced
   - name: relevanssi
   - name: acf-youtube-picker
