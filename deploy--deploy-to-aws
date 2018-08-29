@@ -5,11 +5,15 @@ const fs = require('fs');
 const _ = require('lodash');
 
 const siteName = 'fleming-fund';
-const allowedEnvironments = ['dev'];
+const allowedEnvironments = ['stage', 'production'];
 
-const ebAppName = 'fleming-fund-eb-app';
+const ebAppNames = {
+    'stage': 'fleming-eb-stage',
+    'production': 'fleming-fund-eb-app'
+};
 const ebEnvNames = {
-    'dev': 'fleming-fund-eb-dev-2'
+    'stage': 'FlemingEbStage-env',
+    'production': 'fleming-fund-eb-dev-2'
 };
 const s3bucket = 'elasticbeanstalk-eu-west-1-382810960254';
 
@@ -38,10 +42,10 @@ async function start() {
     await upload(zipFileName, s3bucket, s3fileName);
 
     console.log('creating version');
-    await createVersion(ebAppName, ebVersionLabel, s3bucket, s3fileName);
+    await createVersion(ebAppNames[environment], ebVersionLabel, s3bucket, s3fileName);
 
     console.log('deploying version');
-    await deployVersion(ebAppName, ebEnvName, ebVersionLabel);
+    await deployVersion(ebAppNames[environment], ebEnvName, ebVersionLabel);
 }
 
 function getDetailsFromCommandLineArguments() {

@@ -23,4 +23,8 @@ ZIPFILE="deployments/fleming-fund_$DATE.zip"
 ../../dependencies/7zip/7z.exe a "../../$ZIPFILE" -ir!* -xr!wp-content/uploads -xr!license.txt -xr!readme.html
 
 cd ../..
-./deploy--deploy-to-aws dev "$ZIPFILE"
+# If first command line arg is non-empty
+if [[ ! -z "$1" ]]
+then
+    ./deploy--deploy-to-aws $1 "$ZIPFILE"
+fi

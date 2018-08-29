@@ -35,11 +35,21 @@ define('NONCE_SALT',       $_ENV['NONCE_SALT']);
 
 if (isset($_SERVER["HTTP_X_AMZ_CF_ID"])) {
   # From CloudFront
-  $_SERVER["HTTP_HOST"] = 'www.flemingfund.org';
+  # CloudFront overwrites the host header with the CF origin.
+  # We need to persuade WordPress we're on the right domain or it will redirect us.
+  if (isset($_ENV["CLOUDFRONT_HOST"])) {
+    $_SERVER["HTTP_HOST"] = $_ENV["CLOUDFRONT_HOST"];
+  } else {
+    $_SERVER["HTTP_HOST"] = 'www.flemingfund.org';
+  }
 } elseif (isset($_SERVER["HTTP_HOST"]) && ("origin.flemingfund.org" == $_SERVER["HTTP_HOST"])) {
   # Direct access to origin
   define('WP_HOME', 'https://origin.flemingfund.org/');
   define('WP_SITEURL', 'https://origin.flemingfund.org/');
+} elseif (isset($_ENV["FLEM_ENV"]) && ("stage" == $_ENV["FLEM_ENV"])
+  && isset($_SERVER["HTTP_HOST"]) && ("fleming-stage.eu-west-1.elasticbeanstalk.com" == $_SERVER["HTTP_HOST"])) {
+  define('WP_HOME', 'http://fleming-stage.eu-west-1.elasticbeanstalk.com/');
+  define('WP_SITEURL', 'http://fleming-stage.eu-west-1.elasticbeanstalk.com/');
 }
 
 $table_prefix  = 'wp_';
