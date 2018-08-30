@@ -49,6 +49,8 @@ This is the [Git repository](https://en.wikipedia.org/wiki/Git) for the code tha
 * Check out the code  
   `git clone git@github.com:Softwire/fleming-fund-website.git`
 
+* Make a copy the `.credentials-template` folder called `.credentials`.
+
 * Fill in `.credentials/aws-credentials-backup-download.json` with vlaues from Zoho.
 
 * Fill in `.credentials/youtube-api-key.json` with the value from Zoho.
