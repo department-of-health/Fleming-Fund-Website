@@ -9,7 +9,7 @@ const readline = require('readline');
 const child_process = require('child_process');
 const mysql = require('mysql');
 
-
+const max_allowed_packet = 64 * 1024 * 1024;
 var s3 = null;
 
 
@@ -67,7 +67,7 @@ function checkFolder() {
         console.log('Try this...');
         console.log('  cd ..');
         console.log('  ./etc/download-latest-db-backup');
-        
+
         process.exit();
     }
 }
@@ -118,10 +118,10 @@ async function askUserForOptions() {
 
 function parseOptions(optionsText) {
     return {
-        get_database:     optionsText.includes('gd') || optionsText.includes('all'),
+        get_database: optionsText.includes('gd') || optionsText.includes('all'),
         restore_database: optionsText.includes('rd') || optionsText.includes('all'),
-        get_files:        optionsText.includes('gf') || optionsText.includes('all'),
-        restore_files:    optionsText.includes('rf') || optionsText.includes('all'),
+        get_files: optionsText.includes('gf') || optionsText.includes('all'),
+        restore_files: optionsText.includes('rf') || optionsText.includes('all'),
     }
 }
 
@@ -155,16 +155,16 @@ function loadAwsConfigAndTestConnection() {
 
         s3 = new AWS.S3({
             apiVersion: '2006-03-01',
-            params: {Bucket: 'fleming-fund-db-backups'} // always use this bucket
+            params: { Bucket: 'fleming-fund-db-backups' } // always use this bucket
         });
 
         s3.listObjectsV2({ MaxKeys: 1 }, // pick any file - just to test we can connect
-        function(err, data) {
-            if (data.Contents) {
-                console.log('- AWS connection successful');
-                resolve();
-            }
-        });
+            function (err, data) {
+                if (data.Contents) {
+                    console.log('- AWS connection successful');
+                    resolve();
+                }
+            });
     });
 }
 
@@ -189,15 +189,15 @@ async function getDatabase() {
 
     const latestDatabaseFilename = getS3KeyOfLatestMatch(
         s3Response,
-        function(file) { return file.Key.startsWith('backup_') && file.Key.endsWith('-db.gz'); }
+        function (file) { return file.Key.startsWith('backup_') && file.Key.endsWith('-db.gz'); }
     )
     console.log('- found the latest database backup - filename is [' + latestDatabaseFilename + ']');
 
     const localPath = './.temp/database-backup/' + latestDatabaseFilename;
-    
+
     console.log('- local path will be [' + localPath + '] checking if it already exists (without .gz suffix)');
     const localPathWithoutGzSuffix = localPath.replace('.gz', '');
-    
+
     if (fs.existsSync(localPathWithoutGzSuffix)) {
         console.log('  - file already exists - nothing to do');
     }
@@ -205,7 +205,7 @@ async function getDatabase() {
         console.log('  - file does not exists - need to download');
         console.log('- copying database from S3 file [' + latestDatabaseFilename + '] to local path [' + localPath + ']');
         await downloadS3FileToLocalFile(latestDatabaseFilename, localPath);
-    
+
         console.log('- unzipping file [' + localPath + ']');
         gunzip(localPath);
     }
@@ -225,7 +225,7 @@ async function getFiles() {
 
     const latestUploadsFilename = getS3KeyOfLatestMatch(
         s3Response,
-        function(file) { return file.Key.startsWith('backup_') && file.Key.endsWith('-uploads.zip'); }
+        function (file) { return file.Key.startsWith('backup_') && file.Key.endsWith('-uploads.zip'); }
     )
     console.log('- found the latest files backup - filename is [' + latestUploadsFilename + ']');
 
@@ -243,15 +243,15 @@ async function restoreDatabase() {
     console.log('------------------------');
     console.log('restoring database');
     console.log(''); // make some space in the log
-    
+
     const databaseBackupSqlFile = findDatabaseBackupFile();
 
     return new Promise(resolve => {
         var connection = mysql.createConnection({
-            host     : 'localhost',
-            user     : process.env['DB_USER'] || 'root',
-            password : process.env['DB_PASSWORD'] || 'jellyfish',
-            database : '',
+            host: 'localhost',
+            user: process.env['DB_USER'] || 'root',
+            password: process.env['DB_PASSWORD'] || 'jellyfish',
+            database: '',
             multipleStatements: true
         });
 
@@ -261,14 +261,24 @@ async function restoreDatabase() {
 
         const backupQuery = fs.readFileSync(databaseBackupSqlFile);
         const wholeRestoreQuery = "DROP SCHEMA IF EXISTS `wordpress`; CREATE SCHEMA `wordpress` DEFAULT CHARACTER SET utf8mb4; USE `wordpress`; " + backupQuery;
+        if (wholeRestoreQuery.length > max_allowed_packet) {
+            throw Error("Restore query exceeds " + max_allowed_packet);
+        }
 
-        connection.query(wholeRestoreQuery, function (error, results, fields) {
-            if (error) throw error;
-            console.log('Query executed.');
-            resolve();
+        console.log("Trying to increase the max packet size to " + max_allowed_packet);
+        const setMaxPacketSizeQuery = `SET GLOBAL max_allowed_packet=${max_allowed_packet};`;
+
+        connection.query(setMaxPacketSizeQuery, (err) => {
+            if (err) throw err;
+            console.log("Successfully set max packet size to " + max_allowed_packet);
+            console.log("Running main restore query");
+            connection.query(wholeRestoreQuery, function (error) {
+                if (error) throw error;
+                console.log('Query executed.');
+                resolve();
+                connection.end();
+            });
         });
-        
-        connection.end();
     });
 }
 
@@ -279,9 +289,9 @@ function findDatabaseBackupFile() {
     const files = fs.readdirSync(tempPath);
     const latestBackupZipFile =
         _(files)
-        .filter(function(file) { return file.endsWith('-db'); })
-        .orderBy([], ['desc'])
-        .head();
+            .filter(function (file) { return file.endsWith('-db'); })
+            .orderBy([], ['desc'])
+            .head();
     console.log('- latest DB backup file is [' + latestBackupZipFile + ']');
 
     const pathToDatabaseBackupFile = tempPath + '/' + latestBackupZipFile;
@@ -297,14 +307,14 @@ function restoreFiles() {
     console.log('------------------------');
     console.log('restoring the latest files backup');
     console.log(''); // make some space in the log
-    
+
     moveOldUploadsFolderIfItExists();
     unzipLatestFilesBackupToUploadsFolder();
 }
 
 function moveOldUploadsFolderIfItExists() {
     console.log('archiving the current uploads folder (if it exists)');
-    
+
     const uploadsPath = './dist/wordpress/wp-content/uploads';
     if (fs.existsSync(uploadsPath)) {
         console.log('- uploads folder does exist');
@@ -340,7 +350,7 @@ function makeDirIfNotExists(dir) {
 
 function getS3BucketContents() {
     return new Promise(resolve => {
-        s3.listObjectsV2({}, function(err, data) {
+        s3.listObjectsV2({}, function (err, data) {
             resolve(data);
         });
     });
@@ -348,10 +358,10 @@ function getS3BucketContents() {
 
 function getS3KeyOfLatestMatch(s3Response, orderFunction) {
     const latestBlock =
-    _(s3Response.Contents)
-    .filter(orderFunction)
-    .orderBy(['Key'], ['desc'])
-    .head();
+        _(s3Response.Contents)
+            .filter(orderFunction)
+            .orderBy(['Key'], ['desc'])
+            .head();
 
     return latestBlock.Key;
 }
@@ -361,9 +371,9 @@ function downloadS3FileToLocalFile(s3Filename, localFilePath) {
         const localFile = fs.createWriteStream(localFilePath);
 
         s3.getObject({ Key: s3Filename })
-        .createReadStream()
-        .pipe(localFile)
-        .on('finish', resolve);
+            .createReadStream()
+            .pipe(localFile)
+            .on('finish', resolve);
     });
 }
 

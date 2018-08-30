@@ -22,7 +22,6 @@ export DB_PASSWORD="jellyfish"
 # export WP_CONTENT_URL="http://fleming-stage.eu-west-1.elasticbeanstalk.com/wp-content/"
 
 # TEST
-# Test database location may change if the environment is rebuilt, see the test site configuration.
 # export DB_HOST="fleming-test-db.cfcbbvem75td.eu-west-1.rds.amazonaws.com"
 # export DB_NAME="wordpress"
 # export DB_USER="flemingmaster"

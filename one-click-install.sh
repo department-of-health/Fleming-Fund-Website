@@ -1,6 +1,8 @@
-set -x
+#!/bin/bash
 
 source ./.credentials/set-local-credentials.sh
+
+set -x
 
 npm install
 
