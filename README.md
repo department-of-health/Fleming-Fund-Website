@@ -7,10 +7,14 @@ This is the [Git repository](https://en.wikipedia.org/wiki/Git) for the code tha
 * CI: Travis CI
 
 # Zero-to-hero
+
+## Requirements
+* Get access to the Fleming Fund Zoho chamber
+
 * Install Git for Windows (https://git-scm.com/download/win)  
   (optional extra) Install your Git GUI of choice
 
-* Install NPM (part of Node.js) (https://nodejs.org/en/download/)
+* Install NPM + Node (https://nodejs.org/en/download/)
 
 * Install the latest version of MySQL Community (https://dev.mysql.com/downloads/installer)
   * Note: it asks you to login to an Oracle Web Account  
@@ -40,14 +44,27 @@ This is the [Git repository](https://en.wikipedia.org/wiki/Git) for the code tha
   * Un-comment `extension=openssl`
   * Change the `variables_order` line to be `variables_order = "EGPCS"`
 
-* Check out this code  
+## First time setup
+
+* Check out the code  
   `git clone git@github.com:Softwire/fleming-fund-website.git`
 
-* Ask someone on the team for these files:
-  * `.credentials\aws-credentials-backup-download.json`
-  * `.credentials\set-local-credentials.sh`
+* Fill in `.credentials/aws-credentials-backup-download.json` with vlaues from Zoho.
 
-* Run `one-click-install.sh`
+* Fill in `.credentials/youtube-api-key.json` with the value from Zoho.
+
+* Fill in `DB_USER` and `DB_PASSWORD` with your root database user credentials.
+
+* Get a copy of the paid-for plugins we use off X:\VisibleToEmployees\Customers\Fleming Fund and put them in dependencies/plugins.
+(the names should match `.wp-install.yml`)
+
+* Run `one-click-install.sh`. This will:
+  * `npm install`
+  * Install wordpress + plugins
+  * Fetch and restore a copy of the database and uploads folder from S3.
+    **THIS WILL DELETE ANY EXISTING WORDPRESS DATABASE**
+
+## Running the website
 
 * Run these two shell scripts to build and serve the website:
   * `dev--build-and-watch.sh`  
@@ -60,7 +77,13 @@ This is the [Git repository](https://en.wikipedia.org/wiki/Git) for the code tha
   e.g. by running `./dev--run-php-server.sh`  
   For some reason, if you just double-click on this shell script in Windows Explorer, it doesn't know where your `php.ini` file is :-(
 
-* If you need to get a fresh copy of the
+**Be careful not to commit any secrets to git -- this is a public repository.**
+
+
+## Using an AWS database
+
+To use the live/staging/test database edit `.credentials/set-local-credentials.sh`, commenting out your local database and
+uncommenting a different one. Get the password from Zoho.
 
 
 # Custom Post Types and Custom Field Groups

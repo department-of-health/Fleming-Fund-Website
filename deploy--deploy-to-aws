@@ -5,13 +5,15 @@ const fs = require('fs');
 const _ = require('lodash');
 
 const siteName = 'fleming-fund';
-const allowedEnvironments = ['stage', 'production'];
+const allowedEnvironments = ['test', 'stage', 'production'];
 
 const ebAppNames = {
+    'test': 'fleming-eb-stage',
     'stage': 'fleming-eb-stage',
     'production': 'fleming-fund-eb-app'
 };
 const ebEnvNames = {
+    'test': 'fleming-test-eb-1',
     'stage': 'FlemingEbStage-env',
     'production': 'fleming-fund-eb-dev-2'
 };

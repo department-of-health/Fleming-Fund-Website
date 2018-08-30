@@ -249,8 +249,8 @@ async function restoreDatabase() {
     return new Promise(resolve => {
         var connection = mysql.createConnection({
             host     : 'localhost',
-            user     : 'root',
-            password : 'jellyfish',
+            user     : process.env['DB_USER'] || 'root',
+            password : process.env['DB_PASSWORD'] || 'jellyfish',
             database : '',
             multipleStatements: true
         });
