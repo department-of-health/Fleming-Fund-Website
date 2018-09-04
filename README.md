@@ -55,7 +55,7 @@ This is the [Git repository](https://en.wikipedia.org/wiki/Git) for the code tha
 
 * Fill in `.credentials/youtube-api-key.json` with the value from Zoho.
 
-* Fill in `DB_USER` and `DB_PASSWORD` with your root database user credentials.
+* Fill in `.credentials/local-credentials-for-install.sh` with your local database root user credentials.
 
 * Get a copy of the paid-for plugins we use off X:\VisibleToEmployees\Customers\Fleming Fund and put them in dependencies/plugins.
 (the names should match `.wp-install.yml`)
