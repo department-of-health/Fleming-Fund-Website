@@ -1,0 +1,1 @@
+Paid for plugins go in this folder. Make sure the name matches `.wp-install.yml`.

@@ -4,7 +4,7 @@ export FLEM_ENV="local-dev"
 export DB_HOST="localhost"
 export DB_NAME="wordpress"
 export DB_USER="root"
-export DB_PASSWORD="jellyfish"
+export DB_PASSWORD="password"
 
 ## AWS databases. Passwords are in Zoho. Connections allowed from Softwire offices only.
 # LIVE
