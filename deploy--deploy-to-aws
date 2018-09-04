@@ -31,6 +31,14 @@ start();
 async function start() {
     getDetailsFromCommandLineArguments();
 
+    if (environment === 'production'
+        && !(
+            fs.existsSync('src/wordpress/.ebextensions/https-instance.config')
+            && fs.existsSync('src/wordpress/.ebextensions/https-single-instance.config')
+        )) {
+        console.error("You're trying to deploy to production without the SSL cert!")
+    }
+
     console.log('calculating version names');
     var now = new Date().toISOString();
     var s3fileName = `${siteName}-${environment}-code-version_${now}`;
