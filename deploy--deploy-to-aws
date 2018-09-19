@@ -36,7 +36,8 @@ async function start() {
             fs.existsSync('src/wordpress/.ebextensions/https-instance.config')
             && fs.existsSync('src/wordpress/.ebextensions/https-single-instance.config')
         )) {
-        console.error("You're trying to deploy to production without the SSL cert!")
+        console.error("You're trying to deploy to production without the SSL cert!");
+        process.exit(1);
     }
 
     console.log('calculating version names');
