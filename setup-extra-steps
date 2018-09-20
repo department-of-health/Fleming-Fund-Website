@@ -18,6 +18,7 @@ if (!fs.existsSync('.credentials')) {
 } else {
     const content = `
 export FLEM_ENV="local-dev"
+export WP_HOME="http://localhost:3000"
 
 # Localhost
 export DB_HOST="${process.env.DB_HOST}"
